@@ -1,3 +1,306 @@
+# Desafio refactor-arch — Refatoração Arquitetural Automatizada
+
+MBA em Engenharia de Software com IA — módulo Desenvolvimento de Software e Aplicações com IA.
+
+Ferramenta escolhida: **Claude Code**, utilizado no VS Code em ambiente WSL.
+
+**Estado desta entrega:** análise manual dos três projetos registrada. A Skill ainda não foi criada ou executada; a refatoração e a validação funcional permanecem pendentes.
+
+## Análise Manual
+
+### Método, escopo e versão de referência
+
+- Data do registro: **30/10/2026**.
+- Método: leitura estática do código assistida por IA, seguida de conferência humana dos trechos discutidos. Não houve execução da Skill, das aplicações, de testes funcionais ou de exploração de vulnerabilidades nesta etapa.
+- Os achados são uma seleção inicial para orientar a construção da Skill. Não constituem uma auditoria exaustiva e não devem limitar a futura detecção automática.
+- As severidades seguem a escala do enunciado. A seleção de cada projeto contém pelo menos um CRITICAL ou HIGH, dois MEDIUM e dois LOW.
+- As quantidades de linhas incluem linhas em branco. Os totais de código consideram arquivos .py ou .js do projeto; no Task Manager incluem seed.py e __init__.py. Não incluem dependências instaladas.
+- Versão de referência: commit [`6d1ce6248c3e956801010a89d8bdaab48029bf30`](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/commit/6d1ce6248c3e956801010a89d8bdaab48029bf30), presente no pacote enviado. O código extraído correspondia ao commit antes da edição deste README.
+- Os links de localização abaixo apontam para esse commit, preservando a possibilidade de conferência quando os arquivos forem movidos ou alterados pela refatoração.
+- Os IDs P1-xx, P2-xx e P3-xx identificam achados manuais. A auditoria automática terá seus próprios resultados; posteriormente registraremos a correspondência, sem presumir que problemas já tenham sido detectados ou corrigidos.
+- As explicações de arquitetura, segurança e bibliotecas são interpretações técnicas aplicadas ao código. Não são transcrições nem afirmações atribuídas a aulas específicas do MBA. As referências externas estão identificadas ao final desta seção.
+
+### Resumo dos achados manuais
+
+| Projeto | CRITICAL | HIGH | MEDIUM | LOW | Total |
+|---|---:|---:|---:|---:|---:|
+| `code-smells-project` | 2 | 1 | 2 | 2 | 7 |
+| `ecommerce-api-legacy` | 2 | 1 | 2 | 2 | 7 |
+| `task-manager-api` | 1 | 1 | 3 | 2 | 7 |
+| **Total** | **5** | **3** | **7** | **6** | **21** |
+
+### Projeto 1 — code-smells-project
+
+- **Domínio:** API de E-commerce.
+- **Tecnologias declaradas/identificadas:** Python, Flask 3.1.1 e SQLite.
+- **Código inspecionado:** 4 arquivos, 780 linhas físicas.
+
+O projeto possui arquivos chamados models e controllers, mas ainda mistura responsabilidades: app.py executa SQL nas rotas administrativas; controllers.py contém validações, montagem de respostas e consultas diretas no health check; models.py concentra acesso a dados, cálculos e formatação de diferentes domínios.
+
+#### P1-01 — [CRITICAL] SQL Injection por concatenação de entradas
+
+**Localização no código original:** [models.py:105–111](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/code-smells-project/models.py#L105-L111); [models.py:285–299](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/code-smells-project/models.py#L285-L299); [controllers.py:167–176](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/code-smells-project/controllers.py#L167-L176); [controllers.py:111–123](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/code-smells-project/controllers.py#L111-L123).
+
+**Evidência:** O login concatena email e senha ao SQL; a busca concatena termo e categoria à consulta. Esses valores vêm de requisições HTTP e são incorporados ao texto da instrução.
+
+**Impacto e justificativa:** Entradas podem alterar a lógica da consulta, comprometendo autenticação ou acesso aos dados. A classificação segue o exemplo explícito de SQL Injection da escala do desafio. Não foi executada uma exploração.
+
+**Direção de correção:** Separar instruções SQL dos valores recebidos usando parâmetros. A classificação se apoia nos fluxos de texto identificados; não presume que toda concatenação envolvendo IDs já convertidos em inteiros seja igualmente explorável.
+
+#### P1-02 — [CRITICAL] Exposição de senhas armazenadas em texto puro
+
+**Localização no código original:** [models.py:72–103](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/code-smells-project/models.py#L72-L103); [models.py:122–129](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/code-smells-project/models.py#L122-L129); [controllers.py:128–144](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/code-smells-project/controllers.py#L128-L144).
+
+**Evidência:** O cadastro insere diretamente a senha recebida. As funções de consulta de usuários incluem o campo senha nos dicionários que os controllers devolvem em JSON.
+
+**Impacto e justificativa:** Respostas da API expõem credenciais em texto puro. Trata-se de exposição de dados sensíveis, prevista como CRITICAL no enunciado.
+
+**Direção de correção:** Remover senha das representações públicas e adotar armazenamento e verificação apropriados de senhas. A correção deve ser registrada como alteração de segurança intencional, sem preservar o vazamento como se fosse um contrato válido.
+
+#### P1-03 — [HIGH] Conexão global mutável compartilhada
+
+**Localização no código original:** [database.py:4–10](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/code-smells-project/database.py#L4-L10); [database.py:86](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/code-smells-project/database.py#L86).
+
+**Evidência:** get_db() mantém e devolve uma única conexão global, criada com check_same_thread=False. Os chamadores compartilham o mesmo objeto de conexão.
+
+**Impacto e justificativa:** O estado compartilhado dificulta o isolamento entre testes e o controle das transações de requisições diferentes. A opção de acesso por diferentes threads não estabelece, sozinha, coordenação das escritas. Não foi reproduzida uma falha de concorrência.
+
+**Direção de correção:** Definir um ciclo de vida explícito para conexões e transações, com isolamento adequado às requisições e aos testes. Evitar compartilhar uma conexão mutável indiscriminadamente.
+
+#### P1-04 — [MEDIUM] Consultas N+1 na listagem de pedidos
+
+**Localização no código original:** [models.py:203–233](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/code-smells-project/models.py#L203-L233).
+
+**Evidência:** get_todos_pedidos() consulta pedidos, consulta itens dentro do laço de pedidos e consulta o nome do produto dentro do laço de itens.
+
+**Impacto e justificativa:** O número de consultas cresce com pedidos e itens: nesse trecho, 10 pedidos com 3 itens cada demandariam 1 + 10 + 30 = 41 consultas. É um gargalo de desempenho previsto como MEDIUM na escala.
+
+**Direção de correção:** Buscar dados relacionados em conjunto, por joins ou consultas em lote, preservando a estrutura de resposta esperada. A contagem acima é derivada do código, não medida em execução.
+
+#### P1-05 — [MEDIUM] Validações duplicadas e divergentes de produtos
+
+**Localização no código original:** [controllers.py:28–54](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/code-smells-project/controllers.py#L28-L54); [controllers.py:72–90](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/code-smells-project/controllers.py#L72-L90).
+
+**Evidência:** Criar e atualizar produto repetem verificações de presença de campos e valores negativos. A criação também verifica tamanho do nome e categoria permitida; a atualização não aplica essas mesmas regras.
+
+**Impacto e justificativa:** O mesmo produto pode passar por critérios diferentes conforme a operação. A duplicação já apresenta divergência observável no código.
+
+**Direção de correção:** Centralizar as regras comuns de produto e aplicá-las coerentemente nas operações, mantendo explícitas eventuais diferenças legítimas entre criação e atualização.
+
+#### P1-06 — [LOW] Limites e percentuais de desconto sem nomes explicativos
+
+**Localização no código original:** [models.py:256–262](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/code-smells-project/models.py#L256-L262).
+
+**Evidência:** A regra de desconto utiliza diretamente 10000, 5000, 1000 e os percentuais 0.1, 0.05 e 0.02.
+
+**Impacto e justificativa:** Esses números representam uma política de negócio, mas não possuem nomes que expliquem suas faixas e finalidades. A dificuldade principal é de leitura e manutenção, sem prova de erro no cálculo.
+
+**Direção de correção:** Representar as faixas com constantes ou uma estrutura nomeada, preservando valores e limites de comparação até que uma mudança de regra seja explicitamente definida.
+
+#### P1-07 — [LOW] Importações sem uso
+
+**Localização no código original:** [database.py:2](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/code-smells-project/database.py#L2); [models.py:2](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/code-smells-project/models.py#L2).
+
+**Evidência:** database.py importa os sem utilizá-lo; models.py importa sqlite3 sem referenciar o módulo.
+
+**Impacto e justificativa:** As importações acrescentam ruído e sugerem dependências que não são utilizadas nesses arquivos. O impacto é de legibilidade.
+
+**Direção de correção:** Remover as importações não utilizadas após conferir os usos no arquivo inteiro.
+
+### Projeto 2 — ecommerce-api-legacy
+
+- **Domínio:** LMS API com fluxo de checkout de cursos.
+- **Tecnologias declaradas/identificadas:** Node.js, Express declarado como ^4.18.2 e SQLite em memória.
+- **Código inspecionado:** 3 arquivos, 180 linhas físicas.
+
+src/app.js inicializa o servidor, enquanto AppManager reúne quase todo o funcionamento: criação e preenchimento do banco, rotas, compra, matrícula, pagamento e relatórios. utils.js agrega configurações, cache, logs e uma transformação insegura de senhas. O domínio foi identificado pelo código, não apenas pelo nome da pasta.
+
+#### P2-01 — [CRITICAL] God Class com banco, regras e roteamento
+
+**Localização no código original:** [src/AppManager.js:4–138](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/ecommerce-api-legacy/src/AppManager.js#L4-L138).
+
+**Evidência:** AppManager cria a conexão, define tabelas e dados iniciais, registra rotas, processa checkout e gera relatórios financeiros.
+
+**Impacto e justificativa:** A classe reúne as responsabilidades de persistência, fluxo de negócio e atendimento HTTP, dificultando mudanças e testes isolados. A severidade segue o exemplo explícito de God Class com banco, lógica complexa e roteamento do enunciado; não decorre apenas do tamanho do arquivo.
+
+**Direção de correção:** Separar inicialização, acesso aos dados, regras de negócio, coordenação e registro de rotas, seguindo o MVC alvo. Dividir o arquivo sem separar responsabilidades não basta.
+
+#### P2-02 — [CRITICAL] Transformação insegura de senhas
+
+**Localização no código original:** [src/utils.js:17–22](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/ecommerce-api-legacy/src/utils.js#L17-L22); [src/AppManager.js:68–69](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/ecommerce-api-legacy/src/AppManager.js#L68-L69).
+
+**Evidência:** badCrypto() codifica a senha em Base64, conserva apenas os dois primeiros caracteres, repete esse fragmento 10000 vezes e devolve os primeiros dez caracteres. O checkout usa esse resultado no cadastro.
+
+**Impacto e justificativa:** Senhas distintas que compartilham o mesmo fragmento geram o mesmo valor armazenado. Repetir e truncar uma codificação não constitui proteção adequada de credenciais. A leitura demonstra a construção insegura; não há alegação de exploração de um login neste projeto.
+
+**Direção de correção:** Substituir a função por um mecanismo próprio para armazenamento seguro de senhas e rever a senha padrão usada quando pwd está ausente. Considerar os dados existentes ao planejar a mudança.
+
+#### P2-03 — [HIGH] Checkout com gravações sem transação conjunta
+
+**Localização no código original:** [src/AppManager.js:50–60](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/ecommerce-api-legacy/src/AppManager.js#L50-L60).
+
+**Evidência:** O código insere uma matrícula, depois um pagamento e depois um registro de auditoria. Se a inserção de pagamento falhar, responde com erro, sem desfazer a matrícula criada anteriormente.
+
+**Impacto e justificativa:** Uma operação de negócio pode ficar parcialmente registrada. A ausência de uma fronteira transacional prejudica a consistência do fluxo de compra.
+
+**Direção de correção:** Definir quais gravações devem ser atômicas e executá-las em transação com confirmação ou reversão. Tratar a falha da auditoria de modo explícito. Não foi induzida uma falha em execução.
+
+#### P2-04 — [MEDIUM] Consultas N+1 no relatório financeiro
+
+**Localização no código original:** [src/AppManager.js:83–106](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/ecommerce-api-legacy/src/AppManager.js#L83-L106).
+
+**Evidência:** Após listar cursos, o código busca matrículas de cada curso e executa consultas separadas de usuário e pagamento para cada matrícula.
+
+**Impacto e justificativa:** A quantidade de consultas cresce com cursos e matrículas, elevando o custo de geração do relatório.
+
+**Direção de correção:** Buscar as informações relacionadas em conjunto e agregar os resultados, preservando as regras e campos da resposta. Não há medição de desempenho nesta análise estática.
+
+#### P2-05 — [MEDIUM] Validação insuficiente dos tipos de entrada
+
+**Localização no código original:** [src/AppManager.js:29–46](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/ecommerce-api-legacy/src/AppManager.js#L29-L46).
+
+**Evidência:** A verificação inicial testa a presença de alguns valores. Em seguida, cc.startsWith("4") pressupõe que card seja texto. Um número diferente de zero passa na verificação de presença, mas não oferece esse método.
+
+**Impacto e justificativa:** Uma entrada com tipo incorreto pode provocar exceção em vez de uma resposta de validação controlada. Trata-se de validação incompleta nas rotas.
+
+**Direção de correção:** Validar tipos e campos necessários antes de acessar o banco e executar a lógica de checkout. Preservar os nomes públicos usr, eml, pwd, c_id e card quando apenas variáveis internas forem renomeadas.
+
+#### P2-06 — [LOW] Nomes locais pouco descritivos
+
+**Localização no código original:** [src/AppManager.js:29–33](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/ecommerce-api-legacy/src/AppManager.js#L29-L33); [src/AppManager.js:52](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/ecommerce-api-legacy/src/AppManager.js#L52).
+
+**Evidência:** O fluxo usa variáveis locais u, e, p, cid, cc e enrId para informações de usuário, curso, cartão e matrícula.
+
+**Impacto e justificativa:** As abreviações obrigam o leitor a retornar às atribuições para entender cada valor, aumentando o esforço de manutenção.
+
+**Direção de correção:** Adotar nomes internos descritivos. Renomear uma variável local não exige alterar as chaves recebidas na API.
+
+#### P2-07 — [LOW] Variável exportada e importada sem uso
+
+**Localização no código original:** [src/utils.js:10](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/ecommerce-api-legacy/src/utils.js#L10); [src/utils.js:25](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/ecommerce-api-legacy/src/utils.js#L25); [src/AppManager.js:2](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/ecommerce-api-legacy/src/AppManager.js#L2).
+
+**Evidência:** totalRevenue é inicializada com zero, exportada e importada, mas não é usada no cálculo do relatório ou em outra operação do projeto.
+
+**Impacto e justificativa:** O nome sugere um controle de faturamento que não existe nesse fluxo. O problema identificado é código sem uso, não um cálculo incorreto comprovado.
+
+**Direção de correção:** Remover a declaração, a exportação e a importação se a conferência de referências confirmar que não há consumidor.
+
+### Projeto 3 — task-manager-api
+
+- **Domínio:** API de gerenciamento de tarefas, usuários, categorias e relatórios.
+- **Tecnologias declaradas/identificadas:** Python, Flask 3.0.0, Flask-SQLAlchemy 3.1.1 e SQLite.
+- **Código inspecionado:** 15 arquivos, 1158 linhas físicas.
+
+O projeto possui models, routes, services e utils. Entretanto, as rotas concentram validações, consultas, gravações e cálculos, inclusive duplicando regras que já existem nos modelos. A existência das pastas não demonstra, por si só, separação efetiva das responsabilidades.
+
+#### P3-01 — [CRITICAL] Exposição do hash de senha nas respostas
+
+**Localização no código original:** [models/user.py:16–25](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/task-manager-api/models/user.py#L16-L25); [models/user.py:27–32](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/task-manager-api/models/user.py#L27-L32); [routes/user_routes.py:33–40](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/task-manager-api/routes/user_routes.py#L33-L40); [routes/user_routes.py:207–211](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/task-manager-api/routes/user_routes.py#L207-L211).
+
+**Evidência:** User.to_dict() inclui password. O método é utilizado na consulta individual de usuário e na resposta de login. set_password() mostra que esse campo armazena um hash MD5.
+
+**Impacto e justificativa:** As respostas expõem material de credencial que deve permanecer interno. A descrição é precisa: é exposição de hash MD5, não de senha em texto puro.
+
+**Direção de correção:** Remover password das representações públicas e revisar o mecanismo de armazenamento de senhas. Documentar a remoção desse campo como correção de segurança intencional.
+
+#### P3-02 — [HIGH] Rotas concentram regras e persistência
+
+**Localização no código original:** [routes/task_routes.py:85–154](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/task-manager-api/routes/task_routes.py#L85-L154); [routes/report_routes.py:12–101](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/task-manager-api/routes/report_routes.py#L12-L101).
+
+**Evidência:** create_task() recebe dados HTTP, aplica validações, consulta entidades, interpreta datas, grava a tarefa e monta a resposta. summary_report() realiza consultas e cálculos de negócio dentro da função de rota.
+
+**Impacto e justificativa:** O acoplamento dificulta reutilizar e testar as regras sem envolver o atendimento HTTP, caracterizando forte violação da separação de responsabilidades.
+
+**Direção de correção:** Manter o registro de rotas enxuto e distribuir coordenação, regras e persistência conforme as responsabilidades MVC definidas. Aproveitar os modelos existentes e evitar reescrita desnecessária.
+
+#### P3-03 — [MEDIUM] Consultas N+1 na listagem de categorias
+
+**Localização no código original:** [routes/report_routes.py:157–165](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/task-manager-api/routes/report_routes.py#L157-L165).
+
+**Evidência:** get_categories() lista categorias e executa Task.query.filter_by(category_id=c.id).count() dentro do laço para cada categoria.
+
+**Impacto e justificativa:** O trecho realiza uma consulta de listagem mais uma contagem por categoria. O custo cresce com a quantidade de categorias, embora os dados possam ser agregados em conjunto.
+
+**Direção de correção:** Obter as contagens por categoria em uma consulta agregada, preservando inclusive categorias sem tarefas e o campo task_count.
+
+#### P3-04 — [MEDIUM] Regra de tarefa atrasada duplicada
+
+**Localização no código original:** [routes/task_routes.py:30–39](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/task-manager-api/routes/task_routes.py#L30-L39); [routes/task_routes.py:71–80](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/task-manager-api/routes/task_routes.py#L71-L80); [models/task.py:50–60](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/task-manager-api/models/task.py#L50-L60).
+
+**Evidência:** As rotas repetem a comparação do prazo com a data atual e a exclusão dos estados done e cancelled, embora Task.is_overdue() já implemente essa regra.
+
+**Impacto e justificativa:** Alterações futuras podem ser feitas em apenas uma cópia, produzindo resultados divergentes entre endpoints.
+
+**Direção de correção:** Definir um único lugar para a regra de atraso e reutilizá-la nas rotas e relatórios, preservando a regra atual até que uma alteração funcional seja definida.
+
+#### P3-05 — [MEDIUM] Uso da API legada Query.get()
+
+**Localização no código original:** [routes/task_routes.py:67](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/task-manager-api/routes/task_routes.py#L67); [routes/task_routes.py:158](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/task-manager-api/routes/task_routes.py#L158); [routes/task_routes.py:227](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/task-manager-api/routes/task_routes.py#L227); [routes/user_routes.py:29](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/task-manager-api/routes/user_routes.py#L29); [requirements.txt:2](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/task-manager-api/requirements.txt#L2).
+
+**Evidência:** O projeto usa Task.query.get(...) e User.query.get(...). A documentação oficial marca Query.get() como deprecated/legado desde SQLAlchemy 2.0 e indica Session.get(). Flask-SQLAlchemy 3.1.1 pertence à série cujo mínimo de SQLAlchemy é 2.0.16.
+
+**Impacto e justificativa:** Há uso recorrente de uma interface oficialmente legada, exigindo manutenção de compatibilidade. A classificação MEDIUM considera padronização e manutenção; não afirma que o método foi removido ou que a aplicação falha hoje. A versão efetivamente instalada ainda não foi verificada.
+
+**Direção de correção:** Migrar, por exemplo, Task.query.get(task_id) para db.session.get(Task, task_id), preservando o tratamento de None e a resposta 404. Conferir versões e comportamento na validação. Ver referências externas ao final da análise.
+
+#### P3-06 — [LOW] Limites de título repetidos sem uso das constantes existentes
+
+**Localização no código original:** [routes/task_routes.py:96–100](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/task-manager-api/routes/task_routes.py#L96-L100); [routes/task_routes.py:167–170](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/task-manager-api/routes/task_routes.py#L167-L170); [utils/helpers.py:112–113](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/task-manager-api/utils/helpers.py#L112-L113).
+
+**Evidência:** As rotas usam diretamente 3 e 200 para validar títulos, embora MIN_TITLE_LENGTH e MAX_TITLE_LENGTH já estejam declaradas nos utilitários.
+
+**Impacto e justificativa:** A relação entre os números e a regra fica implícita, e uma alteração dos limites exige localizar várias ocorrências. O achado trata especificamente da representação desses limites, não repete o achado da regra de atraso.
+
+**Direção de correção:** Utilizar uma definição nomeada e única dos limites, mantendo os valores atuais e organizando-a junto à regra correspondente.
+
+#### P3-07 — [LOW] Importações sem uso
+
+**Localização no código original:** [app.py:7](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/task-manager-api/app.py#L7); [routes/task_routes.py:7](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/blob/6d1ce6248c3e956801010a89d8bdaab48029bf30/task-manager-api/routes/task_routes.py#L7).
+
+**Evidência:** Em app.py, os, sys e json não são utilizados, enquanto datetime é utilizado. Em routes/task_routes.py, json, os, sys e time não são utilizados.
+
+**Impacto e justificativa:** As importações desnecessárias adicionam ruído e confundem a identificação das dependências reais de cada módulo.
+
+**Direção de correção:** Remover apenas os nomes não utilizados, preservando as importações necessárias.
+
+### Observações para a futura construção da Skill
+
+- Detectar responsabilidades pelo conteúdo e pelos fluxos, não apenas pelos nomes de arquivos ou pela presença de pastas models, routes e services.
+- Usar padrões gerais de detecção e correção. Os nomes dos projetos e os números de linha desta análise são evidências locais, não regras a serem embutidas na Skill.
+- Não reproduzir diagnósticos automaticamente entre stacks. Por exemplo, as consultas parametrizadas observadas no checkout Node.js não têm a concatenação de texto identificada no login do primeiro projeto.
+- Não confundir o objeto de extensão db = SQLAlchemy() do Task Manager com a conexão sqlite3 global do primeiro projeto. No Flask-SQLAlchemy, a sessão tem escopo vinculado ao contexto da aplicação, segundo a documentação oficial.
+- Consultar a documentação da versão pertinente antes de declarar uma API obsoleta. Não pressupor que todo método da interface Query tenha exatamente o mesmo status de Query.get().
+- Preservar rotas, métodos HTTP, campos públicos e regras válidas durante a refatoração. Correções de segurança, como remover senha/hash de respostas, devem ser explicitamente justificadas e validadas, em vez de manter vulnerabilidades por compatibilidade.
+- Verificar inicialização e endpoints por execução nas etapas apropriadas. Esta análise não permite marcar o checklist funcional como aprovado.
+- Antes de qualquer alteração realizada pela Skill, apresentar a auditoria e aguardar a confirmação humana exigida pelo desafio.
+
+### Referências externas utilizadas na análise
+
+**Atenção! Conhecimento externo (referência de mercado, fora do MBA).** As fontes abaixo fundamentam detalhes técnicos e complementam a leitura do código e os critérios do enunciado.
+
+- [Python 3.11 — sqlite3](https://docs.python.org/3.11/library/sqlite3.html): parâmetros SQL e cuidados com check_same_thread. Apoia P1-01 e P1-03; não declara a versão instalada no ambiente do aluno.
+- [SQLAlchemy 2.0 — Query.get()](https://docs.sqlalchemy.org/en/20/orm/queryguide/query.html#sqlalchemy.orm.Query.get): status legado/deprecated e substituição por Session.get(). Apoia P3-05.
+- [Flask-SQLAlchemy — histórico de versões](https://flask-sqlalchemy.palletsprojects.com/en/stable/changes/): requisito mínimo de SQLAlchemy na série 3.1 e escopo da sessão no contexto da aplicação. Apoia P3-05 e a distinção entre extensão e conexão global.
+
+## Construção da Skill
+
+**Pendente.** A análise manual está registrada como base para a criação de refactor-arch. As decisões de organização do SKILL.md, referências, catálogo de anti-patterns e playbook serão documentadas após sua elaboração.
+
+## Resultados
+
+**Pendente de execução.** Os 21 registros acima são achados manuais. Ainda não existem relatórios da Fase 2, evidências de execução da Skill, código refatorado, comparações de estrutura antes/depois ou checklists funcionais preenchidos. Esses resultados serão adicionados a partir das execuções reais nos três projetos.
+
+## Como Executar
+
+**Pendente de preparação e validação.** A ferramenta escolhida é Claude Code. Os comandos definitivos para invocar a Skill em cada projeto, os pré-requisitos e as verificações dos endpoints serão registrados quando a Skill e os ambientes estiverem preparados. As instruções originais de inicialização de cada aplicação continuam nos respectivos READMEs.
+
+## Enunciado original
+
+O texto original do repositório foi preservado integralmente abaixo para consulta. Seus exemplos, comandos e mensagens de sucesso descrevem o desafio; não são evidências de execução desta entrega.
+
+<details>
+<summary>Expandir enunciado original completo</summary>
+
 # Criação de Skills — Refatoração Arquitetural Automatizada
 
 Ao longo do curso você aprendeu o que são Skills e como elas permitem que um agente de IA atue como um especialista em tarefas específicas. Agora imagine o seguinte cenário: você herdou 3 projetos legados com problemas de arquitetura, segurança e qualidade de código. Revisar e corrigir tudo manualmente levaria dias.
@@ -446,3 +749,4 @@ A skill deve atingir os seguintes mínimos em **todos os 3 projetos**:
 - **Projetos diferentes exigem adaptação** — a Fase 3 de um projeto já parcialmente organizado não vai ter as mesmas transformações de um monolito. Sua skill deve se adaptar ao contexto.
 - **Pedir confirmação na Fase 2 é obrigatório** — o humano deve revisar o relatório antes de qualquer modificação.
 - **Consulte as referências do curso** — revise a documentação oficial da ferramenta escolhida e os materiais das aulas para relembrar a estrutura e anatomia de uma skill.
+</details>
