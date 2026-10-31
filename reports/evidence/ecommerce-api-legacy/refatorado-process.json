@@ -1,0 +1,96 @@
+{
+  "target": "refatorado",
+  "port": 3000,
+  "results": [
+    {
+      "id": "P-01",
+      "description": "inicialização com configuração completa",
+      "ready": true,
+      "exitedBeforeKill": false,
+      "exit": null,
+      "portOpenAfter": null,
+      "stdout": "Frankenstein LMS rodando na porta 3000...\n",
+      "stderr": ""
+    },
+    {
+      "id": "P-02",
+      "description": "checkout com card numérico e e-mail novo",
+      "ready": true,
+      "response": {
+        "status": 400,
+        "body": "Bad Request"
+      },
+      "exitedBeforeKill": false,
+      "exit": null,
+      "portOpenAfter": null,
+      "stdout": "Frankenstein LMS rodando na porta 3000...\n",
+      "stderr": ""
+    },
+    {
+      "id": "P-03",
+      "description": "checkout com pwd numérico e e-mail novo",
+      "ready": true,
+      "response": {
+        "status": 400,
+        "body": "Bad Request"
+      },
+      "exitedBeforeKill": false,
+      "exit": null,
+      "portOpenAfter": null,
+      "stdout": "Frankenstein LMS rodando na porta 3000...\n",
+      "stderr": ""
+    },
+    {
+      "id": "P-04",
+      "description": "sem SEED_USER_PASSWORD (D-6 b); preload registra se sqlite3.Database foi aberto",
+      "ready": false,
+      "exitedBeforeKill": true,
+      "exit": {
+        "code": 1,
+        "signal": null
+      },
+      "portOpenAfter": false,
+      "stdout": "",
+      "stderr": "Configuração inválida: SEED_USER_PASSWORD é obrigatória\n"
+    },
+    {
+      "id": "P-05",
+      "description": "SEED_USER_PASSWORD vazia (tratada como ausente)",
+      "ready": false,
+      "exitedBeforeKill": true,
+      "exit": {
+        "code": 1,
+        "signal": null
+      },
+      "portOpenAfter": false,
+      "stdout": "",
+      "stderr": "Configuração inválida: SEED_USER_PASSWORD é obrigatória\n"
+    },
+    {
+      "id": "P-06",
+      "description": "falha forçada no INSERT de payments durante o seed (preload de teste)",
+      "ready": false,
+      "exitedBeforeKill": true,
+      "exit": {
+        "code": 1,
+        "signal": null
+      },
+      "portOpenAfter": false,
+      "stdout": "",
+      "stderr": "Falha na inicialização: falha induzida no seed\n"
+    },
+    {
+      "id": "P-07",
+      "description": "PORT inválida",
+      "ready": false,
+      "exitedBeforeKill": true,
+      "exit": {
+        "code": 1,
+        "signal": null
+      },
+      "portOpenAfter": false,
+      "stdout": "",
+      "stderr": "Configuração inválida: PORT deve ser um inteiro entre 0 e 65535\n"
+    }
+  ]
+}

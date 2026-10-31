@@ -1,4 +1,6 @@
 @baseUrl = http://localhost:3000
+# Mesmo valor da variável de ambiente ADMIN_TOKEN
+@adminToken = defina-o-token-aqui
 
 ### Checkout - sucesso
 POST {{baseUrl}}/api/checkout
@@ -26,6 +28,8 @@ Content-Type: application/json
 
 ### Relatório financeiro administrativo
 GET {{baseUrl}}/api/admin/financial-report
+X-Admin-Token: {{adminToken}}
 
-### Deletar usuário
+### Deletar usuário (usuário com matrículas responde 409)
 DELETE {{baseUrl}}/api/users/1
+X-Admin-Token: {{adminToken}}

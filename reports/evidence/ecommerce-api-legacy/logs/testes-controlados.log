@@ -1,0 +1,36 @@
+[erro] POST /api/checkout: Erro ao criar usuário | causa: SQLITE_CONSTRAINT: falha induzida
+✔ R-01 falha em users desfaz todas as escritas do checkout (274.239681ms)
+[erro] POST /api/checkout: Erro Matrícula | causa: SQLITE_CONSTRAINT: falha induzida
+✔ R-01 falha em enrollments desfaz todas as escritas do checkout (137.566388ms)
+[erro] POST /api/checkout: Erro Pagamento | causa: SQLITE_CONSTRAINT: falha induzida
+✔ R-01 falha em payments desfaz todas as escritas do checkout (118.303555ms)
+[erro] POST /api/checkout: Erro Auditoria | causa: SQLITE_CONSTRAINT: falha induzida
+✔ R-01 falha em audit_logs desfaz todas as escritas do checkout (121.550647ms)
+[erro] POST /api/checkout: Erro DB | causa: commit induzido
+✔ R-01 falha no COMMIT desfaz as escritas e responde 500 Erro DB (78.228599ms)
+[erro] POST /api/checkout: Erro Pagamento | causa: falha após inserir pagamento
+✔ R-02 relatório durante checkout que depois falha só vê dados confirmados (384.396899ms)
+✔ R-03 relatório durante checkout que conclui vê o estado completo, nunca parcial (386.299611ms)
+✔ R-04 dois checkouts simultâneos com mesmo e-mail novo criam 1 usuário (intercalação forçada) (287.313591ms)
+✔ R-04 dois checkouts disparados juntos (sem portão) criam 1 usuário (534.408718ms)
+✔ R-05 checkout em andamento + DELETE do mesmo usuário: DELETE espera e recebe 409; sem órfãos (290.068253ms)
+✔ R-05 DELETE em andamento + checkout do mesmo e-mail: checkout cria novo usuário depois; sem órfãos (248.313798ms)
+[erro] POST /api/checkout: Erro DB | causa: erro inesperado induzido
+✔ R-07 fila liberada após erro de validação, de domínio e inesperado (191.446856ms)
+✔ R-08 handle expirado e operação aninhada lançam erro sem travar a fila (2.474646ms)
+✔ R-09 sem ADMIN_TOKEN configurado: 403 e nenhum efeito (48.596357ms)
+✔ R-09 com ADMIN_TOKEN: ausente/incorreto → 401 sem efeito; correto → contrato do endpoint (69.586792ms)
+✔ R-10 DELETE: com matrículas 409 sem alterações; sem matrículas 200; inválido 400; inexistente 404 (58.00971ms)
+✔ R-11 senha exigida só para usuário novo; existente ignora pwd (157.695071ms)
+✔ R-11 usuário novo sem senha e com cartão recusado: prevalece 400 Bad Request (42.457896ms)
+✔ R-12 seed: usuário 1, matrícula 1 e pagamento 1 preservados; senha em scrypt (38.513164ms)
+✔ R-12 falha no meio do seed não deixa schema nem dados parciais (3.05828ms)
+✔ R-13 revenue só soma PAID; paid mostra qualquer pagamento; sem pagamento → 0; curso vazio; Unknown; menor id (43.764073ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6077.824774

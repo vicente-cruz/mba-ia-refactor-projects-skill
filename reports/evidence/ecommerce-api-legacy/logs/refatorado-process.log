@@ -1,0 +1,7 @@
+P-01 ready= true exit= null resp= -
+P-02 ready= true exit= null resp= 400 Bad Request
+P-03 ready= true exit= null resp= 400 Bad Request
+P-04 ready= false exit= {"code":1,"signal":null} resp= -
+P-05 ready= false exit= {"code":1,"signal":null} resp= -
+P-06 ready= false exit= {"code":1,"signal":null} resp= -
+P-07 ready= false exit= {"code":1,"signal":null} resp= -

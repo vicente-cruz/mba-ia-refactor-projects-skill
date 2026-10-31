@@ -1,0 +1,26 @@
+✔ resultados válidos passam sem reprovações nem avisos (4.357152ms)
+✔ CLI: resultados válidos → exit 0; S1-01 com HTTP 500 → exit 1 (falso negativo relatado) (58.443487ms)
+✔ HTTP 500 inesperado em caso com ID de correção intencional reprova (1.567191ms)
+✔ receita incorreta no relatório reprova (1.91101ms)
+✔ escrita mantida após rollback reprova (efeito e retorno ao comportamento antigo) (1.326277ms)
+✔ caso ausente reprova (no refatorado e na linha de base) (1.625795ms)
+✔ erro de execução reprova (registro *-ERRO e campo error) (1.20867ms)
+✔ retorno ao comportamento antigo reprova mesmo quando coincide com a linha de base (7.797352ms)
+✔ mudança silenciosa de corpo ou content-type em caso preservado reprova (2.512945ms)
+✔ caso sem expectativa definida reprova (0.729842ms)
+✔ linha de base que não reproduz o comportamento antigo reprova (comparação perderia sentido) (0.70484ms)
+✔ ordem dos cursos diferente na LINHA DE BASE é aceita (C-7) (0.741643ms)
+✔ ordem dos cursos fora de id no REFATORADO reprova (0.69694ms)
+✔ ordem dos alunos diferente na LINHA DE BASE é aceita (C-7) — cenário real da revisão em S5-01 (0.740943ms)
+✔ ordem dos alunos fora de id no REFATORADO reprova (2.216329ms)
+✔ linha de base com paid alterado, aluno removido ou duplicado reprova mesmo com a normalização de ordem (3.264389ms)
+✔ a normalização de ordem não modifica os registros recebidos (1.315476ms)
+✔ conteúdo diferente na linha de base em caso preservado reprova (2.104922ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 150.581026

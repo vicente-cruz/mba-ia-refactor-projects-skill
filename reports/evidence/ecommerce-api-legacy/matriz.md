@@ -1,0 +1,35 @@
+# Matriz de endpoints — original × refatorado
+
+Gerada por `tools/compare.js`. O refatorado é verificado contra expectativas explícitas (status, content-type, corpo exato,
+efeito em todas as tabelas e campos observados); casos de correção também verificam a ausência do comportamento antigo.
+Efeito = variação de linhas por tabela causada pela requisição (depois − antes).
+
+| Caso | Descrição | Status antes | Status depois | Corpo/observação antes | Corpo/observação depois | Efeito antes | Efeito depois | Classificação | Verificação |
+|---|---|---|---|---|---|---|---|---|---|
+| S1-01 | relatório inicial | 200 | 200 | [{"course":"Docker","revenue":0,"students":[]},{"course":"Clean Architecture","revenue":997,"students":[{"student":"Leon… | [{"course":"Clean Architecture","revenue":997,"students":[{"student":"Leonan","paid":997}]},{"course":"Docker","revenue"… | nenhum | nenhum | preservado (ordem de cursos e alunos por id — C-7) | aprovado |
+| S1-02 | checkout usuário novo aprovado (api.http) | 200 | 200 | {"msg":"Sucesso","enrollment_id":2} | {"msg":"Sucesso","enrollment_id":2} | users +1, enrollments +1, payments +1, audit_logs +1 | users +1, enrollments +1, payments +1, audit_logs +1 | preservado | aprovado |
+| S1-03 | checkout usuário novo recusado (api.http) | 400 | 400 | Pagamento recusado | Pagamento recusado | users +1 | nenhum | correção intencional — C-3: recusa mantinha o usuário novo gravado | aprovado |
+| S1-04 | checkout usuário existente sem pwd | 200 | 200 | {"msg":"Sucesso","enrollment_id":3} | {"msg":"Sucesso","enrollment_id":3} | enrollments +1, payments +1, audit_logs +1 | enrollments +1, payments +1, audit_logs +1 | preservado | aprovado |
+| S1-05 | checkout usuário existente com pwd numérico | 200 | 200 | {"msg":"Sucesso","enrollment_id":4} | {"msg":"Sucesso","enrollment_id":4} | enrollments +1, payments +1, audit_logs +1 | enrollments +1, payments +1, audit_logs +1 | preservado | aprovado |
+| S1-06 | relatório após checkouts | 200 | 200 | [{"course":"Clean Architecture","revenue":1994,"students":[{"student":"Leonan","paid":997},{"student":"Guilherme","paid"… | [{"course":"Clean Architecture","revenue":1994,"students":[{"student":"Leonan","paid":997},{"student":"Guilherme","paid"… | nenhum | nenhum | preservado (ordem de cursos e alunos por id — C-7) | aprovado |
+| S1-07 | checkout sem card | 400 | 400 | Bad Request | Bad Request | nenhum | nenhum | preservado | aprovado |
+| S1-08 | checkout curso inexistente | 404 | 404 | Curso não encontrado | Curso não encontrado | nenhum | nenhum | preservado | aprovado |
+| S1-09 | checkout c_id como string numérica | 200 | 200 | {"msg":"Sucesso","enrollment_id":5} | {"msg":"Sucesso","enrollment_id":5} | users +1, enrollments +1, payments +1, audit_logs +1 | users +1, enrollments +1, payments +1, audit_logs +1 | preservado | aprovado |
+| S1-10 | checkout usuário novo sem pwd | 200 | 400 | {"msg":"Sucesso","enrollment_id":6} | Bad Request | users +1, enrollments +1, payments +1, audit_logs +1 | nenhum | correção intencional — D-4(a): usuário novo sem pwd era aceito com senha padrão | aprovado |
+| S1-11 | checkout usuário novo com pwd vazio | 200 | 400 | {"msg":"Sucesso","enrollment_id":7} | Bad Request | users +1, enrollments +1, payments +1, audit_logs +1 | nenhum | correção intencional — D-4(a): usuário novo com pwd vazio era aceito com senha padrão | aprovado |
+| S1-12 | checkout com JSON inválido | 400 | 400 | <!DOCTYPE html> <html lang="en"> <head> <meta charset="utf-8"> <title>Error</title> </head> <body> <pre>SyntaxError: Une… | Bad Request | nenhum | nenhum | correção intencional — C-5: JSON inválido devolvia HTML com stack trace | aprovado |
+| S1-13 | DELETE usuário 1 (com matrícula) | 200 | 409 | Usuário deletado, mas as matrículas e pagamentos ficaram sujos no banco. | Usuário possui matrículas | users -1 | nenhum | correção intencional — D-3(b): excluía usuário com matrículas, deixando órfãos | aprovado |
+| S1-14 | relatório após DELETE 1 | 200 | 200 | [{"course":"Clean Architecture","revenue":2991,"students":[{"student":"Unknown","paid":997},{"student":"Guilherme","paid… | [{"course":"Clean Architecture","revenue":2991,"students":[{"student":"Leonan","paid":997},{"student":"Guilherme","paid"… | nenhum | nenhum | correção intencional — consequência de F-07: relatório com aluno "Unknown" após exclusão | aprovado |
+| S1-15 | DELETE id inexistente | 200 | 404 | Usuário deletado, mas as matrículas e pagamentos ficaram sujos no banco. | Usuário não encontrado | nenhum | nenhum | correção intencional — C-6: id inexistente respondia 200 com mensagem de sucesso | aprovado |
+| S1-16 | DELETE id não numérico | 200 | 400 | Usuário deletado, mas as matrículas e pagamentos ficaram sujos no banco. | ID inválido | nenhum | nenhum | correção intencional — C-6: id não numérico respondia 200 com mensagem de sucesso | aprovado |
+| S2-01 | checkout curso inativo | 404 | 404 | Curso não encontrado | Curso não encontrado | nenhum | nenhum | preservado | aprovado |
+| S3-01 | DELETE usuário sem matrículas | 200 | 200 | Usuário deletado, mas as matrículas e pagamentos ficaram sujos no banco. | Usuário deletado | users -1 | users -1 | correção intencional — D-3(b): mensagem afirmava dados sujos no banco | aprovado |
+| B-T1 | checkout com trigger RAISE(ABORT) em payments | 500 | 500 | Erro Pagamento | Erro Pagamento | users +1, enrollments +1 | nenhum | correção intencional — D-5(a)/C-3: falha em payments mantinha usuário e matrícula | aprovado |
+| B-T2 | checkout com trigger RAISE(ABORT) em audit_logs | 200 | 500 | {"msg":"Sucesso","enrollment_id":2} | Erro Auditoria | users +1, enrollments +1, payments +1 | nenhum | correção intencional — D-5(a): falha na auditoria respondia 200 e mantinha as escritas | aprovado |
+| B-T3 | checkout com trigger RAISE(ABORT) em users | 500 | 500 | Erro ao criar usuário | Erro ao criar usuário | nenhum | nenhum | preservado | aprovado |
+| B-T4 | checkout com trigger RAISE(ABORT) em enrollments | 500 | 500 | Erro Matrícula | Erro Matrícula | users +1 | nenhum | correção intencional — D-5(a): falha em enrollments mantinha o usuário criado | aprovado |
+| S5-01 | relatório com DENIED, PENDING, sem pagamento, órfã, curso vazio, 2 pagamentos | 200 | 200 | [{"course":"Kubernetes","revenue":0,"students":[]},{"course":"Clean Architecture","revenue":997,"students":[{"student":"… | [{"course":"Clean Architecture","revenue":997,"students":[{"student":"Leonan","paid":997}]},{"course":"Docker","revenue"… | nenhum | nenhum | preservado (ordem de cursos e alunos por id — C-7) | aprovado |
+| C-OBS1 | 10 tentativas: 2 checkouts simultâneos com mesmo e-mail novo; usuários criados por tentativa | - | - | usersPerTrial=[2,2,2,2,2,2,2,2,2,2] | usersPerTrial=[1,1,1,1,1,1,1,1,1,1] | - | - | observação | aprovado |
+| C-OBS2 | 20 checkouts + 20 relatórios simultâneos; relatórios com aluno paid=0 (estado intermediário) | - | - | reports=20 reportsWithPartialState=0 | reports=20 reportsWithPartialState=0 | - | - | observação | aprovado |
+
+Casos: 25 | Reprovações: 0 | Avisos: 0

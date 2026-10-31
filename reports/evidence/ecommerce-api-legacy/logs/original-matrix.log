@@ -1,0 +1,40 @@
+Processando cartão <removido> na chave pk_<removido>
+[LOG] Salvando no cache: last_checkout_2
+Processando cartão <removido> na chave pk_<removido>
+Processando cartão <removido> na chave pk_<removido>
+[LOG] Salvando no cache: last_checkout_1
+Processando cartão <removido> na chave pk_<removido>
+[LOG] Salvando no cache: last_checkout_2
+Processando cartão <removido> na chave pk_<removido>
+[LOG] Salvando no cache: last_checkout_4
+Processando cartão <removido> na chave pk_<removido>
+[LOG] Salvando no cache: last_checkout_5
+Processando cartão <removido> na chave pk_<removido>
+[LOG] Salvando no cache: last_checkout_6
+SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at parse (<tmp>/original/node_modules/body-parser/lib/types/json.js:92:19)
+    at <tmp>/original/node_modules/body-parser/lib/read.js:128:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:206:9)
+    at invokeCallback (<tmp>/original/node_modules/raw-body/index.js:238:16)
+    at done (<tmp>/original/node_modules/raw-body/index.js:227:7)
+    at IncomingMessage.onEnd (<tmp>/original/node_modules/raw-body/index.js:287:7)
+    at IncomingMessage.emit (node:events:524:28)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+Processando cartão <removido> na chave pk_<removido>
+Processando cartão <removido> na chave pk_<removido>
+[LOG] Salvando no cache: last_checkout_2
+Processando cartão <removido> na chave pk_<removido>
+Processando cartão <removido> na chave pk_<removido>
+Processando cartão <removido> na chave pk_<removido>
+[LOG] Salvando no cache: last_checkout_2
+[LOG] Salvando no cache: last_checkout_3
+Processando cartão <removido> na chave pk_<removido>
+Processando cartão <removido> na chave pk_<removido>
+[LOG] Salvando no cache: last_checkout_4
+[LOG] Salvando no cache: last_checkout_5
+Processando cartão <removido> na chave pk_<removido>
+Processando cartão <removido> na chave pk_<removido>
+[LOG] Salvando no cache: last_checkout_6
+[LOG] Salvando no cache: last_checkout_7

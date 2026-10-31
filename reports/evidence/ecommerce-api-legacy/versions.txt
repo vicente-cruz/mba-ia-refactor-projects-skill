@@ -1,0 +1,10 @@
+desafio-arquitetura-ia-boilerplate@1.0.0 <tmp>/original
+├── express@4.22.1
+└── sqlite3@5.1.7
+
+desafio-arquitetura-ia-boilerplate@1.0.0 <tmp>/refatorado
+├── express@4.22.1
+└── sqlite3@5.1.7
+
+v20.20.0
+10.8.2

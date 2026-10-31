@@ -1,0 +1,898 @@
+{
+  "target": "refatorado",
+  "generatedAt": "2026-10-31T18:38:12.686Z",
+  "results": [
+    {
+      "id": "S1-01",
+      "description": "relatório inicial",
+      "request": {
+        "method": "GET",
+        "path": "/api/admin/financial-report",
+        "headers": [
+          "X-Admin-Token"
+        ]
+      },
+      "response": {
+        "status": 200,
+        "contentType": "application/json",
+        "body": [
+          {
+            "course": "Clean Architecture",
+            "revenue": 997,
+            "students": [
+              {
+                "student": "Leonan",
+                "paid": 997
+              }
+            ]
+          },
+          {
+            "course": "Docker",
+            "revenue": 0,
+            "students": []
+          }
+        ]
+      },
+      "counts": {
+        "before": {
+          "users": 1,
+          "enrollments": 1,
+          "payments": 1,
+          "audit_logs": 0
+        },
+        "after": {
+          "users": 1,
+          "enrollments": 1,
+          "payments": 1,
+          "audit_logs": 0
+        }
+      }
+    },
+    {
+      "id": "S1-02",
+      "description": "checkout usuário novo aprovado (api.http)",
+      "request": {
+        "method": "POST",
+        "path": "/api/checkout",
+        "body": {
+          "usr": "Guilherme",
+          "eml": "gui@fullcycle.com.br",
+          "pwd": "<removido>",
+          "c_id": 2,
+          "card": "<removido>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "contentType": "application/json",
+        "body": {
+          "msg": "Sucesso",
+          "enrollment_id": 2
+        }
+      },
+      "counts": {
+        "before": {
+          "users": 1,
+          "enrollments": 1,
+          "payments": 1,
+          "audit_logs": 0
+        },
+        "after": {
+          "users": 2,
+          "enrollments": 2,
+          "payments": 2,
+          "audit_logs": 1
+        }
+      }
+    },
+    {
+      "id": "S1-03",
+      "description": "checkout usuário novo recusado (api.http)",
+      "request": {
+        "method": "POST",
+        "path": "/api/checkout",
+        "body": {
+          "usr": "João",
+          "eml": "joao@teste.com",
+          "pwd": "<removido>",
+          "c_id": 1,
+          "card": "<removido>"
+        }
+      },
+      "response": {
+        "status": 400,
+        "contentType": "text/html",
+        "body": "Pagamento recusado"
+      },
+      "counts": {
+        "before": {
+          "users": 2,
+          "enrollments": 2,
+          "payments": 2,
+          "audit_logs": 1
+        },
+        "after": {
+          "users": 2,
+          "enrollments": 2,
+          "payments": 2,
+          "audit_logs": 1
+        }
+      },
+      "usersWithEmail": 0
+    },
+    {
+      "id": "S1-04",
+      "description": "checkout usuário existente sem pwd",
+      "request": {
+        "method": "POST",
+        "path": "/api/checkout",
+        "body": {
+          "usr": "Outro Nome",
+          "eml": "leonan@fullcycle.com.br",
+          "c_id": 2,
+          "card": "<removido>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "contentType": "application/json",
+        "body": {
+          "msg": "Sucesso",
+          "enrollment_id": 3
+        }
+      },
+      "counts": {
+        "before": {
+          "users": 2,
+          "enrollments": 2,
+          "payments": 2,
+          "audit_logs": 1
+        },
+        "after": {
+          "users": 2,
+          "enrollments": 3,
+          "payments": 3,
+          "audit_logs": 2
+        }
+      }
+    },
+    {
+      "id": "S1-05",
+      "description": "checkout usuário existente com pwd numérico",
+      "request": {
+        "method": "POST",
+        "path": "/api/checkout",
+        "body": {
+          "usr": "Guilherme",
+          "eml": "gui@fullcycle.com.br",
+          "pwd": "<removido>",
+          "c_id": 1,
+          "card": "<removido>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "contentType": "application/json",
+        "body": {
+          "msg": "Sucesso",
+          "enrollment_id": 4
+        }
+      },
+      "counts": {
+        "before": {
+          "users": 2,
+          "enrollments": 3,
+          "payments": 3,
+          "audit_logs": 2
+        },
+        "after": {
+          "users": 2,
+          "enrollments": 4,
+          "payments": 4,
+          "audit_logs": 3
+        }
+      }
+    },
+    {
+      "id": "S1-06",
+      "description": "relatório após checkouts",
+      "request": {
+        "method": "GET",
+        "path": "/api/admin/financial-report",
+        "headers": [
+          "X-Admin-Token"
+        ]
+      },
+      "response": {
+        "status": 200,
+        "contentType": "application/json",
+        "body": [
+          {
+            "course": "Clean Architecture",
+            "revenue": 1994,
+            "students": [
+              {
+                "student": "Leonan",
+                "paid": 997
+              },
+              {
+                "student": "Guilherme",
+                "paid": 997
+              }
+            ]
+          },
+          {
+            "course": "Docker",
+            "revenue": 994,
+            "students": [
+              {
+                "student": "Guilherme",
+                "paid": 497
+              },
+              {
+                "student": "Leonan",
+                "paid": 497
+              }
+            ]
+          }
+        ]
+      },
+      "counts": {
+        "before": {
+          "users": 2,
+          "enrollments": 4,
+          "payments": 4,
+          "audit_logs": 3
+        },
+        "after": {
+          "users": 2,
+          "enrollments": 4,
+          "payments": 4,
+          "audit_logs": 3
+        }
+      }
+    },
+    {
+      "id": "S1-07",
+      "description": "checkout sem card",
+      "request": {
+        "method": "POST",
+        "path": "/api/checkout",
+        "body": {
+          "usr": "Guilherme",
+          "eml": "gui@fullcycle.com.br",
+          "pwd": "<removido>",
+          "c_id": 2
+        }
+      },
+      "response": {
+        "status": 400,
+        "contentType": "text/html",
+        "body": "Bad Request"
+      },
+      "counts": {
+        "before": {
+          "users": 2,
+          "enrollments": 4,
+          "payments": 4,
+          "audit_logs": 3
+        },
+        "after": {
+          "users": 2,
+          "enrollments": 4,
+          "payments": 4,
+          "audit_logs": 3
+        }
+      }
+    },
+    {
+      "id": "S1-08",
+      "description": "checkout curso inexistente",
+      "request": {
+        "method": "POST",
+        "path": "/api/checkout",
+        "body": {
+          "usr": "Guilherme",
+          "eml": "gui@fullcycle.com.br",
+          "pwd": "<removido>",
+          "c_id": 999,
+          "card": "<removido>"
+        }
+      },
+      "response": {
+        "status": 404,
+        "contentType": "text/html",
+        "body": "Curso não encontrado"
+      },
+      "counts": {
+        "before": {
+          "users": 2,
+          "enrollments": 4,
+          "payments": 4,
+          "audit_logs": 3
+        },
+        "after": {
+          "users": 2,
+          "enrollments": 4,
+          "payments": 4,
+          "audit_logs": 3
+        }
+      }
+    },
+    {
+      "id": "S1-09",
+      "description": "checkout c_id como string numérica",
+      "request": {
+        "method": "POST",
+        "path": "/api/checkout",
+        "body": {
+          "usr": "Guilherme",
+          "eml": "str@teste.com",
+          "pwd": "<removido>",
+          "c_id": "1",
+          "card": "<removido>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "contentType": "application/json",
+        "body": {
+          "msg": "Sucesso",
+          "enrollment_id": 5
+        }
+      },
+      "counts": {
+        "before": {
+          "users": 2,
+          "enrollments": 4,
+          "payments": 4,
+          "audit_logs": 3
+        },
+        "after": {
+          "users": 3,
+          "enrollments": 5,
+          "payments": 5,
+          "audit_logs": 4
+        }
+      }
+    },
+    {
+      "id": "S1-10",
+      "description": "checkout usuário novo sem pwd",
+      "request": {
+        "method": "POST",
+        "path": "/api/checkout",
+        "body": {
+          "usr": "Guilherme",
+          "eml": "semsenha@teste.com",
+          "c_id": 2,
+          "card": "<removido>"
+        }
+      },
+      "response": {
+        "status": 400,
+        "contentType": "text/html",
+        "body": "Bad Request"
+      },
+      "counts": {
+        "before": {
+          "users": 3,
+          "enrollments": 5,
+          "payments": 5,
+          "audit_logs": 4
+        },
+        "after": {
+          "users": 3,
+          "enrollments": 5,
+          "payments": 5,
+          "audit_logs": 4
+        }
+      }
+    },
+    {
+      "id": "S1-11",
+      "description": "checkout usuário novo com pwd vazio",
+      "request": {
+        "method": "POST",
+        "path": "/api/checkout",
+        "body": {
+          "usr": "Guilherme",
+          "eml": "vazia@teste.com",
+          "pwd": "<removido>",
+          "c_id": 2,
+          "card": "<removido>"
+        }
+      },
+      "response": {
+        "status": 400,
+        "contentType": "text/html",
+        "body": "Bad Request"
+      },
+      "counts": {
+        "before": {
+          "users": 3,
+          "enrollments": 5,
+          "payments": 5,
+          "audit_logs": 4
+        },
+        "after": {
+          "users": 3,
+          "enrollments": 5,
+          "payments": 5,
+          "audit_logs": 4
+        }
+      }
+    },
+    {
+      "id": "S1-12",
+      "description": "checkout com JSON inválido",
+      "request": {
+        "method": "POST",
+        "path": "/api/checkout",
+        "rawBody": "{\"usr\": "
+      },
+      "response": {
+        "status": 400,
+        "contentType": "text/html",
+        "body": "Bad Request"
+      },
+      "counts": {
+        "before": {
+          "users": 3,
+          "enrollments": 5,
+          "payments": 5,
+          "audit_logs": 4
+        },
+        "after": {
+          "users": 3,
+          "enrollments": 5,
+          "payments": 5,
+          "audit_logs": 4
+        }
+      }
+    },
+    {
+      "id": "S1-13",
+      "description": "DELETE usuário 1 (com matrícula)",
+      "request": {
+        "method": "DELETE",
+        "path": "/api/users/1",
+        "headers": [
+          "X-Admin-Token"
+        ]
+      },
+      "response": {
+        "status": 409,
+        "contentType": "text/html",
+        "body": "Usuário possui matrículas"
+      },
+      "counts": {
+        "before": {
+          "users": 3,
+          "enrollments": 5,
+          "payments": 5,
+          "audit_logs": 4
+        },
+        "after": {
+          "users": 3,
+          "enrollments": 5,
+          "payments": 5,
+          "audit_logs": 4
+        }
+      }
+    },
+    {
+      "id": "S1-14",
+      "description": "relatório após DELETE 1",
+      "request": {
+        "method": "GET",
+        "path": "/api/admin/financial-report",
+        "headers": [
+          "X-Admin-Token"
+        ]
+      },
+      "response": {
+        "status": 200,
+        "contentType": "application/json",
+        "body": [
+          {
+            "course": "Clean Architecture",
+            "revenue": 2991,
+            "students": [
+              {
+                "student": "Leonan",
+                "paid": 997
+              },
+              {
+                "student": "Guilherme",
+                "paid": 997
+              },
+              {
+                "student": "Guilherme",
+                "paid": 997
+              }
+            ]
+          },
+          {
+            "course": "Docker",
+            "revenue": 994,
+            "students": [
+              {
+                "student": "Guilherme",
+                "paid": 497
+              },
+              {
+                "student": "Leonan",
+                "paid": 497
+              }
+            ]
+          }
+        ]
+      },
+      "counts": {
+        "before": {
+          "users": 3,
+          "enrollments": 5,
+          "payments": 5,
+          "audit_logs": 4
+        },
+        "after": {
+          "users": 3,
+          "enrollments": 5,
+          "payments": 5,
+          "audit_logs": 4
+        }
+      }
+    },
+    {
+      "id": "S1-15",
+      "description": "DELETE id inexistente",
+      "request": {
+        "method": "DELETE",
+        "path": "/api/users/9999",
+        "headers": [
+          "X-Admin-Token"
+        ]
+      },
+      "response": {
+        "status": 404,
+        "contentType": "text/html",
+        "body": "Usuário não encontrado"
+      },
+      "counts": {
+        "before": {
+          "users": 3,
+          "enrollments": 5,
+          "payments": 5,
+          "audit_logs": 4
+        },
+        "after": {
+          "users": 3,
+          "enrollments": 5,
+          "payments": 5,
+          "audit_logs": 4
+        }
+      }
+    },
+    {
+      "id": "S1-16",
+      "description": "DELETE id não numérico",
+      "request": {
+        "method": "DELETE",
+        "path": "/api/users/abc",
+        "headers": [
+          "X-Admin-Token"
+        ]
+      },
+      "response": {
+        "status": 400,
+        "contentType": "text/html",
+        "body": "ID inválido"
+      },
+      "counts": {
+        "before": {
+          "users": 3,
+          "enrollments": 5,
+          "payments": 5,
+          "audit_logs": 4
+        },
+        "after": {
+          "users": 3,
+          "enrollments": 5,
+          "payments": 5,
+          "audit_logs": 4
+        }
+      }
+    },
+    {
+      "id": "S2-01",
+      "description": "checkout curso inativo",
+      "request": {
+        "method": "POST",
+        "path": "/api/checkout",
+        "body": {
+          "usr": "Guilherme",
+          "eml": "gui@fullcycle.com.br",
+          "pwd": "<removido>",
+          "c_id": 2,
+          "card": "<removido>"
+        }
+      },
+      "response": {
+        "status": 404,
+        "contentType": "text/html",
+        "body": "Curso não encontrado"
+      },
+      "counts": {
+        "before": {
+          "users": 1,
+          "enrollments": 1,
+          "payments": 1,
+          "audit_logs": 0
+        },
+        "after": {
+          "users": 1,
+          "enrollments": 1,
+          "payments": 1,
+          "audit_logs": 0
+        }
+      }
+    },
+    {
+      "id": "S3-01",
+      "description": "DELETE usuário sem matrículas",
+      "request": {
+        "method": "DELETE",
+        "path": "/api/users/2",
+        "headers": [
+          "X-Admin-Token"
+        ]
+      },
+      "response": {
+        "status": 200,
+        "contentType": "text/html",
+        "body": "Usuário deletado"
+      },
+      "counts": {
+        "before": {
+          "users": 2,
+          "enrollments": 1,
+          "payments": 1,
+          "audit_logs": 0
+        },
+        "after": {
+          "users": 1,
+          "enrollments": 1,
+          "payments": 1,
+          "audit_logs": 0
+        }
+      }
+    },
+    {
+      "id": "B-T1",
+      "description": "checkout com trigger RAISE(ABORT) em payments",
+      "request": {
+        "method": "POST",
+        "path": "/api/checkout",
+        "body": {
+          "usr": "Guilherme",
+          "eml": "bt1@teste.com",
+          "pwd": "<removido>",
+          "c_id": 2,
+          "card": "<removido>"
+        }
+      },
+      "response": {
+        "status": 500,
+        "contentType": "text/html",
+        "body": "Erro Pagamento"
+      },
+      "counts": {
+        "before": {
+          "users": 1,
+          "enrollments": 1,
+          "payments": 1,
+          "audit_logs": 0
+        },
+        "after": {
+          "users": 1,
+          "enrollments": 1,
+          "payments": 1,
+          "audit_logs": 0
+        }
+      },
+      "usersWithEmail": 0
+    },
+    {
+      "id": "B-T2",
+      "description": "checkout com trigger RAISE(ABORT) em audit_logs",
+      "request": {
+        "method": "POST",
+        "path": "/api/checkout",
+        "body": {
+          "usr": "Guilherme",
+          "eml": "bt2@teste.com",
+          "pwd": "<removido>",
+          "c_id": 2,
+          "card": "<removido>"
+        }
+      },
+      "response": {
+        "status": 500,
+        "contentType": "text/html",
+        "body": "Erro Auditoria"
+      },
+      "counts": {
+        "before": {
+          "users": 1,
+          "enrollments": 1,
+          "payments": 1,
+          "audit_logs": 0
+        },
+        "after": {
+          "users": 1,
+          "enrollments": 1,
+          "payments": 1,
+          "audit_logs": 0
+        }
+      },
+      "usersWithEmail": 0
+    },
+    {
+      "id": "B-T3",
+      "description": "checkout com trigger RAISE(ABORT) em users",
+      "request": {
+        "method": "POST",
+        "path": "/api/checkout",
+        "body": {
+          "usr": "Guilherme",
+          "eml": "bt3@teste.com",
+          "pwd": "<removido>",
+          "c_id": 2,
+          "card": "<removido>"
+        }
+      },
+      "response": {
+        "status": 500,
+        "contentType": "text/html",
+        "body": "Erro ao criar usuário"
+      },
+      "counts": {
+        "before": {
+          "users": 1,
+          "enrollments": 1,
+          "payments": 1,
+          "audit_logs": 0
+        },
+        "after": {
+          "users": 1,
+          "enrollments": 1,
+          "payments": 1,
+          "audit_logs": 0
+        }
+      },
+      "usersWithEmail": 0
+    },
+    {
+      "id": "B-T4",
+      "description": "checkout com trigger RAISE(ABORT) em enrollments",
+      "request": {
+        "method": "POST",
+        "path": "/api/checkout",
+        "body": {
+          "usr": "Guilherme",
+          "eml": "bt4@teste.com",
+          "pwd": "<removido>",
+          "c_id": 2,
+          "card": "<removido>"
+        }
+      },
+      "response": {
+        "status": 500,
+        "contentType": "text/html",
+        "body": "Erro Matrícula"
+      },
+      "counts": {
+        "before": {
+          "users": 1,
+          "enrollments": 1,
+          "payments": 1,
+          "audit_logs": 0
+        },
+        "after": {
+          "users": 1,
+          "enrollments": 1,
+          "payments": 1,
+          "audit_logs": 0
+        }
+      },
+      "usersWithEmail": 0
+    },
+    {
+      "id": "S5-01",
+      "description": "relatório com DENIED, PENDING, sem pagamento, órfã, curso vazio, 2 pagamentos",
+      "request": {
+        "method": "GET",
+        "path": "/api/admin/financial-report",
+        "headers": [
+          "X-Admin-Token"
+        ]
+      },
+      "response": {
+        "status": 200,
+        "contentType": "application/json",
+        "body": [
+          {
+            "course": "Clean Architecture",
+            "revenue": 997,
+            "students": [
+              {
+                "student": "Leonan",
+                "paid": 997
+              }
+            ]
+          },
+          {
+            "course": "Docker",
+            "revenue": 0,
+            "students": [
+              {
+                "student": "Aluno Recusado",
+                "paid": 497
+              },
+              {
+                "student": "Leonan",
+                "paid": 0
+              },
+              {
+                "student": "Unknown",
+                "paid": 100
+              }
+            ]
+          },
+          {
+            "course": "Kubernetes",
+            "revenue": 0,
+            "students": []
+          }
+        ]
+      },
+      "counts": {
+        "before": {
+          "users": 2,
+          "enrollments": 4,
+          "payments": 4,
+          "audit_logs": 0
+        },
+        "after": {
+          "users": 2,
+          "enrollments": 4,
+          "payments": 4,
+          "audit_logs": 0
+        }
+      }
+    },
+    {
+      "id": "C-OBS1",
+      "description": "10 tentativas: 2 checkouts simultâneos com mesmo e-mail novo; usuários criados por tentativa",
+      "usersPerTrial": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "C-OBS2",
+      "description": "20 checkouts + 20 relatórios simultâneos; relatórios com aluno paid=0 (estado intermediário)",
+      "reports": 20,
+      "reportsWithPartialState": 0
+    }
+  ]
+}

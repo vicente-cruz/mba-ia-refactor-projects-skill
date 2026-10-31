@@ -1,0 +1,44 @@
+{
+  "target": "original",
+  "port": 3000,
+  "results": [
+    {
+      "id": "P-01",
+      "description": "inicialização com configuração completa",
+      "ready": true,
+      "exitedBeforeKill": false,
+      "exit": null,
+      "portOpenAfter": null,
+      "stdout": "Frankenstein LMS rodando na porta 3000...\n",
+      "stderr": ""
+    },
+    {
+      "id": "P-02",
+      "description": "checkout com card numérico e e-mail novo",
+      "ready": true,
+      "requestError": "UND_ERR_SOCKET",
+      "exitedBeforeKill": true,
+      "exit": {
+        "code": 1,
+        "signal": null
+      },
+      "portOpenAfter": false,
+      "stdout": "Frankenstein LMS rodando na porta 3000...\nProcessando cartão <removido> na chave pk_<removido>\n",
+      "stderr": "<tmp>/original/src/AppManager.js:46\n                        let status = cc.startsWith(\"4\") ? \"PAID\" : \"DENIED\";\n                                        ^\n\nTypeError: cc.startsWith is not a function\n    at processPaymentAndEnroll (<tmp>/original/src/AppManager.js:46:41)\n    at Statement.<anonymous> (<tmp>/original/src/AppManager.js:71:29)\n    at Statement.replacement (<tmp>/original/node_modules/sqlite3/lib/trace.js:25:27)\n\nNode.js v20.20.0\n"
+    },
+    {
+      "id": "P-03",
+      "description": "checkout com pwd numérico e e-mail novo",
+      "ready": true,
+      "requestError": "UND_ERR_SOCKET",
+      "exitedBeforeKill": true,
+      "exit": {
+        "code": 1,
+        "signal": null
+      },
+      "portOpenAfter": false,
+      "stdout": "Frankenstein LMS rodando na porta 3000...\n",
+      "stderr": "node:buffer:322\n  throw new ERR_INVALID_ARG_TYPE(\n        ^\n\nTypeError [ERR_INVALID_ARG_TYPE]: The first argument must be of type string or an instance of Buffer, ArrayBuffer, or Array or an Array-like Object. Received type number (<removido>)\n    at Function.from (node:buffer:322:9)\n    at badCrypto (<tmp>/original/src/utils.js:20:24)\n    at Statement.<anonymous> (<tmp>/original/src/AppManager.js:68:36)\n    at Statement.replacement (<tmp>/original/node_modules/sqlite3/lib/trace.js:25:27)\n    at Statement.replacement (<tmp>/original/node_modules/sqlite3/lib/trace.js:25:27) {\n  code: 'ERR_INVALID_ARG_TYPE'\n}\n\nNode.js v20.20.0\n"
+    }
+  ]
+}

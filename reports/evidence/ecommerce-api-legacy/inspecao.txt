@@ -1,0 +1,42 @@
+== Arquivos e linhas
+   59 src/app.js
+   28 src/config.js
+   42 src/controllers/checkoutController.js
+   13 src/controllers/dbErrors.js
+   11 src/controllers/reportController.js
+   27 src/controllers/userController.js
+  111 src/database.js
+    8 src/errors.js
+    5 src/middlewares/asyncHandler.js
+   25 src/middlewares/errorHandler.js
+   18 src/middlewares/requireAdminToken.js
+    5 src/models/auditLogModel.js
+   20 src/models/checkoutValidation.js
+    5 src/models/courseModel.js
+   11 src/models/enrollmentModel.js
+   39 src/models/financialReport.js
+   18 src/models/paymentModel.js
+   18 src/models/userModel.js
+   17 src/passwordHash.js
+   13 src/routes/adminRoutes.js
+   12 src/routes/checkoutRoutes.js
+   13 src/routes/userRoutes.js
+  518 total
+== Verificações
+OK    | AP-02 literais de credencial/chave
+OK    | AP-03 log de cartão/chave/corpo
+OK    | AP-04 badCrypto/base64/senha padrão
+OK    | AP-01 SQL com interpolação
+OK    | AP-08 estado global (cache/receita)
+OK    | AP-10 listen/abertura no carregamento
+OK    | AP-12 consulta dentro de forEach/loop
+ACHOU | AP-16 callbacks sqlite com err ignorado
+        src/app.js:49:    start().catch((err) => {
+OK    | AP-18 nomes de 1-2 letras do original
+OK    | AP-19 módulos removidos referenciados
+OK    | SQL fora de models/database.js
+OK    | req/res fora de routes/middlewares
+== Rotas registradas
+src/routes/adminRoutes.js:7:    router.get('/api/admin/financial-report', requireAdminToken(adminToken), asyncHandler(async (req, res) => {
+src/routes/checkoutRoutes.js:6:    router.post('/api/checkout', asyncHandler(async (req, res) => {
+src/routes/userRoutes.js:7:    router.delete('/api/users/:id', requireAdminToken(adminToken), asyncHandler(async (req, res) => {

@@ -1,0 +1,5 @@
+[erro] POST /api/checkout: Erro Pagamento | causa: SQLITE_CONSTRAINT: falha induzida payments
+[erro] POST /api/checkout: Erro Auditoria | causa: SQLITE_CONSTRAINT: falha induzida audit_logs
+[erro] POST /api/checkout: Erro ao criar usuário | causa: SQLITE_CONSTRAINT: falha induzida users
+[erro] POST /api/checkout: Erro Matrícula | causa: SQLITE_CONSTRAINT: falha induzida enrollments
+25 registros gravados em <tmp>/refatorado.json
