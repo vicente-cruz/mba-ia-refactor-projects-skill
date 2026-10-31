@@ -1,0 +1,40 @@
+# Refatorado (python app.py) durante a matriz. Inicialização, avisos e uma amostra das linhas de requisição
+==================================================
+SERVIDOR INICIADO
+Rodando em http://127.0.0.1:5000
+==================================================
+ * Serving Flask app 'app'
+ * Debug mode: off
+2026-10-30 23:30:26,386 INFO werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-10-30 23:30:26,386 INFO werkzeug: [33mPress CTRL+C to quit[0m
+2026-10-30 23:30:26,858 INFO controllers.produto_controller: Listando 10 produtos
+2026-10-30 23:30:26,862 INFO werkzeug: 127.0.0.1 - - [30/Oct/2026 23:30:26] "[33mGET /produtos/999 HTTP/1.1[0m" 404 -
+2026-10-30 23:30:26,868 INFO werkzeug: 127.0.0.1 - - [30/Oct/2026 23:30:26] "[31m[1mGET /produtos/busca?preco_min=abc HTTP/1.1[0m" 400 -
+2026-10-30 23:30:26,877 INFO controllers.produto_controller: Produto criado com ID: 11
+2026-10-30 23:30:26,878 INFO werkzeug: 127.0.0.1 - - [30/Oct/2026 23:30:26] "[35m[1mPOST /produtos HTTP/1.1[0m" 201 -
+2026-10-30 23:30:26,880 INFO werkzeug: 127.0.0.1 - - [30/Oct/2026 23:30:26] "[31m[1mPOST /produtos HTTP/1.1[0m" 400 -
+2026-10-30 23:30:26,882 INFO werkzeug: 127.0.0.1 - - [30/Oct/2026 23:30:26] "[31m[1mPOST /produtos HTTP/1.1[0m" 400 -
+2026-10-30 23:30:26,893 INFO controllers.produto_controller: Produto criado com ID: 12
+2026-10-30 23:30:26,893 INFO werkzeug: 127.0.0.1 - - [30/Oct/2026 23:30:26] "[35m[1mPOST /produtos HTTP/1.1[0m" 201 -
+2026-10-30 23:30:26,895 INFO werkzeug: 127.0.0.1 - - [30/Oct/2026 23:30:26] "[31m[1mPOST /produtos HTTP/1.1[0m" 400 -
+2026-10-30 23:30:26,896 INFO werkzeug: 127.0.0.1 - - [30/Oct/2026 23:30:26] "[31m[1mPOST /produtos HTTP/1.1[0m" 400 -
+2026-10-30 23:30:26,908 INFO werkzeug: 127.0.0.1 - - [30/Oct/2026 23:30:26] "[33mPUT /produtos/999 HTTP/1.1[0m" 404 -
+2026-10-30 23:30:26,910 INFO werkzeug: 127.0.0.1 - - [30/Oct/2026 23:30:26] "[31m[1mPUT /produtos/11 HTTP/1.1[0m" 400 -
+2026-10-30 23:30:26,920 INFO controllers.produto_controller: Produto 12 deletado
+2026-10-30 23:30:26,924 INFO werkzeug: 127.0.0.1 - - [30/Oct/2026 23:30:26] "[33mGET /produtos/12 HTTP/1.1[0m" 404 -
+2026-10-30 23:30:26,926 INFO werkzeug: 127.0.0.1 - - [30/Oct/2026 23:30:26] "[33mDELETE /produtos/999 HTTP/1.1[0m" 404 -
+2026-10-30 23:30:26,931 INFO werkzeug: 127.0.0.1 - - [30/Oct/2026 23:30:26] "[33mGET /usuarios/999 HTTP/1.1[0m" 404 -
+2026-10-30 23:30:27,037 INFO controllers.usuario_controller: Usuário criado: id=4
+2026-10-30 23:30:27,038 INFO werkzeug: 127.0.0.1 - - [30/Oct/2026 23:30:27] "[35m[1mPOST /usuarios HTTP/1.1[0m" 201 -
+2026-10-30 23:30:27,041 INFO werkzeug: 127.0.0.1 - - [30/Oct/2026 23:30:27] "[31m[1mPOST /usuarios HTTP/1.1[0m" 400 -
+2026-10-30 23:30:27,152 INFO controllers.usuario_controller: Login bem-sucedido: usuário id=1
+...
+2026-10-30 23:30:26,794 INFO werkzeug: 127.0.0.1 - - [30/Oct/2026 23:30:26] "GET /health HTTP/1.1" 200 -
+2026-10-30 23:30:26,854 INFO werkzeug: 127.0.0.1 - - [30/Oct/2026 23:30:26] "GET / HTTP/1.1" 200 -
+2026-10-30 23:30:26,857 INFO werkzeug: 127.0.0.1 - - [30/Oct/2026 23:30:26] "GET /health HTTP/1.1" 200 -
+2026-10-30 23:30:26,859 INFO werkzeug: 127.0.0.1 - - [30/Oct/2026 23:30:26] "GET /produtos HTTP/1.1" 200 -
+2026-10-30 23:30:26,860 INFO werkzeug: 127.0.0.1 - - [30/Oct/2026 23:30:26] "GET /produtos/1 HTTP/1.1" 200 -
+2026-10-30 23:30:26,864 INFO werkzeug: 127.0.0.1 - - [30/Oct/2026 23:30:26] "GET /produtos/busca?q=Mouse HTTP/1.1" 200 -
+2026-10-30 23:30:26,865 INFO werkzeug: 127.0.0.1 - - [30/Oct/2026 23:30:26] "GET /produtos/busca?categoria=moveis&preco_min=100&preco_max=2000 HTTP/1.1" 200 -
+2026-10-30 23:30:26,867 INFO werkzeug: 127.0.0.1 - - [30/Oct/2026 23:30:26] "GET /produtos/busca?q=x'%20OR%20'1'%3D'1 HTTP/1.1" 200 -

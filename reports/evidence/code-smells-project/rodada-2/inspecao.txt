@@ -1,0 +1,44 @@
+== AP-01: execute com concatenação ou f-string de valor externo
+./models/admin.py:11:            db.execute(f"DELETE FROM {tabela}")
+./models/admin.py:19:    return {tabela: db.execute(f"SELECT COUNT(*) FROM {tabela}").fetchone()[0] for tabela in TABELAS}
+./models/produto.py:72:    return [to_dict(row) for row in db.execute(f"SELECT {COLUNAS} FROM produtos")]
+./models/produto.py:76:    row = db.execute(f"SELECT {COLUNAS} FROM produtos WHERE id = ?", (produto_id,)).fetchone()
+./models/usuario.py:23:    return [to_public_dict(row) for row in db.execute(f"SELECT {COLUNAS_PUBLICAS} FROM usuarios")]
+./models/usuario.py:27:    row = db.execute(f"SELECT {COLUNAS_PUBLICAS} FROM usuarios WHERE id = ?", (usuario_id,)).fetchone()
+== AP-01: f-strings em SQL (conferir que só interpolam constantes)
+models/admin.py:11:            db.execute(f"DELETE FROM {tabela}")
+models/admin.py:19:    return {tabela: db.execute(f"SELECT COUNT(*) FROM {tabela}").fetchone()[0] for tabela in TABELAS}
+models/produto.py:72:    return [to_dict(row) for row in db.execute(f"SELECT {COLUNAS} FROM produtos")]
+models/produto.py:76:    row = db.execute(f"SELECT {COLUNAS} FROM produtos WHERE id = ?", (produto_id,)).fetchone()
+models/produto.py:104:    query = f"SELECT {COLUNAS} FROM produtos WHERE 1=1"
+models/usuario.py:23:    return [to_public_dict(row) for row in db.execute(f"SELECT {COLUNAS_PUBLICAS} FROM usuarios")]
+models/usuario.py:27:    row = db.execute(f"SELECT {COLUNAS_PUBLICAS} FROM usuarios WHERE id = ?", (usuario_id,)).fetchone()
+== AP-02: SECRET_KEY literal ou prefixo da chave antiga
+   (nenhuma ocorrência)
+== AP-02/AP-04: senha literal em hash ou em tupla de seed (4 strings)
+   (nenhuma ocorrência)
+== AP-03: chave senha em código
+./controllers/usuario_controller.py:30:    senha = dados.get("senha", "")
+./controllers/usuario_controller.py:42:    senha = dados.get("senha", "")
+./models/usuario.py:59:        if _senha_confere(row["senha"], senha):
+== AP-11: debug fixo / bind aberto
+   (nenhuma ocorrência)
+== AP-08: estado global de conexão
+   (nenhuma ocorrência)
+== AP-16: str(e) / except Exception
+   (nenhuma ocorrência)
+== AP-16: except amplos (conferir tipo capturado)
+./controllers/sistema_controller.py:35:    except sqlite3.Error:
+./controllers/produto_controller.py:51:    except ValueError:
+./models/usuario.py:46:    except ValueError:
+== AP-20: print( (exceto Blueprint)
+./app.py:34:    print("=" * 50)
+./app.py:35:    print("SERVIDOR INICIADO")
+./app.py:36:    print(f"Rodando em http://{host}:{port}")
+./app.py:37:    print("=" * 50)
+== AP-07: SQL fora de models/database
+   (nenhuma ocorrência)
+== AP-07: request/jsonify fora de routes/errors/auth
+   (nenhuma ocorrência)
+== AP-15: APIs obsoletas
+   (nenhuma ocorrência)

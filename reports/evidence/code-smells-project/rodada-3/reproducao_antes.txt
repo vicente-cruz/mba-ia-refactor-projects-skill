@@ -1,0 +1,16 @@
+500 | revisao1@loja.com (armazenado 'pbkdf2:sha256:1000$salt$á') | {"erro":"Erro interno do servidor"} | banco alterado: não | 0.01s
+500 | revisao2@loja.com (armazenado 'pbkdf2:sha256:999999999999999999999$salt$hash') | {"erro":"Erro interno do servidor"} | banco alterado: não | 0.00s
+401 | revisao3@loja.com (armazenado 'scrypt:32768:8:-1$salt$hash') | {"erro":"Email ou senha inv\u00e1lidos","sucesso":false} | banco alterado: não | 0.00s
+500 | extra1@loja.com (armazenado 'scrypt:9999999999:9999999999:9999999999$salt$00') | {"erro":"Erro interno do servidor"} | banco alterado: não | 0.00s
+401 | extra2@loja.com (armazenado 'scrypt:3:8:1$salt$00') | {"erro":"Email ou senha inv\u00e1lidos","sucesso":false} | banco alterado: não | 0.00s
+401 | extra3@loja.com (armazenado 'pbkdf2:sha256:0$salt$00') | {"erro":"Email ou senha inv\u00e1lidos","sucesso":false} | banco alterado: não | 0.00s
+500 | extra4@loja.com (armazenado 'pbkdf2:sha256:1000$salt$ÿ') | {"erro":"Erro interno do servidor"} | banco alterado: não | 0.00s
+200 | admin@loja.com (hash válido, senha correta) | {"dados":{"email":"admin@loja.com","id":1,"nome":"Admin","tipo":"admin"},"mensagem":"Login OK","sucesso":true} | banco alterado: não | 0.11s
+401 | admin@loja.com (hash válido, senha errada) | {"erro":"Email ou senha inv\u00e1lidos","sucesso":false} | banco alterado: não | 0.09s
+
+Tracebacks no log do servidor: 4
+  TypeError: comparing strings with non-ASCII characters is not supported
+  OverflowError: Python int too large to convert to C long
+  OverflowError: Python int too large to convert to C long
+  TypeError: comparing strings with non-ASCII characters is not supported
+Avisos de formato inválido no log: 3

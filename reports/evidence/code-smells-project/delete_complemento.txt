@@ -1,0 +1,37 @@
+### ORIGINAL (commit 40d2986, wrapper 127.0.0.1)
+POST /produtos: {
+  "dados": {
+    "id": 11
+  },
+  "mensagem": "Produto criado",
+  "sucesso": true
+}
+ [201]
+produtos no banco antes do DELETE: 11
+DELETE /produtos/11: {
+  "mensagem": "Produto deletado",
+  "sucesso": true
+}
+ [200]
+produtos no banco depois do DELETE: 10
+GET /produtos/11: {
+  "erro": "Produto n\u00e3o encontrado",
+  "sucesso": false
+}
+ [404]
+DELETE /produtos/11 (de novo): {
+  "erro": "Produto n\u00e3o encontrado"
+}
+ [404]
+
+### REFATORADO (python app.py)
+POST /produtos: {"dados":{"id":11},"mensagem":"Produto criado","sucesso":true}
+ [201]
+produtos no banco antes do DELETE: 11
+DELETE /produtos/11: {"mensagem":"Produto deletado","sucesso":true}
+ [200]
+produtos no banco depois do DELETE: 10
+GET /produtos/11: {"erro":"Produto n\u00e3o encontrado","sucesso":false}
+ [404]
+DELETE /produtos/11 (de novo): {"erro":"Produto n\u00e3o encontrado"}
+ [404]

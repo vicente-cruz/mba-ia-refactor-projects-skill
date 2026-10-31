@@ -1,0 +1,44 @@
+== AP-01: execute com concatenação ou f-string de valor externo
+./models/admin.py:11:            db.execute(f"DELETE FROM {tabela}")
+./models/admin.py:19:    return {tabela: db.execute(f"SELECT COUNT(*) FROM {tabela}").fetchone()[0] for tabela in TABELAS}
+./models/produto.py:69:    return [to_dict(row) for row in db.execute(f"SELECT {COLUNAS} FROM produtos")]
+./models/produto.py:73:    row = db.execute(f"SELECT {COLUNAS} FROM produtos WHERE id = ?", (produto_id,)).fetchone()
+./models/usuario.py:19:    return [to_public_dict(row) for row in db.execute(f"SELECT {COLUNAS_PUBLICAS} FROM usuarios")]
+./models/usuario.py:23:    row = db.execute(f"SELECT {COLUNAS_PUBLICAS} FROM usuarios WHERE id = ?", (usuario_id,)).fetchone()
+== AP-01: f-strings em SQL (conferir que só interpolam constantes)
+models/admin.py:11:            db.execute(f"DELETE FROM {tabela}")
+models/admin.py:19:    return {tabela: db.execute(f"SELECT COUNT(*) FROM {tabela}").fetchone()[0] for tabela in TABELAS}
+models/produto.py:69:    return [to_dict(row) for row in db.execute(f"SELECT {COLUNAS} FROM produtos")]
+models/produto.py:73:    row = db.execute(f"SELECT {COLUNAS} FROM produtos WHERE id = ?", (produto_id,)).fetchone()
+models/produto.py:101:    query = f"SELECT {COLUNAS} FROM produtos WHERE 1=1"
+models/usuario.py:19:    return [to_public_dict(row) for row in db.execute(f"SELECT {COLUNAS_PUBLICAS} FROM usuarios")]
+models/usuario.py:23:    row = db.execute(f"SELECT {COLUNAS_PUBLICAS} FROM usuarios WHERE id = ?", (usuario_id,)).fetchone()
+== AP-02: literais de segredo do original
+   (nenhuma ocorrência)
+== AP-03: chave senha em código
+./controllers/usuario_controller.py:30:    senha = dados.get("senha", "")
+./controllers/usuario_controller.py:42:    senha = dados.get("senha", "")
+./models/usuario.py:42:        if row["senha"] and check_password_hash(row["senha"], senha):
+== AP-11: debug fixo / bind aberto
+   (nenhuma ocorrência)
+== AP-08: estado global de conexão
+   (nenhuma ocorrência)
+== AP-16: str(e) / except Exception
+   (nenhuma ocorrência)
+== AP-20: print
+./app.py:26:        app.register_blueprint(blueprint)
+./app.py:34:    print("=" * 50)
+./app.py:35:    print("SERVIDOR INICIADO")
+./app.py:36:    print(f"Rodando em http://{host}:{port}")
+./app.py:37:    print("=" * 50)
+./routes/pedidos.py:5:pedidos_bp = Blueprint("pedidos", __name__)
+./routes/produtos.py:5:produtos_bp = Blueprint("produtos", __name__)
+./routes/usuarios.py:6:usuarios_bp = Blueprint("usuarios", __name__)
+./routes/sistema.py:6:sistema_bp = Blueprint("sistema", __name__)
+./routes/relatorios.py:6:relatorios_bp = Blueprint("relatorios", __name__)
+== AP-07: SQL fora de models/database
+   (nenhuma ocorrência)
+== AP-07: request/jsonify fora de routes/errors/auth
+   (nenhuma ocorrência)
+== AP-15: APIs obsoletas
+   (nenhuma ocorrência)

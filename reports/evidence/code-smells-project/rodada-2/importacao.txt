@@ -1,0 +1,17 @@
+# Verificação de importação — rodada 2
+projeto (cópia nova, sem banco): <scratchpad>/rodada2/tmp.7lR3GINaTe/projeto
+cwd (vazio): <scratchpad>/rodada2/tmp.7lR3GINaTe/cwd
+*.db antes: 0
+comando:
+  cd <scratchpad>/rodada2/tmp.7lR3GINaTe/cwd && env -u DATABASE_PATH <scratchpad>/rodada2/venv/bin/python -I -B -c "import sys; sys.path.insert(0, '<scratchpad>/rodada2/tmp.7lR3GINaTe/projeto'); import app; print('app.__file__ =', app.__file__); print('create_app callable:', callable(app.create_app))"
+saída:
+  app.__file__ = <scratchpad>/rodada2/tmp.7lR3GINaTe/projeto/app.py
+  create_app callable: True
+exit code: 0
+arquivos no cwd após importar: []
+*.db depois (projeto + cwd): 0
+listagem do projeto idêntica antes/depois
+
+# Controle: comando registrado na rodada 1, 'python -I -c "import app"', no mesmo cwd (sem app.py)
+  ModuleNotFoundError: No module named 'app'
+exit code: 1

@@ -1,0 +1,24 @@
+# Testes específicos: trechos de log das instâncias isoladas
+--- seed_sem_vars.log (WARNING/ERROR e primeiras linhas de traceback)
+2026-10-30 23:30:34,733 WARNING database: Senha de seed não configurada para admin@loja.com; usuário de demonstração não criado.
+2026-10-30 23:30:34,733 WARNING database: Senha de seed não configurada para joao@email.com; usuário de demonstração não criado.
+2026-10-30 23:30:34,733 WARNING database: Senha de seed não configurada para maria@email.com; usuário de demonstração não criado.
+--- reset.log (WARNING/ERROR e primeiras linhas de traceback)
+2026-10-30 23:30:31,216 WARNING controllers.sistema_controller: Banco de dados resetado via /admin/reset-db
+--- reset_falha.log (WARNING/ERROR e primeiras linhas de traceback)
+2026-10-30 23:30:32,753 ERROR errors: Erro não tratado
+Traceback (most recent call last):
+sqlite3.IntegrityError: falha forcada
+--- rollback2.log (WARNING/ERROR e primeiras linhas de traceback)
+2026-10-30 23:30:38,064 ERROR errors: Erro não tratado
+Traceback (most recent call last):
+sqlite3.IntegrityError: falha forcada
+--- erros.log (WARNING/ERROR e primeiras linhas de traceback)
+2026-10-30 23:30:41,375 ERROR errors: Erro não tratado
+Traceback (most recent call last):
+sqlite3.OperationalError: no such table: produtos
+2026-10-30 23:30:41,378 ERROR controllers.sistema_controller: Health check falhou
+Traceback (most recent call last):
+sqlite3.OperationalError: no such table: produtos
+--- sem_secret.log (WARNING/ERROR e primeiras linhas de traceback)
+2026-10-30 23:30:35,719 WARNING config: SECRET_KEY não definida; usando chave efêmera de desenvolvimento.

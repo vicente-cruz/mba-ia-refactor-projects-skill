@@ -1,0 +1,121 @@
+test_formato_invalido_nao_chega_ao_check_password_hash (test_regressao.FormatoHashTest.test_formato_invalido_nao_chega_ao_check_password_hash) ... Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+ok
+test_hashes_gerados_pelo_werkzeug_tem_formato_aceito (test_regressao.FormatoHashTest.test_hashes_gerados_pelo_werkzeug_tem_formato_aceito) ... ok
+test_typeerror_fora_da_validacao_de_formato_nao_e_mascarado (test_regressao.FormatoHashTest.test_typeerror_fora_da_validacao_de_formato_nao_e_mascarado) ... ok
+test_importar_app_nao_cria_banco (test_regressao.ImportacaoTest.test_importar_app_nao_cria_banco) ... ok
+test_atualizacao_rejeita_nao_finitos_sem_alterar (test_regressao.NumerosNaoFinitosTest.test_atualizacao_rejeita_nao_finitos_sem_alterar) ... SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+Senha de seed não configurada para joao@email.com; usuário de demonstração não criado.
+Senha de seed não configurada para maria@email.com; usuário de demonstração não criado.
+ok
+test_criacao_rejeita_estoque_nao_finito_sem_gravar (test_regressao.NumerosNaoFinitosTest.test_criacao_rejeita_estoque_nao_finito_sem_gravar) ... SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+Senha de seed não configurada para joao@email.com; usuário de demonstração não criado.
+Senha de seed não configurada para maria@email.com; usuário de demonstração não criado.
+ok
+test_criacao_rejeita_preco_nao_finito_sem_gravar (test_regressao.NumerosNaoFinitosTest.test_criacao_rejeita_preco_nao_finito_sem_gravar) ... SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+Senha de seed não configurada para joao@email.com; usuário de demonstração não criado.
+Senha de seed não configurada para maria@email.com; usuário de demonstração não criado.
+ok
+test_filtros_de_busca_rejeitam_nao_finitos (test_regressao.NumerosNaoFinitosTest.test_filtros_de_busca_rejeitam_nao_finitos) ... SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+Senha de seed não configurada para joao@email.com; usuário de demonstração não criado.
+Senha de seed não configurada para maria@email.com; usuário de demonstração não criado.
+ok
+test_filtros_finitos_continuam_funcionando (test_regressao.NumerosNaoFinitosTest.test_filtros_finitos_continuam_funcionando) ... SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+Senha de seed não configurada para joao@email.com; usuário de demonstração não criado.
+Senha de seed não configurada para maria@email.com; usuário de demonstração não criado.
+ok
+test_valores_finitos_continuam_aceitos (test_regressao.NumerosNaoFinitosTest.test_valores_finitos_continuam_aceitos) ... SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+Senha de seed não configurada para joao@email.com; usuário de demonstração não criado.
+Senha de seed não configurada para maria@email.com; usuário de demonstração não criado.
+ok
+test_cadastro_duplicado_com_hash_valido_apos_legado_autentica (test_regressao.SenhasLegadasTest.test_cadastro_duplicado_com_hash_valido_apos_legado_autentica) ... SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+Senha de seed não configurada para joao@email.com; usuário de demonstração não criado.
+Senha de seed não configurada para maria@email.com; usuário de demonstração não criado.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+ok
+test_erro_de_infraestrutura_nao_e_mascarado_como_401 (test_regressao.SenhasLegadasTest.test_erro_de_infraestrutura_nao_e_mascarado_como_401) ... SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+Senha de seed não configurada para joao@email.com; usuário de demonstração não criado.
+Senha de seed não configurada para maria@email.com; usuário de demonstração não criado.
+Erro não tratado
+Traceback (most recent call last):
+  File "<scratchpad>/rodada3/venv/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "<scratchpad>/rodada3/venv/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "<scratchpad>/rodada3/pos/routes/usuarios.py", line 29, in login
+    usuario = usuario_controller.login(request.get_json(silent=True))
+  File "<scratchpad>/rodada3/pos/controllers/usuario_controller.py", line 45, in login
+    autenticado = usuario.autenticar(get_db(), email, senha)
+  File "<scratchpad>/rodada3/pos/models/usuario.py", line 70, in autenticar
+    rows = db.execute(
+           ~~~~~~~~~~^
+        "SELECT id, nome, email, tipo, senha FROM usuarios WHERE email = ? ORDER BY id", (email,)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ).fetchall()
+    ^
+sqlite3.OperationalError: no such table: usuarios
+ok
+test_hashes_validos_continuam_autenticando (test_regressao.SenhasLegadasTest.test_hashes_validos_continuam_autenticando) ... SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+Senha de seed não configurada para joao@email.com; usuário de demonstração não criado.
+Senha de seed não configurada para maria@email.com; usuário de demonstração não criado.
+ok
+test_legados_e_malformados_retornam_401_sem_modificar_banco (test_regressao.SenhasLegadasTest.test_legados_e_malformados_retornam_401_sem_modificar_banco) ... SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+Senha de seed não configurada para joao@email.com; usuário de demonstração não criado.
+Senha de seed não configurada para maria@email.com; usuário de demonstração não criado.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+ok
+test_autorizacao_continua_antes_da_validacao (test_regressao.TipoConsultaAdministrativaTest.test_autorizacao_continua_antes_da_validacao) ... SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+Senha de seed não configurada para joao@email.com; usuário de demonstração não criado.
+Senha de seed não configurada para maria@email.com; usuário de demonstração não criado.
+ok
+test_consulta_valida_continua_funcionando (test_regressao.TipoConsultaAdministrativaTest.test_consulta_valida_continua_funcionando) ... SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+Senha de seed não configurada para joao@email.com; usuário de demonstração não criado.
+Senha de seed não configurada para maria@email.com; usuário de demonstração não criado.
+ok
+test_tipos_invalidos_retornam_400 (test_regressao.TipoConsultaAdministrativaTest.test_tipos_invalidos_retornam_400) ... SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+Senha de seed não configurada para joao@email.com; usuário de demonstração não criado.
+Senha de seed não configurada para maria@email.com; usuário de demonstração não criado.
+ok
+test_vazios_continuam_como_consulta_nao_informada (test_regressao.TipoConsultaAdministrativaTest.test_vazios_continuam_como_consulta_nao_informada) ... SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+Senha de seed não configurada para joao@email.com; usuário de demonstração não criado.
+Senha de seed não configurada para maria@email.com; usuário de demonstração não criado.
+ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 6.318s
+
+OK

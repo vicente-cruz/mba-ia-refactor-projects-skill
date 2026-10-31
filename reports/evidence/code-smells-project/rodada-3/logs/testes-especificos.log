@@ -1,0 +1,15 @@
+# Testes específicos (rodada 3): trechos de log
+--- auth.log
+Tracebacks: 0
+--- legado_refatorado.log
+2026-10-31 00:37:40,359 WARNING models.usuario: Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+2026-10-31 00:37:40,360 WARNING models.usuario: Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Tracebacks: 0
+--- erros.log
+2026-10-31 00:37:40,885 ERROR errors: Erro não tratado
+Traceback (most recent call last):
+sqlite3.OperationalError: no such table: produtos
+2026-10-31 00:37:40,888 ERROR controllers.sistema_controller: Health check falhou
+Traceback (most recent call last):
+sqlite3.OperationalError: no such table: produtos
+Tracebacks: 2

@@ -1,0 +1,20 @@
+GET    /
+POST   /admin/query
+POST   /admin/reset-db
+GET    /health
+POST   /login
+GET    /pedidos
+POST   /pedidos
+PUT    /pedidos/<int:pedido_id>/status
+GET    /pedidos/usuario/<int:usuario_id>
+GET    /produtos
+POST   /produtos
+DELETE /produtos/<int:produto_id>
+GET    /produtos/<int:produto_id>
+PUT    /produtos/<int:produto_id>
+GET    /produtos/busca
+GET    /relatorios/vendas
+GET    /usuarios
+POST   /usuarios
+GET    /usuarios/<int:usuario_id>
+19 combinações método+rota

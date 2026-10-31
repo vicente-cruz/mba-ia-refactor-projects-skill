@@ -1,0 +1,36 @@
+## 1. Números não finitos
+400 | POST /produtos preco=1e309 | POST /produtos | entrada: {"nome": "Produto X", "preco": 1e309, "estoque": 1, "categoria": "geral"} | resposta: {"erro":"Pre\u00e7o inv\u00e1lido"} | dados alterados: não
+400 | POST /produtos preco=NaN | POST /produtos | entrada: {"nome": "Produto X", "preco": NaN, "estoque": 1, "categoria": "geral"} | resposta: {"erro":"Pre\u00e7o inv\u00e1lido"} | dados alterados: não
+400 | POST /produtos preco=Infinity | POST /produtos | entrada: {"nome": "Produto X", "preco": Infinity, "estoque": 1, "categoria": "geral"} | resposta: {"erro":"Pre\u00e7o inv\u00e1lido"} | dados alterados: não
+400 | POST /produtos preco=-Infinity | POST /produtos | entrada: {"nome": "Produto X", "preco": -Infinity, "estoque": 1, "categoria": "geral"} | resposta: {"erro":"Pre\u00e7o inv\u00e1lido"} | dados alterados: não
+400 | POST /produtos estoque=1e309 | POST /produtos | entrada: {"nome": "Produto X", "preco": 1, "estoque": 1e309, "categoria": "geral"} | resposta: {"erro":"Estoque inv\u00e1lido"} | dados alterados: não
+400 | POST /produtos estoque=NaN | POST /produtos | entrada: {"nome": "Produto X", "preco": 1, "estoque": NaN, "categoria": "geral"} | resposta: {"erro":"Estoque inv\u00e1lido"} | dados alterados: não
+400 | PUT /produtos/1 preco=1e309 | PUT /produtos/1 | entrada: {"nome": "Produto X", "preco": 1e309, "estoque": 1, "categoria": "geral"} | resposta: {"erro":"Pre\u00e7o inv\u00e1lido"} | dados alterados: não
+400 | PUT /produtos/1 preco=NaN | PUT /produtos/1 | entrada: {"nome": "Produto X", "preco": NaN, "estoque": 1, "categoria": "geral"} | resposta: {"erro":"Pre\u00e7o inv\u00e1lido"} | dados alterados: não
+400 | PUT /produtos/1 estoque=Infinity | PUT /produtos/1 | entrada: {"nome": "Produto X", "preco": 1, "estoque": Infinity, "categoria": "geral"} | resposta: {"erro":"Estoque inv\u00e1lido"} | dados alterados: não
+201 | POST /produtos valores válidos (preço decimal, estoque 0) | POST /produtos | entrada: {"nome": "Produto X", "preco": 12.5, "estoque": 0, "categoria": "geral"} | resposta: {"dados":{"id":11},"mensagem":"Produto criado","sucesso":true} | dados alterados: SIM ([(11, 'Produto X', 12.5, 0)])
+200 | PUT /produtos/1 valores válidos | PUT /produtos/1 | entrada: {"nome": "Produto X", "preco": 5999.99, "estoque": 10, "categoria": "geral"} | resposta: {"mensagem":"Produto atualizado","sucesso":true} | dados alterados: SIM ([(1, 'Produto X', 5999.99, 10)])
+400 | GET /produtos/busca?preco_min=inf | GET /produtos/busca?preco_min=inf | entrada: None | resposta: {"erro":"Par\u00e2metro preco_min inv\u00e1lido"}
+400 | GET /produtos/busca?preco_min=nan | GET /produtos/busca?preco_min=nan | entrada: None | resposta: {"erro":"Par\u00e2metro preco_min inv\u00e1lido"}
+400 | GET /produtos/busca?preco_max=1e309 | GET /produtos/busca?preco_max=1e309 | entrada: None | resposta: {"erro":"Par\u00e2metro preco_max inv\u00e1lido"}
+400 | GET /produtos/busca?preco_max=-inf | GET /produtos/busca?preco_max=-inf | entrada: None | resposta: {"erro":"Par\u00e2metro preco_max inv\u00e1lido"}
+200 | GET /produtos/busca?preco_min=100&preco_max=300 | GET /produtos/busca?preco_min=100&preco_max=300 | entrada: None | resposta: {"dados":[{"ativo":1,"categoria":"informatica","criado_em":"2026-10-31 03:03:35","descricao":"Teclado mec\u00e2nico RGB","estoque":30,"id":3,"nome":"Teclado Mec
+
+## 2. Tipo de consulta administrativa
+400 | POST /admin/query (token correto) | POST /admin/query | entrada: {"consulta": ["contagem_por_tabela"]} | resposta: {"erro":"Consulta inv\u00e1lida. V\u00e1lidas: ['contagem_por_tabela', 'pedidos_por_status', 'produtos_estoque_baixo', 'usuarios_por_tipo']"}
+400 | POST /admin/query (token correto) | POST /admin/query | entrada: {"consulta": {"nome": "contagem_por_tabela"}} | resposta: {"erro":"Consulta inv\u00e1lida. V\u00e1lidas: ['contagem_por_tabela', 'pedidos_por_status', 'produtos_estoque_baixo', 'usuarios_por_tipo']"}
+400 | POST /admin/query (token correto) | POST /admin/query | entrada: {"consulta": 1} | resposta: {"erro":"Consulta inv\u00e1lida. V\u00e1lidas: ['contagem_por_tabela', 'pedidos_por_status', 'produtos_estoque_baixo', 'usuarios_por_tipo']"}
+400 | POST /admin/query (token correto) | POST /admin/query | entrada: {"consulta": true} | resposta: {"erro":"Consulta inv\u00e1lida. V\u00e1lidas: ['contagem_por_tabela', 'pedidos_por_status', 'produtos_estoque_baixo', 'usuarios_por_tipo']"}
+200 | POST /admin/query (token correto) | POST /admin/query | entrada: {"consulta": "contagem_por_tabela"} | resposta: {"dados":[{"quantidade":11,"tabela":"produtos"},{"quantidade":3,"tabela":"usuarios"},{"quantidade":0,"tabela":"pedidos"},{"quantidade":0,"tabela":"itens_pedido"
+401 | POST /admin/query lista, sem token | POST /admin/query | entrada: {"consulta": ["contagem_por_tabela"]} | resposta: {"erro":"N\u00e3o autorizado"}
+
+## 3. Senhas legadas e hashes malformados
+401 | POST /login legado1@loja.com (senha armazenada 'abc$def$ghi', informada igual) | POST /login | entrada: {"email": "legado1@loja.com", "senha": "abc$def$ghi"} | resposta: {"erro":"Email ou senha inv\u00e1lidos","sucesso":false} | dados alterados: não
+401 | POST /login legado2@loja.com (senha armazenada 'texto-puro', informada igual) | POST /login | entrada: {"email": "legado2@loja.com", "senha": "texto-puro"} | resposta: {"erro":"Email ou senha inv\u00e1lidos","sucesso":false} | dados alterados: não
+401 | POST /login legado3@loja.com (senha armazenada 'pbkdf2:sha256:abc$salt$hash', informada igual) | POST /login | entrada: {"email": "legado3@loja.com", "senha": "pbkdf2:sha256:abc$salt$hash"} | resposta: {"erro":"Email ou senha inv\u00e1lidos","sucesso":false} | dados alterados: não
+401 | POST /login legado4@loja.com (senha armazenada 'pbkdf2:nada:10$salt$hash', informada igual) | POST /login | entrada: {"email": "legado4@loja.com", "senha": "pbkdf2:nada:10$salt$hash"} | resposta: {"erro":"Email ou senha inv\u00e1lidos","sucesso":false} | dados alterados: não
+401 | POST /login legado5@loja.com (senha armazenada 'scrypt:x:8:1$salt$hash', informada igual) | POST /login | entrada: {"email": "legado5@loja.com", "senha": "scrypt:x:8:1$salt$hash"} | resposta: {"erro":"Email ou senha inv\u00e1lidos","sucesso":false} | dados alterados: não
+200 | POST /login admin com hash válido e senha correta | POST /login | entrada: {"email": "admin@loja.com", "senha": "<removido>"} | resposta: {"dados":{"email":"admin@loja.com","id":1,"nome":"Admin","tipo":"admin"},"mensagem":"Login OK","sucesso":true} | dados alterados: não
+401 | POST /login admin com senha errada | POST /login | entrada: {"email": "admin@loja.com", "senha": "errada"} | resposta: {"erro":"Email ou senha inv\u00e1lidos","sucesso":false} | dados alterados: não
+
+Tracebacks no log do servidor: 0

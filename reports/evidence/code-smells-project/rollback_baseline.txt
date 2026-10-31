@@ -1,0 +1,15 @@
+antes: pedidos=[(0,)] itens=[(0,)] estoque2=[(50,)]
+POST /pedidos (itens 2 e 3): {
+  "erro": "falha forcada"
+}
+ [500]
+apos falha: pedidos=[(0,)] itens=[(0,)] estoque2=[(50,)]
+POST /produtos (escrita independente): {
+  "dados": {
+    "id": 11
+  },
+  "mensagem": "Produto criado",
+  "sucesso": true
+}
+ [201]
+apos escrita independente: pedidos=[(1,)] itens=[(1,)] estoque2=[(48,)]
