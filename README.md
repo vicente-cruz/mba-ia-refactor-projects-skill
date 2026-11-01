@@ -4,7 +4,15 @@ MBA em Engenharia de Software com IA — módulo Desenvolvimento de Software e A
 
 Ferramenta escolhida: **Claude Code**, utilizado no VS Code em ambiente WSL.
 
-**Estado desta entrega:** análise manual dos três projetos registrada. A Skill ainda não foi criada ou executada; a refatoração e a validação funcional permanecem pendentes.
+**Estado técnico:** Skill criada e aplicada aos três projetos; auditorias, refatorações e validações concluídas no escopo aprovado, com revisão independente e correções posteriores. As limitações remanescentes estão documentadas em [Resultados](#resultados) e nos registros de validação. A aprovação refere-se aos cenários exercitados, não à ausência de toda vulnerabilidade ou à prontidão para produção.
+
+| Projeto | Skill | Auditoria da Fase 2 | Validação final |
+|---|---|---|---|
+| E-commerce Flask | [refactor-arch](code-smells-project/.claude/skills/refactor-arch/SKILL.md) | [Projeto 1](reports/audit-project-1.md) | [Rodada 3, seção 13](reports/evidence/code-smells-project/validation.md#13-rodada-3-2026-10-31-hashes-malformados-que-ainda-provocavam-500) |
+| LMS Express | [refactor-arch](ecommerce-api-legacy/.claude/skills/refactor-arch/SKILL.md) | [Projeto 2](reports/audit-project-2.md) | [Validação e revisões do comparador](reports/evidence/ecommerce-api-legacy/validation.md) |
+| Task Manager Flask | [refactor-arch](task-manager-api/.claude/skills/refactor-arch/SKILL.md) | [Projeto 3](reports/audit-project-3.md) | [Rodada 3](reports/evidence/task-manager-api/rodada-3/validation.md) |
+
+Navegação: [Análise Manual](#análise-manual) · [Construção da Skill](#construção-da-skill) · [Resultados](#resultados) · [Como Executar](#como-executar) · [Enunciado original](#enunciado-original).
 
 ## Análise Manual
 
@@ -17,7 +25,7 @@ Ferramenta escolhida: **Claude Code**, utilizado no VS Code em ambiente WSL.
 - As quantidades de linhas incluem linhas em branco. Os totais de código consideram arquivos .py ou .js do projeto; no Task Manager incluem seed.py e __init__.py. Não incluem dependências instaladas.
 - Versão de referência: commit [`6d1ce6248c3e956801010a89d8bdaab48029bf30`](https://github.com/vicente-cruz/mba-ia-refactor-projects-skill/commit/6d1ce6248c3e956801010a89d8bdaab48029bf30), presente no pacote enviado. O código extraído correspondia ao commit antes da edição deste README.
 - Os links de localização abaixo apontam para esse commit, preservando a possibilidade de conferência quando os arquivos forem movidos ou alterados pela refatoração.
-- Os IDs P1-xx, P2-xx e P3-xx identificam achados manuais. A auditoria automática terá seus próprios resultados; posteriormente registraremos a correspondência, sem presumir que problemas já tenham sido detectados ou corrigidos.
+- Os IDs P1-xx, P2-xx e P3-xx identificam achados manuais. As auditorias posteriores têm seus próprios IDs F-xx; a correspondência está registrada em Resultados. Esta seção preserva a análise inicial, anterior à execução da Skill.
 - As explicações de arquitetura, segurança e bibliotecas são interpretações técnicas aplicadas ao código. Não são transcrições nem afirmações atribuídas a aulas específicas do MBA. As referências externas estão identificadas ao final desta seção.
 
 ### Resumo dos achados manuais
@@ -265,6 +273,8 @@ O projeto possui models, routes, services e utils. Entretanto, as rotas concentr
 
 ### Observações para a futura construção da Skill
 
+Registro histórico das orientações formuladas na análise manual e utilizadas na construção posterior da Skill:
+
 - Detectar responsabilidades pelo conteúdo e pelos fluxos, não apenas pelos nomes de arquivos ou pela presença de pastas models, routes e services.
 - Usar padrões gerais de detecção e correção. Os nomes dos projetos e os números de linha desta análise são evidências locais, não regras a serem embutidas na Skill.
 - Não reproduzir diagnósticos automaticamente entre stacks. Por exemplo, as consultas parametrizadas observadas no checkout Node.js não têm a concatenação de texto identificada no login do primeiro projeto.
@@ -284,15 +294,249 @@ O projeto possui models, routes, services e utils. Entretanto, as rotas concentr
 
 ## Construção da Skill
 
-**Pendente.** A análise manual está registrada como base para a criação de refactor-arch. As decisões de organização do SKILL.md, referências, catálogo de anti-patterns e playbook serão documentadas após sua elaboração.
+### Organização e decisões de design
+
+A Skill `refactor-arch` foi construída primeiro para `code-smells-project` e reutilizada nos outros dois projetos. Cada cópia contém seis arquivos: um orquestrador e cinco referências. Os links abaixo apontam para a cópia do projeto 1.
+
+| Arquivo | Responsabilidade |
+|---|---|
+| [SKILL.md](code-smells-project/.claude/skills/refactor-arch/SKILL.md) | Define alvo, escopo, ordem das fases, pausa para aprovação, registro das evidências e encerramento sem commit ou push. |
+| [project-analysis.md](code-smells-project/.claude/skills/refactor-arch/references/project-analysis.md) | Detecta stack, domínio, versões, persistência, endpoints e responsabilidades; diferencia versões declaradas das instaladas. |
+| [anti-patterns.md](code-smells-project/.claude/skills/refactor-arch/references/anti-patterns.md) | Catálogo de 20 padrões com sinais de detecção, severidade e cuidados contra falsos positivos. |
+| [audit-template.md](code-smells-project/.claude/skills/refactor-arch/references/audit-template.md) | Padroniza achados, localizações, plano, mudanças de contrato, decisões pendentes e destinos dos registros. |
+| [mvc-guidelines.md](code-smells-project/.claude/skills/refactor-arch/references/mvc-guidelines.md) | Define responsabilidades de Models, Controllers e Views/Routes, configuração, erros e inicialização. |
+| [refactoring-playbook.md](code-smells-project/.claude/skills/refactor-arch/references/refactoring-playbook.md) | Reúne 15 transformações com exemplos antes/depois e procedimentos de validação e preservação das evidências. |
+
+As referências são lidas na etapa correspondente. O `SKILL.md` mantém o fluxo: **Fase 1 — análise → Fase 2 — auditoria → aprovação humana e decisões → Fase 3 — refatoração e validação**. A invocação é explícita (`disable-model-invocation: true`); chamar a Skill não aprova a refatoração.
+
+As fases 1 e 2 não executam a aplicação nem alteram código. A auditoria distingue leitura estática de hipóteses que dependem de execução e exige confirmação documental de APIs obsoletas. Na fase 3, o relatório aprovado é salvo antes das alterações; os resultados posteriores ficam em arquivos de validação separados. Mudanças de contrato exigem decisões explícitas e são conferidas contra a linha de base.
+
+### Catálogo e playbook
+
+Os 20 anti-patterns cobrem arquitetura, segurança, consistência, desempenho e manutenção:
+
+| Severidade base | IDs | Padrões incluídos |
+|---|---|---|
+| CRITICAL — 6 | AP-01 a AP-06 | SQL Injection/SQL arbitrário; segredos no código; exposição de dados sensíveis; armazenamento inseguro de senhas; God Class/Module; operações administrativas sem controle de acesso. |
+| HIGH — 5 | AP-07 a AP-11 | Regras e persistência na camada HTTP; estado global mutável; escritas sem transação; acoplamento e efeitos na inicialização; configuração de execução insegura. |
+| MEDIUM — 5 | AP-12 a AP-16 | N+1; validação insuficiente; regras duplicadas; APIs obsoletas; tratamento de erros disperso ou com vazamento. |
+| LOW — 4 | AP-17 a AP-20 | Literais sem nome; nomenclatura; código morto; logging ad hoc. |
+
+A severidade pode mudar mediante justificativa contextual. O catálogo ultrapassa os oito padrões exigidos e inclui APIs deprecated, sem presumir que todo uso de uma interface legada seja equivalente.
+
+O playbook também supera o mínimo de oito transformações:
+
+| IDs | Transformações com exemplos antes/depois |
+|---|---|
+| T-01 a T-04 | Parametrizar SQL; extrair configuração; remover dados sensíveis das representações públicas; armazenar senhas com hash adequado. |
+| T-05 a T-08 | Decompor God Class; separar rota/controller/model; explicitar o ciclo de vida da conexão; reunir escritas relacionadas em transação. |
+| T-09 a T-12 | Eliminar N+1; centralizar validação; substituir APIs obsoletas; centralizar tratamento de erros. |
+| T-13 a T-15 | Nomear constantes e remover código morto; organizar a inicialização e injeção de dependências; proteger ou remover operações administrativas. |
+
+### Independência de tecnologia
+
+As regras descrevem responsabilidades e comportamentos, sem embutir os nomes dos três projetos ou seus números de linha. Os exemplos usam um domínio fictício de biblioteca e mostram Python/Flask e Node.js/Express; são referências adaptáveis, não substitutos da leitura do alvo.
+
+Para APIs JSON, Views/Routes cuidam de HTTP e serialização; Controllers coordenam casos de uso; Models concentram regras e persistência. A aplicação concreta respeita diferenças como a sessão do Flask-SQLAlchemy, conexões SQLite por requisição e callbacks/fila na aplicação Express. A execução demonstrou reutilização nos três projetos fornecidos; outras stacks não foram validadas neste desafio.
+
+### Desafios e revisões
+
+- **Construção da Skill:** a revisão corrigiu o YAML da descrição, a validação completa do formato de hash no exemplo Node.js, exemplos que ainda misturavam persistência e HTTP, as regras de escopo e decisões pendentes, a preservação de evidências e explicações sobre transações e Blueprints. Testar exemplos da Skill não foi tratado como validação das aplicações.
+- **Projeto 1:** rodadas posteriores corrigiram números não finitos, entrada não textual na consulta administrativa e formatos de hash malformados que provocavam 500. A evidência de importação também foi refeita com controle explícito.
+- **Projeto 2:** testes controlados exercitaram rollback e isolamento. O comparador foi corrigido para rejeitar alterações indevidas mesmo em casos com mudanças intencionais e para tratar apenas a ordem não garantida no original, mantendo a ordem exigida no refatorado.
+- **Projeto 3:** a revisão corrigiu validações de tags, cores e inteiros, a preservação do cabeçalho `Allow` e a precedência do 404. A última rodada reforçou a comparação do estado completo após conflitos e criou um inventário fixo para detectar casos ausentes até quando removidos das duas versões.
+- **Interrupções da API:** a continuidade foi conferida pelos arquivos gravados e pelo estado do Git. Mensagens incompletas não foram tomadas como prova de execução ou conclusão.
+
+As correções das aplicações e das suítes foram delimitadas por rodada; a Skill permaneceu inalterada durante as execuções de refatoração. Houve revisão humana das decisões e revisão independente do código e das evidências.
 
 ## Resultados
 
-**Pendente de execução.** Os 21 registros acima são achados manuais. Ainda não existem relatórios da Fase 2, evidências de execução da Skill, código refatorado, comparações de estrutura antes/depois ou checklists funcionais preenchidos. Esses resultados serão adicionados a partir das execuções reais nos três projetos.
+### Auditorias dos três projetos
+
+Os **21 achados manuais** são a seleção inicial. As auditorias da Skill identificaram **56 achados**, antes das correções; estas contagens não representam problemas remanescentes no código final.
+
+| Projeto / relatório | CRITICAL | HIGH | MEDIUM | LOW | Total |
+|---|---:|---:|---:|---:|---:|
+| [1 — code-smells-project](reports/audit-project-1.md) | 7 | 6 | 4 | 4 | 21 |
+| [2 — ecommerce-api-legacy](reports/audit-project-2.md) | 5 | 4 | 3 | 4 | 16 |
+| [3 — task-manager-api](reports/audit-project-3.md) | 4 | 5 | 6 | 4 | 19 |
+| **Total** | **16** | **15** | **13** | **12** | **56** |
+
+Os relatórios preservam os achados e o plano da Fase 2, inclusive hipóteses e decisões daquele momento. A situação após implementação está nos registros de validação. No projeto 3, por exemplo, F-05 era uma hipótese de vazamento em logs e foi confirmado por execução no original.
+
+Correspondência temática entre análise manual e auditoria (os IDs F-xx pertencem ao relatório de cada projeto):
+
+| Projeto | Correspondência |
+|---|---|
+| 1 | P1-01 → F-01; P1-02 → F-03/F-04; P1-03 → F-10; P1-04 → F-16; P1-05 → F-17; P1-06 → F-18; P1-07 → F-20. |
+| 2 | P2-01 → F-05; P2-02 → F-03; P2-03 → F-06; P2-04 → F-10; P2-05 → F-11; P2-06 → F-14; P2-07 → F-15. |
+| 3 | P3-01 → F-01; P3-02 → F-07; P3-03 → F-10; P3-04 → F-12; P3-05 → F-13; P3-06 → F-12/F-17; P3-07 → F-16. |
+
+### Estrutura antes e depois
+
+| Projeto | Antes | Depois |
+|---|---|---|
+| 1 — Flask + sqlite3 | Quatro arquivos Python; `app.py`, `controllers.py` e `models.py` misturavam HTTP, regras e SQL; conexão global em `database.py`. | `app.py` com factory; `config.py`, `database.py`, `errors.py`, `auth.py`; pacotes `models/`, `controllers/` e `routes/` por domínio; `tests/test_regressao.py`. Os dois módulos monolíticos foram substituídos por pacotes. |
+| 2 — Express + sqlite3 | Três arquivos JavaScript; `AppManager.js` reunia schema, seed, rotas, checkout e relatório; `utils.js` misturava configuração, cache e senhas. | Em `src/`: `app.js`, `config.js`, `database.js`, `errors.js`, `passwordHash.js`, `models/`, `controllers/`, `routes/` e `middlewares/`. `AppManager.js` e `utils.js` removidos. |
+| 3 — Flask + SQLAlchemy | Quinze arquivos Python; pastas `models/` e `routes/` já existiam, mas as rotas continham regras, consultas e relatórios; `services/` e `utils/` continham código sem uso. | Factory e configuração explícita; `auth.py` e `errors.py`; `controllers/`; Models com consultas e regras, incluindo `clock.py`; rotas próprias de categorias e sistema; seed atômico. `services/` e `utils/` removidos. |
+
+### Validação final e evidências
+
+| Projeto | Resultado final registrado | Evidências |
+|---|---|---|
+| 1 | 54 casos nas 19 combinações de método/rota: 32 preservados e 22 diferenças classificadas, sem regressão detectada; 18 testes de regressão aprovados; 122 verificações específicas aprovadas. | [Validação, seção 13](reports/evidence/code-smells-project/validation.md#13-rodada-3-2026-10-31-hashes-malformados-que-ainda-provocavam-500), [matriz final](reports/evidence/code-smells-project/rodada-3/matriz.md), [testes](reports/evidence/code-smells-project/rodada-3/unittest_pos.txt), [log da aplicação](reports/evidence/code-smells-project/rodada-3/logs/refatorado.log). |
+| 2 | 25 casos na matriz, sem reprovações ou avisos; 21 testes controlados aprovados; 18 testes do comparador aprovados; casos de inicialização e falhas de processo documentados. | [Validação](reports/evidence/ecommerce-api-legacy/validation.md), [matriz](reports/evidence/ecommerce-api-legacy/matriz.md), [testes controlados](reports/evidence/ecommerce-api-legacy/logs/testes-controlados.log), [comparador](reports/evidence/ecommerce-api-legacy/logs/testes-comparador.log), [log de processo](reports/evidence/ecommerce-api-legacy/logs/refatorado-process.log). |
+| 3 | 377 registros originais e 400 refatorados; 377 comparações: 166 preservadas e 211 diferenças intencionais; 23 registros exclusivos declarados. Zero falhas; 43 verificações do comparador (37 mutações + 6 controles) e 10 meta-testes com resultados esperados. | [Validação final](reports/evidence/task-manager-api/rodada-3/validation.md), [matriz](reports/evidence/task-manager-api/rodada-3/resultados/matriz.md), [resumo estruturado](reports/evidence/task-manager-api/rodada-3/resultados/resumo.json), [meta-testes](reports/evidence/task-manager-api/rodada-3/resultados/meta-testes.txt), [inicialização e CLI](reports/evidence/task-manager-api/rodada-3/resultados/cli.txt). |
+
+As unidades de contagem diferem: registros, testes e verificações não devem ser somados como uma única cobertura. No projeto 3, os 377 registros originais incluem 367 HTTP + 10 fatos; os 400 refatorados incluem 383 HTTP + 17 fatos. As diferenças intencionais são mudanças de contrato ou correções documentadas, não equivalência literal de todas as respostas.
+
+As pastas preservam rodadas anteriores para rastreabilidade. Para avaliar o estado final, use os links acima: a validação do projeto 1 consolida a rodada 3 na seção 13; a do projeto 2 contém as revisões do comparador; a do projeto 3 tem um arquivo específico para a rodada 3.
+
+### Checklist por projeto
+
+`Concluído` indica evidência de atendimento no escopo da etapa. `N/A` indica que a auditoria não confirmou ocorrência aplicável. Os relatórios e as validações vinculados acima sustentam os itens; limitações de implementação e de cobertura continuam explicitadas abaixo.
+
+| Fase / critério do enunciado | Projeto 1 | Projeto 2 | Projeto 3 |
+|---|---|---|---|
+| F1 — Linguagem detectada corretamente | Concluído: Python | Concluído: JavaScript | Concluído: Python |
+| F1 — Framework detectado corretamente | Concluído: Flask | Concluído: Express | Concluído: Flask |
+| F1 — Domínio descrito corretamente | Concluído: E-commerce | Concluído: LMS/checkout | Concluído: Task Manager |
+| F1 — Contagem de arquivos compatível com o alvo original | Concluído: 4 | Concluído: 3 | Concluído: 15 |
+| F2 — Relatório segue o template | Concluído | Concluído | Concluído |
+| F2 — Achados com arquivos e linhas da versão auditada | Concluído | Concluído | Concluído |
+| F2 — Ordenação CRITICAL → LOW | Concluído | Concluído | Concluído |
+| F2 — Pelo menos cinco achados, incluindo CRITICAL ou HIGH | Concluído: 21 | Concluído: 16 | Concluído: 19 |
+| F2 — Detecção de APIs obsoletas, quando aplicável | N/A: sem ocorrência confirmada | N/A: sem ocorrência confirmada | Concluído: `Query.get()` e `datetime.utcnow()` |
+| F2 — Pausa e confirmação antes da refatoração | Concluído | Concluído | Concluído |
+| F3 — Estrutura MVC | Concluído | Concluído | Concluído |
+| F3 — Configuração em módulo próprio e segredos fora do código | Concluído | Concluído | Concluído |
+| F3 — Models abstraem dados | Concluído | Concluído | Concluído |
+| F3 — Views/Routes separadas | Concluído | Concluído | Concluído |
+| F3 — Controllers coordenam fluxo | Concluído | Concluído | Concluído |
+| F3 — Tratamento de erros centralizado | Concluído | Concluído | Concluído |
+| F3 — Ponto de entrada claro | Concluído | Concluído | Concluído |
+| F3 — Aplicação inicia com configuração válida | Concluído | Concluído | Concluído |
+| F3 — Endpoints originais exercitados conforme contratos aprovados | Concluído | Concluído | Concluído |
+
+### Diferenças entre stacks e mudanças aprovadas
+
+- **Projeto 1:** SQL parametrizado, conexão por requisição, transações de pedido, hash de senha e token administrativo. `/admin/query` foi mantido como catálogo fechado de consultas, sem aceitar SQL arbitrário. As contas legadas com senha em texto puro não migram automaticamente, conforme decisão aprovada.
+- **Projeto 2:** a fila exclusiva abrange leituras e escritas do banco em memória; checkout, pagamento e auditoria são atômicos. Exclusão de usuário com matrículas retorna 409. Relatório financeiro e exclusão exigem token administrativo; o cadastro implícito de usuário novo no checkout exige senha.
+- **Projeto 3:** autenticação por token assinado vinculado à instância da conta, sem JWT; migração de MD5 no login bem-sucedido; restrições nas operações de conta; seed atômico; agrupamento de consultas. A presença prévia de Models e Routes não impediu a identificação e correção da mistura de responsabilidades.
+
+### Limitações e problemas remanescentes
+
+| Projeto | Principais limites documentados |
+|---|---|
+| 1 | F-13, F-14 e F-16 ficaram parcialmente corrigidos: seed automático e acesso ao contexto Flask pelos controllers; email sem validação de formato/unicidade; consulta de produto por item na criação do pedido. Bancos legados mantêm senhas em texto puro e não há rota de redefinição. Cancelamento não devolve estoque. Não há autenticação de usuário final nem teste de carga. Ver R-1 a R-10 na validação. |
+| 2 | A fila serializa as operações, sem medição de vazão/latência sob carga. O schema preservado não impõe unicidade de email. O checkout com email existente não verifica senha. A revisão de vulnerabilidades das dependências não integrou o escopo. |
+| 3 | Leituras e CRUD de tarefas/categorias continuam públicos; CORS aberto e ausência de limitação de tentativas de login permanecem. `Model.query` ainda é usado em consultas, embora `Query.get()` tenha sido removido. Email com quebra de linha final mantém o comportamento original; `ResourceWarning` não foi investigado; migração fora do SQLite não foi validada; o original não autentica hashes já migrados. |
+
+Os registros completos têm detalhes adicionais. A validação usou ambientes isolados e servidores de desenvolvimento/clientes de teste; não constitui homologação de produção. As decisões de compatibilidade e os limites de escopo não são classificados como correções concluídas de problemas que permaneceram.
+
+### Registro no Git
+
+| Marco | Commit |
+|---|---|
+| Referência da análise manual | `6d1ce6248c3e956801010a89d8bdaab48029bf30` |
+| Refatoração do projeto 1 | `209d251268b702c9dbb76e5d32139d861ed48889` |
+| Refatoração do projeto 2 | `f6eaae357672157858e16e4b58b49d0e6839a506` |
+| Refatoração do projeto 3 | `2104c2e` |
+| Formatação das evidências e permissão do relatório do projeto 3 | `c6098de` |
+
+Os commits de referência específicos de cada auditoria estão nos respectivos relatórios. O ajuste `c6098de` removeu espaços finais, uma linha vazia excedente e a permissão de execução do Markdown, sem mudança funcional.
 
 ## Como Executar
 
-**Pendente de preparação e validação.** A ferramenta escolhida é Claude Code. Os comandos definitivos para invocar a Skill em cada projeto, os pré-requisitos e as verificações dos endpoints serão registrados quando a Skill e os ambientes estiverem preparados. As instruções originais de inicialização de cada aplicação continuam nos respectivos READMEs.
+### Pré-requisitos
+
+- Git e Bash em Linux/WSL; clone com histórico disponível para reproduzir comparações com commits anteriores.
+- Claude Code instalado e configurado para executar a Skill; acesso ao modelo usado pela ferramenta.
+- Python com `venv`/`pip` para os projetos 1 e 3; Node.js/npm para o projeto 2. As execuções registradas pelo Claude usaram Python 3.14.0 e Node.js 20.20.0; versões das bibliotecas estão nas evidências de cada projeto.
+- Dependências instaladas separadamente: os projetos Flask usam versões diferentes e não compartilham um `requirements.txt` na raiz.
+
+### Invocar a Skill
+
+Partindo da raiz do repositório, execute **um** dos comandos abaixo, conforme o alvo:
+
+```bash
+(cd code-smells-project && claude "/refactor-arch")
+(cd ecommerce-api-legacy && claude "/refactor-arch")
+(cd task-manager-api && claude "/refactor-arch")
+```
+
+Na conversa, indique o destino correspondente: `reports/audit-project-1.md`, `reports/audit-project-2.md` ou `reports/audit-project-3.md`, e `reports/evidence/<nome-do-projeto>/` para as evidências. Os caminhos são relativos à raiz do repositório.
+
+A Skill apresenta análise e auditoria, solicita confirmação e aguarda as decisões pendentes. Só depois inicia a refatoração. Os relatórios desta entrega já existem: para uma nova execução, use outros destinos e uma cópia de trabalho separada, preservando as evidências atuais. Invocar a Skill no código final audita o refatorado; para reproduzir a auditoria original, use a versão de referência indicada em cada relatório e disponibilize nela uma cópia da Skill.
+
+### Inicializar as aplicações
+
+Os comandos abaixo partem da raiz do repositório, em terminais separados. Os ambientes Python ficam em `.venv/` na raiz, separados por projeto e fora dos diretórios copiados pelos runners de comparação. Configure as variáveis indicadas por cada `.env.example`; copiar esse arquivo para `.env` não substitui a exportação das variáveis nos comandos de execução direta. Use valores próprios para senhas e segredos, sem versioná-los.
+
+| Projeto | Configuração e comportamento |
+|---|---|
+| [1 — README](code-smells-project/README.md) / [.env.example](code-smells-project/.env.example) | `ADMIN_TOKEN` protege operações administrativas. `SEED_SENHA_ADMIN`, `SEED_SENHA_JOAO` e `SEED_SENHA_MARIA` definem as senhas dos usuários de demonstração. Configure `SECRET_KEY` para evitar a chave efêmera de desenvolvimento. Banco padrão `loja.db`; porta 5000. |
+| [2 — README](ecommerce-api-legacy/README.md) / [.env.example](ecommerce-api-legacy/.env.example) | `SEED_USER_PASSWORD` é obrigatória; `ADMIN_TOKEN` habilita operações administrativas. Banco em memória, reinicializado em cada execução; porta 3000. |
+| [3 — README](task-manager-api/README.md) / [.env.example](task-manager-api/.env.example) | `SECRET_KEY` obrigatória com pelo menos 32 caracteres. O seed exige `SEED_ADMIN_PASSWORD`, `SEED_USER_PASSWORD` e `SEED_MANAGER_PASSWORD`. Banco padrão `instance/tasks.db`; porta 5000. |
+
+Projeto 1, depois de exportar suas variáveis:
+
+```bash
+python3 -m venv .venv/projeto-1
+.venv/projeto-1/bin/python -m pip install -r code-smells-project/requirements.txt
+(cd code-smells-project && ../.venv/projeto-1/bin/python app.py)
+```
+
+Projeto 2, depois de exportar suas variáveis:
+
+```bash
+(cd ecommerce-api-legacy && npm ci && npm start)
+```
+
+Projeto 3, depois de exportar suas variáveis:
+
+```bash
+python3 -m venv .venv/projeto-3
+.venv/projeto-3/bin/python -m pip install -r task-manager-api/requirements.txt
+(cd task-manager-api && ../.venv/projeto-3/bin/python app.py)
+```
+
+Para carregar dados de demonstração no projeto 3, execute `(cd task-manager-api && ../.venv/projeto-3/bin/python seed.py)` **somente em banco de teste**: o comando apaga e recria usuários, categorias e tarefas em uma transação. Execute-o antes de iniciar a aplicação. Os dois projetos Flask usam a porta 5000 por padrão; execute um por vez ou configure outra `PORT`.
+
+### Reproduzir validações
+
+Os exemplos seguintes partem da raiz do repositório, com as dependências já instaladas. Não é necessário iniciar manualmente servidores para essas suítes.
+
+Projeto 1 — regressões automatizadas:
+
+```bash
+(cd code-smells-project && ../.venv/projeto-1/bin/python -B -m unittest discover -s tests -v)
+```
+
+Resultado registrado: 18 testes aprovados. A matriz HTTP e as verificações específicas estão descritas nas seções 12 e 13 de [validation.md](reports/evidence/code-smells-project/validation.md), com ferramentas preservadas em `rodada-2/tools/` e a reprodução adicional em `rodada-3/tools/`.
+
+Projeto 2 — testes controlados e testes do comparador:
+
+```bash
+REF_DIR="$PWD/ecommerce-api-legacy" node --test \
+  reports/evidence/ecommerce-api-legacy/tools/concurrency_rollback.test.js
+
+node --test reports/evidence/ecommerce-api-legacy/tools/compare.test.js
+```
+
+Resultados registrados: 21 e 18 testes aprovados, respectivamente. Os testes do comparador usam os registros preservados; não substituem nova execução da matriz da aplicação. A reprodução completa está em [commands.md](reports/evidence/ecommerce-api-legacy/commands.md), com as correções posteriores identificadas ao final.
+
+Projeto 3 — comparação completa em cópias isoladas, escrevendo fora das evidências versionadas:
+
+```bash
+resultado_p3="$(mktemp -d)"
+VENV="$PWD/.venv/projeto-3" \
+  bash reports/evidence/task-manager-api/rodada-3/tools/run_all.sh "$resultado_p3"
+```
+
+O runner usa o commit original indicado em `BASE_REF`, gera segredos de teste, exercita os 13 grupos e as verificações transversais, compara o inventário e executa os meta-testes. Sem `VENV`, cria um ambiente temporário e instala dependências. A saída zero indica aprovação das etapas; os detalhes ficam em `$resultado_p3`. O inventário de 377/400 casos é versionado e não deve ser regenerado automaticamente a partir da execução avaliada.
+
+Para conferir as aplicações em execução, use as matrizes e os exemplos de requisições documentados nos projetos. Os logs de inicialização vinculados em Resultados atendem ao registro de execução solicitado no enunciado.
 
 ## Enunciado original
 
