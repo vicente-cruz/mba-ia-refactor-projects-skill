@@ -1,0 +1,10 @@
+OK  | controle: resultados sem alteração | exit=0 (esperado 0)
+OK  | "POST /tasks minimo" removido das DUAS versões | exit=1 (esperado 1) | PROBLEMA: original/tasks_escrita: caso do inventário AUSENTE nos resultados: "POST /tasks minimo"
+OK  | "POST /tasks minimo" removido só do refatorado | exit=1 (esperado 1) | PROBLEMA: refatorado/tasks_escrita: caso do inventário AUSENTE nos resultados: "POST /tasks minimo"
+OK  | caso duplicado | exit=1 (esperado 1) | PROBLEMA: refatorado/seed_leitura: casos duplicados ['GET /tasks seed']
+OK  | grupo ausente | exit=1 (esperado 1) | PROBLEMA: refatorado/bigint: resultado ausente
+OK  | execução vazia | exit=1 (esperado 1) | PROBLEMA: original/vazio: execução vazia
+OK  | caso fora do inventário | exit=1 (esperado 1) | PROBLEMA: refatorado/vazio: caso FORA do inventário: "caso inventado"
+OK  | C-07: role do alvo → admin (arquivo) | exit=1 (esperado 1) | PROBLEMA: rollback/conflito forçado PUT /users/2: FALHA expectativa/verificação: refatorado: post.get.json.role: 'admin' != 'user'; refatorado: post.get: estado posterior difere do anterior
+OK  | C-07: post.counts.tasks → 0 (arquivo) | exit=1 (esperado 1) | PROBLEMA: rollback/conflito forçado PUT /users/2: FALHA expectativa/verificação: refatorado: post.counts: {'tasks': 0, 'users': 4, 'categories': 4} != {'tasks': 10, 'users': 4, 'categories': 4}
+OK  | C-07: campo extra no corpo de erro (arquivo) | exit=1 (esperado 1) | PROBLEMA: rollback/conflito forçado PUT /users/2: FALHA corpo de erro com campos além de "error" em C-07: {"error": "Email j\u00e1 cadastrado", "detalhe": "x"}

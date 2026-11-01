@@ -1,0 +1,70 @@
+{
+ "mode": "refatorado",
+ "group": "seed_falha",
+ "records": [
+  {
+   "name": "seed falha: exceção propagada",
+   "fact": "RuntimeError",
+   "cls": null,
+   "at_utc": "2026-10-31 22:56:47.430494",
+   "exp": {
+    "has": {
+     "fact": "RuntimeError"
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "seed falha: contagens antes",
+   "fact": {
+    "tasks": 11,
+    "users": 3,
+    "categories": 5
+   },
+   "cls": null,
+   "at_utc": "2026-10-31 22:56:47.433205",
+   "exp": {
+    "has": {
+     "fact": {
+      "tasks": 11,
+      "users": 3,
+      "categories": 5
+     }
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "seed falha: banco idêntico ao anterior",
+   "fact": true,
+   "cls": "F-06",
+   "at_utc": "2026-10-31 22:56:47.433853",
+   "exp": {
+    "has": {
+     "fact": true
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "seed falha: contagens depois",
+   "fact": {
+    "tasks": 11,
+    "users": 3,
+    "categories": 5
+   },
+   "cls": "F-06",
+   "at_utc": "2026-10-31 22:56:47.434252",
+   "exp": {
+    "has": {
+     "fact": {
+      "tasks": 11,
+      "users": 3,
+      "categories": 5
+     }
+    }
+   },
+   "errs": []
+  }
+ ]
+}

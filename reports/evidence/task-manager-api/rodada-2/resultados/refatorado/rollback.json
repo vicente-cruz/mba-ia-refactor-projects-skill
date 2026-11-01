@@ -1,0 +1,347 @@
+{
+ "mode": "refatorado",
+ "group": "rollback",
+ "records": [
+  {
+   "name": "conflito forçado POST /users",
+   "method": "POST",
+   "path": "/users",
+   "input": {
+    "name": "Conflito",
+    "email": "corrida@email.com",
+    "password": "<presente>"
+   },
+   "auth": null,
+   "resp": {
+    "status": 409,
+    "is_json": true,
+    "json": {
+     "error": "Email já cadastrado"
+    }
+   },
+   "at_utc": "2026-10-31 22:56:44.444097",
+   "at_local": "2026-10-31 19:56:44.444102",
+   "cls": "C-07",
+   "pre_state": "3802cde681e486e78c60",
+   "post_state": "9a56538b5ffd2e092681",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 4,
+     "categories": 4
+    }
+   },
+   "exp": {
+    "status": 409,
+    "error": "Email já cadastrado",
+    "has": {
+     "post.counts.users": 4
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "recuperação da aplicação após conflito",
+   "method": "GET",
+   "path": "/users",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": [
+     {
+      "active": true,
+      "created_at": "2026-10-31 22:56:44.161922",
+      "email": "joao@email.com",
+      "id": 1,
+      "name": "João Silva",
+      "role": "admin",
+      "task_count": 4
+     },
+     {
+      "active": true,
+      "created_at": "2026-10-31 22:56:44.161939",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "role": "user",
+      "task_count": 3
+     },
+     {
+      "active": true,
+      "created_at": "2026-10-31 22:56:44.161942",
+      "email": "pedro@email.com",
+      "id": 3,
+      "name": "Pedro Oliveira",
+      "role": "manager",
+      "task_count": 3
+     },
+     {
+      "active": true,
+      "created_at": "2026-10-31 22:56:44.527432",
+      "email": "corrida@email.com",
+      "id": 4,
+      "name": "Corrida",
+      "role": "user",
+      "task_count": 0
+     }
+    ]
+   },
+   "at_utc": "2026-10-31 22:56:44.539715",
+   "at_local": "2026-10-31 19:56:44.539717",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "len": {
+     "resp.json": 4
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "conflito forçado PUT /users/2",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": {
+    "email": "corrida2@email.com"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 409,
+    "is_json": true,
+    "json": {
+     "error": "Email já cadastrado"
+    }
+   },
+   "at_utc": "2026-10-31 22:56:45.047603",
+   "at_local": "2026-10-31 19:56:45.047608",
+   "cls": "C-07",
+   "pre_state": "2aa699f5f5cd76bb333c",
+   "post_state": "7d703fcff798d585bc5a",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 4,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 22:56:44.784781",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 22:56:44.785768",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 22:56:44.785071",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 22:56:44.785769",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 22:56:44.785774",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 22:56:44.785775",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 22:56:44.785777",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 22:56:44.785777",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "exp": {
+    "status": 409,
+    "error": "Email já cadastrado",
+    "has": {
+     "post.get.json.email": "maria@email.com"
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "recuperação da aplicação após conflito PUT",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": {
+    "name": "Ok"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "active": true,
+     "created_at": "2026-10-31 22:56:44.784781",
+     "email": "maria@email.com",
+     "id": 2,
+     "name": "Ok",
+     "role": "user"
+    }
+   },
+   "at_utc": "2026-10-31 22:56:45.063279",
+   "at_local": "2026-10-31 19:56:45.063282",
+   "cls": null,
+   "pre_state": "7d703fcff798d585bc5a",
+   "post_state": "ab761c47656bb9aef96c",
+   "exp": {
+    "status": 200,
+    "error": null,
+    "has": {
+     "resp.json.name": "Ok"
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "falha forçada de flush POST /tasks (induzida)",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Falha"
+   },
+   "auth": null,
+   "resp": {
+    "status": 500,
+    "is_json": true,
+    "json": {
+     "error": "Erro ao criar task"
+    }
+   },
+   "at_utc": "2026-10-31 22:56:45.581790",
+   "at_local": "2026-10-31 19:56:45.581796",
+   "cls": null,
+   "pre_state": "123c669753e8f815d069",
+   "post_state": "123c669753e8f815d069",
+   "exp": {
+    "status": 500,
+    "error": "Erro ao criar task",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "recuperação da aplicação após falha de flush",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Depois"
+   },
+   "auth": null,
+   "resp": {
+    "status": 201,
+    "is_json": true,
+    "json": {
+     "category_id": null,
+     "created_at": "2026-10-31 22:56:45.585349",
+     "description": "",
+     "due_date": null,
+     "id": 11,
+     "priority": 3,
+     "status": "pending",
+     "tags": [],
+     "title": "Depois",
+     "updated_at": "2026-10-31 22:56:45.585351",
+     "user_id": null
+    }
+   },
+   "at_utc": "2026-10-31 22:56:45.584213",
+   "at_local": "2026-10-31 19:56:45.584216",
+   "cls": null,
+   "pre_state": "123c669753e8f815d069",
+   "post_state": "c22cbcaf8079280c1861",
+   "exp": {
+    "status": 201,
+    "error": null,
+    "has": {
+     "resp.json.id": 11,
+     "resp.json.title": "Depois"
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "mesma sessão: ConflictError",
+   "fact": "Email já cadastrado",
+   "cls": null,
+   "at_utc": "2026-10-31 22:56:46.281489",
+   "only": "refatorado",
+   "exp": {
+    "has": {
+     "fact": "Email já cadastrado"
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "mesma sessão: mesmo objeto de sessão",
+   "fact": true,
+   "cls": null,
+   "at_utc": "2026-10-31 22:56:46.281578",
+   "only": "refatorado",
+   "exp": {
+    "has": {
+     "fact": true
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "mesma sessão: sessão ativa após rollback",
+   "fact": true,
+   "cls": null,
+   "at_utc": "2026-10-31 22:56:46.281612",
+   "only": "refatorado",
+   "exp": {
+    "has": {
+     "fact": true
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "mesma sessão: commit seguinte persistiu",
+   "fact": 1,
+   "cls": null,
+   "at_utc": "2026-10-31 22:56:46.281867",
+   "only": "refatorado",
+   "exp": {
+    "has": {
+     "fact": 1
+    }
+   },
+   "errs": []
+  }
+ ]
+}

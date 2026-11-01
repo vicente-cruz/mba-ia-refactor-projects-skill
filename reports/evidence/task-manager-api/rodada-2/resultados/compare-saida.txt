@@ -1,0 +1,1 @@
+{"registros_original": 377, "registros_refatorado": 400, "http_refatorado": 383, "fatos_refatorado": 17, "comparados": 377, "so_refatorado": 23, "preservados": 166, "intencionais": 211, "falhas": 0, "problemas": 0, "negativos": 30, "negativos_detectados": 30}

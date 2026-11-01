@@ -1,0 +1,12 @@
+{
+ "step": "segunda",
+ "antes_tem_coluna": true,
+ "depois_tem_coluna": true,
+ "usuarios": 3,
+ "nonces_nao_nulos": 3,
+ "nonces_distintos": 3,
+ "dados_preservados_exceto_nonce": true,
+ "nonces_inalterados": true,
+ "schema_inalterado": true,
+ "falhas": []
+}

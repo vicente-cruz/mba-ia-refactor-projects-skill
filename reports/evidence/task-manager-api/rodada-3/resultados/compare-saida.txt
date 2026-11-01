@@ -1,0 +1,1 @@
+{"registros_original": 377, "registros_refatorado": 400, "http_refatorado": 383, "fatos_refatorado": 17, "comparados": 377, "so_refatorado": 23, "preservados": 166, "intencionais": 211, "falhas": 0, "problemas": 0, "controles": 6, "controles_aprovados": 6, "mutacoes": 37, "mutacoes_detectadas": 37, "inventario_casos": {"original": 377, "refatorado": 400}}

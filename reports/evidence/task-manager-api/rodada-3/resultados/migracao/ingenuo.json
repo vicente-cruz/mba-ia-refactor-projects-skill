@@ -1,0 +1,8 @@
+{
+ "step": "ingenuo",
+ "antes_tem_coluna": false,
+ "erro": "RuntimeError",
+ "depois_tem_coluna": true,
+ "snapshot_identico": false,
+ "falhas": []
+}

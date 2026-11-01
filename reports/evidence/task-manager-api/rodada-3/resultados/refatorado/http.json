@@ -1,0 +1,527 @@
+{
+ "mode": "refatorado",
+ "group": "http",
+ "records": [
+  {
+   "name": "405 POST /",
+   "method": "POST",
+   "path": "/",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 405,
+    "is_json": true,
+    "json": {
+     "error": "Método não permitido"
+    },
+    "allow": [
+     "GET",
+     "HEAD",
+     "OPTIONS"
+    ]
+   },
+   "at_utc": "2026-10-31 23:31:40.100018",
+   "at_local": "2026-10-31 20:31:40.100026",
+   "cls": "M-03",
+   "pre_state": "4bfb80cf1341c1909f65",
+   "post_state": "4bfb80cf1341c1909f65",
+   "exp": {
+    "status": 405,
+    "error": "Método não permitido",
+    "has": {
+     "resp.allow": [
+      "GET",
+      "HEAD",
+      "OPTIONS"
+     ]
+    },
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "405 DELETE /tasks",
+   "method": "DELETE",
+   "path": "/tasks",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 405,
+    "is_json": true,
+    "json": {
+     "error": "Método não permitido"
+    },
+    "allow": [
+     "GET",
+     "HEAD",
+     "OPTIONS",
+     "POST"
+    ]
+   },
+   "at_utc": "2026-10-31 23:31:40.104533",
+   "at_local": "2026-10-31 20:31:40.104536",
+   "cls": "M-03",
+   "pre_state": "4bfb80cf1341c1909f65",
+   "post_state": "4bfb80cf1341c1909f65",
+   "exp": {
+    "status": 405,
+    "error": "Método não permitido",
+    "has": {
+     "resp.allow": [
+      "GET",
+      "HEAD",
+      "OPTIONS",
+      "POST"
+     ]
+    },
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "405 PATCH /tasks/1",
+   "method": "PATCH",
+   "path": "/tasks/1",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 405,
+    "is_json": true,
+    "json": {
+     "error": "Método não permitido"
+    },
+    "allow": [
+     "DELETE",
+     "GET",
+     "HEAD",
+     "OPTIONS",
+     "PUT"
+    ]
+   },
+   "at_utc": "2026-10-31 23:31:40.106085",
+   "at_local": "2026-10-31 20:31:40.106087",
+   "cls": "M-03",
+   "pre_state": "4bfb80cf1341c1909f65",
+   "post_state": "4bfb80cf1341c1909f65",
+   "exp": {
+    "status": 405,
+    "error": "Método não permitido",
+    "has": {
+     "resp.allow": [
+      "DELETE",
+      "GET",
+      "HEAD",
+      "OPTIONS",
+      "PUT"
+     ]
+    },
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/999 inexistente + json malformado",
+   "method": "PUT",
+   "path": "/tasks/999",
+   "input": "<raw>{\"title\": ",
+   "auth": null,
+   "resp": {
+    "status": 404,
+    "is_json": true,
+    "json": {
+     "error": "Task não encontrada"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:40.107661",
+   "at_local": "2026-10-31 20:31:40.107663",
+   "cls": null,
+   "pre_state": "4bfb80cf1341c1909f65",
+   "post_state": "4bfb80cf1341c1909f65",
+   "exp": {
+    "status": 404,
+    "error": "Task não encontrada",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /categories/999 inexistente + json malformado",
+   "method": "PUT",
+   "path": "/categories/999",
+   "input": "<raw>{\"title\": ",
+   "auth": null,
+   "resp": {
+    "status": 404,
+    "is_json": true,
+    "json": {
+     "error": "Categoria não encontrada"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:40.111241",
+   "at_local": "2026-10-31 20:31:40.111244",
+   "cls": null,
+   "pre_state": "4bfb80cf1341c1909f65",
+   "post_state": "4bfb80cf1341c1909f65",
+   "exp": {
+    "status": 404,
+    "error": "Categoria não encontrada",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /users/999 inexistente + json malformado",
+   "method": "PUT",
+   "path": "/users/999",
+   "input": "<raw>{\"title\": ",
+   "auth": "<bearer>",
+   "resp": {
+    "status": 404,
+    "is_json": true,
+    "json": {
+     "error": "Usuário não encontrado"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:40.113758",
+   "at_local": "2026-10-31 20:31:40.113760",
+   "cls": null,
+   "pre_state": "4bfb80cf1341c1909f65",
+   "post_state": "4bfb80cf1341c1909f65",
+   "exp": {
+    "status": 404,
+    "error": "Usuário não encontrado",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /users/999 anonimo + json malformado",
+   "method": "PUT",
+   "path": "/users/999",
+   "input": "<raw>{\"title\": ",
+   "auth": null,
+   "resp": {
+    "status": 401,
+    "is_json": true,
+    "json": {
+     "error": "Token ausente"
+    },
+    "www_authenticate": "Bearer"
+   },
+   "at_utc": "2026-10-31 23:31:40.116534",
+   "at_local": "2026-10-31 20:31:40.116536",
+   "cls": "D-1a",
+   "pre_state": "4bfb80cf1341c1909f65",
+   "post_state": "4bfb80cf1341c1909f65",
+   "exp": {
+    "status": 401,
+    "error": "Token ausente",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /users/2 anonimo + json malformado",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": "<raw>{\"title\": ",
+   "auth": null,
+   "resp": {
+    "status": 401,
+    "is_json": true,
+    "json": {
+     "error": "Token ausente"
+    },
+    "www_authenticate": "Bearer"
+   },
+   "at_utc": "2026-10-31 23:31:40.118283",
+   "at_local": "2026-10-31 20:31:40.118286",
+   "cls": "D-1a",
+   "pre_state": "4bfb80cf1341c1909f65",
+   "post_state": "4bfb80cf1341c1909f65",
+   "exp": {
+    "status": 401,
+    "error": "Token ausente",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 existente + json malformado",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": "<raw>{\"title\": ",
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:40.119865",
+   "at_local": "2026-10-31 20:31:40.119869",
+   "cls": "C-JSON",
+   "pre_state": "4bfb80cf1341c1909f65",
+   "post_state": "4bfb80cf1341c1909f65",
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /categories/1 existente + json malformado",
+   "method": "PUT",
+   "path": "/categories/1",
+   "input": "<raw>{\"title\": ",
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:40.122892",
+   "at_local": "2026-10-31 20:31:40.122900",
+   "cls": "C-JSON",
+   "pre_state": "4bfb80cf1341c1909f65",
+   "post_state": "4bfb80cf1341c1909f65",
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /users/2 existente + json malformado",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": "<raw>{\"title\": ",
+   "auth": "<bearer>",
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:40.126225",
+   "at_local": "2026-10-31 20:31:40.126233",
+   "cls": "C-JSON",
+   "pre_state": "4bfb80cf1341c1909f65",
+   "post_state": "4bfb80cf1341c1909f65",
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/999 inexistente + content-type texto",
+   "method": "PUT",
+   "path": "/tasks/999",
+   "input": "<raw>abc",
+   "auth": null,
+   "resp": {
+    "status": 404,
+    "is_json": true,
+    "json": {
+     "error": "Task não encontrada"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:40.128999",
+   "at_local": "2026-10-31 20:31:40.129001",
+   "cls": null,
+   "pre_state": "4bfb80cf1341c1909f65",
+   "post_state": "4bfb80cf1341c1909f65",
+   "exp": {
+    "status": 404,
+    "error": "Task não encontrada",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /categories/999 inexistente + content-type texto",
+   "method": "PUT",
+   "path": "/categories/999",
+   "input": "<raw>abc",
+   "auth": null,
+   "resp": {
+    "status": 404,
+    "is_json": true,
+    "json": {
+     "error": "Categoria não encontrada"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:40.130973",
+   "at_local": "2026-10-31 20:31:40.130976",
+   "cls": null,
+   "pre_state": "4bfb80cf1341c1909f65",
+   "post_state": "4bfb80cf1341c1909f65",
+   "exp": {
+    "status": 404,
+    "error": "Categoria não encontrada",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /users/999 inexistente + content-type texto",
+   "method": "PUT",
+   "path": "/users/999",
+   "input": "<raw>abc",
+   "auth": "<bearer>",
+   "resp": {
+    "status": 404,
+    "is_json": true,
+    "json": {
+     "error": "Usuário não encontrado"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:40.132931",
+   "at_local": "2026-10-31 20:31:40.132934",
+   "cls": null,
+   "pre_state": "4bfb80cf1341c1909f65",
+   "post_state": "4bfb80cf1341c1909f65",
+   "exp": {
+    "status": 404,
+    "error": "Usuário não encontrado",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /users/999 anonimo + content-type texto",
+   "method": "PUT",
+   "path": "/users/999",
+   "input": "<raw>abc",
+   "auth": null,
+   "resp": {
+    "status": 401,
+    "is_json": true,
+    "json": {
+     "error": "Token ausente"
+    },
+    "www_authenticate": "Bearer"
+   },
+   "at_utc": "2026-10-31 23:31:40.135115",
+   "at_local": "2026-10-31 20:31:40.135118",
+   "cls": "D-1a",
+   "pre_state": "4bfb80cf1341c1909f65",
+   "post_state": "4bfb80cf1341c1909f65",
+   "exp": {
+    "status": 401,
+    "error": "Token ausente",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /users/2 anonimo + content-type texto",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": "<raw>abc",
+   "auth": null,
+   "resp": {
+    "status": 401,
+    "is_json": true,
+    "json": {
+     "error": "Token ausente"
+    },
+    "www_authenticate": "Bearer"
+   },
+   "at_utc": "2026-10-31 23:31:40.136644",
+   "at_local": "2026-10-31 20:31:40.136647",
+   "cls": "D-1a",
+   "pre_state": "4bfb80cf1341c1909f65",
+   "post_state": "4bfb80cf1341c1909f65",
+   "exp": {
+    "status": 401,
+    "error": "Token ausente",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 existente + content-type texto",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": "<raw>abc",
+   "auth": null,
+   "resp": {
+    "status": 415,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:40.138097",
+   "at_local": "2026-10-31 20:31:40.138099",
+   "cls": "C-JSON",
+   "pre_state": "4bfb80cf1341c1909f65",
+   "post_state": "4bfb80cf1341c1909f65",
+   "exp": {
+    "status": 415,
+    "error": "Dados inválidos",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /categories/1 existente + content-type texto",
+   "method": "PUT",
+   "path": "/categories/1",
+   "input": "<raw>abc",
+   "auth": null,
+   "resp": {
+    "status": 415,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:40.140055",
+   "at_local": "2026-10-31 20:31:40.140058",
+   "cls": "C-JSON",
+   "pre_state": "4bfb80cf1341c1909f65",
+   "post_state": "4bfb80cf1341c1909f65",
+   "exp": {
+    "status": 415,
+    "error": "Dados inválidos",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /users/2 existente + content-type texto",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": "<raw>abc",
+   "auth": "<bearer>",
+   "resp": {
+    "status": 415,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:40.141961",
+   "at_local": "2026-10-31 20:31:40.141963",
+   "cls": "C-JSON",
+   "pre_state": "4bfb80cf1341c1909f65",
+   "post_state": "4bfb80cf1341c1909f65",
+   "exp": {
+    "status": 415,
+    "error": "Dados inválidos",
+    "unchanged": true
+   },
+   "errs": []
+  }
+ ]
+}

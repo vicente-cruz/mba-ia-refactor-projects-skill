@@ -1,0 +1,20 @@
+# CLI do seed
+## seed-original
+<tmp>/base/original/seed.py:66: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: da…
+<tmp>/base/original/seed.py:67: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: da…
+<tmp>/base/original/seed.py:69: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: da…
+<tmp>/base/original/seed.py:70: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: da…
+<tmp>/base/original/seed.py:74: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: da…
+Seed concluído com sucesso!
+  3 usuários
+  4 categorias
+  10 tasks
+## seed-refatorado
+Seed concluído com sucesso!
+  3 usuários
+  4 categorias
+  10 tasks
+## seed-sem-var
+Seed não executado: variáveis ausentes ou com menos de 4 caracteres: SEED_USER_PASSWORD
+## seed-sem-chave
+Erro de configuração: SECRET_KEY ausente ou com menos de 32 caracteres

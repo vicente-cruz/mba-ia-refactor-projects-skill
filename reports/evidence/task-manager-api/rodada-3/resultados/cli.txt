@@ -1,0 +1,21 @@
+importação original: ok (original/app.py); arquivos novos: ./instance/tasks.db 
+importação refatorado: ok (refatorado/app.py); arquivos novos: nenhum
+controle: python -I sem inserir o caminho → exit 1 (esperado 1)
+inicialização chave='<ausente>': exit=2; banco criado? não; msg: Erro de configuração: SECRET_KEY ausente ou com menos de 32 caracteres
+inicialização chave='curta-demais': exit=2; banco criado? não; msg: Erro de configuração: SECRET_KEY ausente ou com menos de 32 caracteres
+inicialização refatorado (porta livre):
+  health: 200; escuta: 127.0.0.1:47819 
+  porta liberada
+  * Debug mode: off
+  * Running on http://127.0.0.1:<porta>
+inicialização original (porta 5000 fixa):
+  health: 200; escuta: 0.0.0.0:5000 
+  porta liberada
+  * Debug mode: on
+  * Running on all addresses (0.0.0.0)
+  * Running on http://127.0.0.1:5000
+  * Debugger is active!
+seed normal original: exit=0; Seed concluído com sucesso!   3 usuários   4 categorias   10 tasks 
+seed normal refatorado: exit=0; Seed concluído com sucesso!   3 usuários   4 categorias   10 tasks 
+seed sem SEED_USER_PASSWORD: exit=1; banco idêntico? sim; msg: Seed não executado: variáveis ausentes ou com menos de 4 caracteres: SEED_USER_PASSWORD
+seed sem SECRET_KEY: exit=2; banco idêntico? sim; msg: Erro de configuração: SECRET_KEY ausente ou com menos de 32 caracteres

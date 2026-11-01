@@ -1,0 +1,100 @@
+# Migração users.auth_nonce — resultados brutos de harness/mig.py
+## original_le_base
+{
+ "step": "leitura_original",
+ "antes_tem_coluna": false,
+ "leituras": {
+  "/users": {
+   "status": 200,
+   "digest": "<removido><removido>"
+  },
+  "/tasks": {
+   "status": 200,
+   "digest": "<removido><removido>"
+  },
+  "/users/1": {
+   "status": 200,
+   "digest": "<removido><removido>"
+  },
+  "/categories": {
+   "status": 200,
+   "digest": "<removido><removido>"
+  },
+  "/reports/summary": {
+   "status": 200,
+   "digest": "<removido><removido>"
+  }
+ }
+}
+## falha
+{
+ "step": "falha",
+ "antes_tem_coluna": false,
+ "erro": "RuntimeError",
+ "chamadas_ao_gerador": 2,
+ "depois_tem_coluna": false,
+ "snapshot_identico": true,
+ "schema_identico": true
+}
+## ingenuo
+{
+ "step": "ingenuo",
+ "antes_tem_coluna": false,
+ "erro": "RuntimeError",
+ "depois_tem_coluna": true,
+ "snapshot_identico": false
+}
+## normal
+{
+ "step": "normal",
+ "antes_tem_coluna": false,
+ "depois_tem_coluna": true,
+ "usuarios": 3,
+ "nonces_nao_nulos": 3,
+ "nonces_distintos": 3,
+ "dados_preservados_exceto_nonce": true,
+ "login_admin_md5_legado": 200,
+ "hash_admin_apos_login": "werkzeug-scrypt",
+ "nonce_admin_inalterado_pelo_login": true
+}
+## segunda
+{
+ "step": "segunda",
+ "antes_tem_coluna": true,
+ "depois_tem_coluna": true,
+ "usuarios": 3,
+ "nonces_nao_nulos": 3,
+ "nonces_distintos": 3,
+ "dados_preservados_exceto_nonce": true,
+ "nonces_inalterados": true,
+ "schema_inalterado": true
+}
+## original_le_migrado
+{
+ "step": "leitura_original",
+ "antes_tem_coluna": true,
+ "leituras": {
+  "/users": {
+   "status": 200,
+   "digest": "<removido><removido>"
+  },
+  "/tasks": {
+   "status": 200,
+   "digest": "<removido><removido>"
+  },
+  "/users/1": {
+   "status": 200,
+   "digest": "<removido><removido>"
+  },
+  "/categories": {
+   "status": 200,
+   "digest": "<removido><removido>"
+  },
+  "/reports/summary": {
+   "status": 200,
+   "digest": "<removido><removido>"
+  }
+ }
+}
+## stderr
+2026-10-31 18:56:45,908 INFO task_manager: Migração aplicada: coluna users.auth_nonce adicionada

@@ -1,0 +1,13 @@
+auth: 33 registros; com falha: 0
+bigint: 16 registros; com falha: 0
+bordas: 12 registros; com falha: 0
+categories_escrita: 33 registros; com falha: 0
+ciclo_token: 29 registros; com falha: 0
+fronteira7: 1 registros; com falha: 0
+http: 19 registros; com falha: 0
+rollback: 6 registros; com falha: 0
+seed_falha: 4 registros; com falha: 0
+seed_leitura: 35 registros; com falha: 0
+tasks_escrita: 118 registros; com falha: 0
+users_escrita: 65 registros; com falha: 0
+vazio: 6 registros; com falha: 0

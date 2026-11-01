@@ -1,0 +1,8235 @@
+{
+ "mode": "refatorado",
+ "group": "tasks_escrita",
+ "records": [
+  {
+   "name": "POST /tasks minimo",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Nova task"
+   },
+   "auth": null,
+   "resp": {
+    "status": 201,
+    "is_json": true,
+    "json": {
+     "category_id": null,
+     "created_at": "2026-10-31 23:31:48.358515",
+     "description": "",
+     "due_date": null,
+     "id": 11,
+     "priority": 3,
+     "status": "pending",
+     "tags": [],
+     "title": "Nova task",
+     "updated_at": "2026-10-31 23:31:48.358529",
+     "user_id": null
+    }
+   },
+   "at_utc": "2026-10-31 23:31:48.356704",
+   "at_local": "2026-10-31 20:31:48.356710",
+   "cls": null,
+   "pre_state": "f17ac8743ed6a384750a",
+   "post_state": "b22710d1cfa8ddaa55b0",
+   "post": {
+    "counts": {
+     "tasks": 11,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": null,
+      "created_at": "2026-10-31 23:31:48.358515",
+      "description": "",
+      "due_date": null,
+      "id": 11,
+      "overdue": false,
+      "priority": 3,
+      "status": "pending",
+      "tags": [],
+      "title": "Nova task",
+      "updated_at": "2026-10-31 23:31:48.358529",
+      "user_id": null
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 201,
+    "error": null,
+    "has": {
+     "resp.json.id": 11,
+     "post.counts.tasks": 11,
+     "post.get.json.id": 11,
+     "resp.json.title": "Nova task",
+     "resp.json.status": "pending",
+     "resp.json.priority": 3,
+     "resp.json.description": "",
+     "resp.json.tags": [],
+     "resp.json.user_id": null,
+     "resp.json.category_id": null,
+     "resp.json.due_date": null,
+     "post.get.json.title": "Nova task",
+     "post.get.json.status": "pending",
+     "post.get.json.priority": 3,
+     "post.get.json.description": "",
+     "post.get.json.tags": [],
+     "post.get.json.user_id": null,
+     "post.get.json.category_id": null,
+     "post.get.json.due_date": null
+    },
+    "ts": {
+     "resp.json.created_at": [
+      0,
+      120
+     ],
+     "resp.json.updated_at": [
+      0,
+      120
+     ]
+    },
+    "changed": true,
+    "keys": {
+     "resp.json": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks completo",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Completa",
+    "description": "d",
+    "status": "in_progress",
+    "priority": 2,
+    "user_id": 1,
+    "category_id": 1,
+    "due_date": "2030-01-15",
+    "tags": [
+     "a",
+     "b"
+    ]
+   },
+   "auth": null,
+   "resp": {
+    "status": 201,
+    "is_json": true,
+    "json": {
+     "category_id": 1,
+     "created_at": "2026-10-31 23:31:48.880542",
+     "description": "d",
+     "due_date": "2030-01-15 00:00:00",
+     "id": 11,
+     "priority": 2,
+     "status": "in_progress",
+     "tags": [
+      "a",
+      "b"
+     ],
+     "title": "Completa",
+     "updated_at": "2026-10-31 23:31:48.880545",
+     "user_id": 1
+    }
+   },
+   "at_utc": "2026-10-31 23:31:48.877937",
+   "at_local": "2026-10-31 20:31:48.877943",
+   "cls": null,
+   "pre_state": "cf86a0254f1313fe45e4",
+   "post_state": "596052ef27c12421daae",
+   "post": {
+    "counts": {
+     "tasks": 11,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:31:48.880542",
+      "description": "d",
+      "due_date": "2030-01-15 00:00:00",
+      "id": 11,
+      "overdue": false,
+      "priority": 2,
+      "status": "in_progress",
+      "tags": [
+       "a",
+       "b"
+      ],
+      "title": "Completa",
+      "updated_at": "2026-10-31 23:31:48.880545",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 201,
+    "error": null,
+    "has": {
+     "resp.json.id": 11,
+     "post.counts.tasks": 11,
+     "post.get.json.id": 11,
+     "resp.json.title": "Completa",
+     "resp.json.description": "d",
+     "resp.json.status": "in_progress",
+     "resp.json.priority": 2,
+     "resp.json.user_id": 1,
+     "resp.json.category_id": 1,
+     "resp.json.due_date": "2030-01-15 00:00:00",
+     "resp.json.tags": [
+      "a",
+      "b"
+     ],
+     "post.get.json.title": "Completa",
+     "post.get.json.description": "d",
+     "post.get.json.status": "in_progress",
+     "post.get.json.priority": 2,
+     "post.get.json.user_id": 1,
+     "post.get.json.category_id": 1,
+     "post.get.json.due_date": "2030-01-15 00:00:00",
+     "post.get.json.tags": [
+      "a",
+      "b"
+     ]
+    },
+    "ts": {
+     "resp.json.created_at": [
+      0,
+      120
+     ],
+     "resp.json.updated_at": [
+      0,
+      120
+     ]
+    },
+    "changed": true,
+    "keys": {
+     "resp.json": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks title 200",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"
+   },
+   "auth": null,
+   "resp": {
+    "status": 201,
+    "is_json": true,
+    "json": {
+     "category_id": null,
+     "created_at": "2026-10-31 23:31:49.401249",
+     "description": "",
+     "due_date": null,
+     "id": 11,
+     "priority": 3,
+     "status": "pending",
+     "tags": [],
+     "title": "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+     "updated_at": "2026-10-31 23:31:49.401252",
+     "user_id": null
+    }
+   },
+   "at_utc": "2026-10-31 23:31:49.400615",
+   "at_local": "2026-10-31 20:31:49.400621",
+   "cls": null,
+   "pre_state": "5f2d3fb1eb98f7befbf2",
+   "post_state": "ab7a374b6a564158fe9e",
+   "post": {
+    "counts": {
+     "tasks": 11,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": null,
+      "created_at": "2026-10-31 23:31:49.401249",
+      "description": "",
+      "due_date": null,
+      "id": 11,
+      "overdue": false,
+      "priority": 3,
+      "status": "pending",
+      "tags": [],
+      "title": "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+      "updated_at": "2026-10-31 23:31:49.401252",
+      "user_id": null
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 201,
+    "error": null,
+    "has": {
+     "resp.json.id": 11,
+     "post.counts.tasks": 11,
+     "post.get.json.id": 11,
+     "resp.json.title": "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+     "post.get.json.title": "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"
+    },
+    "ts": {
+     "resp.json.created_at": [
+      0,
+      120
+     ],
+     "resp.json.updated_at": [
+      0,
+      120
+     ]
+    },
+    "changed": true,
+    "keys": {
+     "resp.json": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks description null",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "description": null
+   },
+   "auth": null,
+   "resp": {
+    "status": 201,
+    "is_json": true,
+    "json": {
+     "category_id": null,
+     "created_at": "2026-10-31 23:31:49.913924",
+     "description": null,
+     "due_date": null,
+     "id": 11,
+     "priority": 3,
+     "status": "pending",
+     "tags": [],
+     "title": "Título válido",
+     "updated_at": "2026-10-31 23:31:49.913928",
+     "user_id": null
+    }
+   },
+   "at_utc": "2026-10-31 23:31:49.913264",
+   "at_local": "2026-10-31 20:31:49.913269",
+   "cls": null,
+   "pre_state": "733f1c70b44b5cd0b312",
+   "post_state": "c51ad65338a51cdb6dbd",
+   "post": {
+    "counts": {
+     "tasks": 11,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": null,
+      "created_at": "2026-10-31 23:31:49.913924",
+      "description": null,
+      "due_date": null,
+      "id": 11,
+      "overdue": false,
+      "priority": 3,
+      "status": "pending",
+      "tags": [],
+      "title": "Título válido",
+      "updated_at": "2026-10-31 23:31:49.913928",
+      "user_id": null
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 201,
+    "error": null,
+    "has": {
+     "resp.json.id": 11,
+     "post.counts.tasks": 11,
+     "post.get.json.id": 11,
+     "resp.json.description": null,
+     "post.get.json.description": null
+    },
+    "ts": {
+     "resp.json.created_at": [
+      0,
+      120
+     ],
+     "resp.json.updated_at": [
+      0,
+      120
+     ]
+    },
+    "changed": true,
+    "keys": {
+     "resp.json": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks priority 2.0",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "priority": 2.0
+   },
+   "auth": null,
+   "resp": {
+    "status": 201,
+    "is_json": true,
+    "json": {
+     "category_id": null,
+     "created_at": "2026-10-31 23:31:50.432901",
+     "description": "",
+     "due_date": null,
+     "id": 11,
+     "priority": 2,
+     "status": "pending",
+     "tags": [],
+     "title": "Título válido",
+     "updated_at": "2026-10-31 23:31:50.432904",
+     "user_id": null
+    }
+   },
+   "at_utc": "2026-10-31 23:31:50.432242",
+   "at_local": "2026-10-31 20:31:50.432247",
+   "cls": null,
+   "pre_state": "a9845c4b64f24163cd26",
+   "post_state": "6d89cf61636fc1965e0c",
+   "post": {
+    "counts": {
+     "tasks": 11,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": null,
+      "created_at": "2026-10-31 23:31:50.432901",
+      "description": "",
+      "due_date": null,
+      "id": 11,
+      "overdue": false,
+      "priority": 2,
+      "status": "pending",
+      "tags": [],
+      "title": "Título válido",
+      "updated_at": "2026-10-31 23:31:50.432904",
+      "user_id": null
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 201,
+    "error": null,
+    "has": {
+     "resp.json.id": 11,
+     "post.counts.tasks": 11,
+     "post.get.json.id": 11,
+     "resp.json.priority": 2,
+     "post.get.json.priority": 2
+    },
+    "ts": {
+     "resp.json.created_at": [
+      0,
+      120
+     ],
+     "resp.json.updated_at": [
+      0,
+      120
+     ]
+    },
+    "changed": true,
+    "keys": {
+     "resp.json": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks due_date sem zero",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "due_date": "2030-1-5"
+   },
+   "auth": null,
+   "resp": {
+    "status": 201,
+    "is_json": true,
+    "json": {
+     "category_id": null,
+     "created_at": "2026-10-31 23:31:50.950639",
+     "description": "",
+     "due_date": "2030-01-05 00:00:00",
+     "id": 11,
+     "priority": 3,
+     "status": "pending",
+     "tags": [],
+     "title": "Título válido",
+     "updated_at": "2026-10-31 23:31:50.950642",
+     "user_id": null
+    }
+   },
+   "at_utc": "2026-10-31 23:31:50.949964",
+   "at_local": "2026-10-31 20:31:50.949969",
+   "cls": null,
+   "pre_state": "b912e37845d73a109d55",
+   "post_state": "6d042686132fb6e7d0d0",
+   "post": {
+    "counts": {
+     "tasks": 11,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": null,
+      "created_at": "2026-10-31 23:31:50.950639",
+      "description": "",
+      "due_date": "2030-01-05 00:00:00",
+      "id": 11,
+      "overdue": false,
+      "priority": 3,
+      "status": "pending",
+      "tags": [],
+      "title": "Título válido",
+      "updated_at": "2026-10-31 23:31:50.950642",
+      "user_id": null
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 201,
+    "error": null,
+    "has": {
+     "resp.json.id": 11,
+     "post.counts.tasks": 11,
+     "post.get.json.id": 11,
+     "resp.json.due_date": "2030-01-05 00:00:00",
+     "post.get.json.due_date": "2030-01-05 00:00:00"
+    },
+    "ts": {
+     "resp.json.created_at": [
+      0,
+      120
+     ],
+     "resp.json.updated_at": [
+      0,
+      120
+     ]
+    },
+    "changed": true,
+    "keys": {
+     "resp.json": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks due_date \"\"",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "due_date": ""
+   },
+   "auth": null,
+   "resp": {
+    "status": 201,
+    "is_json": true,
+    "json": {
+     "category_id": null,
+     "created_at": "2026-10-31 23:31:51.541644",
+     "description": "",
+     "due_date": null,
+     "id": 11,
+     "priority": 3,
+     "status": "pending",
+     "tags": [],
+     "title": "Título válido",
+     "updated_at": "2026-10-31 23:31:51.541647",
+     "user_id": null
+    }
+   },
+   "at_utc": "2026-10-31 23:31:51.540919",
+   "at_local": "2026-10-31 20:31:51.540924",
+   "cls": null,
+   "pre_state": "df6bfbad34c51e18a917",
+   "post_state": "4c5a8d1c52f4058bd1cc",
+   "post": {
+    "counts": {
+     "tasks": 11,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": null,
+      "created_at": "2026-10-31 23:31:51.541644",
+      "description": "",
+      "due_date": null,
+      "id": 11,
+      "overdue": false,
+      "priority": 3,
+      "status": "pending",
+      "tags": [],
+      "title": "Título válido",
+      "updated_at": "2026-10-31 23:31:51.541647",
+      "user_id": null
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 201,
+    "error": null,
+    "has": {
+     "resp.json.id": 11,
+     "post.counts.tasks": 11,
+     "post.get.json.id": 11,
+     "resp.json.due_date": null,
+     "post.get.json.due_date": null
+    },
+    "ts": {
+     "resp.json.created_at": [
+      0,
+      120
+     ],
+     "resp.json.updated_at": [
+      0,
+      120
+     ]
+    },
+    "changed": true,
+    "keys": {
+     "resp.json": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks tags elemento vazio",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "tags": [
+     "",
+     "x"
+    ]
+   },
+   "auth": null,
+   "resp": {
+    "status": 201,
+    "is_json": true,
+    "json": {
+     "category_id": null,
+     "created_at": "2026-10-31 23:31:52.085305",
+     "description": "",
+     "due_date": null,
+     "id": 11,
+     "priority": 3,
+     "status": "pending",
+     "tags": [
+      "",
+      "x"
+     ],
+     "title": "Título válido",
+     "updated_at": "2026-10-31 23:31:52.085308",
+     "user_id": null
+    }
+   },
+   "at_utc": "2026-10-31 23:31:52.084654",
+   "at_local": "2026-10-31 20:31:52.084658",
+   "cls": null,
+   "pre_state": "39732f08cdc9f3218d58",
+   "post_state": "dfa7e9222c0d92b1a5f8",
+   "post": {
+    "counts": {
+     "tasks": 11,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": null,
+      "created_at": "2026-10-31 23:31:52.085305",
+      "description": "",
+      "due_date": null,
+      "id": 11,
+      "overdue": false,
+      "priority": 3,
+      "status": "pending",
+      "tags": [
+       "",
+       "x"
+      ],
+      "title": "Título válido",
+      "updated_at": "2026-10-31 23:31:52.085308",
+      "user_id": null
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 201,
+    "error": null,
+    "has": {
+     "resp.json.id": 11,
+     "post.counts.tasks": 11,
+     "post.get.json.id": 11,
+     "resp.json.tags": [
+      "",
+      "x"
+     ],
+     "post.get.json.tags": [
+      "",
+      "x"
+     ]
+    },
+    "ts": {
+     "resp.json.created_at": [
+      0,
+      120
+     ],
+     "resp.json.updated_at": [
+      0,
+      120
+     ]
+    },
+    "changed": true,
+    "keys": {
+     "resp.json": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks tags string",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "tags": "a,b"
+   },
+   "auth": null,
+   "resp": {
+    "status": 201,
+    "is_json": true,
+    "json": {
+     "category_id": null,
+     "created_at": "2026-10-31 23:31:52.636608",
+     "description": "",
+     "due_date": null,
+     "id": 11,
+     "priority": 3,
+     "status": "pending",
+     "tags": [
+      "a",
+      "b"
+     ],
+     "title": "Título válido",
+     "updated_at": "2026-10-31 23:31:52.636610",
+     "user_id": null
+    }
+   },
+   "at_utc": "2026-10-31 23:31:52.635995",
+   "at_local": "2026-10-31 20:31:52.635999",
+   "cls": null,
+   "pre_state": "1a0687c28e163983a04d",
+   "post_state": "d06d194e1ec45d09e783",
+   "post": {
+    "counts": {
+     "tasks": 11,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": null,
+      "created_at": "2026-10-31 23:31:52.636608",
+      "description": "",
+      "due_date": null,
+      "id": 11,
+      "overdue": false,
+      "priority": 3,
+      "status": "pending",
+      "tags": [
+       "a",
+       "b"
+      ],
+      "title": "Título válido",
+      "updated_at": "2026-10-31 23:31:52.636610",
+      "user_id": null
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 201,
+    "error": null,
+    "has": {
+     "resp.json.id": 11,
+     "post.counts.tasks": 11,
+     "post.get.json.id": 11,
+     "resp.json.tags": [
+      "a",
+      "b"
+     ],
+     "post.get.json.tags": [
+      "a",
+      "b"
+     ]
+    },
+    "ts": {
+     "resp.json.created_at": [
+      0,
+      120
+     ],
+     "resp.json.updated_at": [
+      0,
+      120
+     ]
+    },
+    "changed": true,
+    "keys": {
+     "resp.json": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks tags 0 (POST: falso = sem tags)",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "tags": 0
+   },
+   "auth": null,
+   "resp": {
+    "status": 201,
+    "is_json": true,
+    "json": {
+     "category_id": null,
+     "created_at": "2026-10-31 23:31:53.212261",
+     "description": "",
+     "due_date": null,
+     "id": 11,
+     "priority": 3,
+     "status": "pending",
+     "tags": [],
+     "title": "Título válido",
+     "updated_at": "2026-10-31 23:31:53.212266",
+     "user_id": null
+    }
+   },
+   "at_utc": "2026-10-31 23:31:53.211150",
+   "at_local": "2026-10-31 20:31:53.211156",
+   "cls": null,
+   "pre_state": "017a1d9e2ff584deee4d",
+   "post_state": "195589297ce676f28d6f",
+   "post": {
+    "counts": {
+     "tasks": 11,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": null,
+      "created_at": "2026-10-31 23:31:53.212261",
+      "description": "",
+      "due_date": null,
+      "id": 11,
+      "overdue": false,
+      "priority": 3,
+      "status": "pending",
+      "tags": [],
+      "title": "Título válido",
+      "updated_at": "2026-10-31 23:31:53.212266",
+      "user_id": null
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 201,
+    "error": null,
+    "has": {
+     "resp.json.id": 11,
+     "post.counts.tasks": 11,
+     "post.get.json.id": 11,
+     "resp.json.tags": [],
+     "post.get.json.tags": []
+    },
+    "ts": {
+     "resp.json.created_at": [
+      0,
+      120
+     ],
+     "resp.json.updated_at": [
+      0,
+      120
+     ]
+    },
+    "changed": true,
+    "keys": {
+     "resp.json": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks campos extras",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "id": 77,
+    "created_at": "x",
+    "auth_nonce": "<presente>"
+   },
+   "auth": null,
+   "resp": {
+    "status": 201,
+    "is_json": true,
+    "json": {
+     "category_id": null,
+     "created_at": "2026-10-31 23:31:53.756511",
+     "description": "",
+     "due_date": null,
+     "id": 11,
+     "priority": 3,
+     "status": "pending",
+     "tags": [],
+     "title": "Título válido",
+     "updated_at": "2026-10-31 23:31:53.756515",
+     "user_id": null
+    }
+   },
+   "at_utc": "2026-10-31 23:31:53.755691",
+   "at_local": "2026-10-31 20:31:53.755697",
+   "cls": null,
+   "pre_state": "f50a4ad2eae65d69c06b",
+   "post_state": "45d922345f4dfdca1534",
+   "post": {
+    "counts": {
+     "tasks": 11,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": null,
+      "created_at": "2026-10-31 23:31:53.756511",
+      "description": "",
+      "due_date": null,
+      "id": 11,
+      "overdue": false,
+      "priority": 3,
+      "status": "pending",
+      "tags": [],
+      "title": "Título válido",
+      "updated_at": "2026-10-31 23:31:53.756515",
+      "user_id": null
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 201,
+    "error": null,
+    "has": {
+     "resp.json.id": 11,
+     "post.counts.tasks": 11,
+     "post.get.json.id": 11,
+     "resp.json.title": "Título válido",
+     "post.get.json.title": "Título válido"
+    },
+    "ts": {
+     "resp.json.created_at": [
+      0,
+      120
+     ],
+     "resp.json.updated_at": [
+      0,
+      120
+     ]
+    },
+    "changed": true,
+    "keys": {
+     "resp.json": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks corpo null",
+   "method": "POST",
+   "path": "/tasks",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:54.285382",
+   "at_local": "2026-10-31 20:31:54.285387",
+   "cls": null,
+   "pre_state": "fdd7915fb235eca82672",
+   "post_state": "fdd7915fb235eca82672",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks corpo {}",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {},
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:54.815497",
+   "at_local": "2026-10-31 20:31:54.815505",
+   "cls": null,
+   "pre_state": "99a3129d5f3367167a70",
+   "post_state": "99a3129d5f3367167a70",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks corpo []",
+   "method": "POST",
+   "path": "/tasks",
+   "input": [],
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:55.362277",
+   "at_local": "2026-10-31 20:31:55.362282",
+   "cls": null,
+   "pre_state": "e12708e7e63565f9e9f3",
+   "post_state": "e12708e7e63565f9e9f3",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks corpo \"\"",
+   "method": "POST",
+   "path": "/tasks",
+   "input": "",
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:55.884169",
+   "at_local": "2026-10-31 20:31:55.884174",
+   "cls": null,
+   "pre_state": "85d35a45b01043082ccc",
+   "post_state": "85d35a45b01043082ccc",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks corpo 0",
+   "method": "POST",
+   "path": "/tasks",
+   "input": 0,
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:56.412277",
+   "at_local": "2026-10-31 20:31:56.412284",
+   "cls": null,
+   "pre_state": "b0cac42c353fca08e558",
+   "post_state": "b0cac42c353fca08e558",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks corpo false",
+   "method": "POST",
+   "path": "/tasks",
+   "input": false,
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:56.920662",
+   "at_local": "2026-10-31 20:31:56.920667",
+   "cls": null,
+   "pre_state": "f7844675fa18f367f70d",
+   "post_state": "f7844675fa18f367f70d",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks corpo [1]",
+   "method": "POST",
+   "path": "/tasks",
+   "input": [
+    1
+   ],
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:57.447803",
+   "at_local": "2026-10-31 20:31:57.447808",
+   "cls": "C-01",
+   "pre_state": "81fc47fc69afe8643934",
+   "post_state": "81fc47fc69afe8643934",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks corpo \"x\"",
+   "method": "POST",
+   "path": "/tasks",
+   "input": "x",
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:57.960574",
+   "at_local": "2026-10-31 20:31:57.960579",
+   "cls": "C-01",
+   "pre_state": "de7754b410705b013fcb",
+   "post_state": "de7754b410705b013fcb",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks corpo 5",
+   "method": "POST",
+   "path": "/tasks",
+   "input": 5,
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:58.475910",
+   "at_local": "2026-10-31 20:31:58.475915",
+   "cls": "C-01",
+   "pre_state": "22dcacaf87377e7282c1",
+   "post_state": "22dcacaf87377e7282c1",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks corpo true",
+   "method": "POST",
+   "path": "/tasks",
+   "input": true,
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:58.984615",
+   "at_local": "2026-10-31 20:31:58.984620",
+   "cls": "C-01",
+   "pre_state": "f8c9522ab915ab5a6bd3",
+   "post_state": "f8c9522ab915ab5a6bd3",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks title ausente",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "priority": 2
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Título é obrigatório"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:59.518352",
+   "at_local": "2026-10-31 20:31:59.518356",
+   "cls": null,
+   "pre_state": "1a93bc87a33878d4a218",
+   "post_state": "1a93bc87a33878d4a218",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Título é obrigatório",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks title null",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": null
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Título é obrigatório"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:00.056090",
+   "at_local": "2026-10-31 20:32:00.056095",
+   "cls": null,
+   "pre_state": "1043d1b50b85349816d8",
+   "post_state": "1043d1b50b85349816d8",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Título é obrigatório",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks title \"\"",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": ""
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Título é obrigatório"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:00.582052",
+   "at_local": "2026-10-31 20:32:00.582058",
+   "cls": null,
+   "pre_state": "56b0c858c04595846d6c",
+   "post_state": "56b0c858c04595846d6c",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Título é obrigatório",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks title curto",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "ab"
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Título muito curto"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:01.087380",
+   "at_local": "2026-10-31 20:32:01.087385",
+   "cls": null,
+   "pre_state": "41ad1563ec02a44889b1",
+   "post_state": "41ad1563ec02a44889b1",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Título muito curto",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks title longo",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Título muito longo"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:01.607756",
+   "at_local": "2026-10-31 20:32:01.607761",
+   "cls": null,
+   "pre_state": "02b6c104048ac522948b",
+   "post_state": "02b6c104048ac522948b",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Título muito longo",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks title numero",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": 5
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Título inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:02.118971",
+   "at_local": "2026-10-31 20:32:02.118981",
+   "cls": "C-02",
+   "pre_state": "dd81825a124c28588b3c",
+   "post_state": "dd81825a124c28588b3c",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Título inválido",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks title true",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": true
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Título inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:02.635356",
+   "at_local": "2026-10-31 20:32:02.635376",
+   "cls": "C-02",
+   "pre_state": "0d2fd4392d58f856f641",
+   "post_state": "0d2fd4392d58f856f641",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Título inválido",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks title lista 2",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": [
+     "a",
+     "b"
+    ]
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Título inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:03.149084",
+   "at_local": "2026-10-31 20:32:03.149089",
+   "cls": "C-02",
+   "pre_state": "4bc8bfcfe1f68ffb9dca",
+   "post_state": "4bc8bfcfe1f68ffb9dca",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Título inválido",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks title lista 3",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": [
+     "a",
+     "b",
+     "c"
+    ]
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Título inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:03.663329",
+   "at_local": "2026-10-31 20:32:03.663334",
+   "cls": "C-02",
+   "pre_state": "7369fbc29e19d6cbf341",
+   "post_state": "7369fbc29e19d6cbf341",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Título inválido",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks description numero",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "description": 5
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Descrição inválida"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:04.173872",
+   "at_local": "2026-10-31 20:32:04.173877",
+   "cls": "R-02",
+   "pre_state": "5adcf478bbde8c6122ac",
+   "post_state": "5adcf478bbde8c6122ac",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Descrição inválida",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks description true",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "description": true
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Descrição inválida"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:04.683004",
+   "at_local": "2026-10-31 20:32:04.683009",
+   "cls": "R-02",
+   "pre_state": "10a837335238cef35bb6",
+   "post_state": "10a837335238cef35bb6",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Descrição inválida",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks description lista",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "description": [
+     "x"
+    ]
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Descrição inválida"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:05.196788",
+   "at_local": "2026-10-31 20:32:05.196793",
+   "cls": "C-10",
+   "pre_state": "04b9ad84663ffee0ec46",
+   "post_state": "04b9ad84663ffee0ec46",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Descrição inválida",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks description objeto",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "description": {
+     "a": 1
+    }
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Descrição inválida"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:05.714284",
+   "at_local": "2026-10-31 20:32:05.714290",
+   "cls": "C-10",
+   "pre_state": "1120888e9bbeadbbd3ac",
+   "post_state": "1120888e9bbeadbbd3ac",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Descrição inválida",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks status invalido",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "status": "xyz"
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Status inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:06.230907",
+   "at_local": "2026-10-31 20:32:06.230912",
+   "cls": null,
+   "pre_state": "1c635f133e63231481ad",
+   "post_state": "1c635f133e63231481ad",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Status inválido",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks status null",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "status": null
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Status inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:06.742608",
+   "at_local": "2026-10-31 20:32:06.742614",
+   "cls": null,
+   "pre_state": "8848531b4c091fdde78a",
+   "post_state": "8848531b4c091fdde78a",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Status inválido",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks status numero",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "status": 5
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Status inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:07.284026",
+   "at_local": "2026-10-31 20:32:07.284036",
+   "cls": null,
+   "pre_state": "c59d4b886a24b0cf8e8d",
+   "post_state": "c59d4b886a24b0cf8e8d",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Status inválido",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks priority false",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "priority": false
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Prioridade inválida"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:07.810608",
+   "at_local": "2026-10-31 20:32:07.810612",
+   "cls": "M-04",
+   "pre_state": "27155888e8bbd7760507",
+   "post_state": "27155888e8bbd7760507",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Prioridade inválida",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks priority true",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "priority": true
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Prioridade inválida"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:08.325574",
+   "at_local": "2026-10-31 20:32:08.325579",
+   "cls": "R-03",
+   "pre_state": "4b3dabdfa11fd72c4e92",
+   "post_state": "4b3dabdfa11fd72c4e92",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Prioridade inválida",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks priority 2.5",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "priority": 2.5
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Prioridade inválida"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:08.836766",
+   "at_local": "2026-10-31 20:32:08.836771",
+   "cls": "R-03",
+   "pre_state": "6a7ed32ff4f9df87ada4",
+   "post_state": "6a7ed32ff4f9df87ada4",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Prioridade inválida",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks priority 0",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "priority": 0
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Prioridade deve ser entre 1 e 5"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:09.344744",
+   "at_local": "2026-10-31 20:32:09.344758",
+   "cls": null,
+   "pre_state": "e8b29bd6c452d3c4864f",
+   "post_state": "e8b29bd6c452d3c4864f",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Prioridade deve ser entre 1 e 5",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks priority 6",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "priority": 6
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Prioridade deve ser entre 1 e 5"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:09.867376",
+   "at_local": "2026-10-31 20:32:09.867381",
+   "cls": null,
+   "pre_state": "a229ebe5d8dc40c71be2",
+   "post_state": "a229ebe5d8dc40c71be2",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Prioridade deve ser entre 1 e 5",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks priority 2^63",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "priority": 9223372036854775808
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Prioridade deve ser entre 1 e 5"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:10.372073",
+   "at_local": "2026-10-31 20:32:10.372078",
+   "cls": null,
+   "pre_state": "2dadf730d200a438e2dc",
+   "post_state": "2dadf730d200a438e2dc",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Prioridade deve ser entre 1 e 5",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks priority \"2\"",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "priority": "2"
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Prioridade inválida"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:10.885629",
+   "at_local": "2026-10-31 20:32:10.885634",
+   "cls": "C-03",
+   "pre_state": "920de3f681d2e548bcd1",
+   "post_state": "920de3f681d2e548bcd1",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Prioridade inválida",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks priority null",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "priority": null
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Prioridade inválida"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:11.394273",
+   "at_local": "2026-10-31 20:32:11.394279",
+   "cls": "C-03",
+   "pre_state": "7cb0784b7866557beb14",
+   "post_state": "7cb0784b7866557beb14",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Prioridade inválida",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks priority lista",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "priority": [
+     1
+    ]
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Prioridade inválida"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:11.905546",
+   "at_local": "2026-10-31 20:32:11.905552",
+   "cls": "C-03",
+   "pre_state": "b94c5a37260c7ea42ebc",
+   "post_state": "b94c5a37260c7ea42ebc",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Prioridade inválida",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks user_id 999",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "user_id": 999
+   },
+   "auth": null,
+   "resp": {
+    "status": 404,
+    "is_json": true,
+    "json": {
+     "error": "Usuário não encontrado"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:12.420111",
+   "at_local": "2026-10-31 20:32:12.420117",
+   "cls": null,
+   "pre_state": "706786d4cd1350106745",
+   "post_state": "706786d4cd1350106745",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 404,
+    "error": "Usuário não encontrado",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks user_id 2^63",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "user_id": 9223372036854775808
+   },
+   "auth": null,
+   "resp": {
+    "status": 404,
+    "is_json": true,
+    "json": {
+     "error": "Usuário não encontrado"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:12.963612",
+   "at_local": "2026-10-31 20:32:12.963617",
+   "cls": "C-12",
+   "pre_state": "1f99d72aa0fa9079bff3",
+   "post_state": "1f99d72aa0fa9079bff3",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 404,
+    "error": "Usuário não encontrado",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks user_id 0",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "user_id": 0
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Usuário inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:13.481674",
+   "at_local": "2026-10-31 20:32:13.481679",
+   "cls": "R-04",
+   "pre_state": "08529a59b1f261283a7c",
+   "post_state": "08529a59b1f261283a7c",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Usuário inválido",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks user_id false",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "user_id": false
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Usuário inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:14.000516",
+   "at_local": "2026-10-31 20:32:14.000521",
+   "cls": "R-04",
+   "pre_state": "748d780a1622ad479876",
+   "post_state": "748d780a1622ad479876",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Usuário inválido",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks user_id \"\"",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "user_id": ""
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Usuário inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:14.515861",
+   "at_local": "2026-10-31 20:32:14.515869",
+   "cls": "R-04",
+   "pre_state": "d73f92c77d4fdb78ab5d",
+   "post_state": "d73f92c77d4fdb78ab5d",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Usuário inválido",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks user_id \"1\"",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "user_id": "1"
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Usuário inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:15.030361",
+   "at_local": "2026-10-31 20:32:15.030366",
+   "cls": "R-04",
+   "pre_state": "c65d484c7250dfdb4c4d",
+   "post_state": "c65d484c7250dfdb4c4d",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Usuário inválido",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks user_id true",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "user_id": true
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Usuário inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:15.553155",
+   "at_local": "2026-10-31 20:32:15.553164",
+   "cls": "R-04",
+   "pre_state": "9a4c8beba55c6b1da0ec",
+   "post_state": "9a4c8beba55c6b1da0ec",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Usuário inválido",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks user_id -1",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "user_id": -1
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Usuário inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:16.084535",
+   "at_local": "2026-10-31 20:32:16.084542",
+   "cls": "M-02",
+   "pre_state": "60d0bffdca35ca1a8039",
+   "post_state": "60d0bffdca35ca1a8039",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Usuário inválido",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks user_id 1.5",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "user_id": 1.5
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Usuário inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:16.655794",
+   "at_local": "2026-10-31 20:32:16.655799",
+   "cls": "M-02",
+   "pre_state": "7ce95561fdc9350fc88c",
+   "post_state": "7ce95561fdc9350fc88c",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Usuário inválido",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks user_id \"abc\"",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "user_id": "abc"
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Usuário inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:17.163679",
+   "at_local": "2026-10-31 20:32:17.163685",
+   "cls": "M-02",
+   "pre_state": "95b1246bb2ea4a2e4a99",
+   "post_state": "95b1246bb2ea4a2e4a99",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Usuário inválido",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks user_id lista",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "user_id": [
+     1
+    ]
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Usuário inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:17.689843",
+   "at_local": "2026-10-31 20:32:17.689849",
+   "cls": "C-11",
+   "pre_state": "7d106fc0b4866edb368f",
+   "post_state": "7d106fc0b4866edb368f",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Usuário inválido",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks user_id objeto",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "user_id": {
+     "id": 1
+    }
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Usuário inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:18.205956",
+   "at_local": "2026-10-31 20:32:18.205961",
+   "cls": "C-11",
+   "pre_state": "65ba5c0b31df75023794",
+   "post_state": "65ba5c0b31df75023794",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Usuário inválido",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks category_id 999",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "category_id": 999
+   },
+   "auth": null,
+   "resp": {
+    "status": 404,
+    "is_json": true,
+    "json": {
+     "error": "Categoria não encontrada"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:18.719621",
+   "at_local": "2026-10-31 20:32:18.719629",
+   "cls": null,
+   "pre_state": "38f9e46507d763b1f3ec",
+   "post_state": "38f9e46507d763b1f3ec",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 404,
+    "error": "Categoria não encontrada",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks category_id 2^63",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "category_id": 9223372036854775808
+   },
+   "auth": null,
+   "resp": {
+    "status": 404,
+    "is_json": true,
+    "json": {
+     "error": "Categoria não encontrada"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:19.233886",
+   "at_local": "2026-10-31 20:32:19.233891",
+   "cls": "C-12",
+   "pre_state": "4beedc502a104c89e360",
+   "post_state": "4beedc502a104c89e360",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 404,
+    "error": "Categoria não encontrada",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks category_id 0",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "category_id": 0
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Categoria inválida"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:19.744538",
+   "at_local": "2026-10-31 20:32:19.744544",
+   "cls": "R-04",
+   "pre_state": "ceaf71c99d1a423dde09",
+   "post_state": "ceaf71c99d1a423dde09",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Categoria inválida",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks category_id \"1\"",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "category_id": "1"
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Categoria inválida"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:20.259929",
+   "at_local": "2026-10-31 20:32:20.259935",
+   "cls": "R-04",
+   "pre_state": "9fcd29318bd3e89699e3",
+   "post_state": "9fcd29318bd3e89699e3",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Categoria inválida",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks category_id -1",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "category_id": -1
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Categoria inválida"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:20.771328",
+   "at_local": "2026-10-31 20:32:20.771334",
+   "cls": "M-02",
+   "pre_state": "caa0d547056e103267ae",
+   "post_state": "caa0d547056e103267ae",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Categoria inválida",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks due_date invalida",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "due_date": "2030-13-01"
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Formato de data inválido. Use YYYY-MM-DD"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:21.281858",
+   "at_local": "2026-10-31 20:32:21.281863",
+   "cls": null,
+   "pre_state": "5d8988613c8aa6184cf2",
+   "post_state": "5d8988613c8aa6184cf2",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Formato de data inválido. Use YYYY-MM-DD",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks due_date numero",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "due_date": 5
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Formato de data inválido. Use YYYY-MM-DD"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:21.804795",
+   "at_local": "2026-10-31 20:32:21.804801",
+   "cls": null,
+   "pre_state": "2b9df0ae5341fe1af2ca",
+   "post_state": "2b9df0ae5341fe1af2ca",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Formato de data inválido. Use YYYY-MM-DD",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks due_date dd/mm",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "due_date": "15/01/2030"
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Formato de data inválido. Use YYYY-MM-DD"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:22.329560",
+   "at_local": "2026-10-31 20:32:22.329565",
+   "cls": null,
+   "pre_state": "5bd9e74407f3866443bd",
+   "post_state": "5bd9e74407f3866443bd",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Formato de data inválido. Use YYYY-MM-DD",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks tags elemento numero",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "tags": [
+     1
+    ]
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Tags inválidas"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:22.847275",
+   "at_local": "2026-10-31 20:32:22.847280",
+   "cls": "C-04",
+   "pre_state": "b6d4d1b6010f4f879083",
+   "post_state": "b6d4d1b6010f4f879083",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Tags inválidas",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks tags com virgula",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "tags": [
+     "a,b"
+    ]
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Tags inválidas"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:23.361873",
+   "at_local": "2026-10-31 20:32:23.361878",
+   "cls": "R-05",
+   "pre_state": "8768d34e08c2e9720533",
+   "post_state": "8768d34e08c2e9720533",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Tags inválidas",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks tags numero",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "tags": 5
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Tags inválidas"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:23.885664",
+   "at_local": "2026-10-31 20:32:23.885669",
+   "cls": "R-05",
+   "pre_state": "611fb70637c6ac62fb78",
+   "post_state": "611fb70637c6ac62fb78",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Tags inválidas",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks tags true",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "tags": true
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Tags inválidas"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:24.426464",
+   "at_local": "2026-10-31 20:32:24.426469",
+   "cls": "R-05",
+   "pre_state": "b48ab3f4f5b44d2d65b7",
+   "post_state": "b48ab3f4f5b44d2d65b7",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Tags inválidas",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks tags objeto",
+   "method": "POST",
+   "path": "/tasks",
+   "input": {
+    "title": "Título válido",
+    "tags": {
+     "a": 1
+    }
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Tags inválidas"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:24.936687",
+   "at_local": "2026-10-31 20:32:24.936692",
+   "cls": "C-04",
+   "pre_state": "6275dad5062ed498c849",
+   "post_state": "6275dad5062ed498c849",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Tags inválidas",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks priority NaN",
+   "method": "POST",
+   "path": "/tasks",
+   "input": "<raw>{\"title\": \"Título válido\", \"priority\": NaN}",
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Prioridade inválida"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:25.445800",
+   "at_local": "2026-10-31 20:32:25.445805",
+   "cls": "R-03",
+   "pre_state": "d572223b760526638592",
+   "post_state": "d572223b760526638592",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Prioridade inválida",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks priority Infinity",
+   "method": "POST",
+   "path": "/tasks",
+   "input": "<raw>{\"title\": \"Título válido\", \"priority\": Infinity}",
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Prioridade inválida"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:25.958386",
+   "at_local": "2026-10-31 20:32:25.958390",
+   "cls": "M-01",
+   "pre_state": "b354f0c9ba517e58527a",
+   "post_state": "b354f0c9ba517e58527a",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Prioridade inválida",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks priority -Infinity",
+   "method": "POST",
+   "path": "/tasks",
+   "input": "<raw>{\"title\": \"Título válido\", \"priority\": -Infinity}",
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Prioridade inválida"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:26.473890",
+   "at_local": "2026-10-31 20:32:26.473896",
+   "cls": "M-01",
+   "pre_state": "7d6b4d06d1c22f62da50",
+   "post_state": "7d6b4d06d1c22f62da50",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Prioridade inválida",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks ctype texto",
+   "method": "POST",
+   "path": "/tasks",
+   "input": "<raw>abc",
+   "auth": null,
+   "resp": {
+    "status": 415,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:26.979644",
+   "at_local": "2026-10-31 20:32:26.979649",
+   "cls": "C-JSON",
+   "pre_state": "eb096e63ad775e1542ed",
+   "post_state": "eb096e63ad775e1542ed",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    }
+   },
+   "exp": {
+    "status": 415,
+    "error": "Dados inválidos",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /tasks json malformado",
+   "method": "POST",
+   "path": "/tasks",
+   "input": "<raw>{\"title\": ",
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:27.492991",
+   "at_local": "2026-10-31 20:32:27.492996",
+   "cls": "C-JSON",
+   "pre_state": "ab79599d81b3dd501af2",
+   "post_state": "ab79599d81b3dd501af2",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 title",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": {
+    "title": "Novo título"
+   },
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "category_id": 1,
+     "created_at": "2026-10-31 23:32:27.749410",
+     "description": "Adicionar autenticação real com JWT",
+     "due_date": "2026-10-28 23:32:27.748737",
+     "id": 1,
+     "priority": 1,
+     "status": "pending",
+     "tags": [],
+     "title": "Novo título",
+     "updated_at": "2026-10-31 23:32:28.008308",
+     "user_id": 1
+    }
+   },
+   "at_utc": "2026-10-31 23:32:28.007628",
+   "at_local": "2026-10-31 20:32:28.007630",
+   "cls": null,
+   "pre_state": "2e3022fe4ddac11c5895",
+   "post_state": "ea1f2b9039de4d4606a6",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:27.749410",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:27.748737",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Novo título",
+      "updated_at": "2026-10-31 23:32:28.008308",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:27.749410",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:27.748737",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:27.749413",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 200,
+    "error": null,
+    "has": {
+     "resp.json.title": "Novo título",
+     "post.get.json.title": "Novo título",
+     "resp.json.id": 1
+    },
+    "ts": {
+     "resp.json.updated_at": [
+      0,
+      120
+     ]
+    },
+    "changed": true,
+    "keys": {
+     "resp.json": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 description",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": {
+    "description": "nd"
+   },
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "category_id": 1,
+     "created_at": "2026-10-31 23:32:28.273694",
+     "description": "nd",
+     "due_date": "2026-10-28 23:32:28.273011",
+     "id": 1,
+     "priority": 1,
+     "status": "pending",
+     "tags": [],
+     "title": "Implementar autenticação JWT",
+     "updated_at": "2026-10-31 23:32:28.538398",
+     "user_id": 1
+    }
+   },
+   "at_utc": "2026-10-31 23:32:28.537752",
+   "at_local": "2026-10-31 20:32:28.537755",
+   "cls": null,
+   "pre_state": "fe8ac99634a89cedd853",
+   "post_state": "aec4fcdf32d7fb8990af",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:28.273694",
+      "description": "nd",
+      "due_date": "2026-10-28 23:32:28.273011",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:28.538398",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:28.273694",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:28.273011",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:28.273697",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 200,
+    "error": null,
+    "has": {
+     "resp.json.description": "nd",
+     "post.get.json.description": "nd",
+     "resp.json.id": 1
+    },
+    "ts": {
+     "resp.json.updated_at": [
+      0,
+      120
+     ]
+    },
+    "changed": true,
+    "keys": {
+     "resp.json": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 status",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": {
+    "status": "done"
+   },
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "category_id": 1,
+     "created_at": "2026-10-31 23:32:28.795803",
+     "description": "Adicionar autenticação real com JWT",
+     "due_date": "2026-10-28 23:32:28.795067",
+     "id": 1,
+     "priority": 1,
+     "status": "done",
+     "tags": [],
+     "title": "Implementar autenticação JWT",
+     "updated_at": "2026-10-31 23:32:29.063425",
+     "user_id": 1
+    }
+   },
+   "at_utc": "2026-10-31 23:32:29.062749",
+   "at_local": "2026-10-31 20:32:29.062751",
+   "cls": null,
+   "pre_state": "4f8e95c4e42868d3e7ad",
+   "post_state": "ace5fd18626672733fff",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:28.795803",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:28.795067",
+      "id": 1,
+      "overdue": false,
+      "priority": 1,
+      "status": "done",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:29.063425",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:28.795803",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:28.795067",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:28.795806",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 200,
+    "error": null,
+    "has": {
+     "resp.json.status": "done",
+     "post.get.json.status": "done",
+     "resp.json.id": 1
+    },
+    "ts": {
+     "resp.json.updated_at": [
+      0,
+      120
+     ]
+    },
+    "changed": true,
+    "keys": {
+     "resp.json": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 priority 5",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": {
+    "priority": 5
+   },
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "category_id": 1,
+     "created_at": "2026-10-31 23:32:29.322342",
+     "description": "Adicionar autenticação real com JWT",
+     "due_date": "2026-10-28 23:32:29.321633",
+     "id": 1,
+     "priority": 5,
+     "status": "pending",
+     "tags": [],
+     "title": "Implementar autenticação JWT",
+     "updated_at": "2026-10-31 23:32:29.580749",
+     "user_id": 1
+    }
+   },
+   "at_utc": "2026-10-31 23:32:29.580091",
+   "at_local": "2026-10-31 20:32:29.580094",
+   "cls": null,
+   "pre_state": "950f21403fedcbdc9d00",
+   "post_state": "1b500932c450c6e8983a",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:29.322342",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:29.321633",
+      "id": 1,
+      "overdue": true,
+      "priority": 5,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:29.580749",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:29.322342",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:29.321633",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:29.322345",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 200,
+    "error": null,
+    "has": {
+     "resp.json.priority": 5,
+     "post.get.json.priority": 5,
+     "resp.json.id": 1
+    },
+    "ts": {
+     "resp.json.updated_at": [
+      0,
+      120
+     ]
+    },
+    "changed": true,
+    "keys": {
+     "resp.json": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 desvincula user",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": {
+    "user_id": null
+   },
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "category_id": 1,
+     "created_at": "2026-10-31 23:32:29.836381",
+     "description": "Adicionar autenticação real com JWT",
+     "due_date": "2026-10-28 23:32:29.835659",
+     "id": 1,
+     "priority": 1,
+     "status": "pending",
+     "tags": [],
+     "title": "Implementar autenticação JWT",
+     "updated_at": "2026-10-31 23:32:30.099690",
+     "user_id": null
+    }
+   },
+   "at_utc": "2026-10-31 23:32:30.099051",
+   "at_local": "2026-10-31 20:32:30.099053",
+   "cls": null,
+   "pre_state": "9deddd83d2ba0a4d8fcb",
+   "post_state": "ddda7f7c73946af33951",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:29.836381",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:29.835659",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:30.099690",
+      "user_id": null
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:29.836381",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:29.835659",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:29.836384",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 200,
+    "error": null,
+    "has": {
+     "resp.json.user_id": null,
+     "post.get.json.user_id": null,
+     "resp.json.id": 1
+    },
+    "ts": {
+     "resp.json.updated_at": [
+      0,
+      120
+     ]
+    },
+    "changed": true,
+    "keys": {
+     "resp.json": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 desvincula category",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": {
+    "category_id": null
+   },
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "category_id": null,
+     "created_at": "2026-10-31 23:32:30.363641",
+     "description": "Adicionar autenticação real com JWT",
+     "due_date": "2026-10-28 23:32:30.362964",
+     "id": 1,
+     "priority": 1,
+     "status": "pending",
+     "tags": [],
+     "title": "Implementar autenticação JWT",
+     "updated_at": "2026-10-31 23:32:30.620555",
+     "user_id": 1
+    }
+   },
+   "at_utc": "2026-10-31 23:32:30.619902",
+   "at_local": "2026-10-31 20:32:30.619905",
+   "cls": null,
+   "pre_state": "82595179f1e61747f3e0",
+   "post_state": "7ddda09b7c5101a93319",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": null,
+      "created_at": "2026-10-31 23:32:30.363641",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:30.362964",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:30.620555",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:30.363641",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:30.362964",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:30.363644",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 200,
+    "error": null,
+    "has": {
+     "resp.json.category_id": null,
+     "post.get.json.category_id": null,
+     "resp.json.id": 1
+    },
+    "ts": {
+     "resp.json.updated_at": [
+      0,
+      120
+     ]
+    },
+    "changed": true,
+    "keys": {
+     "resp.json": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 user 2",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": {
+    "user_id": 2
+   },
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "category_id": 1,
+     "created_at": "2026-10-31 23:32:30.877580",
+     "description": "Adicionar autenticação real com JWT",
+     "due_date": "2026-10-28 23:32:30.876915",
+     "id": 1,
+     "priority": 1,
+     "status": "pending",
+     "tags": [],
+     "title": "Implementar autenticação JWT",
+     "updated_at": "2026-10-31 23:32:31.134727",
+     "user_id": 2
+    }
+   },
+   "at_utc": "2026-10-31 23:32:31.133767",
+   "at_local": "2026-10-31 20:32:31.133770",
+   "cls": null,
+   "pre_state": "3f28ecd9a34046ecb1c9",
+   "post_state": "6bdf51b4160ba98fb103",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:30.877580",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:30.876915",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:31.134727",
+      "user_id": 2
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:30.877580",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:30.876915",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:30.877583",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 200,
+    "error": null,
+    "has": {
+     "resp.json.user_id": 2,
+     "post.get.json.user_id": 2,
+     "resp.json.id": 1
+    },
+    "ts": {
+     "resp.json.updated_at": [
+      0,
+      120
+     ]
+    },
+    "changed": true,
+    "keys": {
+     "resp.json": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 due null",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": {
+    "due_date": null
+   },
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "category_id": 1,
+     "created_at": "2026-10-31 23:32:31.392573",
+     "description": "Adicionar autenticação real com JWT",
+     "due_date": null,
+     "id": 1,
+     "priority": 1,
+     "status": "pending",
+     "tags": [],
+     "title": "Implementar autenticação JWT",
+     "updated_at": "2026-10-31 23:32:31.646309",
+     "user_id": 1
+    }
+   },
+   "at_utc": "2026-10-31 23:32:31.645662",
+   "at_local": "2026-10-31 20:32:31.645665",
+   "cls": null,
+   "pre_state": "7219ca0a5eca2f4ae49d",
+   "post_state": "502dc52445e44fe2c8e3",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:31.392573",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": null,
+      "id": 1,
+      "overdue": false,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:31.646309",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:31.392573",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:31.391813",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:31.392576",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 200,
+    "error": null,
+    "has": {
+     "resp.json.due_date": null,
+     "post.get.json.due_date": null,
+     "resp.json.id": 1
+    },
+    "ts": {
+     "resp.json.updated_at": [
+      0,
+      120
+     ]
+    },
+    "changed": true,
+    "keys": {
+     "resp.json": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 due valida",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": {
+    "due_date": "2031-02-03"
+   },
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "category_id": 1,
+     "created_at": "2026-10-31 23:32:31.905470",
+     "description": "Adicionar autenticação real com JWT",
+     "due_date": "2031-02-03 00:00:00",
+     "id": 1,
+     "priority": 1,
+     "status": "pending",
+     "tags": [],
+     "title": "Implementar autenticação JWT",
+     "updated_at": "2026-10-31 23:32:32.172291",
+     "user_id": 1
+    }
+   },
+   "at_utc": "2026-10-31 23:32:32.171606",
+   "at_local": "2026-10-31 20:32:32.171609",
+   "cls": null,
+   "pre_state": "eac2e63f5af3af36ad8c",
+   "post_state": "07901d372b4a41cf9fca",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:31.905470",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2031-02-03 00:00:00",
+      "id": 1,
+      "overdue": false,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:32.172291",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:31.905470",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:31.904723",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:31.905472",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 200,
+    "error": null,
+    "has": {
+     "resp.json.due_date": "2031-02-03 00:00:00",
+     "post.get.json.due_date": "2031-02-03 00:00:00",
+     "resp.json.id": 1
+    },
+    "ts": {
+     "resp.json.updated_at": [
+      0,
+      120
+     ]
+    },
+    "changed": true,
+    "keys": {
+     "resp.json": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 tags lista",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": {
+    "tags": [
+     "p",
+     "q"
+    ]
+   },
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "category_id": 1,
+     "created_at": "2026-10-31 23:32:32.436095",
+     "description": "Adicionar autenticação real com JWT",
+     "due_date": "2026-10-28 23:32:32.435405",
+     "id": 1,
+     "priority": 1,
+     "status": "pending",
+     "tags": [
+      "p",
+      "q"
+     ],
+     "title": "Implementar autenticação JWT",
+     "updated_at": "2026-10-31 23:32:32.707150",
+     "user_id": 1
+    }
+   },
+   "at_utc": "2026-10-31 23:32:32.706488",
+   "at_local": "2026-10-31 20:32:32.706491",
+   "cls": null,
+   "pre_state": "1f32948c6c51d4aa6435",
+   "post_state": "a4318efd0e3b84cdc58a",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:32.436095",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:32.435405",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [
+       "p",
+       "q"
+      ],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:32.707150",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:32.436095",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:32.435405",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [
+       "x",
+       "y"
+      ],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:32.436098",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 200,
+    "error": null,
+    "has": {
+     "resp.json.tags": [
+      "p",
+      "q"
+     ],
+     "post.get.json.tags": [
+      "p",
+      "q"
+     ],
+     "resp.json.id": 1
+    },
+    "ts": {
+     "resp.json.updated_at": [
+      0,
+      120
+     ]
+    },
+    "changed": true,
+    "keys": {
+     "resp.json": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 tags null limpa",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": {
+    "tags": null
+   },
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "category_id": 1,
+     "created_at": "2026-10-31 23:32:32.992314",
+     "description": "Adicionar autenticação real com JWT",
+     "due_date": "2026-10-28 23:32:32.991585",
+     "id": 1,
+     "priority": 1,
+     "status": "pending",
+     "tags": [],
+     "title": "Implementar autenticação JWT",
+     "updated_at": "2026-10-31 23:32:33.265287",
+     "user_id": 1
+    }
+   },
+   "at_utc": "2026-10-31 23:32:33.264443",
+   "at_local": "2026-10-31 20:32:33.264446",
+   "cls": null,
+   "pre_state": "9ff84ae060ab37798b8f",
+   "post_state": "445e3febeec2c19ee952",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:32.992314",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:32.991585",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:33.265287",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:32.992314",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:32.991585",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [
+       "x",
+       "y"
+      ],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:32.992317",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 200,
+    "error": null,
+    "has": {
+     "resp.json.tags": [],
+     "post.get.json.tags": [],
+     "resp.json.id": 1
+    },
+    "ts": {
+     "resp.json.updated_at": [
+      0,
+      120
+     ]
+    },
+    "changed": true,
+    "keys": {
+     "resp.json": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 tags \"\" limpa",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": {
+    "tags": ""
+   },
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "category_id": 1,
+     "created_at": "2026-10-31 23:32:33.520502",
+     "description": "Adicionar autenticação real com JWT",
+     "due_date": "2026-10-28 23:32:33.519789",
+     "id": 1,
+     "priority": 1,
+     "status": "pending",
+     "tags": [],
+     "title": "Implementar autenticação JWT",
+     "updated_at": "2026-10-31 23:32:33.788877",
+     "user_id": 1
+    }
+   },
+   "at_utc": "2026-10-31 23:32:33.788204",
+   "at_local": "2026-10-31 20:32:33.788206",
+   "cls": null,
+   "pre_state": "11b559979e7dd34b1af1",
+   "post_state": "f6ae5fae887340e97115",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:33.520502",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:33.519789",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:33.788877",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:33.520502",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:33.519789",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [
+       "x",
+       "y"
+      ],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:33.520505",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 200,
+    "error": null,
+    "has": {
+     "resp.json.tags": [],
+     "post.get.json.tags": [],
+     "resp.json.id": 1
+    },
+    "ts": {
+     "resp.json.updated_at": [
+      0,
+      120
+     ]
+    },
+    "changed": true,
+    "keys": {
+     "resp.json": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 tags [] limpa",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": {
+    "tags": []
+   },
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "category_id": 1,
+     "created_at": "2026-10-31 23:32:34.043275",
+     "description": "Adicionar autenticação real com JWT",
+     "due_date": "2026-10-28 23:32:34.042550",
+     "id": 1,
+     "priority": 1,
+     "status": "pending",
+     "tags": [],
+     "title": "Implementar autenticação JWT",
+     "updated_at": "2026-10-31 23:32:34.319854",
+     "user_id": 1
+    }
+   },
+   "at_utc": "2026-10-31 23:32:34.319125",
+   "at_local": "2026-10-31 20:32:34.319128",
+   "cls": null,
+   "pre_state": "4da3932d921bd5280776",
+   "post_state": "528e28519abadbc047cc",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:34.043275",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:34.042550",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:34.319854",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:34.043275",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:34.042550",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [
+       "x",
+       "y"
+      ],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:34.043278",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 200,
+    "error": null,
+    "has": {
+     "resp.json.tags": [],
+     "post.get.json.tags": [],
+     "resp.json.id": 1
+    },
+    "ts": {
+     "resp.json.updated_at": [
+      0,
+      120
+     ]
+    },
+    "changed": true,
+    "keys": {
+     "resp.json": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 user 999",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": {
+    "user_id": 999
+   },
+   "auth": null,
+   "resp": {
+    "status": 404,
+    "is_json": true,
+    "json": {
+     "error": "Usuário não encontrado"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:34.848581",
+   "at_local": "2026-10-31 20:32:34.848584",
+   "cls": null,
+   "pre_state": "38ec7911091550495e22",
+   "post_state": "38ec7911091550495e22",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:34.586705",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:34.586034",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:34.586708",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:34.586705",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:34.586034",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:34.586708",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 404,
+    "error": "Usuário não encontrado",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 user 2^63",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": {
+    "user_id": 9223372036854775808
+   },
+   "auth": null,
+   "resp": {
+    "status": 404,
+    "is_json": true,
+    "json": {
+     "error": "Usuário não encontrado"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:35.362546",
+   "at_local": "2026-10-31 20:32:35.362549",
+   "cls": "C-12",
+   "pre_state": "c7b24c4eeedbe34331d2",
+   "post_state": "c7b24c4eeedbe34331d2",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:35.103485",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:35.102768",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:35.103488",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:35.103485",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:35.102768",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:35.103488",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 404,
+    "error": "Usuário não encontrado",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 due invalida",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": {
+    "due_date": "bad"
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Formato de data inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:35.867197",
+   "at_local": "2026-10-31 20:32:35.867200",
+   "cls": null,
+   "pre_state": "d69657f4f3f1eb208946",
+   "post_state": "d69657f4f3f1eb208946",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:35.608260",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:35.607550",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:35.608263",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:35.608260",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:35.607550",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:35.608263",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Formato de data inválido",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 combinado titulo+prioridade invalida",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": {
+    "title": "Título Combinado",
+    "priority": 9
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Prioridade deve ser entre 1 e 5"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:36.378968",
+   "at_local": "2026-10-31 20:32:36.378971",
+   "cls": null,
+   "pre_state": "601174e85bac867de5f7",
+   "post_state": "601174e85bac867de5f7",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:36.114590",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:36.113926",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:36.114592",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:36.114590",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:36.113926",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:36.114592",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Prioridade deve ser entre 1 e 5",
+    "unchanged": true,
+    "has": {
+     "post.get.json.title": "Implementar autenticação JWT"
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 corpo {}",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": {},
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:36.921178",
+   "at_local": "2026-10-31 20:32:36.921181",
+   "cls": null,
+   "pre_state": "abf70553879b1552e11c",
+   "post_state": "abf70553879b1552e11c",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:36.630745",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:36.630041",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:36.630747",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:36.630745",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:36.630041",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:36.630747",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 corpo null",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:37.442632",
+   "at_local": "2026-10-31 20:32:37.442635",
+   "cls": null,
+   "pre_state": "e433ae7e171bb4a0ac14",
+   "post_state": "e433ae7e171bb4a0ac14",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:37.175914",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:37.175192",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:37.175918",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:37.175914",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:37.175192",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:37.175918",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 corpo [1]",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": [
+    1
+   ],
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:37.956052",
+   "at_local": "2026-10-31 20:32:37.956056",
+   "cls": "R-01",
+   "pre_state": "8d1756bdb067396cc475",
+   "post_state": "8d1756bdb067396cc475",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:37.694289",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:37.693604",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:37.694292",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:37.694289",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:37.693604",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:37.694292",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 corpo \"x\"",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": "x",
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:38.463710",
+   "at_local": "2026-10-31 20:32:38.463714",
+   "cls": "R-01",
+   "pre_state": "64c3cceafc2e9da37774",
+   "post_state": "64c3cceafc2e9da37774",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:38.207269",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:38.206382",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:38.207272",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:38.207269",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:38.206382",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:38.207272",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 corpo 5",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": 5,
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:39.002748",
+   "at_local": "2026-10-31 20:32:39.002751",
+   "cls": "C-01",
+   "pre_state": "365a4dc9bf9a8af9bae0",
+   "post_state": "365a4dc9bf9a8af9bae0",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:38.733610",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:38.732897",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:38.733613",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:38.733610",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:38.732897",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:38.733613",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 corpo true",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": true,
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:39.540106",
+   "at_local": "2026-10-31 20:32:39.540108",
+   "cls": "C-01",
+   "pre_state": "d53d66634ebc1ff3071f",
+   "post_state": "d53d66634ebc1ff3071f",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:39.280876",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:39.280038",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:39.280879",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:39.280876",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:39.280038",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:39.280879",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 corpo \"title\"",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": "title",
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:40.061007",
+   "at_local": "2026-10-31 20:32:40.061010",
+   "cls": "C-01",
+   "pre_state": "272080f535bc1c5c22af",
+   "post_state": "272080f535bc1c5c22af",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:39.795081",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:39.794405",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:39.795083",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:39.795081",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:39.794405",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:39.795083",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 title null",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": {
+    "title": null
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Título inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:40.581113",
+   "at_local": "2026-10-31 20:32:40.581116",
+   "cls": "C-02",
+   "pre_state": "1b3dcf602cdc5ddb8a9b",
+   "post_state": "1b3dcf602cdc5ddb8a9b",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:40.316181",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:40.315486",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:40.316184",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:40.316181",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:40.315486",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:40.316184",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Título inválido",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 title numero",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": {
+    "title": 5
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Título inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:41.103459",
+   "at_local": "2026-10-31 20:32:41.103462",
+   "cls": "C-02",
+   "pre_state": "97b7ad0122d028ef928d",
+   "post_state": "97b7ad0122d028ef928d",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:40.836468",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:40.835771",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:40.836470",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:40.836468",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:40.835771",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:40.836470",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Título inválido",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 title false",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": {
+    "title": false
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Título inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:41.630960",
+   "at_local": "2026-10-31 20:32:41.630964",
+   "cls": "C-02",
+   "pre_state": "e176475a1544917c60b0",
+   "post_state": "e176475a1544917c60b0",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:41.361332",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:41.360640",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:41.361335",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:41.361332",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:41.360640",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:41.361335",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Título inválido",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 title \"\"",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": {
+    "title": ""
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Título muito curto"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:42.149017",
+   "at_local": "2026-10-31 20:32:42.149019",
+   "cls": null,
+   "pre_state": "e9e982cd8382efa165ad",
+   "post_state": "e9e982cd8382efa165ad",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:41.884009",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:41.883164",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:41.884012",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:41.884009",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:41.883164",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:41.884012",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Título muito curto",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 priority false",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": {
+    "priority": false
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Prioridade inválida"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:42.659157",
+   "at_local": "2026-10-31 20:32:42.659160",
+   "cls": "M-04",
+   "pre_state": "06e8042188470db4ca4c",
+   "post_state": "06e8042188470db4ca4c",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:42.398112",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:42.397439",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:42.398115",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:42.398112",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:42.397439",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:42.398115",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Prioridade inválida",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 priority true",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": {
+    "priority": true
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Prioridade inválida"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:43.226326",
+   "at_local": "2026-10-31 20:32:43.226334",
+   "cls": "R-03",
+   "pre_state": "ba44629bfc7358bf1263",
+   "post_state": "ba44629bfc7358bf1263",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:42.922334",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:42.921658",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:42.922336",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:42.922334",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:42.921658",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:42.922336",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Prioridade inválida",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 priority \"2\"",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": {
+    "priority": "2"
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Prioridade inválida"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:43.826811",
+   "at_local": "2026-10-31 20:32:43.826814",
+   "cls": "C-03",
+   "pre_state": "f67ab23ed4868d99ec5b",
+   "post_state": "f67ab23ed4868d99ec5b",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:43.535692",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:43.534925",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:43.535695",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:43.535692",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:43.534925",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:43.535695",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Prioridade inválida",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 priority 2.5",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": {
+    "priority": 2.5
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Prioridade inválida"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:44.369745",
+   "at_local": "2026-10-31 20:32:44.369747",
+   "cls": "R-03",
+   "pre_state": "567803c58b2f30c8937d",
+   "post_state": "567803c58b2f30c8937d",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:44.101887",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:44.101222",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:44.101889",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:44.101887",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:44.101222",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:44.101889",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Prioridade inválida",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 user_id 0",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": {
+    "user_id": 0
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Usuário inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:44.920208",
+   "at_local": "2026-10-31 20:32:44.920211",
+   "cls": "R-04",
+   "pre_state": "c917f88dbc97f5233ce9",
+   "post_state": "c917f88dbc97f5233ce9",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:44.621184",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:44.620464",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:44.621187",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:44.621184",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:44.620464",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:44.621187",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Usuário inválido",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 description numero",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": {
+    "description": 5
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Descrição inválida"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:45.543868",
+   "at_local": "2026-10-31 20:32:45.543871",
+   "cls": "R-02",
+   "pre_state": "18d9d9a0bb2f2141a45f",
+   "post_state": "18d9d9a0bb2f2141a45f",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:45.204607",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:45.203023",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:45.204611",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:45.204607",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:45.203023",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:45.204611",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Descrição inválida",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 tags 0",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": {
+    "tags": 0
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Tags inválidas"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:46.120847",
+   "at_local": "2026-10-31 20:32:46.120850",
+   "cls": "R-05",
+   "pre_state": "b63b29a9967f4274a62a",
+   "post_state": "b63b29a9967f4274a62a",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:45.825243",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:45.824438",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [
+       "x",
+       "y"
+      ],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:45.825246",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:45.825243",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:45.824438",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [
+       "x",
+       "y"
+      ],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:45.825246",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Tags inválidas",
+    "unchanged": true,
+    "has": {
+     "post.get.json.tags": [
+      "x",
+      "y"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 tags false",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": {
+    "tags": false
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Tags inválidas"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:46.673542",
+   "at_local": "2026-10-31 20:32:46.673545",
+   "cls": "R-05",
+   "pre_state": "c9f0022225403fa90757",
+   "post_state": "c9f0022225403fa90757",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:46.394084",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:46.393378",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [
+       "x",
+       "y"
+      ],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:46.394086",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:46.394084",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:46.393378",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [
+       "x",
+       "y"
+      ],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:46.394086",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Tags inválidas",
+    "unchanged": true,
+    "has": {
+     "post.get.json.tags": [
+      "x",
+      "y"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 tags 0.0",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": {
+    "tags": 0.0
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Tags inválidas"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:47.235951",
+   "at_local": "2026-10-31 20:32:47.235954",
+   "cls": "R-05",
+   "pre_state": "c94b3f317e4d704c476e",
+   "post_state": "c94b3f317e4d704c476e",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:46.942603",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:46.941747",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [
+       "x",
+       "y"
+      ],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:46.942607",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:46.942603",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:46.941747",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [
+       "x",
+       "y"
+      ],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:46.942607",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Tags inválidas",
+    "unchanged": true,
+    "has": {
+     "post.get.json.tags": [
+      "x",
+      "y"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/1 tags {}",
+   "method": "PUT",
+   "path": "/tasks/1",
+   "input": {
+    "tags": {}
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Tags inválidas"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:47.799098",
+   "at_local": "2026-10-31 20:32:47.799100",
+   "cls": "C-04",
+   "pre_state": "8180b54dc5c1d5e579e8",
+   "post_state": "8180b54dc5c1d5e579e8",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:47.510224",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:47.509523",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [
+       "x",
+       "y"
+      ],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:47.510227",
+      "user_id": 1
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:47.510224",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:47.509523",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [
+       "x",
+       "y"
+      ],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:47.510227",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Tags inválidas",
+    "unchanged": true,
+    "has": {
+     "post.get.json.tags": [
+      "x",
+      "y"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /tasks/999",
+   "method": "PUT",
+   "path": "/tasks/999",
+   "input": {
+    "title": "abc"
+   },
+   "auth": null,
+   "resp": {
+    "status": 404,
+    "is_json": true,
+    "json": {
+     "error": "Task não encontrada"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:48.341012",
+   "at_local": "2026-10-31 20:32:48.341020",
+   "cls": null,
+   "pre_state": "2e4f570be4ef6ee136b4",
+   "post_state": "2e4f570be4ef6ee136b4",
+   "exp": {
+    "status": 404,
+    "error": "Task não encontrada",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "DELETE /tasks/1",
+   "method": "DELETE",
+   "path": "/tasks/1",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "message": "Task deletada com sucesso"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:48.879489",
+   "at_local": "2026-10-31 20:32:48.879491",
+   "cls": null,
+   "pre_state": "6a805de3a61b5817eeef",
+   "post_state": "5a81bf8408c8d3c05193",
+   "post": {
+    "counts": {
+     "tasks": 9,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 404,
+     "json": {
+      "error": "Task não encontrada"
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "category_id": 1,
+      "created_at": "2026-10-31 23:32:48.602178",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 23:32:48.600917",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 23:32:48.602182",
+      "user_id": 1
+     }
+    }
+   },
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json": {
+      "message": "Task deletada com sucesso"
+     },
+     "post.counts.tasks": 9,
+     "post.get.status": 404
+    },
+    "changed": true
+   },
+   "errs": []
+  },
+  {
+   "name": "DELETE /tasks/1 repetido",
+   "method": "DELETE",
+   "path": "/tasks/1",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 404,
+    "is_json": true,
+    "json": {
+     "error": "Task não encontrada"
+    }
+   },
+   "at_utc": "2026-10-31 23:32:48.891577",
+   "at_local": "2026-10-31 20:32:48.891580",
+   "cls": null,
+   "pre_state": "5a81bf8408c8d3c05193",
+   "post_state": "5a81bf8408c8d3c05193",
+   "exp": {
+    "status": 404,
+    "error": "Task não encontrada",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /tasks/stats apos criar e concluir",
+   "method": "GET",
+   "path": "/tasks/stats",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "cancelled": 1,
+     "completion_rate": 18.18,
+     "done": 2,
+     "in_progress": 2,
+     "overdue": 2,
+     "pending": 6,
+     "total": 11
+    }
+   },
+   "at_utc": "2026-10-31 23:32:49.523352",
+   "at_local": "2026-10-31 20:32:49.523355",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json": {
+      "total": 11,
+      "pending": 6,
+      "in_progress": 2,
+      "done": 2,
+      "cancelled": 1,
+      "overdue": 2,
+      "completion_rate": 18.18
+     }
+    }
+   },
+   "errs": []
+  }
+ ]
+}

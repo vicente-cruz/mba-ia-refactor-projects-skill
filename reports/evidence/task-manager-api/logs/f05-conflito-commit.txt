@@ -1,0 +1,9 @@
+# F-05 — original, conflito de email forçado no commit (POST /users e PUT /users/2). Trecho do stdout bruto, sanitizado (hash → <removido>).
+ERRO: (sqlite3.IntegrityError) UNIQUE constraint failed: users.email
+[parameters: ('Conflito', 'corrida@email.com', '<removido>', 'user', 1, '2026-10-31 21:55:27.801292')]
+
+# Refatorado, mesmos cenários (stderr): nenhum parâmetro SQL é registrado.
+2026-10-31 18:55:38,821 WARNING task_manager: Conflito de unicidade de email em "Erro ao criar usuário"
+2026-10-31 18:55:39,326 WARNING task_manager: Conflito de unicidade de email em "Erro ao atualizar"
+2026-10-31 18:55:39,858 WARNING task_manager: Falha de persistência em "Erro ao criar task" (OperationalError)
+2026-10-31 18:55:40,440 WARNING task_manager: Conflito de unicidade de email em "Erro ao criar usuário"

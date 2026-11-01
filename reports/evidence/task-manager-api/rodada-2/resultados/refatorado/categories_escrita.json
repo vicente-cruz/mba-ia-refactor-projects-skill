@@ -1,0 +1,1886 @@
+{
+ "mode": "refatorado",
+ "group": "categories_escrita",
+ "records": [
+  {
+   "name": "POST /categories padrao",
+   "method": "POST",
+   "path": "/categories",
+   "input": {
+    "name": "Nova"
+   },
+   "auth": null,
+   "resp": {
+    "status": 201,
+    "is_json": true,
+    "json": {
+     "color": "#000000",
+     "created_at": "2026-10-31 22:55:57.158455",
+     "description": "",
+     "id": 5,
+     "name": "Nova"
+    }
+   },
+   "at_utc": "2026-10-31 22:55:57.157315",
+   "at_local": "2026-10-31 19:55:57.157321",
+   "cls": null,
+   "pre_state": "f06f4a86b48dfa27e231",
+   "post_state": "e7cdf4f5ccc69d32697f",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 5
+    }
+   },
+   "exp": {
+    "status": 201,
+    "error": null,
+    "has": {
+     "resp.json.id": 5,
+     "post.counts.categories": 5,
+     "resp.json.name": "Nova",
+     "resp.json.color": "#000000",
+     "resp.json.description": ""
+    },
+    "ts": {
+     "resp.json.created_at": [
+      0,
+      120
+     ]
+    },
+    "changed": true,
+    "keys": {
+     "resp.json": [
+      "id",
+      "name",
+      "description",
+      "color",
+      "created_at"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /categories cor valida",
+   "method": "POST",
+   "path": "/categories",
+   "input": {
+    "name": "Nova",
+    "color": "#ABCDEF"
+   },
+   "auth": null,
+   "resp": {
+    "status": 201,
+    "is_json": true,
+    "json": {
+     "color": "#ABCDEF",
+     "created_at": "2026-10-31 22:55:57.696077",
+     "description": "",
+     "id": 5,
+     "name": "Nova"
+    }
+   },
+   "at_utc": "2026-10-31 22:55:57.695332",
+   "at_local": "2026-10-31 19:55:57.695338",
+   "cls": null,
+   "pre_state": "26b09bd1f6044ddf61ff",
+   "post_state": "168a140df6f7d8c1e3e0",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 5
+    }
+   },
+   "exp": {
+    "status": 201,
+    "error": null,
+    "has": {
+     "resp.json.id": 5,
+     "post.counts.categories": 5,
+     "resp.json.color": "#ABCDEF"
+    },
+    "ts": {
+     "resp.json.created_at": [
+      0,
+      120
+     ]
+    },
+    "changed": true,
+    "keys": {
+     "resp.json": [
+      "id",
+      "name",
+      "description",
+      "color",
+      "created_at"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /categories descricao null",
+   "method": "POST",
+   "path": "/categories",
+   "input": {
+    "name": "Nova",
+    "description": null
+   },
+   "auth": null,
+   "resp": {
+    "status": 201,
+    "is_json": true,
+    "json": {
+     "color": "#000000",
+     "created_at": "2026-10-31 22:55:58.217671",
+     "description": null,
+     "id": 5,
+     "name": "Nova"
+    }
+   },
+   "at_utc": "2026-10-31 22:55:58.216793",
+   "at_local": "2026-10-31 19:55:58.216798",
+   "cls": null,
+   "pre_state": "8bf6eafa6b82a5529c26",
+   "post_state": "4158cc2021c395f399b3",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 5
+    }
+   },
+   "exp": {
+    "status": 201,
+    "error": null,
+    "has": {
+     "resp.json.id": 5,
+     "post.counts.categories": 5,
+     "resp.json.description": null
+    },
+    "ts": {
+     "resp.json.created_at": [
+      0,
+      120
+     ]
+    },
+    "changed": true,
+    "keys": {
+     "resp.json": [
+      "id",
+      "name",
+      "description",
+      "color",
+      "created_at"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /categories cor invalida",
+   "method": "POST",
+   "path": "/categories",
+   "input": {
+    "name": "Nova",
+    "color": "red"
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Cor inválida"
+    }
+   },
+   "at_utc": "2026-10-31 22:55:58.740910",
+   "at_local": "2026-10-31 19:55:58.740914",
+   "cls": "R-09",
+   "pre_state": "0b06bf44f2be6befa89d",
+   "post_state": "0b06bf44f2be6befa89d",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Cor inválida",
+    "has": {
+     "post.counts.categories": 4
+    },
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /categories cor null",
+   "method": "POST",
+   "path": "/categories",
+   "input": {
+    "name": "Nova",
+    "color": null
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Cor inválida"
+    }
+   },
+   "at_utc": "2026-10-31 22:55:59.261333",
+   "at_local": "2026-10-31 19:55:59.261338",
+   "cls": "R-09",
+   "pre_state": "d1c53b52614bfcf5dca0",
+   "post_state": "d1c53b52614bfcf5dca0",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Cor inválida",
+    "has": {
+     "post.counts.categories": 4
+    },
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /categories cor com \\n final",
+   "method": "POST",
+   "path": "/categories",
+   "input": {
+    "name": "Nova",
+    "color": "#123456\n"
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Cor inválida"
+    }
+   },
+   "at_utc": "2026-10-31 22:55:59.770644",
+   "at_local": "2026-10-31 19:55:59.770649",
+   "cls": "R-09",
+   "pre_state": "a4b46b12bbecc4814070",
+   "post_state": "a4b46b12bbecc4814070",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Cor inválida",
+    "has": {
+     "post.counts.categories": 4
+    },
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /categories sem nome",
+   "method": "POST",
+   "path": "/categories",
+   "input": {
+    "color": "#ABCDEF"
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Nome é obrigatório"
+    }
+   },
+   "at_utc": "2026-10-31 22:56:00.304094",
+   "at_local": "2026-10-31 19:56:00.304100",
+   "cls": null,
+   "pre_state": "e8608820cfeb3af622ef",
+   "post_state": "e8608820cfeb3af622ef",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Nome é obrigatório",
+    "has": {
+     "post.counts.categories": 4
+    },
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /categories nome numero",
+   "method": "POST",
+   "path": "/categories",
+   "input": {
+    "name": 5
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Nome inválido"
+    }
+   },
+   "at_utc": "2026-10-31 22:56:00.816634",
+   "at_local": "2026-10-31 19:56:00.816638",
+   "cls": "R-08",
+   "pre_state": "c896731f9ecf34f39da6",
+   "post_state": "c896731f9ecf34f39da6",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Nome inválido",
+    "has": {
+     "post.counts.categories": 4
+    },
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /categories nome lista",
+   "method": "POST",
+   "path": "/categories",
+   "input": {
+    "name": [
+     "a"
+    ]
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Nome inválido"
+    }
+   },
+   "at_utc": "2026-10-31 22:56:01.335112",
+   "at_local": "2026-10-31 19:56:01.335117",
+   "cls": "C-10",
+   "pre_state": "aff490c7999575ecf402",
+   "post_state": "aff490c7999575ecf402",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Nome inválido",
+    "has": {
+     "post.counts.categories": 4
+    },
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /categories descricao numero",
+   "method": "POST",
+   "path": "/categories",
+   "input": {
+    "name": "Nova",
+    "description": 5
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Descrição inválida"
+    }
+   },
+   "at_utc": "2026-10-31 22:56:01.853101",
+   "at_local": "2026-10-31 19:56:01.853106",
+   "cls": "R-08",
+   "pre_state": "6ce9e529474fc2d32fb8",
+   "post_state": "6ce9e529474fc2d32fb8",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Descrição inválida",
+    "has": {
+     "post.counts.categories": 4
+    },
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /categories corpo null",
+   "method": "POST",
+   "path": "/categories",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 22:56:02.372278",
+   "at_local": "2026-10-31 19:56:02.372283",
+   "cls": null,
+   "pre_state": "922bce37f1e4573c7916",
+   "post_state": "922bce37f1e4573c7916",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos",
+    "has": {
+     "post.counts.categories": 4
+    },
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /categories corpo [1]",
+   "method": "POST",
+   "path": "/categories",
+   "input": [
+    1
+   ],
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 22:56:02.888854",
+   "at_local": "2026-10-31 19:56:02.888858",
+   "cls": "C-01",
+   "pre_state": "c132626cbdb08b3a6c1f",
+   "post_state": "c132626cbdb08b3a6c1f",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos",
+    "has": {
+     "post.counts.categories": 4
+    },
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /categories corpo 5",
+   "method": "POST",
+   "path": "/categories",
+   "input": 5,
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 22:56:03.418257",
+   "at_local": "2026-10-31 19:56:03.418262",
+   "cls": "C-01",
+   "pre_state": "d0462e794127d1e5a0c8",
+   "post_state": "d0462e794127d1e5a0c8",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos",
+    "has": {
+     "post.counts.categories": 4
+    },
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /categories/1 parcial",
+   "method": "PUT",
+   "path": "/categories/1",
+   "input": {
+    "name": "Ren"
+   },
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "color": "#3498db",
+     "created_at": "2026-10-31 22:56:03.668485",
+     "description": "Tarefas de backend",
+     "id": 1,
+     "name": "Ren"
+    }
+   },
+   "at_utc": "2026-10-31 22:56:03.937743",
+   "at_local": "2026-10-31 19:56:03.937748",
+   "cls": null,
+   "pre_state": "9776b34a0ed328d38b31",
+   "post_state": "ceaa6b3eb758591b2855",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": [
+      {
+       "color": "#3498db",
+       "created_at": "2026-10-31 22:56:03.668485",
+       "description": "Tarefas de backend",
+       "id": 1,
+       "name": "Ren",
+       "task_count": 6
+      },
+      {
+       "color": "#2ecc71",
+       "created_at": "2026-10-31 22:56:03.668490",
+       "description": "Tarefas de frontend",
+       "id": 2,
+       "name": "Frontend",
+       "task_count": 1
+      },
+      {
+       "color": "#e74c3c",
+       "created_at": "2026-10-31 22:56:03.668491",
+       "description": "Tarefas de infraestrutura",
+       "id": 3,
+       "name": "DevOps",
+       "task_count": 2
+      },
+      {
+       "color": "#e67e22",
+       "created_at": "2026-10-31 22:56:03.668492",
+       "description": "Correção de bugs",
+       "id": 4,
+       "name": "Bug",
+       "task_count": 1
+      }
+     ]
+    }
+   },
+   "exp": {
+    "status": 200,
+    "error": null,
+    "has": {
+     "resp.json.id": 1,
+     "resp.json.name": "Ren",
+     "post.get.json.0.name": "Ren",
+     "resp.json.color": "#3498db"
+    },
+    "changed": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /categories/1 cor valida",
+   "method": "PUT",
+   "path": "/categories/1",
+   "input": {
+    "color": "#123456"
+   },
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "color": "#123456",
+     "created_at": "2026-10-31 22:56:04.192275",
+     "description": "Tarefas de backend",
+     "id": 1,
+     "name": "Backend"
+    }
+   },
+   "at_utc": "2026-10-31 22:56:04.457019",
+   "at_local": "2026-10-31 19:56:04.457023",
+   "cls": null,
+   "pre_state": "6dedffbe02240945c369",
+   "post_state": "656107f27a74f740c707",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": [
+      {
+       "color": "#123456",
+       "created_at": "2026-10-31 22:56:04.192275",
+       "description": "Tarefas de backend",
+       "id": 1,
+       "name": "Backend",
+       "task_count": 6
+      },
+      {
+       "color": "#2ecc71",
+       "created_at": "2026-10-31 22:56:04.192280",
+       "description": "Tarefas de frontend",
+       "id": 2,
+       "name": "Frontend",
+       "task_count": 1
+      },
+      {
+       "color": "#e74c3c",
+       "created_at": "2026-10-31 22:56:04.192281",
+       "description": "Tarefas de infraestrutura",
+       "id": 3,
+       "name": "DevOps",
+       "task_count": 2
+      },
+      {
+       "color": "#e67e22",
+       "created_at": "2026-10-31 22:56:04.192282",
+       "description": "Correção de bugs",
+       "id": 4,
+       "name": "Bug",
+       "task_count": 1
+      }
+     ]
+    }
+   },
+   "exp": {
+    "status": 200,
+    "error": null,
+    "has": {
+     "resp.json.id": 1,
+     "resp.json.color": "#123456",
+     "post.get.json.0.color": "#123456"
+    },
+    "changed": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /categories/1 corpo {}",
+   "method": "PUT",
+   "path": "/categories/1",
+   "input": {},
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "color": "#3498db",
+     "created_at": "2026-10-31 22:56:04.730939",
+     "description": "Tarefas de backend",
+     "id": 1,
+     "name": "Backend"
+    }
+   },
+   "at_utc": "2026-10-31 22:56:04.999178",
+   "at_local": "2026-10-31 19:56:04.999183",
+   "cls": null,
+   "pre_state": "0507b1212493e30e9f5d",
+   "post_state": "0507b1212493e30e9f5d",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": [
+      {
+       "color": "#3498db",
+       "created_at": "2026-10-31 22:56:04.730939",
+       "description": "Tarefas de backend",
+       "id": 1,
+       "name": "Backend",
+       "task_count": 6
+      },
+      {
+       "color": "#2ecc71",
+       "created_at": "2026-10-31 22:56:04.730945",
+       "description": "Tarefas de frontend",
+       "id": 2,
+       "name": "Frontend",
+       "task_count": 1
+      },
+      {
+       "color": "#e74c3c",
+       "created_at": "2026-10-31 22:56:04.730946",
+       "description": "Tarefas de infraestrutura",
+       "id": 3,
+       "name": "DevOps",
+       "task_count": 2
+      },
+      {
+       "color": "#e67e22",
+       "created_at": "2026-10-31 22:56:04.730947",
+       "description": "Correção de bugs",
+       "id": 4,
+       "name": "Bug",
+       "task_count": 1
+      }
+     ]
+    }
+   },
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json.name": "Backend",
+     "resp.json.color": "#3498db"
+    },
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /categories/1 corpo null",
+   "method": "PUT",
+   "path": "/categories/1",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 22:56:05.522449",
+   "at_local": "2026-10-31 19:56:05.522457",
+   "cls": "C-01",
+   "pre_state": "ca735ed8d6943fdbaf99",
+   "post_state": "ca735ed8d6943fdbaf99",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": [
+      {
+       "color": "#3498db",
+       "created_at": "2026-10-31 22:56:05.259535",
+       "description": "Tarefas de backend",
+       "id": 1,
+       "name": "Backend",
+       "task_count": 6
+      },
+      {
+       "color": "#2ecc71",
+       "created_at": "2026-10-31 22:56:05.259540",
+       "description": "Tarefas de frontend",
+       "id": 2,
+       "name": "Frontend",
+       "task_count": 1
+      },
+      {
+       "color": "#e74c3c",
+       "created_at": "2026-10-31 22:56:05.259541",
+       "description": "Tarefas de infraestrutura",
+       "id": 3,
+       "name": "DevOps",
+       "task_count": 2
+      },
+      {
+       "color": "#e67e22",
+       "created_at": "2026-10-31 22:56:05.259541",
+       "description": "Correção de bugs",
+       "id": 4,
+       "name": "Bug",
+       "task_count": 1
+      }
+     ]
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos",
+    "has": {
+     "post.get.json.0.name": "Backend",
+     "post.get.json.0.color": "#3498db"
+    },
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /categories/1 corpo 0",
+   "method": "PUT",
+   "path": "/categories/1",
+   "input": 0,
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 22:56:06.046953",
+   "at_local": "2026-10-31 19:56:06.046958",
+   "cls": "C-01",
+   "pre_state": "f85d1cf94b927b12d483",
+   "post_state": "f85d1cf94b927b12d483",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": [
+      {
+       "color": "#3498db",
+       "created_at": "2026-10-31 22:56:05.782630",
+       "description": "Tarefas de backend",
+       "id": 1,
+       "name": "Backend",
+       "task_count": 6
+      },
+      {
+       "color": "#2ecc71",
+       "created_at": "2026-10-31 22:56:05.782635",
+       "description": "Tarefas de frontend",
+       "id": 2,
+       "name": "Frontend",
+       "task_count": 1
+      },
+      {
+       "color": "#e74c3c",
+       "created_at": "2026-10-31 22:56:05.782636",
+       "description": "Tarefas de infraestrutura",
+       "id": 3,
+       "name": "DevOps",
+       "task_count": 2
+      },
+      {
+       "color": "#e67e22",
+       "created_at": "2026-10-31 22:56:05.782637",
+       "description": "Correção de bugs",
+       "id": 4,
+       "name": "Bug",
+       "task_count": 1
+      }
+     ]
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos",
+    "has": {
+     "post.get.json.0.name": "Backend",
+     "post.get.json.0.color": "#3498db"
+    },
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /categories/1 corpo false",
+   "method": "PUT",
+   "path": "/categories/1",
+   "input": false,
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 22:56:06.606745",
+   "at_local": "2026-10-31 19:56:06.606750",
+   "cls": "C-01",
+   "pre_state": "a8da173c2e1a8190a6df",
+   "post_state": "a8da173c2e1a8190a6df",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": [
+      {
+       "color": "#3498db",
+       "created_at": "2026-10-31 22:56:06.299011",
+       "description": "Tarefas de backend",
+       "id": 1,
+       "name": "Backend",
+       "task_count": 6
+      },
+      {
+       "color": "#2ecc71",
+       "created_at": "2026-10-31 22:56:06.299017",
+       "description": "Tarefas de frontend",
+       "id": 2,
+       "name": "Frontend",
+       "task_count": 1
+      },
+      {
+       "color": "#e74c3c",
+       "created_at": "2026-10-31 22:56:06.299018",
+       "description": "Tarefas de infraestrutura",
+       "id": 3,
+       "name": "DevOps",
+       "task_count": 2
+      },
+      {
+       "color": "#e67e22",
+       "created_at": "2026-10-31 22:56:06.299019",
+       "description": "Correção de bugs",
+       "id": 4,
+       "name": "Bug",
+       "task_count": 1
+      }
+     ]
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos",
+    "has": {
+     "post.get.json.0.name": "Backend",
+     "post.get.json.0.color": "#3498db"
+    },
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /categories/1 corpo 5",
+   "method": "PUT",
+   "path": "/categories/1",
+   "input": 5,
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 22:56:07.120981",
+   "at_local": "2026-10-31 19:56:07.120986",
+   "cls": "C-01",
+   "pre_state": "dee1c3034a46f63d7735",
+   "post_state": "dee1c3034a46f63d7735",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": [
+      {
+       "color": "#3498db",
+       "created_at": "2026-10-31 22:56:06.852820",
+       "description": "Tarefas de backend",
+       "id": 1,
+       "name": "Backend",
+       "task_count": 6
+      },
+      {
+       "color": "#2ecc71",
+       "created_at": "2026-10-31 22:56:06.852827",
+       "description": "Tarefas de frontend",
+       "id": 2,
+       "name": "Frontend",
+       "task_count": 1
+      },
+      {
+       "color": "#e74c3c",
+       "created_at": "2026-10-31 22:56:06.852828",
+       "description": "Tarefas de infraestrutura",
+       "id": 3,
+       "name": "DevOps",
+       "task_count": 2
+      },
+      {
+       "color": "#e67e22",
+       "created_at": "2026-10-31 22:56:06.852828",
+       "description": "Correção de bugs",
+       "id": 4,
+       "name": "Bug",
+       "task_count": 1
+      }
+     ]
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos",
+    "has": {
+     "post.get.json.0.name": "Backend",
+     "post.get.json.0.color": "#3498db"
+    },
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /categories/1 corpo []",
+   "method": "PUT",
+   "path": "/categories/1",
+   "input": [],
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 22:56:07.633657",
+   "at_local": "2026-10-31 19:56:07.633662",
+   "cls": "R-01",
+   "pre_state": "cbb8c56b1796198fe605",
+   "post_state": "cbb8c56b1796198fe605",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": [
+      {
+       "color": "#3498db",
+       "created_at": "2026-10-31 22:56:07.367494",
+       "description": "Tarefas de backend",
+       "id": 1,
+       "name": "Backend",
+       "task_count": 6
+      },
+      {
+       "color": "#2ecc71",
+       "created_at": "2026-10-31 22:56:07.367499",
+       "description": "Tarefas de frontend",
+       "id": 2,
+       "name": "Frontend",
+       "task_count": 1
+      },
+      {
+       "color": "#e74c3c",
+       "created_at": "2026-10-31 22:56:07.367500",
+       "description": "Tarefas de infraestrutura",
+       "id": 3,
+       "name": "DevOps",
+       "task_count": 2
+      },
+      {
+       "color": "#e67e22",
+       "created_at": "2026-10-31 22:56:07.367501",
+       "description": "Correção de bugs",
+       "id": 4,
+       "name": "Bug",
+       "task_count": 1
+      }
+     ]
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos",
+    "has": {
+     "post.get.json.0.name": "Backend",
+     "post.get.json.0.color": "#3498db"
+    },
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /categories/1 corpo \"\"",
+   "method": "PUT",
+   "path": "/categories/1",
+   "input": "",
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 22:56:08.149569",
+   "at_local": "2026-10-31 19:56:08.149574",
+   "cls": "R-01",
+   "pre_state": "492f5c36090f82b89906",
+   "post_state": "492f5c36090f82b89906",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": [
+      {
+       "color": "#3498db",
+       "created_at": "2026-10-31 22:56:07.883055",
+       "description": "Tarefas de backend",
+       "id": 1,
+       "name": "Backend",
+       "task_count": 6
+      },
+      {
+       "color": "#2ecc71",
+       "created_at": "2026-10-31 22:56:07.883060",
+       "description": "Tarefas de frontend",
+       "id": 2,
+       "name": "Frontend",
+       "task_count": 1
+      },
+      {
+       "color": "#e74c3c",
+       "created_at": "2026-10-31 22:56:07.883061",
+       "description": "Tarefas de infraestrutura",
+       "id": 3,
+       "name": "DevOps",
+       "task_count": 2
+      },
+      {
+       "color": "#e67e22",
+       "created_at": "2026-10-31 22:56:07.883062",
+       "description": "Correção de bugs",
+       "id": 4,
+       "name": "Bug",
+       "task_count": 1
+      }
+     ]
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos",
+    "has": {
+     "post.get.json.0.name": "Backend",
+     "post.get.json.0.color": "#3498db"
+    },
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /categories/1 corpo [1]",
+   "method": "PUT",
+   "path": "/categories/1",
+   "input": [
+    1
+   ],
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 22:56:08.672227",
+   "at_local": "2026-10-31 19:56:08.672232",
+   "cls": "R-01",
+   "pre_state": "173a8395e330783af8c2",
+   "post_state": "173a8395e330783af8c2",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": [
+      {
+       "color": "#3498db",
+       "created_at": "2026-10-31 22:56:08.410662",
+       "description": "Tarefas de backend",
+       "id": 1,
+       "name": "Backend",
+       "task_count": 6
+      },
+      {
+       "color": "#2ecc71",
+       "created_at": "2026-10-31 22:56:08.410668",
+       "description": "Tarefas de frontend",
+       "id": 2,
+       "name": "Frontend",
+       "task_count": 1
+      },
+      {
+       "color": "#e74c3c",
+       "created_at": "2026-10-31 22:56:08.410669",
+       "description": "Tarefas de infraestrutura",
+       "id": 3,
+       "name": "DevOps",
+       "task_count": 2
+      },
+      {
+       "color": "#e67e22",
+       "created_at": "2026-10-31 22:56:08.410670",
+       "description": "Correção de bugs",
+       "id": 4,
+       "name": "Bug",
+       "task_count": 1
+      }
+     ]
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos",
+    "has": {
+     "post.get.json.0.name": "Backend",
+     "post.get.json.0.color": "#3498db"
+    },
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /categories/1 corpo \"x\"",
+   "method": "PUT",
+   "path": "/categories/1",
+   "input": "x",
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 22:56:09.188871",
+   "at_local": "2026-10-31 19:56:09.188876",
+   "cls": "R-01",
+   "pre_state": "eb62e51101430e1330cc",
+   "post_state": "eb62e51101430e1330cc",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": [
+      {
+       "color": "#3498db",
+       "created_at": "2026-10-31 22:56:08.925942",
+       "description": "Tarefas de backend",
+       "id": 1,
+       "name": "Backend",
+       "task_count": 6
+      },
+      {
+       "color": "#2ecc71",
+       "created_at": "2026-10-31 22:56:08.925948",
+       "description": "Tarefas de frontend",
+       "id": 2,
+       "name": "Frontend",
+       "task_count": 1
+      },
+      {
+       "color": "#e74c3c",
+       "created_at": "2026-10-31 22:56:08.925949",
+       "description": "Tarefas de infraestrutura",
+       "id": 3,
+       "name": "DevOps",
+       "task_count": 2
+      },
+      {
+       "color": "#e67e22",
+       "created_at": "2026-10-31 22:56:08.925949",
+       "description": "Correção de bugs",
+       "id": 4,
+       "name": "Bug",
+       "task_count": 1
+      }
+     ]
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos",
+    "has": {
+     "post.get.json.0.name": "Backend",
+     "post.get.json.0.color": "#3498db"
+    },
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /categories/1 nome null",
+   "method": "PUT",
+   "path": "/categories/1",
+   "input": {
+    "name": null
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Nome é obrigatório"
+    }
+   },
+   "at_utc": "2026-10-31 22:56:09.704382",
+   "at_local": "2026-10-31 19:56:09.704387",
+   "cls": "C-09",
+   "pre_state": "8ab4180528776a1ff277",
+   "post_state": "8ab4180528776a1ff277",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": [
+      {
+       "color": "#3498db",
+       "created_at": "2026-10-31 22:56:09.443145",
+       "description": "Tarefas de backend",
+       "id": 1,
+       "name": "Backend",
+       "task_count": 6
+      },
+      {
+       "color": "#2ecc71",
+       "created_at": "2026-10-31 22:56:09.443151",
+       "description": "Tarefas de frontend",
+       "id": 2,
+       "name": "Frontend",
+       "task_count": 1
+      },
+      {
+       "color": "#e74c3c",
+       "created_at": "2026-10-31 22:56:09.443152",
+       "description": "Tarefas de infraestrutura",
+       "id": 3,
+       "name": "DevOps",
+       "task_count": 2
+      },
+      {
+       "color": "#e67e22",
+       "created_at": "2026-10-31 22:56:09.443153",
+       "description": "Correção de bugs",
+       "id": 4,
+       "name": "Bug",
+       "task_count": 1
+      }
+     ]
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Nome é obrigatório",
+    "has": {
+     "post.get.json.0.name": "Backend",
+     "post.get.json.0.color": "#3498db"
+    },
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /categories/1 nome \"\"",
+   "method": "PUT",
+   "path": "/categories/1",
+   "input": {
+    "name": ""
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Nome inválido"
+    }
+   },
+   "at_utc": "2026-10-31 22:56:10.230610",
+   "at_local": "2026-10-31 19:56:10.230615",
+   "cls": "R-08",
+   "pre_state": "9b2693a40411c0f55bde",
+   "post_state": "9b2693a40411c0f55bde",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": [
+      {
+       "color": "#3498db",
+       "created_at": "2026-10-31 22:56:09.969177",
+       "description": "Tarefas de backend",
+       "id": 1,
+       "name": "Backend",
+       "task_count": 6
+      },
+      {
+       "color": "#2ecc71",
+       "created_at": "2026-10-31 22:56:09.969182",
+       "description": "Tarefas de frontend",
+       "id": 2,
+       "name": "Frontend",
+       "task_count": 1
+      },
+      {
+       "color": "#e74c3c",
+       "created_at": "2026-10-31 22:56:09.969183",
+       "description": "Tarefas de infraestrutura",
+       "id": 3,
+       "name": "DevOps",
+       "task_count": 2
+      },
+      {
+       "color": "#e67e22",
+       "created_at": "2026-10-31 22:56:09.969184",
+       "description": "Correção de bugs",
+       "id": 4,
+       "name": "Bug",
+       "task_count": 1
+      }
+     ]
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Nome inválido",
+    "has": {
+     "post.get.json.0.name": "Backend",
+     "post.get.json.0.color": "#3498db"
+    },
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /categories/1 nome numero",
+   "method": "PUT",
+   "path": "/categories/1",
+   "input": {
+    "name": 5
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Nome inválido"
+    }
+   },
+   "at_utc": "2026-10-31 22:56:10.736868",
+   "at_local": "2026-10-31 19:56:10.736872",
+   "cls": "R-08",
+   "pre_state": "1a73af5a75739b15b427",
+   "post_state": "1a73af5a75739b15b427",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": [
+      {
+       "color": "#3498db",
+       "created_at": "2026-10-31 22:56:10.477594",
+       "description": "Tarefas de backend",
+       "id": 1,
+       "name": "Backend",
+       "task_count": 6
+      },
+      {
+       "color": "#2ecc71",
+       "created_at": "2026-10-31 22:56:10.477615",
+       "description": "Tarefas de frontend",
+       "id": 2,
+       "name": "Frontend",
+       "task_count": 1
+      },
+      {
+       "color": "#e74c3c",
+       "created_at": "2026-10-31 22:56:10.477617",
+       "description": "Tarefas de infraestrutura",
+       "id": 3,
+       "name": "DevOps",
+       "task_count": 2
+      },
+      {
+       "color": "#e67e22",
+       "created_at": "2026-10-31 22:56:10.477617",
+       "description": "Correção de bugs",
+       "id": 4,
+       "name": "Bug",
+       "task_count": 1
+      }
+     ]
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Nome inválido",
+    "has": {
+     "post.get.json.0.name": "Backend",
+     "post.get.json.0.color": "#3498db"
+    },
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /categories/1 cor invalida",
+   "method": "PUT",
+   "path": "/categories/1",
+   "input": {
+    "color": "bad"
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Cor inválida"
+    }
+   },
+   "at_utc": "2026-10-31 22:56:11.257049",
+   "at_local": "2026-10-31 19:56:11.257054",
+   "cls": "R-09",
+   "pre_state": "6928139ae8da1f273894",
+   "post_state": "6928139ae8da1f273894",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": [
+      {
+       "color": "#3498db",
+       "created_at": "2026-10-31 22:56:10.985895",
+       "description": "Tarefas de backend",
+       "id": 1,
+       "name": "Backend",
+       "task_count": 6
+      },
+      {
+       "color": "#2ecc71",
+       "created_at": "2026-10-31 22:56:10.985900",
+       "description": "Tarefas de frontend",
+       "id": 2,
+       "name": "Frontend",
+       "task_count": 1
+      },
+      {
+       "color": "#e74c3c",
+       "created_at": "2026-10-31 22:56:10.985901",
+       "description": "Tarefas de infraestrutura",
+       "id": 3,
+       "name": "DevOps",
+       "task_count": 2
+      },
+      {
+       "color": "#e67e22",
+       "created_at": "2026-10-31 22:56:10.985902",
+       "description": "Correção de bugs",
+       "id": 4,
+       "name": "Bug",
+       "task_count": 1
+      }
+     ]
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Cor inválida",
+    "has": {
+     "post.get.json.0.name": "Backend",
+     "post.get.json.0.color": "#3498db"
+    },
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /categories/1 cor com \\n final",
+   "method": "PUT",
+   "path": "/categories/1",
+   "input": {
+    "color": "#123456\n"
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Cor inválida"
+    }
+   },
+   "at_utc": "2026-10-31 22:56:11.773019",
+   "at_local": "2026-10-31 19:56:11.773025",
+   "cls": "R-09",
+   "pre_state": "0dc8e03c6a5b6ea9f127",
+   "post_state": "0dc8e03c6a5b6ea9f127",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": [
+      {
+       "color": "#3498db",
+       "created_at": "2026-10-31 22:56:11.507448",
+       "description": "Tarefas de backend",
+       "id": 1,
+       "name": "Backend",
+       "task_count": 6
+      },
+      {
+       "color": "#2ecc71",
+       "created_at": "2026-10-31 22:56:11.507454",
+       "description": "Tarefas de frontend",
+       "id": 2,
+       "name": "Frontend",
+       "task_count": 1
+      },
+      {
+       "color": "#e74c3c",
+       "created_at": "2026-10-31 22:56:11.507454",
+       "description": "Tarefas de infraestrutura",
+       "id": 3,
+       "name": "DevOps",
+       "task_count": 2
+      },
+      {
+       "color": "#e67e22",
+       "created_at": "2026-10-31 22:56:11.507455",
+       "description": "Correção de bugs",
+       "id": 4,
+       "name": "Bug",
+       "task_count": 1
+      }
+     ]
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Cor inválida",
+    "has": {
+     "post.get.json.0.name": "Backend",
+     "post.get.json.0.color": "#3498db"
+    },
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /categories/999",
+   "method": "PUT",
+   "path": "/categories/999",
+   "input": {
+    "name": "x"
+   },
+   "auth": null,
+   "resp": {
+    "status": 404,
+    "is_json": true,
+    "json": {
+     "error": "Categoria não encontrada"
+    }
+   },
+   "at_utc": "2026-10-31 22:56:12.289055",
+   "at_local": "2026-10-31 19:56:12.289060",
+   "cls": null,
+   "pre_state": "b4c3f5018fb43d0f0e82",
+   "post_state": "b4c3f5018fb43d0f0e82",
+   "exp": {
+    "status": 404,
+    "error": "Categoria não encontrada",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "DELETE /categories/1 com tasks",
+   "method": "DELETE",
+   "path": "/categories/1",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "message": "Categoria deletada"
+    }
+   },
+   "at_utc": "2026-10-31 22:56:12.809016",
+   "at_local": "2026-10-31 19:56:12.809020",
+   "cls": null,
+   "pre_state": "2616171f67b89a6d2ade",
+   "post_state": "6b9302fd8683cdc1cb00",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 3
+    },
+    "tasks_cat_null": 6,
+    "tasks_cat_1": 0
+   },
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json": {
+      "message": "Categoria deletada"
+     },
+     "post.counts": {
+      "tasks": 10,
+      "users": 3,
+      "categories": 3
+     },
+     "post.tasks_cat_null": 6,
+     "post.tasks_cat_1": 0
+    },
+    "changed": true
+   },
+   "errs": []
+  },
+  {
+   "name": "DELETE /categories/5 sem tasks",
+   "method": "DELETE",
+   "path": "/categories/5",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "message": "Categoria deletada"
+    }
+   },
+   "at_utc": "2026-10-31 22:56:13.353238",
+   "at_local": "2026-10-31 19:56:13.353241",
+   "cls": null,
+   "pre_state": "d1e0937ea9fba3ddc428",
+   "post_state": "7337afe15021b4a6dfe0",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    }
+   },
+   "exp": {
+    "status": 200,
+    "has": {
+     "post.counts.categories": 4,
+     "post.counts.tasks": 10
+    },
+    "changed": true
+   },
+   "errs": []
+  },
+  {
+   "name": "DELETE /categories/999",
+   "method": "DELETE",
+   "path": "/categories/999",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 404,
+    "is_json": true,
+    "json": {
+     "error": "Categoria não encontrada"
+    }
+   },
+   "at_utc": "2026-10-31 22:56:13.946544",
+   "at_local": "2026-10-31 19:56:13.946549",
+   "cls": null,
+   "pre_state": "7312ef4aeaead358429a",
+   "post_state": "7312ef4aeaead358429a",
+   "exp": {
+    "status": 404,
+    "error": "Categoria não encontrada",
+    "unchanged": true
+   },
+   "errs": []
+  }
+ ]
+}

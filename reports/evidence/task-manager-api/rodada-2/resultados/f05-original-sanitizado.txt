@@ -1,0 +1,2 @@
+ERRO: (sqlite3.IntegrityError) UNIQUE constraint failed: users.email
+[parameters: ('Conflito', 'corrida@email.com', '<removido>', 'user', 1, '2026-10-31 22:54:12.144811')]

@@ -1,0 +1,36 @@
+== logs original (26 arquivos)
+  segredo anotado (senha/token/chave): 2
+  hash werkzeug: 0
+  hash md5 (32 hex): 2
+  'parameters:' do SQLAlchemy: 10
+  nonce/sid (43 urlsafe): 0
+== logs refatorado (26 arquivos)
+  segredo anotado (senha/token/chave): 0
+  hash werkzeug: 0
+  hash md5 (32 hex): 0
+  'parameters:' do SQLAlchemy: 0
+  nonce/sid (43 urlsafe): 0
+== logs migracao (13 arquivos)
+  segredo anotado (senha/token/chave): 0
+  hash werkzeug: 0
+  hash md5 (32 hex): 0
+  'parameters:' do SQLAlchemy: 0
+  nonce/sid (43 urlsafe): 0
+== logs cli (9 arquivos)
+  segredo anotado (senha/token/chave): 0
+  hash werkzeug: 0
+  hash md5 (32 hex): 0
+  'parameters:' do SQLAlchemy: 0
+  nonce/sid (43 urlsafe): 0
+== logs warn-original (2 arquivos)
+  segredo anotado (senha/token/chave): 0
+  hash werkzeug: 0
+  hash md5 (32 hex): 0
+  'parameters:' do SQLAlchemy: 6
+  nonce/sid (43 urlsafe): 0
+== logs warn-refatorado (2 arquivos)
+  segredo anotado (senha/token/chave): 0
+  hash werkzeug: 0
+  hash md5 (32 hex): 0
+  'parameters:' do SQLAlchemy: 0
+  nonce/sid (43 urlsafe): 0

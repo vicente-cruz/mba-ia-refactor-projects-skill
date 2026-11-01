@@ -1,0 +1,903 @@
+{
+ "mode": "refatorado",
+ "group": "ciclo_token",
+ "records": [
+  {
+   "name": "reuso de ID (Y user): Y recebeu o mesmo ID de X",
+   "fact": true,
+   "cls": null,
+   "at_utc": "2026-10-31 23:31:25.448008",
+   "exp": {
+    "has": {
+     "fact": true
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "reuso de ID (Y user): token antigo de X",
+   "method": "PUT",
+   "path": "/users/4",
+   "input": {
+    "name": "Hackeado"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 401,
+    "is_json": true,
+    "json": {
+     "error": "Token inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:25.451736",
+   "at_local": "2026-10-31 20:31:25.451739",
+   "cls": "D-1a",
+   "pre_state": "a3a82a7ff315b9f68b9b",
+   "post_state": "a3a82a7ff315b9f68b9b",
+   "post": {
+    "y": [
+     [
+      "Y",
+      "user"
+     ]
+    ],
+    "counts": {
+     "tasks": 10,
+     "users": 4,
+     "categories": 4
+    }
+   },
+   "pre_view": {
+    "y": [
+     [
+      "Y",
+      "user"
+     ]
+    ],
+    "counts": {
+     "tasks": 10,
+     "users": 4,
+     "categories": 4
+    }
+   },
+   "exp": {
+    "status": 401,
+    "error": "Token inválido",
+    "has": {
+     "post.y": [
+      [
+       "Y",
+       "user"
+      ]
+     ]
+    },
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "reuso de ID (Y user): controle com token novo de Y",
+   "method": "PUT",
+   "path": "/users/4",
+   "input": {
+    "name": "Y2"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "active": true,
+     "created_at": "2026-10-31 23:31:25.438601",
+     "email": "y@email.com",
+     "id": 4,
+     "name": "Y2",
+     "role": "user"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:25.538720",
+   "at_local": "2026-10-31 20:31:25.538727",
+   "cls": null,
+   "pre_state": "a3a82a7ff315b9f68b9b",
+   "post_state": "cfb33d25fb156eeb3fde",
+   "exp": {
+    "status": 200,
+    "error": null,
+    "has": {
+     "resp.json.name": "Y2",
+     "resp.json.id": 4
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "reuso de ID (Y admin): Y recebeu o mesmo ID de X",
+   "fact": true,
+   "cls": null,
+   "at_utc": "2026-10-31 23:31:26.335904",
+   "exp": {
+    "has": {
+     "fact": true
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "reuso de ID (Y admin): token antigo de X",
+   "method": "DELETE",
+   "path": "/users/2",
+   "input": null,
+   "auth": "<bearer>",
+   "resp": {
+    "status": 401,
+    "is_json": true,
+    "json": {
+     "error": "Token inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:26.337087",
+   "at_local": "2026-10-31 20:31:26.337090",
+   "cls": "D-1a",
+   "pre_state": "ec1aa2b265bff776a461",
+   "post_state": "ec1aa2b265bff776a461",
+   "post": {
+    "y": [
+     [
+      "Y",
+      "admin"
+     ]
+    ],
+    "counts": {
+     "tasks": 10,
+     "users": 4,
+     "categories": 4
+    }
+   },
+   "pre_view": {
+    "y": [
+     [
+      "Y",
+      "admin"
+     ]
+    ],
+    "counts": {
+     "tasks": 10,
+     "users": 4,
+     "categories": 4
+    }
+   },
+   "exp": {
+    "status": 401,
+    "error": "Token inválido",
+    "has": {
+     "post.y": [
+      [
+       "Y",
+       "admin"
+      ]
+     ]
+    },
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "reuso de ID (Y admin): controle com token novo de Y",
+   "method": "PUT",
+   "path": "/users/4",
+   "input": {
+    "name": "Y2"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "active": true,
+     "created_at": "2026-10-31 23:31:26.329012",
+     "email": "y@email.com",
+     "id": 4,
+     "name": "Y2",
+     "role": "admin"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:26.426604",
+   "at_local": "2026-10-31 20:31:26.426610",
+   "cls": null,
+   "pre_state": "ec1aa2b265bff776a461",
+   "post_state": "ca58b1edcd1613925d71",
+   "exp": {
+    "status": 200,
+    "error": null,
+    "has": {
+     "resp.json.name": "Y2",
+     "resp.json.id": 4
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "novo seed: admin mantém id 1",
+   "fact": 1,
+   "cls": null,
+   "at_utc": "2026-10-31 23:31:27.200075",
+   "exp": {
+    "has": {
+     "fact": 1
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "novo seed: nonce do admin mudou",
+   "fact": true,
+   "cls": null,
+   "at_utc": "2026-10-31 23:31:27.200680",
+   "only": "refatorado",
+   "exp": {
+    "has": {
+     "fact": true
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "novo seed: token antigo do admin",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": {
+    "name": "Z"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 401,
+    "is_json": true,
+    "json": {
+     "error": "Token inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:27.201198",
+   "at_local": "2026-10-31 20:31:27.201200",
+   "cls": "D-1a",
+   "pre_state": "17179ffbb2ddf05958ec",
+   "post_state": "17179ffbb2ddf05958ec",
+   "exp": {
+    "status": 401,
+    "error": "Token inválido",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "novo seed: token novo do admin",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": {
+    "name": "Z"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "active": true,
+     "created_at": "2026-10-31 23:31:27.189052",
+     "email": "maria@email.com",
+     "id": 2,
+     "name": "Z",
+     "role": "user"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:27.453118",
+   "at_local": "2026-10-31 20:31:27.453123",
+   "cls": null,
+   "pre_state": "17179ffbb2ddf05958ec",
+   "post_state": "46fdbcd0e1f02ab554dc",
+   "exp": {
+    "status": 200,
+    "error": null,
+    "has": {
+     "resp.json.name": "Z"
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "senha: troca com T1",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": {
+    "password": "<presente>"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "active": true,
+     "created_at": "2026-10-31 23:31:27.710400",
+     "email": "maria@email.com",
+     "id": 2,
+     "name": "Maria Santos",
+     "role": "user"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:28.136602",
+   "at_local": "2026-10-31 20:31:28.136607",
+   "cls": null,
+   "pre_state": "3654c883e4be70749875",
+   "post_state": "a1336d3284995a6f4535",
+   "exp": {
+    "status": 200,
+    "error": null,
+    "changed": true
+   },
+   "errs": []
+  },
+  {
+   "name": "senha: T1 depois da troca",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": {
+    "name": "M"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 401,
+    "is_json": true,
+    "json": {
+     "error": "Token inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:28.232077",
+   "at_local": "2026-10-31 20:31:28.232081",
+   "cls": "D-1a",
+   "pre_state": "a1336d3284995a6f4535",
+   "post_state": "a1336d3284995a6f4535",
+   "exp": {
+    "status": 401,
+    "error": "Token inválido",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "senha: T2 depois da troca",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": {
+    "name": "M"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 401,
+    "is_json": true,
+    "json": {
+     "error": "Token inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:28.234123",
+   "at_local": "2026-10-31 20:31:28.234125",
+   "cls": "D-1a",
+   "pre_state": "a1336d3284995a6f4535",
+   "post_state": "a1336d3284995a6f4535",
+   "exp": {
+    "status": 401,
+    "error": "Token inválido",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "senha: login com a antiga",
+   "method": "POST",
+   "path": "/login",
+   "input": {
+    "email": "maria@email.com",
+    "password": "<presente>"
+   },
+   "auth": null,
+   "resp": {
+    "status": 401,
+    "is_json": true,
+    "json": {
+     "error": "Credenciais inválidas"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:28.236175",
+   "at_local": "2026-10-31 20:31:28.236177",
+   "cls": null,
+   "pre_state": "a1336d3284995a6f4535",
+   "post_state": "a1336d3284995a6f4535",
+   "exp": {
+    "status": 401,
+    "error": "Credenciais inválidas"
+   },
+   "errs": []
+  },
+  {
+   "name": "senha: token novo funciona",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": {
+    "name": "M3"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "active": true,
+     "created_at": "2026-10-31 23:31:27.710400",
+     "email": "maria@email.com",
+     "id": 2,
+     "name": "M3",
+     "role": "user"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:28.400201",
+   "at_local": "2026-10-31 20:31:28.400207",
+   "cls": null,
+   "pre_state": "a1336d3284995a6f4535",
+   "post_state": "7ef97eb135138f24b6e4",
+   "exp": {
+    "status": 200,
+    "error": null,
+    "has": {
+     "resp.json.name": "M3"
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "senha: admin troca senha de pedro",
+   "method": "PUT",
+   "path": "/users/3",
+   "input": {
+    "password": "<presente>"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "active": true,
+     "created_at": "2026-10-31 23:31:28.661016",
+     "email": "pedro@email.com",
+     "id": 3,
+     "name": "Pedro Oliveira",
+     "role": "manager"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:28.923986",
+   "at_local": "2026-10-31 20:31:28.923991",
+   "cls": null,
+   "pre_state": "cdcfa7b6bc045f7e4d68",
+   "post_state": "199c9982aee228671d73",
+   "exp": {
+    "status": 200,
+    "error": null,
+    "changed": true
+   },
+   "errs": []
+  },
+  {
+   "name": "senha: token antigo de pedro",
+   "method": "PUT",
+   "path": "/users/3",
+   "input": {
+    "name": "P"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 401,
+    "is_json": true,
+    "json": {
+     "error": "Token inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:29.017706",
+   "at_local": "2026-10-31 20:31:29.017709",
+   "cls": "D-1a",
+   "pre_state": "199c9982aee228671d73",
+   "post_state": "199c9982aee228671d73",
+   "exp": {
+    "status": 401,
+    "error": "Token inválido",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "senha: token do admin continua",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": {
+    "name": "M"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "active": true,
+     "created_at": "2026-10-31 23:31:28.661013",
+     "email": "maria@email.com",
+     "id": 2,
+     "name": "M",
+     "role": "user"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:29.019727",
+   "at_local": "2026-10-31 20:31:29.019729",
+   "cls": null,
+   "pre_state": "199c9982aee228671d73",
+   "post_state": "e759b78021331ff77431",
+   "exp": {
+    "status": 200,
+    "error": null,
+    "has": {
+     "resp.json.name": "M"
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "senha: commit falha (induzida)",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": {
+    "password": "<presente>"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 500,
+    "is_json": true,
+    "json": {
+     "error": "Erro ao atualizar"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:29.619101",
+   "at_local": "2026-10-31 20:31:29.619105",
+   "cls": null,
+   "pre_state": "aeb69c0d0616bda5deee",
+   "post_state": "aeb69c0d0616bda5deee",
+   "exp": {
+    "status": 500,
+    "error": "Erro ao atualizar",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "senha: commit falho mantém hash e nonce",
+   "fact": true,
+   "cls": null,
+   "at_utc": "2026-10-31 23:31:29.702049",
+   "exp": {
+    "has": {
+     "fact": true
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "senha: T1 continua válido após falha",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": {
+    "name": "M"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "active": true,
+     "created_at": "2026-10-31 23:31:29.279199",
+     "email": "maria@email.com",
+     "id": 2,
+     "name": "M",
+     "role": "user"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:29.702575",
+   "at_local": "2026-10-31 20:31:29.702577",
+   "cls": null,
+   "pre_state": "aeb69c0d0616bda5deee",
+   "post_state": "420d82c3c4e7bc4be085",
+   "exp": {
+    "status": 200,
+    "error": null,
+    "has": {
+     "resp.json.name": "M"
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "md5 legado: formato do hash após login",
+   "fact": "werkzeug-scrypt",
+   "cls": "D-2a",
+   "at_utc": "2026-10-31 23:31:30.312802",
+   "exp": {
+    "has": {
+     "fact": "werkzeug-scrypt"
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "md5 legado: nonce mantido",
+   "fact": true,
+   "cls": null,
+   "at_utc": "2026-10-31 23:31:30.313124",
+   "only": "refatorado",
+   "exp": {
+    "has": {
+     "fact": true
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "md5 legado: token anterior continua",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": {
+    "name": "Maria Santos"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "active": true,
+     "created_at": "2026-10-31 23:31:29.953588",
+     "email": "maria@email.com",
+     "id": 2,
+     "name": "Maria Santos",
+     "role": "user"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:30.313631",
+   "at_local": "2026-10-31 20:31:30.313634",
+   "cls": null,
+   "only": "refatorado",
+   "pre_state": "0c3e2c23ca35a00789b0",
+   "post_state": "0c3e2c23ca35a00789b0",
+   "exp": {
+    "status": 200
+   },
+   "errs": []
+  },
+  {
+   "name": "md5 legado: login seguinte",
+   "method": "POST",
+   "path": "/login",
+   "input": {
+    "email": "maria@email.com",
+    "password": "<presente>"
+   },
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "message": "Login realizado com sucesso",
+     "token": "<token>",
+     "user": {
+      "active": true,
+      "created_at": "2026-10-31 23:31:29.953588",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "role": "user"
+     }
+    }
+   },
+   "at_utc": "2026-10-31 23:31:30.316896",
+   "at_local": "2026-10-31 20:31:30.316898",
+   "cls": "D-1a",
+   "pre_state": "0c3e2c23ca35a00789b0",
+   "post_state": "0c3e2c23ca35a00789b0",
+   "exp": {
+    "status": 200,
+    "error": null,
+    "has": {
+     "resp.json.user.id": 2
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "md5 legado: senha errada",
+   "method": "POST",
+   "path": "/login",
+   "input": {
+    "email": "maria@email.com",
+    "password": "<presente>"
+   },
+   "auth": null,
+   "resp": {
+    "status": 401,
+    "is_json": true,
+    "json": {
+     "error": "Credenciais inválidas"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:30.400314",
+   "at_local": "2026-10-31 20:31:30.400318",
+   "cls": null,
+   "pre_state": "0c3e2c23ca35a00789b0",
+   "post_state": "0c3e2c23ca35a00789b0",
+   "exp": {
+    "status": 401,
+    "error": "Credenciais inválidas"
+   },
+   "errs": []
+  },
+  {
+   "name": "hash malformado vazio",
+   "method": "POST",
+   "path": "/login",
+   "input": {
+    "email": "joao@email.com",
+    "password": "<presente>"
+   },
+   "auth": null,
+   "resp": {
+    "status": 401,
+    "is_json": true,
+    "json": {
+     "error": "Credenciais inválidas"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:30.999990",
+   "at_local": "2026-10-31 20:31:30.999997",
+   "cls": null,
+   "pre_state": "1b9359eadc9c857aba58",
+   "post_state": "1b9359eadc9c857aba58",
+   "exp": {
+    "status": 401,
+    "error": "Credenciais inválidas"
+   },
+   "errs": []
+  },
+  {
+   "name": "hash malformado abc",
+   "method": "POST",
+   "path": "/login",
+   "input": {
+    "email": "joao@email.com",
+    "password": "<presente>"
+   },
+   "auth": null,
+   "resp": {
+    "status": 401,
+    "is_json": true,
+    "json": {
+     "error": "Credenciais inválidas"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:31.544879",
+   "at_local": "2026-10-31 20:31:31.544886",
+   "cls": null,
+   "pre_state": "7406a23a96a7ce5a3dd9",
+   "post_state": "7406a23a96a7ce5a3dd9",
+   "exp": {
+    "status": 401,
+    "error": "Credenciais inválidas"
+   },
+   "errs": []
+  },
+  {
+   "name": "hash malformado werkzeug truncado",
+   "method": "POST",
+   "path": "/login",
+   "input": {
+    "email": "joao@email.com",
+    "password": "<presente>"
+   },
+   "auth": null,
+   "resp": {
+    "status": 401,
+    "is_json": true,
+    "json": {
+     "error": "Credenciais inválidas"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:32.056903",
+   "at_local": "2026-10-31 20:31:32.056909",
+   "cls": null,
+   "pre_state": "f1e239ad1acb4ca2266f",
+   "post_state": "f1e239ad1acb4ca2266f",
+   "exp": {
+    "status": 401,
+    "error": "Credenciais inválidas"
+   },
+   "errs": []
+  },
+  {
+   "name": "hash malformado md5 31",
+   "method": "POST",
+   "path": "/login",
+   "input": {
+    "email": "joao@email.com",
+    "password": "<presente>"
+   },
+   "auth": null,
+   "resp": {
+    "status": 401,
+    "is_json": true,
+    "json": {
+     "error": "Credenciais inválidas"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:32.575525",
+   "at_local": "2026-10-31 20:31:32.575531",
+   "cls": null,
+   "pre_state": "39299d23549e0804a15d",
+   "post_state": "39299d23549e0804a15d",
+   "exp": {
+    "status": 401,
+    "error": "Credenciais inválidas"
+   },
+   "errs": []
+  },
+  {
+   "name": "hash malformado md5 maiusculo",
+   "method": "POST",
+   "path": "/login",
+   "input": {
+    "email": "joao@email.com",
+    "password": "<presente>"
+   },
+   "auth": null,
+   "resp": {
+    "status": 401,
+    "is_json": true,
+    "json": {
+     "error": "Credenciais inválidas"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:33.093115",
+   "at_local": "2026-10-31 20:31:33.093121",
+   "cls": null,
+   "pre_state": "1e94170592b74049309b",
+   "post_state": "1e94170592b74049309b",
+   "exp": {
+    "status": 401,
+    "error": "Credenciais inválidas"
+   },
+   "errs": []
+  },
+  {
+   "name": "hash malformado md5 com \\n final",
+   "method": "POST",
+   "path": "/login",
+   "input": {
+    "email": "joao@email.com",
+    "password": "<presente>"
+   },
+   "auth": null,
+   "resp": {
+    "status": 401,
+    "is_json": true,
+    "json": {
+     "error": "Credenciais inválidas"
+    }
+   },
+   "at_utc": "2026-10-31 23:31:33.615180",
+   "at_local": "2026-10-31 20:31:33.615186",
+   "cls": null,
+   "pre_state": "76f50f9bc07ba092b5e5",
+   "post_state": "76f50f9bc07ba092b5e5",
+   "exp": {
+    "status": 401,
+    "error": "Credenciais inválidas"
+   },
+   "errs": []
+  }
+ ]
+}

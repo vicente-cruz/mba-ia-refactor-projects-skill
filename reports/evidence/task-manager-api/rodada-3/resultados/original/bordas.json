@@ -1,0 +1,786 @@
+{
+ "mode": "original",
+ "group": "bordas",
+ "records": [
+  {
+   "name": "bordas GET /tasks",
+   "method": "GET",
+   "path": "/tasks",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": [
+     {
+      "category_id": 1,
+      "category_name": "Cat A",
+      "created_at": "2026-10-30 23:28:46.558125",
+      "description": "desc",
+      "due_date": "2026-10-28 23:28:46.558125",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Pendente atrasada",
+      "updated_at": "2026-10-30 23:28:46.558125",
+      "user_id": 1,
+      "user_name": "Ana"
+     },
+     {
+      "category_id": 1,
+      "category_name": "Cat A",
+      "created_at": "2026-10-30 23:28:46.558125",
+      "description": "desc",
+      "due_date": "2026-10-30 23:28:46.558125",
+      "id": 2,
+      "overdue": true,
+      "priority": 2,
+      "status": "in_progress",
+      "tags": [
+       "a",
+       "b"
+      ],
+      "title": "Em progresso atrasada",
+      "updated_at": "2026-10-30 23:28:46.558125",
+      "user_id": 1,
+      "user_name": "Ana"
+     },
+     {
+      "category_id": 1,
+      "category_name": "Cat A",
+      "created_at": "2026-10-21 23:28:46.558125",
+      "description": "desc",
+      "due_date": "2026-10-28 23:28:46.558125",
+      "id": 3,
+      "overdue": false,
+      "priority": 5,
+      "status": "done",
+      "tags": [],
+      "title": "Concluida atrasada",
+      "updated_at": "2026-10-25 23:28:46.558125",
+      "user_id": 1,
+      "user_name": "Ana"
+     },
+     {
+      "category_id": null,
+      "category_name": null,
+      "created_at": "2026-10-30 23:28:46.558125",
+      "description": "desc",
+      "due_date": "2026-10-28 23:28:46.558125",
+      "id": 4,
+      "overdue": false,
+      "priority": 4,
+      "status": "cancelled",
+      "tags": [],
+      "title": "Cancelada atrasada",
+      "updated_at": "2026-10-30 23:28:46.558125",
+      "user_id": 1,
+      "user_name": "Ana"
+     },
+     {
+      "category_id": null,
+      "category_name": null,
+      "created_at": "2026-10-23 23:28:46.558125",
+      "description": "desc",
+      "due_date": null,
+      "id": 5,
+      "overdue": false,
+      "priority": 3,
+      "status": "pending",
+      "tags": [],
+      "title": "Sem vinculos",
+      "updated_at": "2026-10-23 23:28:46.558125",
+      "user_id": null,
+      "user_name": null
+     },
+     {
+      "category_id": 1,
+      "category_name": "Cat A",
+      "created_at": "2026-10-23 23:28:46.558125",
+      "description": "desc",
+      "due_date": null,
+      "id": 6,
+      "overdue": false,
+      "priority": 2,
+      "status": "done",
+      "tags": [],
+      "title": "Concluida antiga",
+      "updated_at": "2026-10-23 23:28:46.558125",
+      "user_id": 1,
+      "user_name": "Ana"
+     },
+     {
+      "category_id": 1,
+      "category_name": "Cat A",
+      "created_at": "2026-10-25 23:28:46.558125",
+      "description": "desc",
+      "due_date": "2026-11-05 23:28:46.558125",
+      "id": 7,
+      "overdue": false,
+      "priority": 3,
+      "status": "pending",
+      "tags": [],
+      "title": "Futura",
+      "updated_at": "2026-10-25 23:28:46.558125",
+      "user_id": null,
+      "user_name": null
+     }
+    ]
+   },
+   "at_utc": "2026-10-31 23:28:46.625652",
+   "at_local": "2026-10-31 20:28:46.625680",
+   "cls": null,
+   "queries": 3,
+   "exp": {
+    "status": 200,
+    "ids": {
+     "resp.json": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ]
+    },
+    "has": {
+     "resp.json.0.overdue": true,
+     "resp.json.1.overdue": true,
+     "resp.json.2.overdue": false,
+     "resp.json.3.overdue": false,
+     "resp.json.4.overdue": false,
+     "resp.json.5.overdue": false,
+     "resp.json.6.overdue": false,
+     "resp.json.4.user_name": null,
+     "resp.json.4.category_name": null,
+     "resp.json.6.user_name": null,
+     "resp.json.6.category_name": "Cat A",
+     "resp.json.3.category_name": null,
+     "resp.json.1.tags": [
+      "a",
+      "b"
+     ],
+     "resp.json.0.user_name": "Ana"
+    },
+    "ts": {
+     "resp.json.2.created_at": [
+      -864000,
+      120
+     ],
+     "resp.json.2.updated_at": [
+      -518400,
+      120
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "bordas GET /tasks/1",
+   "method": "GET",
+   "path": "/tasks/1",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "category_id": 1,
+     "created_at": "2026-10-30 23:28:46.558125",
+     "description": "desc",
+     "due_date": "2026-10-28 23:28:46.558125",
+     "id": 1,
+     "overdue": true,
+     "priority": 1,
+     "status": "pending",
+     "tags": [],
+     "title": "Pendente atrasada",
+     "updated_at": "2026-10-30 23:28:46.558125",
+     "user_id": 1
+    }
+   },
+   "at_utc": "2026-10-31 23:28:46.645011",
+   "at_local": "2026-10-31 20:28:46.645014",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json.overdue": true
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "bordas GET /tasks/3 done atrasada",
+   "method": "GET",
+   "path": "/tasks/3",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "category_id": 1,
+     "created_at": "2026-10-21 23:28:46.558125",
+     "description": "desc",
+     "due_date": "2026-10-28 23:28:46.558125",
+     "id": 3,
+     "overdue": false,
+     "priority": 5,
+     "status": "done",
+     "tags": [],
+     "title": "Concluida atrasada",
+     "updated_at": "2026-10-25 23:28:46.558125",
+     "user_id": 1
+    }
+   },
+   "at_utc": "2026-10-31 23:28:46.647272",
+   "at_local": "2026-10-31 20:28:46.647274",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json.overdue": false
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "bordas GET /tasks/stats",
+   "method": "GET",
+   "path": "/tasks/stats",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "cancelled": 1,
+     "completion_rate": 28.57,
+     "done": 2,
+     "in_progress": 1,
+     "overdue": 2,
+     "pending": 3,
+     "total": 7
+    }
+   },
+   "at_utc": "2026-10-31 23:28:46.648372",
+   "at_local": "2026-10-31 20:28:46.648374",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json": {
+      "total": 7,
+      "pending": 3,
+      "in_progress": 1,
+      "done": 2,
+      "cancelled": 1,
+      "overdue": 2,
+      "completion_rate": 28.57
+     }
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "bordas GET /users",
+   "method": "GET",
+   "path": "/users",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": [
+     {
+      "active": true,
+      "created_at": "2026-10-30 23:28:46.558125",
+      "email": "ana@x.com",
+      "id": 1,
+      "name": "Ana",
+      "role": "admin",
+      "task_count": 5
+     },
+     {
+      "active": true,
+      "created_at": "2026-10-30 23:28:46.558125",
+      "email": "bia@x.com",
+      "id": 2,
+      "name": "Bia",
+      "role": "user",
+      "task_count": 0
+     }
+    ]
+   },
+   "at_utc": "2026-10-31 23:28:46.656222",
+   "at_local": "2026-10-31 20:28:46.656224",
+   "cls": null,
+   "queries": 3,
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json.0.task_count": 5,
+     "resp.json.1.task_count": 0
+    },
+    "ids": {
+     "resp.json": [
+      1,
+      2
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "bordas GET /users/2/tasks",
+   "method": "GET",
+   "path": "/users/2/tasks",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": []
+   },
+   "at_utc": "2026-10-31 23:28:46.659289",
+   "at_local": "2026-10-31 20:28:46.659290",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json": []
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "bordas GET /users/1/tasks",
+   "method": "GET",
+   "path": "/users/1/tasks",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": [
+     {
+      "created_at": "2026-10-30 23:28:46.558125",
+      "description": "desc",
+      "due_date": "2026-10-28 23:28:46.558125",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "title": "Pendente atrasada"
+     },
+     {
+      "created_at": "2026-10-30 23:28:46.558125",
+      "description": "desc",
+      "due_date": "2026-10-30 23:28:46.558125",
+      "id": 2,
+      "overdue": true,
+      "priority": 2,
+      "status": "in_progress",
+      "title": "Em progresso atrasada"
+     },
+     {
+      "created_at": "2026-10-21 23:28:46.558125",
+      "description": "desc",
+      "due_date": "2026-10-28 23:28:46.558125",
+      "id": 3,
+      "overdue": false,
+      "priority": 5,
+      "status": "done",
+      "title": "Concluida atrasada"
+     },
+     {
+      "created_at": "2026-10-30 23:28:46.558125",
+      "description": "desc",
+      "due_date": "2026-10-28 23:28:46.558125",
+      "id": 4,
+      "overdue": false,
+      "priority": 4,
+      "status": "cancelled",
+      "title": "Cancelada atrasada"
+     },
+     {
+      "created_at": "2026-10-23 23:28:46.558125",
+      "description": "desc",
+      "due_date": null,
+      "id": 6,
+      "overdue": false,
+      "priority": 2,
+      "status": "done",
+      "title": "Concluida antiga"
+     }
+    ]
+   },
+   "at_utc": "2026-10-31 23:28:46.661108",
+   "at_local": "2026-10-31 20:28:46.661109",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "ids": {
+     "resp.json": [
+      1,
+      2,
+      3,
+      4,
+      6
+     ]
+    },
+    "has": {
+     "resp.json.0.overdue": true,
+     "resp.json.1.overdue": true,
+     "resp.json.2.overdue": false
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "bordas GET /reports/summary",
+   "method": "GET",
+   "path": "/reports/summary",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "generated_at": "2026-10-31 23:28:46.677496",
+     "overdue": {
+      "count": 2,
+      "tasks": [
+       {
+        "days_overdue": 3,
+        "due_date": "2026-10-28 23:28:46.558125",
+        "id": 1,
+        "title": "Pendente atrasada"
+       },
+       {
+        "days_overdue": 1,
+        "due_date": "2026-10-30 23:28:46.558125",
+        "id": 2,
+        "title": "Em progresso atrasada"
+       }
+      ]
+     },
+     "overview": {
+      "total_categories": 2,
+      "total_tasks": 7,
+      "total_users": 2
+     },
+     "recent_activity": {
+      "tasks_completed_last_7_days": 1,
+      "tasks_created_last_7_days": 4
+     },
+     "tasks_by_priority": {
+      "critical": 1,
+      "high": 2,
+      "low": 1,
+      "medium": 2,
+      "minimal": 1
+     },
+     "tasks_by_status": {
+      "cancelled": 1,
+      "done": 2,
+      "in_progress": 1,
+      "pending": 3
+     },
+     "user_productivity": [
+      {
+       "completed_tasks": 2,
+       "completion_rate": 40.0,
+       "total_tasks": 5,
+       "user_id": 1,
+       "user_name": "Ana"
+      },
+      {
+       "completed_tasks": 0,
+       "completion_rate": 0,
+       "total_tasks": 0,
+       "user_id": 2,
+       "user_name": "Bia"
+      }
+     ]
+    }
+   },
+   "at_utc": "2026-10-31 23:28:46.662748",
+   "at_local": "2026-10-31 20:28:46.662750",
+   "cls": null,
+   "queries": 18,
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json.recent_activity": {
+      "tasks_created_last_7_days": 4,
+      "tasks_completed_last_7_days": 1
+     },
+     "resp.json.overdue.count": 2,
+     "resp.json.overdue.tasks.0.days_overdue": 3,
+     "resp.json.overdue.tasks.1.days_overdue": 1,
+     "resp.json.tasks_by_priority": {
+      "critical": 1,
+      "high": 2,
+      "medium": 2,
+      "low": 1,
+      "minimal": 1
+     },
+     "resp.json.user_productivity": [
+      {
+       "user_id": 1,
+       "user_name": "Ana",
+       "total_tasks": 5,
+       "completed_tasks": 2,
+       "completion_rate": 40.0
+      },
+      {
+       "user_id": 2,
+       "user_name": "Bia",
+       "total_tasks": 0,
+       "completed_tasks": 0,
+       "completion_rate": 0
+      }
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "bordas GET /reports/user/1",
+   "method": "GET",
+   "path": "/reports/user/1",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "statistics": {
+      "cancelled": 1,
+      "completion_rate": 40.0,
+      "done": 2,
+      "high_priority": 3,
+      "in_progress": 1,
+      "overdue": 2,
+      "pending": 1,
+      "total_tasks": 5
+     },
+     "user": {
+      "email": "ana@x.com",
+      "id": 1,
+      "name": "Ana"
+     }
+    }
+   },
+   "at_utc": "2026-10-31 23:28:46.678091",
+   "at_local": "2026-10-31 20:28:46.678093",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json.statistics": {
+      "total_tasks": 5,
+      "done": 2,
+      "pending": 1,
+      "in_progress": 1,
+      "cancelled": 1,
+      "overdue": 2,
+      "high_priority": 3,
+      "completion_rate": 40.0
+     }
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "bordas GET /reports/user/2",
+   "method": "GET",
+   "path": "/reports/user/2",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "statistics": {
+      "cancelled": 0,
+      "completion_rate": 0,
+      "done": 0,
+      "high_priority": 0,
+      "in_progress": 0,
+      "overdue": 0,
+      "pending": 0,
+      "total_tasks": 0
+     },
+     "user": {
+      "email": "bia@x.com",
+      "id": 2,
+      "name": "Bia"
+     }
+    }
+   },
+   "at_utc": "2026-10-31 23:28:46.679572",
+   "at_local": "2026-10-31 20:28:46.679574",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json.statistics": {
+      "total_tasks": 0,
+      "done": 0,
+      "pending": 0,
+      "in_progress": 0,
+      "cancelled": 0,
+      "overdue": 0,
+      "high_priority": 0,
+      "completion_rate": 0
+     }
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "bordas GET /categories",
+   "method": "GET",
+   "path": "/categories",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": [
+     {
+      "color": "#111111",
+      "created_at": "2026-10-30 23:28:46.558125",
+      "description": "d",
+      "id": 1,
+      "name": "Cat A",
+      "task_count": 5
+     },
+     {
+      "color": "#222222",
+      "created_at": "2026-10-30 23:28:46.558125",
+      "description": "d",
+      "id": 2,
+      "name": "Cat Vazia",
+      "task_count": 0
+     }
+    ]
+   },
+   "at_utc": "2026-10-31 23:28:46.680865",
+   "at_local": "2026-10-31 20:28:46.680867",
+   "cls": null,
+   "queries": 3,
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json.0.task_count": 5,
+     "resp.json.1.task_count": 0
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "bordas GET /tasks/search?user_id=1",
+   "method": "GET",
+   "path": "/tasks/search?user_id=1",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": [
+     {
+      "category_id": 1,
+      "created_at": "2026-10-30 23:28:46.558125",
+      "description": "desc",
+      "due_date": "2026-10-28 23:28:46.558125",
+      "id": 1,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Pendente atrasada",
+      "updated_at": "2026-10-30 23:28:46.558125",
+      "user_id": 1
+     },
+     {
+      "category_id": 1,
+      "created_at": "2026-10-30 23:28:46.558125",
+      "description": "desc",
+      "due_date": "2026-10-30 23:28:46.558125",
+      "id": 2,
+      "priority": 2,
+      "status": "in_progress",
+      "tags": [
+       "a",
+       "b"
+      ],
+      "title": "Em progresso atrasada",
+      "updated_at": "2026-10-30 23:28:46.558125",
+      "user_id": 1
+     },
+     {
+      "category_id": 1,
+      "created_at": "2026-10-21 23:28:46.558125",
+      "description": "desc",
+      "due_date": "2026-10-28 23:28:46.558125",
+      "id": 3,
+      "priority": 5,
+      "status": "done",
+      "tags": [],
+      "title": "Concluida atrasada",
+      "updated_at": "2026-10-25 23:28:46.558125",
+      "user_id": 1
+     },
+     {
+      "category_id": null,
+      "created_at": "2026-10-30 23:28:46.558125",
+      "description": "desc",
+      "due_date": "2026-10-28 23:28:46.558125",
+      "id": 4,
+      "priority": 4,
+      "status": "cancelled",
+      "tags": [],
+      "title": "Cancelada atrasada",
+      "updated_at": "2026-10-30 23:28:46.558125",
+      "user_id": 1
+     },
+     {
+      "category_id": 1,
+      "created_at": "2026-10-23 23:28:46.558125",
+      "description": "desc",
+      "due_date": null,
+      "id": 6,
+      "priority": 2,
+      "status": "done",
+      "tags": [],
+      "title": "Concluida antiga",
+      "updated_at": "2026-10-23 23:28:46.558125",
+      "user_id": 1
+     }
+    ]
+   },
+   "at_utc": "2026-10-31 23:28:46.684714",
+   "at_local": "2026-10-31 20:28:46.684716",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "ids": {
+     "resp.json": [
+      1,
+      2,
+      3,
+      4,
+      6
+     ]
+    }
+   },
+   "errs": []
+  }
+ ]
+}

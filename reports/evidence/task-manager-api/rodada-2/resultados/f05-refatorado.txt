@@ -1,0 +1,4 @@
+2026-10-31 19:56:44,535 WARNING task_manager: Conflito de unicidade de email em "Erro ao criar usuário"
+2026-10-31 19:56:45,058 WARNING task_manager: Conflito de unicidade de email em "Erro ao atualizar"
+2026-10-31 19:56:45,582 WARNING task_manager: Falha de persistência em "Erro ao criar task" (OperationalError)
+2026-10-31 19:56:46,189 WARNING task_manager: Conflito de unicidade de email em "Erro ao criar usuário"

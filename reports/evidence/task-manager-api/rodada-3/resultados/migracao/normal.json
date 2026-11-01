@@ -1,0 +1,13 @@
+{
+ "step": "normal",
+ "antes_tem_coluna": false,
+ "depois_tem_coluna": true,
+ "usuarios": 3,
+ "nonces_nao_nulos": 3,
+ "nonces_distintos": 3,
+ "dados_preservados_exceto_nonce": true,
+ "login_admin_md5_legado": 200,
+ "hash_admin_apos_login": "werkzeug-scrypt",
+ "nonce_admin_inalterado_pelo_login": true,
+ "falhas": []
+}

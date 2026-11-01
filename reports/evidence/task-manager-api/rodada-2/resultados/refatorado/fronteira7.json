@@ -1,0 +1,93 @@
+{
+ "mode": "refatorado",
+ "group": "fronteira7",
+ "records": [
+  {
+   "name": "fronteira 7 dias: /reports/summary com relógio fixo",
+   "method": "GET",
+   "path": "/reports/summary",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "generated_at": "2026-10-31 21:56:50",
+     "overdue": {
+      "count": 1,
+      "tasks": [
+       {
+        "days_overdue": 0,
+        "due_date": "2026-10-31 21:56:49.999999",
+        "id": 8,
+        "title": "prazo 1us antes de agora"
+       }
+      ]
+     },
+     "overview": {
+      "total_categories": 4,
+      "total_tasks": 8,
+      "total_users": 3
+     },
+     "recent_activity": {
+      "tasks_completed_last_7_days": 2,
+      "tasks_created_last_7_days": 2
+     },
+     "tasks_by_priority": {
+      "critical": 0,
+      "high": 0,
+      "low": 0,
+      "medium": 8,
+      "minimal": 0
+     },
+     "tasks_by_status": {
+      "cancelled": 0,
+      "done": 3,
+      "in_progress": 0,
+      "pending": 5
+     },
+     "user_productivity": [
+      {
+       "completed_tasks": 0,
+       "completion_rate": 0,
+       "total_tasks": 0,
+       "user_id": 1,
+       "user_name": "João Silva"
+      },
+      {
+       "completed_tasks": 0,
+       "completion_rate": 0,
+       "total_tasks": 0,
+       "user_id": 2,
+       "user_name": "Maria Santos"
+      },
+      {
+       "completed_tasks": 0,
+       "completion_rate": 0,
+       "total_tasks": 0,
+       "user_id": 3,
+       "user_name": "Pedro Oliveira"
+      }
+     ]
+    }
+   },
+   "at_utc": "2026-10-31 22:56:50.741043",
+   "at_local": "2026-10-31 19:56:50.741049",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json.recent_activity": {
+      "tasks_created_last_7_days": 2,
+      "tasks_completed_last_7_days": 2
+     },
+     "resp.json.overdue.count": 1,
+     "resp.json.overdue.tasks.0.title": "prazo 1us antes de agora",
+     "resp.json.overdue.tasks.0.days_overdue": 0,
+     "resp.json.generated_at": "2026-10-31 21:56:50"
+    }
+   },
+   "errs": []
+  }
+ ]
+}

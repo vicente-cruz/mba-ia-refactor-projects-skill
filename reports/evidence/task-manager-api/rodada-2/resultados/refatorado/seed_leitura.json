@@ -1,0 +1,2543 @@
+{
+ "mode": "refatorado",
+ "group": "seed_leitura",
+ "records": [
+  {
+   "name": "caminho efetivo do banco",
+   "fact": "instance/tasks.db",
+   "cls": null,
+   "at_utc": "2026-10-31 22:54:16.381335",
+   "exp": {
+    "has": {
+     "fact": "instance/tasks.db"
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /",
+   "method": "GET",
+   "path": "/",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "message": "Task Manager API",
+     "version": "1.0"
+    }
+   },
+   "at_utc": "2026-10-31 22:54:16.383812",
+   "at_local": "2026-10-31 19:54:16.383814",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json": {
+      "message": "Task Manager API",
+      "version": "1.0"
+     }
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /health",
+   "method": "GET",
+   "path": "/health",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "status": "ok",
+     "timestamp": "2026-10-31 19:54:16.384625"
+    }
+   },
+   "at_utc": "2026-10-31 22:54:16.384401",
+   "at_local": "2026-10-31 19:54:16.384403",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json.status": "ok"
+    },
+    "keys": {
+     "resp.json": [
+      "status",
+      "timestamp"
+     ]
+    },
+    "ts": {
+     "resp.json.timestamp": [
+      "local",
+      120
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /tasks seed",
+   "method": "GET",
+   "path": "/tasks",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": [
+     {
+      "category_id": 1,
+      "category_name": "Backend",
+      "created_at": "2026-10-31 22:54:16.114389",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 22:54:16.112252",
+      "id": 1,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 22:54:16.114393",
+      "user_id": 1,
+      "user_name": "João Silva"
+     },
+     {
+      "category_id": 2,
+      "category_name": "Frontend",
+      "created_at": "2026-10-31 22:54:16.114394",
+      "description": "Tela de login responsiva",
+      "due_date": "2026-11-05 22:54:16.112252",
+      "id": 2,
+      "overdue": false,
+      "priority": 2,
+      "status": "in_progress",
+      "tags": [],
+      "title": "Criar tela de login",
+      "updated_at": "2026-10-31 22:54:16.114395",
+      "user_id": 2,
+      "user_name": "Maria Santos"
+     },
+     {
+      "category_id": 3,
+      "category_name": "DevOps",
+      "created_at": "2026-10-31 22:54:16.114396",
+      "description": "Pipeline com GitHub Actions",
+      "due_date": null,
+      "id": 3,
+      "overdue": false,
+      "priority": 2,
+      "status": "done",
+      "tags": [
+       "devops",
+       "ci",
+       "github"
+      ],
+      "title": "Configurar CI/CD",
+      "updated_at": "2026-10-31 22:54:16.114397",
+      "user_id": 3,
+      "user_name": "Pedro Oliveira"
+     },
+     {
+      "category_id": 4,
+      "category_name": "Bug",
+      "created_at": "2026-10-31 22:54:16.114397",
+      "description": "Filtro não funciona com caracteres especiais",
+      "due_date": "2026-10-30 22:54:16.112252",
+      "id": 4,
+      "overdue": true,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Corrigir bug no filtro de busca",
+      "updated_at": "2026-10-31 22:54:16.114398",
+      "user_id": 1,
+      "user_name": "João Silva"
+     },
+     {
+      "category_id": 1,
+      "category_name": "Backend",
+      "created_at": "2026-10-31 22:54:16.114399",
+      "description": "Endpoints retornam todos os registros",
+      "due_date": "2026-11-10 22:54:16.112252",
+      "id": 5,
+      "overdue": false,
+      "priority": 3,
+      "status": "pending",
+      "tags": [],
+      "title": "Adicionar paginação na API",
+      "updated_at": "2026-10-31 22:54:16.114399",
+      "user_id": 1,
+      "user_name": "João Silva"
+     },
+     {
+      "category_id": 1,
+      "category_name": "Backend",
+      "created_at": "2026-10-31 22:54:16.114400",
+      "description": "Cobertura mínima de 80%",
+      "due_date": null,
+      "id": 6,
+      "overdue": false,
+      "priority": 2,
+      "status": "pending",
+      "tags": [],
+      "title": "Escrever testes unitários",
+      "updated_at": "2026-10-31 22:54:16.114401",
+      "user_id": 2,
+      "user_name": "Maria Santos"
+     },
+     {
+      "category_id": 1,
+      "category_name": "Backend",
+      "created_at": "2026-10-31 22:54:16.114401",
+      "description": "Gerar documentação automática",
+      "due_date": null,
+      "id": 7,
+      "overdue": false,
+      "priority": 4,
+      "status": "cancelled",
+      "tags": [],
+      "title": "Documentar API com Swagger",
+      "updated_at": "2026-10-31 22:54:16.114402",
+      "user_id": 3,
+      "user_name": "Pedro Oliveira"
+     },
+     {
+      "category_id": 1,
+      "category_name": "Backend",
+      "created_at": "2026-10-31 22:54:16.114403",
+      "description": "Melhorar organização dos models",
+      "due_date": null,
+      "id": 8,
+      "overdue": false,
+      "priority": 3,
+      "status": "in_progress",
+      "tags": [
+       "refactor",
+       "tech-debt"
+      ],
+      "title": "Refatorar models",
+      "updated_at": "2026-10-31 22:54:16.114403",
+      "user_id": 2,
+      "user_name": "Maria Santos"
+     },
+     {
+      "category_id": 3,
+      "category_name": "DevOps",
+      "created_at": "2026-10-31 22:54:16.114404",
+      "description": "Prometheus + Grafana",
+      "due_date": "2026-11-20 22:54:16.112252",
+      "id": 9,
+      "overdue": false,
+      "priority": 4,
+      "status": "pending",
+      "tags": [],
+      "title": "Configurar monitoramento",
+      "updated_at": "2026-10-31 22:54:16.114405",
+      "user_id": 3,
+      "user_name": "Pedro Oliveira"
+     },
+     {
+      "category_id": 1,
+      "category_name": "Backend",
+      "created_at": "2026-10-31 22:54:16.114405",
+      "description": "Usar marshmallow ou pydantic",
+      "due_date": null,
+      "id": 10,
+      "overdue": false,
+      "priority": 3,
+      "status": "pending",
+      "tags": [
+       "improvement",
+       "validation"
+      ],
+      "title": "Melhorar validações de input",
+      "updated_at": "2026-10-31 22:54:16.114406",
+      "user_id": 1,
+      "user_name": "João Silva"
+     }
+    ]
+   },
+   "at_utc": "2026-10-31 22:54:16.385042",
+   "at_local": "2026-10-31 19:54:16.385044",
+   "cls": null,
+   "queries": 1,
+   "exp": {
+    "status": 200,
+    "ids": {
+     "resp.json": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ]
+    },
+    "has": {
+     "resp.json.0.id": 1,
+     "resp.json.0.title": "Implementar autenticação JWT",
+     "resp.json.0.status": "pending",
+     "resp.json.0.priority": 1,
+     "resp.json.0.user_id": 1,
+     "resp.json.0.category_id": 1,
+     "resp.json.0.tags": [],
+     "resp.json.0.overdue": true,
+     "resp.json.0.user_name": "João Silva",
+     "resp.json.0.category_name": "Backend",
+     "resp.json.1.id": 2,
+     "resp.json.1.title": "Criar tela de login",
+     "resp.json.1.status": "in_progress",
+     "resp.json.1.priority": 2,
+     "resp.json.1.user_id": 2,
+     "resp.json.1.category_id": 2,
+     "resp.json.1.tags": [],
+     "resp.json.1.overdue": false,
+     "resp.json.1.user_name": "Maria Santos",
+     "resp.json.1.category_name": "Frontend",
+     "resp.json.2.id": 3,
+     "resp.json.2.title": "Configurar CI/CD",
+     "resp.json.2.status": "done",
+     "resp.json.2.priority": 2,
+     "resp.json.2.user_id": 3,
+     "resp.json.2.category_id": 3,
+     "resp.json.2.tags": [
+      "devops",
+      "ci",
+      "github"
+     ],
+     "resp.json.2.due_date": null,
+     "resp.json.2.overdue": false,
+     "resp.json.2.user_name": "Pedro Oliveira",
+     "resp.json.2.category_name": "DevOps",
+     "resp.json.3.id": 4,
+     "resp.json.3.title": "Corrigir bug no filtro de busca",
+     "resp.json.3.status": "pending",
+     "resp.json.3.priority": 1,
+     "resp.json.3.user_id": 1,
+     "resp.json.3.category_id": 4,
+     "resp.json.3.tags": [],
+     "resp.json.3.overdue": true,
+     "resp.json.3.user_name": "João Silva",
+     "resp.json.3.category_name": "Bug",
+     "resp.json.4.id": 5,
+     "resp.json.4.title": "Adicionar paginação na API",
+     "resp.json.4.status": "pending",
+     "resp.json.4.priority": 3,
+     "resp.json.4.user_id": 1,
+     "resp.json.4.category_id": 1,
+     "resp.json.4.tags": [],
+     "resp.json.4.overdue": false,
+     "resp.json.4.user_name": "João Silva",
+     "resp.json.4.category_name": "Backend",
+     "resp.json.5.id": 6,
+     "resp.json.5.title": "Escrever testes unitários",
+     "resp.json.5.status": "pending",
+     "resp.json.5.priority": 2,
+     "resp.json.5.user_id": 2,
+     "resp.json.5.category_id": 1,
+     "resp.json.5.tags": [],
+     "resp.json.5.due_date": null,
+     "resp.json.5.overdue": false,
+     "resp.json.5.user_name": "Maria Santos",
+     "resp.json.5.category_name": "Backend",
+     "resp.json.6.id": 7,
+     "resp.json.6.title": "Documentar API com Swagger",
+     "resp.json.6.status": "cancelled",
+     "resp.json.6.priority": 4,
+     "resp.json.6.user_id": 3,
+     "resp.json.6.category_id": 1,
+     "resp.json.6.tags": [],
+     "resp.json.6.due_date": null,
+     "resp.json.6.overdue": false,
+     "resp.json.6.user_name": "Pedro Oliveira",
+     "resp.json.6.category_name": "Backend",
+     "resp.json.7.id": 8,
+     "resp.json.7.title": "Refatorar models",
+     "resp.json.7.status": "in_progress",
+     "resp.json.7.priority": 3,
+     "resp.json.7.user_id": 2,
+     "resp.json.7.category_id": 1,
+     "resp.json.7.tags": [
+      "refactor",
+      "tech-debt"
+     ],
+     "resp.json.7.due_date": null,
+     "resp.json.7.overdue": false,
+     "resp.json.7.user_name": "Maria Santos",
+     "resp.json.7.category_name": "Backend",
+     "resp.json.8.id": 9,
+     "resp.json.8.title": "Configurar monitoramento",
+     "resp.json.8.status": "pending",
+     "resp.json.8.priority": 4,
+     "resp.json.8.user_id": 3,
+     "resp.json.8.category_id": 3,
+     "resp.json.8.tags": [],
+     "resp.json.8.overdue": false,
+     "resp.json.8.user_name": "Pedro Oliveira",
+     "resp.json.8.category_name": "DevOps",
+     "resp.json.9.id": 10,
+     "resp.json.9.title": "Melhorar validações de input",
+     "resp.json.9.status": "pending",
+     "resp.json.9.priority": 3,
+     "resp.json.9.user_id": 1,
+     "resp.json.9.category_id": 1,
+     "resp.json.9.tags": [
+      "improvement",
+      "validation"
+     ],
+     "resp.json.9.due_date": null,
+     "resp.json.9.overdue": false,
+     "resp.json.9.user_name": "João Silva",
+     "resp.json.9.category_name": "Backend"
+    },
+    "ts": {
+     "resp.json.0.due_date": [
+      -259200,
+      300
+     ],
+     "resp.json.0.created_at": [
+      0,
+      300
+     ],
+     "resp.json.1.due_date": [
+      432000,
+      300
+     ],
+     "resp.json.1.created_at": [
+      0,
+      300
+     ],
+     "resp.json.2.created_at": [
+      0,
+      300
+     ],
+     "resp.json.3.due_date": [
+      -86400,
+      300
+     ],
+     "resp.json.3.created_at": [
+      0,
+      300
+     ],
+     "resp.json.4.due_date": [
+      864000,
+      300
+     ],
+     "resp.json.4.created_at": [
+      0,
+      300
+     ],
+     "resp.json.5.created_at": [
+      0,
+      300
+     ],
+     "resp.json.6.created_at": [
+      0,
+      300
+     ],
+     "resp.json.7.created_at": [
+      0,
+      300
+     ],
+     "resp.json.8.due_date": [
+      1728000,
+      300
+     ],
+     "resp.json.8.created_at": [
+      0,
+      300
+     ],
+     "resp.json.9.created_at": [
+      0,
+      300
+     ]
+    },
+    "keys": {
+     "resp.json.*": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags",
+      "overdue",
+      "user_name",
+      "category_name"
+     ]
+    },
+    "max_queries": 1
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /tasks/1 atrasada",
+   "method": "GET",
+   "path": "/tasks/1",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "category_id": 1,
+     "created_at": "2026-10-31 22:54:16.114389",
+     "description": "Adicionar autenticação real com JWT",
+     "due_date": "2026-10-28 22:54:16.112252",
+     "id": 1,
+     "overdue": true,
+     "priority": 1,
+     "status": "pending",
+     "tags": [],
+     "title": "Implementar autenticação JWT",
+     "updated_at": "2026-10-31 22:54:16.114393",
+     "user_id": 1
+    }
+   },
+   "at_utc": "2026-10-31 22:54:16.389823",
+   "at_local": "2026-10-31 19:54:16.389825",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json.id": 1,
+     "resp.json.title": "Implementar autenticação JWT",
+     "resp.json.status": "pending",
+     "resp.json.priority": 1,
+     "resp.json.user_id": 1,
+     "resp.json.category_id": 1,
+     "resp.json.tags": [],
+     "resp.json.overdue": true
+    },
+    "ts": {
+     "resp.json.due_date": [
+      -259200,
+      300
+     ],
+     "resp.json.created_at": [
+      0,
+      300
+     ]
+    },
+    "keys": {
+     "resp.json": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags",
+      "overdue"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /tasks/2 nao atrasada",
+   "method": "GET",
+   "path": "/tasks/2",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "category_id": 2,
+     "created_at": "2026-10-31 22:54:16.114394",
+     "description": "Tela de login responsiva",
+     "due_date": "2026-11-05 22:54:16.112252",
+     "id": 2,
+     "overdue": false,
+     "priority": 2,
+     "status": "in_progress",
+     "tags": [],
+     "title": "Criar tela de login",
+     "updated_at": "2026-10-31 22:54:16.114395",
+     "user_id": 2
+    }
+   },
+   "at_utc": "2026-10-31 22:54:16.392009",
+   "at_local": "2026-10-31 19:54:16.392011",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json.id": 2,
+     "resp.json.title": "Criar tela de login",
+     "resp.json.status": "in_progress",
+     "resp.json.priority": 2,
+     "resp.json.user_id": 2,
+     "resp.json.category_id": 2,
+     "resp.json.tags": [],
+     "resp.json.overdue": false
+    },
+    "ts": {
+     "resp.json.due_date": [
+      432000,
+      300
+     ],
+     "resp.json.created_at": [
+      0,
+      300
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /tasks/999",
+   "method": "GET",
+   "path": "/tasks/999",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 404,
+    "is_json": true,
+    "json": {
+     "error": "Task não encontrada"
+    }
+   },
+   "at_utc": "2026-10-31 22:54:16.393284",
+   "at_local": "2026-10-31 19:54:16.393286",
+   "cls": null,
+   "exp": {
+    "status": 404,
+    "error": "Task não encontrada"
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /tasks/abc conversor",
+   "method": "GET",
+   "path": "/tasks/abc",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 404,
+    "is_json": true,
+    "json": {
+     "error": "Recurso não encontrado"
+    }
+   },
+   "at_utc": "2026-10-31 22:54:16.394242",
+   "at_local": "2026-10-31 19:54:16.394243",
+   "cls": "M-03",
+   "exp": {
+    "status": 404,
+    "error": "Recurso não encontrado"
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /tasks/search?q=login",
+   "method": "GET",
+   "path": "/tasks/search?q=login",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": [
+     {
+      "category_id": 2,
+      "created_at": "2026-10-31 22:54:16.114394",
+      "description": "Tela de login responsiva",
+      "due_date": "2026-11-05 22:54:16.112252",
+      "id": 2,
+      "priority": 2,
+      "status": "in_progress",
+      "tags": [],
+      "title": "Criar tela de login",
+      "updated_at": "2026-10-31 22:54:16.114395",
+      "user_id": 2
+     }
+    ]
+   },
+   "at_utc": "2026-10-31 22:54:16.394745",
+   "at_local": "2026-10-31 19:54:16.394747",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "ids": {
+     "resp.json": [
+      2
+     ]
+    },
+    "keys": {
+     "resp.json.*": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /tasks/search?q=%25",
+   "method": "GET",
+   "path": "/tasks/search?q=%25",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": [
+     {
+      "category_id": 1,
+      "created_at": "2026-10-31 22:54:16.114389",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 22:54:16.112252",
+      "id": 1,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 22:54:16.114393",
+      "user_id": 1
+     },
+     {
+      "category_id": 2,
+      "created_at": "2026-10-31 22:54:16.114394",
+      "description": "Tela de login responsiva",
+      "due_date": "2026-11-05 22:54:16.112252",
+      "id": 2,
+      "priority": 2,
+      "status": "in_progress",
+      "tags": [],
+      "title": "Criar tela de login",
+      "updated_at": "2026-10-31 22:54:16.114395",
+      "user_id": 2
+     },
+     {
+      "category_id": 3,
+      "created_at": "2026-10-31 22:54:16.114396",
+      "description": "Pipeline com GitHub Actions",
+      "due_date": null,
+      "id": 3,
+      "priority": 2,
+      "status": "done",
+      "tags": [
+       "devops",
+       "ci",
+       "github"
+      ],
+      "title": "Configurar CI/CD",
+      "updated_at": "2026-10-31 22:54:16.114397",
+      "user_id": 3
+     },
+     {
+      "category_id": 4,
+      "created_at": "2026-10-31 22:54:16.114397",
+      "description": "Filtro não funciona com caracteres especiais",
+      "due_date": "2026-10-30 22:54:16.112252",
+      "id": 4,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Corrigir bug no filtro de busca",
+      "updated_at": "2026-10-31 22:54:16.114398",
+      "user_id": 1
+     },
+     {
+      "category_id": 1,
+      "created_at": "2026-10-31 22:54:16.114399",
+      "description": "Endpoints retornam todos os registros",
+      "due_date": "2026-11-10 22:54:16.112252",
+      "id": 5,
+      "priority": 3,
+      "status": "pending",
+      "tags": [],
+      "title": "Adicionar paginação na API",
+      "updated_at": "2026-10-31 22:54:16.114399",
+      "user_id": 1
+     },
+     {
+      "category_id": 1,
+      "created_at": "2026-10-31 22:54:16.114400",
+      "description": "Cobertura mínima de 80%",
+      "due_date": null,
+      "id": 6,
+      "priority": 2,
+      "status": "pending",
+      "tags": [],
+      "title": "Escrever testes unitários",
+      "updated_at": "2026-10-31 22:54:16.114401",
+      "user_id": 2
+     },
+     {
+      "category_id": 1,
+      "created_at": "2026-10-31 22:54:16.114401",
+      "description": "Gerar documentação automática",
+      "due_date": null,
+      "id": 7,
+      "priority": 4,
+      "status": "cancelled",
+      "tags": [],
+      "title": "Documentar API com Swagger",
+      "updated_at": "2026-10-31 22:54:16.114402",
+      "user_id": 3
+     },
+     {
+      "category_id": 1,
+      "created_at": "2026-10-31 22:54:16.114403",
+      "description": "Melhorar organização dos models",
+      "due_date": null,
+      "id": 8,
+      "priority": 3,
+      "status": "in_progress",
+      "tags": [
+       "refactor",
+       "tech-debt"
+      ],
+      "title": "Refatorar models",
+      "updated_at": "2026-10-31 22:54:16.114403",
+      "user_id": 2
+     },
+     {
+      "category_id": 3,
+      "created_at": "2026-10-31 22:54:16.114404",
+      "description": "Prometheus + Grafana",
+      "due_date": "2026-11-20 22:54:16.112252",
+      "id": 9,
+      "priority": 4,
+      "status": "pending",
+      "tags": [],
+      "title": "Configurar monitoramento",
+      "updated_at": "2026-10-31 22:54:16.114405",
+      "user_id": 3
+     },
+     {
+      "category_id": 1,
+      "created_at": "2026-10-31 22:54:16.114405",
+      "description": "Usar marshmallow ou pydantic",
+      "due_date": null,
+      "id": 10,
+      "priority": 3,
+      "status": "pending",
+      "tags": [
+       "improvement",
+       "validation"
+      ],
+      "title": "Melhorar validações de input",
+      "updated_at": "2026-10-31 22:54:16.114406",
+      "user_id": 1
+     }
+    ]
+   },
+   "at_utc": "2026-10-31 22:54:16.397046",
+   "at_local": "2026-10-31 19:54:16.397048",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "ids": {
+     "resp.json": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ]
+    },
+    "keys": {
+     "resp.json.*": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /tasks/search?q=x'%20OR%20'1'='1",
+   "method": "GET",
+   "path": "/tasks/search?q=x'%20OR%20'1'='1",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": []
+   },
+   "at_utc": "2026-10-31 22:54:16.399349",
+   "at_local": "2026-10-31 19:54:16.399351",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "ids": {
+     "resp.json": []
+    },
+    "keys": {}
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /tasks/search?status=pending",
+   "method": "GET",
+   "path": "/tasks/search?status=pending",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": [
+     {
+      "category_id": 1,
+      "created_at": "2026-10-31 22:54:16.114389",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 22:54:16.112252",
+      "id": 1,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 22:54:16.114393",
+      "user_id": 1
+     },
+     {
+      "category_id": 4,
+      "created_at": "2026-10-31 22:54:16.114397",
+      "description": "Filtro não funciona com caracteres especiais",
+      "due_date": "2026-10-30 22:54:16.112252",
+      "id": 4,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Corrigir bug no filtro de busca",
+      "updated_at": "2026-10-31 22:54:16.114398",
+      "user_id": 1
+     },
+     {
+      "category_id": 1,
+      "created_at": "2026-10-31 22:54:16.114399",
+      "description": "Endpoints retornam todos os registros",
+      "due_date": "2026-11-10 22:54:16.112252",
+      "id": 5,
+      "priority": 3,
+      "status": "pending",
+      "tags": [],
+      "title": "Adicionar paginação na API",
+      "updated_at": "2026-10-31 22:54:16.114399",
+      "user_id": 1
+     },
+     {
+      "category_id": 1,
+      "created_at": "2026-10-31 22:54:16.114400",
+      "description": "Cobertura mínima de 80%",
+      "due_date": null,
+      "id": 6,
+      "priority": 2,
+      "status": "pending",
+      "tags": [],
+      "title": "Escrever testes unitários",
+      "updated_at": "2026-10-31 22:54:16.114401",
+      "user_id": 2
+     },
+     {
+      "category_id": 3,
+      "created_at": "2026-10-31 22:54:16.114404",
+      "description": "Prometheus + Grafana",
+      "due_date": "2026-11-20 22:54:16.112252",
+      "id": 9,
+      "priority": 4,
+      "status": "pending",
+      "tags": [],
+      "title": "Configurar monitoramento",
+      "updated_at": "2026-10-31 22:54:16.114405",
+      "user_id": 3
+     },
+     {
+      "category_id": 1,
+      "created_at": "2026-10-31 22:54:16.114405",
+      "description": "Usar marshmallow ou pydantic",
+      "due_date": null,
+      "id": 10,
+      "priority": 3,
+      "status": "pending",
+      "tags": [
+       "improvement",
+       "validation"
+      ],
+      "title": "Melhorar validações de input",
+      "updated_at": "2026-10-31 22:54:16.114406",
+      "user_id": 1
+     }
+    ]
+   },
+   "at_utc": "2026-10-31 22:54:16.400453",
+   "at_local": "2026-10-31 19:54:16.400455",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "ids": {
+     "resp.json": [
+      1,
+      4,
+      5,
+      6,
+      9,
+      10
+     ]
+    },
+    "keys": {
+     "resp.json.*": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /tasks/search?status=xyz",
+   "method": "GET",
+   "path": "/tasks/search?status=xyz",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": []
+   },
+   "at_utc": "2026-10-31 22:54:16.402531",
+   "at_local": "2026-10-31 19:54:16.402533",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "ids": {
+     "resp.json": []
+    },
+    "keys": {}
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /tasks/search?priority=2",
+   "method": "GET",
+   "path": "/tasks/search?priority=2",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": [
+     {
+      "category_id": 2,
+      "created_at": "2026-10-31 22:54:16.114394",
+      "description": "Tela de login responsiva",
+      "due_date": "2026-11-05 22:54:16.112252",
+      "id": 2,
+      "priority": 2,
+      "status": "in_progress",
+      "tags": [],
+      "title": "Criar tela de login",
+      "updated_at": "2026-10-31 22:54:16.114395",
+      "user_id": 2
+     },
+     {
+      "category_id": 3,
+      "created_at": "2026-10-31 22:54:16.114396",
+      "description": "Pipeline com GitHub Actions",
+      "due_date": null,
+      "id": 3,
+      "priority": 2,
+      "status": "done",
+      "tags": [
+       "devops",
+       "ci",
+       "github"
+      ],
+      "title": "Configurar CI/CD",
+      "updated_at": "2026-10-31 22:54:16.114397",
+      "user_id": 3
+     },
+     {
+      "category_id": 1,
+      "created_at": "2026-10-31 22:54:16.114400",
+      "description": "Cobertura mínima de 80%",
+      "due_date": null,
+      "id": 6,
+      "priority": 2,
+      "status": "pending",
+      "tags": [],
+      "title": "Escrever testes unitários",
+      "updated_at": "2026-10-31 22:54:16.114401",
+      "user_id": 2
+     }
+    ]
+   },
+   "at_utc": "2026-10-31 22:54:16.403540",
+   "at_local": "2026-10-31 19:54:16.403542",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "ids": {
+     "resp.json": [
+      2,
+      3,
+      6
+     ]
+    },
+    "keys": {
+     "resp.json.*": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /tasks/search?priority=%202%20",
+   "method": "GET",
+   "path": "/tasks/search?priority=%202%20",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": [
+     {
+      "category_id": 2,
+      "created_at": "2026-10-31 22:54:16.114394",
+      "description": "Tela de login responsiva",
+      "due_date": "2026-11-05 22:54:16.112252",
+      "id": 2,
+      "priority": 2,
+      "status": "in_progress",
+      "tags": [],
+      "title": "Criar tela de login",
+      "updated_at": "2026-10-31 22:54:16.114395",
+      "user_id": 2
+     },
+     {
+      "category_id": 3,
+      "created_at": "2026-10-31 22:54:16.114396",
+      "description": "Pipeline com GitHub Actions",
+      "due_date": null,
+      "id": 3,
+      "priority": 2,
+      "status": "done",
+      "tags": [
+       "devops",
+       "ci",
+       "github"
+      ],
+      "title": "Configurar CI/CD",
+      "updated_at": "2026-10-31 22:54:16.114397",
+      "user_id": 3
+     },
+     {
+      "category_id": 1,
+      "created_at": "2026-10-31 22:54:16.114400",
+      "description": "Cobertura mínima de 80%",
+      "due_date": null,
+      "id": 6,
+      "priority": 2,
+      "status": "pending",
+      "tags": [],
+      "title": "Escrever testes unitários",
+      "updated_at": "2026-10-31 22:54:16.114401",
+      "user_id": 2
+     }
+    ]
+   },
+   "at_utc": "2026-10-31 22:54:16.405332",
+   "at_local": "2026-10-31 19:54:16.405333",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "ids": {
+     "resp.json": [
+      2,
+      3,
+      6
+     ]
+    },
+    "keys": {
+     "resp.json.*": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /tasks/search?priority=%2B2",
+   "method": "GET",
+   "path": "/tasks/search?priority=%2B2",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": [
+     {
+      "category_id": 2,
+      "created_at": "2026-10-31 22:54:16.114394",
+      "description": "Tela de login responsiva",
+      "due_date": "2026-11-05 22:54:16.112252",
+      "id": 2,
+      "priority": 2,
+      "status": "in_progress",
+      "tags": [],
+      "title": "Criar tela de login",
+      "updated_at": "2026-10-31 22:54:16.114395",
+      "user_id": 2
+     },
+     {
+      "category_id": 3,
+      "created_at": "2026-10-31 22:54:16.114396",
+      "description": "Pipeline com GitHub Actions",
+      "due_date": null,
+      "id": 3,
+      "priority": 2,
+      "status": "done",
+      "tags": [
+       "devops",
+       "ci",
+       "github"
+      ],
+      "title": "Configurar CI/CD",
+      "updated_at": "2026-10-31 22:54:16.114397",
+      "user_id": 3
+     },
+     {
+      "category_id": 1,
+      "created_at": "2026-10-31 22:54:16.114400",
+      "description": "Cobertura mínima de 80%",
+      "due_date": null,
+      "id": 6,
+      "priority": 2,
+      "status": "pending",
+      "tags": [],
+      "title": "Escrever testes unitários",
+      "updated_at": "2026-10-31 22:54:16.114401",
+      "user_id": 2
+     }
+    ]
+   },
+   "at_utc": "2026-10-31 22:54:16.406624",
+   "at_local": "2026-10-31 19:54:16.406626",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "ids": {
+     "resp.json": [
+      2,
+      3,
+      6
+     ]
+    },
+    "keys": {
+     "resp.json.*": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /tasks/search?user_id=1",
+   "method": "GET",
+   "path": "/tasks/search?user_id=1",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": [
+     {
+      "category_id": 1,
+      "created_at": "2026-10-31 22:54:16.114389",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 22:54:16.112252",
+      "id": 1,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 22:54:16.114393",
+      "user_id": 1
+     },
+     {
+      "category_id": 4,
+      "created_at": "2026-10-31 22:54:16.114397",
+      "description": "Filtro não funciona com caracteres especiais",
+      "due_date": "2026-10-30 22:54:16.112252",
+      "id": 4,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Corrigir bug no filtro de busca",
+      "updated_at": "2026-10-31 22:54:16.114398",
+      "user_id": 1
+     },
+     {
+      "category_id": 1,
+      "created_at": "2026-10-31 22:54:16.114399",
+      "description": "Endpoints retornam todos os registros",
+      "due_date": "2026-11-10 22:54:16.112252",
+      "id": 5,
+      "priority": 3,
+      "status": "pending",
+      "tags": [],
+      "title": "Adicionar paginação na API",
+      "updated_at": "2026-10-31 22:54:16.114399",
+      "user_id": 1
+     },
+     {
+      "category_id": 1,
+      "created_at": "2026-10-31 22:54:16.114405",
+      "description": "Usar marshmallow ou pydantic",
+      "due_date": null,
+      "id": 10,
+      "priority": 3,
+      "status": "pending",
+      "tags": [
+       "improvement",
+       "validation"
+      ],
+      "title": "Melhorar validações de input",
+      "updated_at": "2026-10-31 22:54:16.114406",
+      "user_id": 1
+     }
+    ]
+   },
+   "at_utc": "2026-10-31 22:54:16.407992",
+   "at_local": "2026-10-31 19:54:16.407994",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "ids": {
+     "resp.json": [
+      1,
+      4,
+      5,
+      10
+     ]
+    },
+    "keys": {
+     "resp.json.*": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /tasks/search?q=a&status=pending&priority=1",
+   "method": "GET",
+   "path": "/tasks/search?q=a&status=pending&priority=1",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": [
+     {
+      "category_id": 1,
+      "created_at": "2026-10-31 22:54:16.114389",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 22:54:16.112252",
+      "id": 1,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 22:54:16.114393",
+      "user_id": 1
+     },
+     {
+      "category_id": 4,
+      "created_at": "2026-10-31 22:54:16.114397",
+      "description": "Filtro não funciona com caracteres especiais",
+      "due_date": "2026-10-30 22:54:16.112252",
+      "id": 4,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Corrigir bug no filtro de busca",
+      "updated_at": "2026-10-31 22:54:16.114398",
+      "user_id": 1
+     }
+    ]
+   },
+   "at_utc": "2026-10-31 22:54:16.409932",
+   "at_local": "2026-10-31 19:54:16.409933",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "ids": {
+     "resp.json": [
+      1,
+      4
+     ]
+    },
+    "keys": {
+     "resp.json.*": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /tasks/search?",
+   "method": "GET",
+   "path": "/tasks/search?",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": [
+     {
+      "category_id": 1,
+      "created_at": "2026-10-31 22:54:16.114389",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 22:54:16.112252",
+      "id": 1,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 22:54:16.114393",
+      "user_id": 1
+     },
+     {
+      "category_id": 2,
+      "created_at": "2026-10-31 22:54:16.114394",
+      "description": "Tela de login responsiva",
+      "due_date": "2026-11-05 22:54:16.112252",
+      "id": 2,
+      "priority": 2,
+      "status": "in_progress",
+      "tags": [],
+      "title": "Criar tela de login",
+      "updated_at": "2026-10-31 22:54:16.114395",
+      "user_id": 2
+     },
+     {
+      "category_id": 3,
+      "created_at": "2026-10-31 22:54:16.114396",
+      "description": "Pipeline com GitHub Actions",
+      "due_date": null,
+      "id": 3,
+      "priority": 2,
+      "status": "done",
+      "tags": [
+       "devops",
+       "ci",
+       "github"
+      ],
+      "title": "Configurar CI/CD",
+      "updated_at": "2026-10-31 22:54:16.114397",
+      "user_id": 3
+     },
+     {
+      "category_id": 4,
+      "created_at": "2026-10-31 22:54:16.114397",
+      "description": "Filtro não funciona com caracteres especiais",
+      "due_date": "2026-10-30 22:54:16.112252",
+      "id": 4,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Corrigir bug no filtro de busca",
+      "updated_at": "2026-10-31 22:54:16.114398",
+      "user_id": 1
+     },
+     {
+      "category_id": 1,
+      "created_at": "2026-10-31 22:54:16.114399",
+      "description": "Endpoints retornam todos os registros",
+      "due_date": "2026-11-10 22:54:16.112252",
+      "id": 5,
+      "priority": 3,
+      "status": "pending",
+      "tags": [],
+      "title": "Adicionar paginação na API",
+      "updated_at": "2026-10-31 22:54:16.114399",
+      "user_id": 1
+     },
+     {
+      "category_id": 1,
+      "created_at": "2026-10-31 22:54:16.114400",
+      "description": "Cobertura mínima de 80%",
+      "due_date": null,
+      "id": 6,
+      "priority": 2,
+      "status": "pending",
+      "tags": [],
+      "title": "Escrever testes unitários",
+      "updated_at": "2026-10-31 22:54:16.114401",
+      "user_id": 2
+     },
+     {
+      "category_id": 1,
+      "created_at": "2026-10-31 22:54:16.114401",
+      "description": "Gerar documentação automática",
+      "due_date": null,
+      "id": 7,
+      "priority": 4,
+      "status": "cancelled",
+      "tags": [],
+      "title": "Documentar API com Swagger",
+      "updated_at": "2026-10-31 22:54:16.114402",
+      "user_id": 3
+     },
+     {
+      "category_id": 1,
+      "created_at": "2026-10-31 22:54:16.114403",
+      "description": "Melhorar organização dos models",
+      "due_date": null,
+      "id": 8,
+      "priority": 3,
+      "status": "in_progress",
+      "tags": [
+       "refactor",
+       "tech-debt"
+      ],
+      "title": "Refatorar models",
+      "updated_at": "2026-10-31 22:54:16.114403",
+      "user_id": 2
+     },
+     {
+      "category_id": 3,
+      "created_at": "2026-10-31 22:54:16.114404",
+      "description": "Prometheus + Grafana",
+      "due_date": "2026-11-20 22:54:16.112252",
+      "id": 9,
+      "priority": 4,
+      "status": "pending",
+      "tags": [],
+      "title": "Configurar monitoramento",
+      "updated_at": "2026-10-31 22:54:16.114405",
+      "user_id": 3
+     },
+     {
+      "category_id": 1,
+      "created_at": "2026-10-31 22:54:16.114405",
+      "description": "Usar marshmallow ou pydantic",
+      "due_date": null,
+      "id": 10,
+      "priority": 3,
+      "status": "pending",
+      "tags": [
+       "improvement",
+       "validation"
+      ],
+      "title": "Melhorar validações de input",
+      "updated_at": "2026-10-31 22:54:16.114406",
+      "user_id": 1
+     }
+    ]
+   },
+   "at_utc": "2026-10-31 22:54:16.412319",
+   "at_local": "2026-10-31 19:54:16.412321",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "ids": {
+     "resp.json": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ]
+    },
+    "keys": {
+     "resp.json.*": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /tasks/search?priority=1&priority=2",
+   "method": "GET",
+   "path": "/tasks/search?priority=1&priority=2",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": [
+     {
+      "category_id": 1,
+      "created_at": "2026-10-31 22:54:16.114389",
+      "description": "Adicionar autenticação real com JWT",
+      "due_date": "2026-10-28 22:54:16.112252",
+      "id": 1,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Implementar autenticação JWT",
+      "updated_at": "2026-10-31 22:54:16.114393",
+      "user_id": 1
+     },
+     {
+      "category_id": 4,
+      "created_at": "2026-10-31 22:54:16.114397",
+      "description": "Filtro não funciona com caracteres especiais",
+      "due_date": "2026-10-30 22:54:16.112252",
+      "id": 4,
+      "priority": 1,
+      "status": "pending",
+      "tags": [],
+      "title": "Corrigir bug no filtro de busca",
+      "updated_at": "2026-10-31 22:54:16.114398",
+      "user_id": 1
+     }
+    ]
+   },
+   "at_utc": "2026-10-31 22:54:16.414486",
+   "at_local": "2026-10-31 19:54:16.414488",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "ids": {
+     "resp.json": [
+      1,
+      4
+     ]
+    },
+    "keys": {
+     "resp.json.*": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "user_id",
+      "category_id",
+      "created_at",
+      "updated_at",
+      "due_date",
+      "tags"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /tasks/search?priority=abc",
+   "method": "GET",
+   "path": "/tasks/search?priority=abc",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Prioridade inválida"
+    }
+   },
+   "at_utc": "2026-10-31 22:54:16.415735",
+   "at_local": "2026-10-31 19:54:16.415736",
+   "cls": "C-05",
+   "exp": {
+    "status": 400,
+    "error": "Prioridade inválida"
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /tasks/search?priority=2.5",
+   "method": "GET",
+   "path": "/tasks/search?priority=2.5",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Prioridade inválida"
+    }
+   },
+   "at_utc": "2026-10-31 22:54:16.416249",
+   "at_local": "2026-10-31 19:54:16.416251",
+   "cls": "C-05",
+   "exp": {
+    "status": 400,
+    "error": "Prioridade inválida"
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /tasks/search?user_id=abc",
+   "method": "GET",
+   "path": "/tasks/search?user_id=abc",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Usuário inválido"
+    }
+   },
+   "at_utc": "2026-10-31 22:54:16.416736",
+   "at_local": "2026-10-31 19:54:16.416738",
+   "cls": "C-05",
+   "exp": {
+    "status": 400,
+    "error": "Usuário inválido"
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /tasks/stats",
+   "method": "GET",
+   "path": "/tasks/stats",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "cancelled": 1,
+     "completion_rate": 10.0,
+     "done": 1,
+     "in_progress": 2,
+     "overdue": 2,
+     "pending": 6,
+     "total": 10
+    }
+   },
+   "at_utc": "2026-10-31 22:54:16.417251",
+   "at_local": "2026-10-31 19:54:16.417252",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json": {
+      "total": 10,
+      "pending": 6,
+      "in_progress": 2,
+      "done": 1,
+      "cancelled": 1,
+      "overdue": 2,
+      "completion_rate": 10.0
+     }
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /users",
+   "method": "GET",
+   "path": "/users",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": [
+     {
+      "active": true,
+      "created_at": "2026-10-31 22:54:16.111688",
+      "email": "joao@email.com",
+      "id": 1,
+      "name": "João Silva",
+      "role": "admin",
+      "task_count": 4
+     },
+     {
+      "active": true,
+      "created_at": "2026-10-31 22:54:16.111708",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "role": "user",
+      "task_count": 3
+     },
+     {
+      "active": true,
+      "created_at": "2026-10-31 22:54:16.111711",
+      "email": "pedro@email.com",
+      "id": 3,
+      "name": "Pedro Oliveira",
+      "role": "manager",
+      "task_count": 3
+     }
+    ]
+   },
+   "at_utc": "2026-10-31 22:54:16.419254",
+   "at_local": "2026-10-31 19:54:16.419256",
+   "cls": null,
+   "queries": 1,
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json.0.id": 1,
+     "resp.json.0.name": "João Silva",
+     "resp.json.0.email": "joao@email.com",
+     "resp.json.0.role": "admin",
+     "resp.json.0.active": true,
+     "resp.json.0.task_count": 4,
+     "resp.json.1.id": 2,
+     "resp.json.1.name": "Maria Santos",
+     "resp.json.1.email": "maria@email.com",
+     "resp.json.1.role": "user",
+     "resp.json.1.active": true,
+     "resp.json.1.task_count": 3,
+     "resp.json.2.id": 3,
+     "resp.json.2.name": "Pedro Oliveira",
+     "resp.json.2.email": "pedro@email.com",
+     "resp.json.2.role": "manager",
+     "resp.json.2.active": true,
+     "resp.json.2.task_count": 3
+    },
+    "ids": {
+     "resp.json": [
+      1,
+      2,
+      3
+     ]
+    },
+    "keys": {
+     "resp.json.*": [
+      "id",
+      "name",
+      "email",
+      "role",
+      "active",
+      "created_at",
+      "task_count"
+     ]
+    },
+    "ts": {
+     "resp.json.*.created_at": [
+      0,
+      300
+     ]
+    },
+    "max_queries": 1
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /users/1",
+   "method": "GET",
+   "path": "/users/1",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "active": true,
+     "created_at": "2026-10-31 22:54:16.111688",
+     "email": "joao@email.com",
+     "id": 1,
+     "name": "João Silva",
+     "role": "admin",
+     "tasks": [
+      {
+       "category_id": 1,
+       "created_at": "2026-10-31 22:54:16.114389",
+       "description": "Adicionar autenticação real com JWT",
+       "due_date": "2026-10-28 22:54:16.112252",
+       "id": 1,
+       "priority": 1,
+       "status": "pending",
+       "tags": [],
+       "title": "Implementar autenticação JWT",
+       "updated_at": "2026-10-31 22:54:16.114393",
+       "user_id": 1
+      },
+      {
+       "category_id": 4,
+       "created_at": "2026-10-31 22:54:16.114397",
+       "description": "Filtro não funciona com caracteres especiais",
+       "due_date": "2026-10-30 22:54:16.112252",
+       "id": 4,
+       "priority": 1,
+       "status": "pending",
+       "tags": [],
+       "title": "Corrigir bug no filtro de busca",
+       "updated_at": "2026-10-31 22:54:16.114398",
+       "user_id": 1
+      },
+      {
+       "category_id": 1,
+       "created_at": "2026-10-31 22:54:16.114399",
+       "description": "Endpoints retornam todos os registros",
+       "due_date": "2026-11-10 22:54:16.112252",
+       "id": 5,
+       "priority": 3,
+       "status": "pending",
+       "tags": [],
+       "title": "Adicionar paginação na API",
+       "updated_at": "2026-10-31 22:54:16.114399",
+       "user_id": 1
+      },
+      {
+       "category_id": 1,
+       "created_at": "2026-10-31 22:54:16.114405",
+       "description": "Usar marshmallow ou pydantic",
+       "due_date": null,
+       "id": 10,
+       "priority": 3,
+       "status": "pending",
+       "tags": [
+        "improvement",
+        "validation"
+       ],
+       "title": "Melhorar validações de input",
+       "updated_at": "2026-10-31 22:54:16.114406",
+       "user_id": 1
+      }
+     ]
+    }
+   },
+   "at_utc": "2026-10-31 22:54:16.421371",
+   "at_local": "2026-10-31 19:54:16.421372",
+   "cls": "F-01",
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json.id": 1,
+     "resp.json.name": "João Silva",
+     "resp.json.email": "joao@email.com",
+     "resp.json.role": "admin",
+     "resp.json.active": true
+    },
+    "ids": {
+     "resp.json.tasks": [
+      1,
+      4,
+      5,
+      10
+     ]
+    },
+    "keys": {
+     "resp.json": [
+      "id",
+      "name",
+      "email",
+      "role",
+      "active",
+      "created_at",
+      "tasks"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /users/999",
+   "method": "GET",
+   "path": "/users/999",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 404,
+    "is_json": true,
+    "json": {
+     "error": "Usuário não encontrado"
+    }
+   },
+   "at_utc": "2026-10-31 22:54:16.423524",
+   "at_local": "2026-10-31 19:54:16.423526",
+   "cls": null,
+   "exp": {
+    "status": 404,
+    "error": "Usuário não encontrado"
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /users/2/tasks",
+   "method": "GET",
+   "path": "/users/2/tasks",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": [
+     {
+      "created_at": "2026-10-31 22:54:16.114394",
+      "description": "Tela de login responsiva",
+      "due_date": "2026-11-05 22:54:16.112252",
+      "id": 2,
+      "overdue": false,
+      "priority": 2,
+      "status": "in_progress",
+      "title": "Criar tela de login"
+     },
+     {
+      "created_at": "2026-10-31 22:54:16.114400",
+      "description": "Cobertura mínima de 80%",
+      "due_date": null,
+      "id": 6,
+      "overdue": false,
+      "priority": 2,
+      "status": "pending",
+      "title": "Escrever testes unitários"
+     },
+     {
+      "created_at": "2026-10-31 22:54:16.114403",
+      "description": "Melhorar organização dos models",
+      "due_date": null,
+      "id": 8,
+      "overdue": false,
+      "priority": 3,
+      "status": "in_progress",
+      "title": "Refatorar models"
+     }
+    ]
+   },
+   "at_utc": "2026-10-31 22:54:16.424507",
+   "at_local": "2026-10-31 19:54:16.424509",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "ids": {
+     "resp.json": [
+      2,
+      6,
+      8
+     ]
+    },
+    "has": {
+     "resp.json.*.overdue": false,
+     "resp.json.0.title": "Criar tela de login"
+    },
+    "keys": {
+     "resp.json.*": [
+      "id",
+      "title",
+      "description",
+      "status",
+      "priority",
+      "created_at",
+      "due_date",
+      "overdue"
+     ]
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /users/999/tasks",
+   "method": "GET",
+   "path": "/users/999/tasks",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 404,
+    "is_json": true,
+    "json": {
+     "error": "Usuário não encontrado"
+    }
+   },
+   "at_utc": "2026-10-31 22:54:16.426086",
+   "at_local": "2026-10-31 19:54:16.426088",
+   "cls": null,
+   "exp": {
+    "status": 404,
+    "error": "Usuário não encontrado"
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /reports/summary",
+   "method": "GET",
+   "path": "/reports/summary",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "generated_at": "2026-10-31 22:54:16.430897",
+     "overdue": {
+      "count": 2,
+      "tasks": [
+       {
+        "days_overdue": 3,
+        "due_date": "2026-10-28 22:54:16.112252",
+        "id": 1,
+        "title": "Implementar autenticação JWT"
+       },
+       {
+        "days_overdue": 1,
+        "due_date": "2026-10-30 22:54:16.112252",
+        "id": 4,
+        "title": "Corrigir bug no filtro de busca"
+       }
+      ]
+     },
+     "overview": {
+      "total_categories": 4,
+      "total_tasks": 10,
+      "total_users": 3
+     },
+     "recent_activity": {
+      "tasks_completed_last_7_days": 1,
+      "tasks_created_last_7_days": 10
+     },
+     "tasks_by_priority": {
+      "critical": 2,
+      "high": 3,
+      "low": 2,
+      "medium": 3,
+      "minimal": 0
+     },
+     "tasks_by_status": {
+      "cancelled": 1,
+      "done": 1,
+      "in_progress": 2,
+      "pending": 6
+     },
+     "user_productivity": [
+      {
+       "completed_tasks": 0,
+       "completion_rate": 0.0,
+       "total_tasks": 4,
+       "user_id": 1,
+       "user_name": "João Silva"
+      },
+      {
+       "completed_tasks": 0,
+       "completion_rate": 0.0,
+       "total_tasks": 3,
+       "user_id": 2,
+       "user_name": "Maria Santos"
+      },
+      {
+       "completed_tasks": 1,
+       "completion_rate": 33.33,
+       "total_tasks": 3,
+       "user_id": 3,
+       "user_name": "Pedro Oliveira"
+      }
+     ]
+    }
+   },
+   "at_utc": "2026-10-31 22:54:16.427039",
+   "at_local": "2026-10-31 19:54:16.427041",
+   "cls": null,
+   "queries": 9,
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json.overview": {
+      "total_tasks": 10,
+      "total_users": 3,
+      "total_categories": 4
+     },
+     "resp.json.tasks_by_status": {
+      "pending": 6,
+      "in_progress": 2,
+      "done": 1,
+      "cancelled": 1
+     },
+     "resp.json.tasks_by_priority": {
+      "critical": 2,
+      "high": 3,
+      "medium": 3,
+      "low": 2,
+      "minimal": 0
+     },
+     "resp.json.overdue.count": 2,
+     "resp.json.overdue.tasks.0.days_overdue": 3,
+     "resp.json.overdue.tasks.1.days_overdue": 1,
+     "resp.json.recent_activity": {
+      "tasks_created_last_7_days": 10,
+      "tasks_completed_last_7_days": 1
+     },
+     "resp.json.user_productivity": [
+      {
+       "user_id": 1,
+       "user_name": "João Silva",
+       "total_tasks": 4,
+       "completed_tasks": 0,
+       "completion_rate": 0.0
+      },
+      {
+       "user_id": 2,
+       "user_name": "Maria Santos",
+       "total_tasks": 3,
+       "completed_tasks": 0,
+       "completion_rate": 0.0
+      },
+      {
+       "user_id": 3,
+       "user_name": "Pedro Oliveira",
+       "total_tasks": 3,
+       "completed_tasks": 1,
+       "completion_rate": 33.33
+      }
+     ]
+    },
+    "ids": {
+     "resp.json.overdue.tasks": [
+      1,
+      4
+     ]
+    },
+    "ts": {
+     "resp.json.generated_at": [
+      0,
+      120
+     ],
+     "resp.json.overdue.tasks.0.due_date": [
+      -259200,
+      300
+     ]
+    },
+    "max_queries": 9
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /reports/user/1",
+   "method": "GET",
+   "path": "/reports/user/1",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "statistics": {
+      "cancelled": 0,
+      "completion_rate": 0.0,
+      "done": 0,
+      "high_priority": 2,
+      "in_progress": 0,
+      "overdue": 2,
+      "pending": 4,
+      "total_tasks": 4
+     },
+     "user": {
+      "email": "joao@email.com",
+      "id": 1,
+      "name": "João Silva"
+     }
+    }
+   },
+   "at_utc": "2026-10-31 22:54:16.435069",
+   "at_local": "2026-10-31 19:54:16.435072",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json.user": {
+      "id": 1,
+      "name": "João Silva",
+      "email": "joao@email.com"
+     },
+     "resp.json.statistics": {
+      "total_tasks": 4,
+      "done": 0,
+      "pending": 4,
+      "in_progress": 0,
+      "cancelled": 0,
+      "overdue": 2,
+      "high_priority": 2,
+      "completion_rate": 0.0
+     }
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /reports/user/3",
+   "method": "GET",
+   "path": "/reports/user/3",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "statistics": {
+      "cancelled": 1,
+      "completion_rate": 33.33,
+      "done": 1,
+      "high_priority": 1,
+      "in_progress": 0,
+      "overdue": 0,
+      "pending": 1,
+      "total_tasks": 3
+     },
+     "user": {
+      "email": "pedro@email.com",
+      "id": 3,
+      "name": "Pedro Oliveira"
+     }
+    }
+   },
+   "at_utc": "2026-10-31 22:54:16.437258",
+   "at_local": "2026-10-31 19:54:16.437259",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json.statistics": {
+      "total_tasks": 3,
+      "done": 1,
+      "pending": 1,
+      "in_progress": 0,
+      "cancelled": 1,
+      "overdue": 0,
+      "high_priority": 1,
+      "completion_rate": 33.33
+     }
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /reports/user/999",
+   "method": "GET",
+   "path": "/reports/user/999",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 404,
+    "is_json": true,
+    "json": {
+     "error": "Usuário não encontrado"
+    }
+   },
+   "at_utc": "2026-10-31 22:54:16.438656",
+   "at_local": "2026-10-31 19:54:16.438658",
+   "cls": null,
+   "exp": {
+    "status": 404,
+    "error": "Usuário não encontrado"
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /categories",
+   "method": "GET",
+   "path": "/categories",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": [
+     {
+      "color": "#3498db",
+      "created_at": "2026-10-31 22:54:16.110417",
+      "description": "Tarefas de backend",
+      "id": 1,
+      "name": "Backend",
+      "task_count": 6
+     },
+     {
+      "color": "#2ecc71",
+      "created_at": "2026-10-31 22:54:16.110427",
+      "description": "Tarefas de frontend",
+      "id": 2,
+      "name": "Frontend",
+      "task_count": 1
+     },
+     {
+      "color": "#e74c3c",
+      "created_at": "2026-10-31 22:54:16.110429",
+      "description": "Tarefas de infraestrutura",
+      "id": 3,
+      "name": "DevOps",
+      "task_count": 2
+     },
+     {
+      "color": "#e67e22",
+      "created_at": "2026-10-31 22:54:16.110430",
+      "description": "Correção de bugs",
+      "id": 4,
+      "name": "Bug",
+      "task_count": 1
+     }
+    ]
+   },
+   "at_utc": "2026-10-31 22:54:16.439666",
+   "at_local": "2026-10-31 19:54:16.439668",
+   "cls": null,
+   "queries": 1,
+   "exp": {
+    "status": 200,
+    "ids": {
+     "resp.json": [
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    "has": {
+     "resp.json.0.name": "Backend",
+     "resp.json.0.color": "#3498db",
+     "resp.json.0.task_count": 6,
+     "resp.json.1.name": "Frontend",
+     "resp.json.1.color": "#2ecc71",
+     "resp.json.1.task_count": 1,
+     "resp.json.2.name": "DevOps",
+     "resp.json.2.color": "#e74c3c",
+     "resp.json.2.task_count": 2,
+     "resp.json.3.name": "Bug",
+     "resp.json.3.color": "#e67e22",
+     "resp.json.3.task_count": 1
+    },
+    "keys": {
+     "resp.json.*": [
+      "id",
+      "name",
+      "description",
+      "color",
+      "created_at",
+      "task_count"
+     ]
+    },
+    "max_queries": 1
+   },
+   "errs": []
+  },
+  {
+   "name": "GET /nao-existe",
+   "method": "GET",
+   "path": "/nao-existe",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 404,
+    "is_json": true,
+    "json": {
+     "error": "Recurso não encontrado"
+    }
+   },
+   "at_utc": "2026-10-31 22:54:16.442056",
+   "at_local": "2026-10-31 19:54:16.442058",
+   "cls": "M-03",
+   "exp": {
+    "status": 404,
+    "error": "Recurso não encontrado"
+   },
+   "errs": []
+  }
+ ]
+}

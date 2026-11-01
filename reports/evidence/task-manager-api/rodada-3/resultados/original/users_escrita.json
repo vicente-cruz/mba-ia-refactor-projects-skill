@@ -1,0 +1,5168 @@
+{
+ "mode": "original",
+ "group": "users_escrita",
+ "records": [
+  {
+   "name": "POST /users sucesso",
+   "method": "POST",
+   "path": "/users",
+   "input": {
+    "name": "Novo",
+    "email": "novo@email.com",
+    "password": "<presente>"
+   },
+   "auth": null,
+   "resp": {
+    "status": 201,
+    "is_json": true,
+    "json": {
+     "active": true,
+     "created_at": "2026-10-31 23:28:53.386804",
+     "email": "novo@email.com",
+     "id": 4,
+     "name": "Novo",
+     "password": "<presente>",
+     "role": "user"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:53.385414",
+   "at_local": "2026-10-31 20:28:53.385418",
+   "cls": "F-01",
+   "pre_state": "e3f60623ce3291d2cb56",
+   "post_state": "e9825493be186f5d4a44",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 4,
+     "categories": 4
+    },
+    "hash_novo": "md5",
+    "login_cadastro": 200
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "exp": {
+    "status": 201,
+    "error": null,
+    "has": {
+     "resp.json.id": 4,
+     "resp.json.name": "Novo",
+     "resp.json.email": "novo@email.com",
+     "resp.json.role": "user",
+     "resp.json.active": true,
+     "post.counts.users": 4,
+     "post.login_cadastro": 200,
+     "post.hash_novo": "md5"
+    },
+    "ts": {
+     "resp.json.created_at": [
+      0,
+      120
+     ]
+    },
+    "changed": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /users role admin com admin",
+   "method": "POST",
+   "path": "/users",
+   "input": {
+    "name": "Novo",
+    "email": "novo@email.com",
+    "password": "<presente>",
+    "role": "admin"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 201,
+    "is_json": true,
+    "json": {
+     "active": true,
+     "created_at": "2026-10-31 23:28:53.440863",
+     "email": "novo@email.com",
+     "id": 4,
+     "name": "Novo",
+     "password": "<presente>",
+     "role": "admin"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:53.439472",
+   "at_local": "2026-10-31 20:28:53.439478",
+   "cls": "F-01",
+   "pre_state": "2d49be3c43f7bb6eca8b",
+   "post_state": "cb36ee7611327aaff4ad",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 4,
+     "categories": 4
+    },
+    "hash_novo": "md5",
+    "login_cadastro": 200
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "exp": {
+    "status": 201,
+    "error": null,
+    "has": {
+     "resp.json.id": 4,
+     "resp.json.name": "Novo",
+     "resp.json.email": "novo@email.com",
+     "resp.json.role": "admin",
+     "resp.json.active": true,
+     "post.counts.users": 4,
+     "post.login_cadastro": 200,
+     "post.hash_novo": "md5"
+    },
+    "ts": {
+     "resp.json.created_at": [
+      0,
+      120
+     ]
+    },
+    "changed": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /users role user com user",
+   "method": "POST",
+   "path": "/users",
+   "input": {
+    "name": "Novo",
+    "email": "novo@email.com",
+    "password": "<presente>",
+    "role": "user"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 201,
+    "is_json": true,
+    "json": {
+     "active": true,
+     "created_at": "2026-10-31 23:28:53.488119",
+     "email": "novo@email.com",
+     "id": 4,
+     "name": "Novo",
+     "password": "<presente>",
+     "role": "user"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:53.487155",
+   "at_local": "2026-10-31 20:28:53.487158",
+   "cls": "F-01",
+   "pre_state": "45d783c42faacf7a6f5a",
+   "post_state": "191dbc1ff934f3b62a44",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 4,
+     "categories": 4
+    },
+    "hash_novo": "md5",
+    "login_cadastro": 200
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "exp": {
+    "status": 201,
+    "error": null,
+    "has": {
+     "resp.json.id": 4,
+     "resp.json.name": "Novo",
+     "resp.json.email": "novo@email.com",
+     "resp.json.role": "user",
+     "resp.json.active": true,
+     "post.counts.users": 4,
+     "post.login_cadastro": 200,
+     "post.hash_novo": "md5"
+    },
+    "ts": {
+     "resp.json.created_at": [
+      0,
+      120
+     ]
+    },
+    "changed": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /users active ignorado",
+   "method": "POST",
+   "path": "/users",
+   "input": {
+    "name": "Novo",
+    "email": "novo@email.com",
+    "password": "<presente>",
+    "active": false
+   },
+   "auth": null,
+   "resp": {
+    "status": 201,
+    "is_json": true,
+    "json": {
+     "active": true,
+     "created_at": "2026-10-31 23:28:53.539085",
+     "email": "novo@email.com",
+     "id": 4,
+     "name": "Novo",
+     "password": "<presente>",
+     "role": "user"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:53.538129",
+   "at_local": "2026-10-31 20:28:53.538133",
+   "cls": "F-01",
+   "pre_state": "bb2e0513645a8cc47a7c",
+   "post_state": "f2307ba55ddc32ae3164",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 4,
+     "categories": 4
+    },
+    "hash_novo": "md5",
+    "login_cadastro": 200
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "exp": {
+    "status": 201,
+    "error": null,
+    "has": {
+     "resp.json.id": 4,
+     "resp.json.name": "Novo",
+     "resp.json.email": "novo@email.com",
+     "resp.json.role": "user",
+     "resp.json.active": true,
+     "post.counts.users": 4,
+     "post.login_cadastro": 200,
+     "post.hash_novo": "md5"
+    },
+    "ts": {
+     "resp.json.created_at": [
+      0,
+      120
+     ]
+    },
+    "changed": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /users duplicado",
+   "method": "POST",
+   "path": "/users",
+   "input": {
+    "name": "Novo",
+    "email": "joao@email.com",
+    "password": "<presente>"
+   },
+   "auth": null,
+   "resp": {
+    "status": 409,
+    "is_json": true,
+    "json": {
+     "error": "Email já cadastrado"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:53.583535",
+   "at_local": "2026-10-31 20:28:53.583539",
+   "cls": null,
+   "pre_state": "cb50e9242da71e7eff79",
+   "post_state": "cb50e9242da71e7eff79",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "exp": {
+    "status": 409,
+    "error": "Email já cadastrado"
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /users sem name",
+   "method": "POST",
+   "path": "/users",
+   "input": {
+    "email": "a@b.com",
+    "password": "<presente>"
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Nome é obrigatório"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:53.624994",
+   "at_local": "2026-10-31 20:28:53.624998",
+   "cls": null,
+   "pre_state": "9c216336fc67e00bc59d",
+   "post_state": "9c216336fc67e00bc59d",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "exp": {
+    "status": 400,
+    "error": "Nome é obrigatório"
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /users sem email",
+   "method": "POST",
+   "path": "/users",
+   "input": {
+    "name": "A",
+    "password": "<presente>"
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Email é obrigatório"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:53.667844",
+   "at_local": "2026-10-31 20:28:53.667848",
+   "cls": null,
+   "pre_state": "f93373f169bcda18a953",
+   "post_state": "f93373f169bcda18a953",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "exp": {
+    "status": 400,
+    "error": "Email é obrigatório"
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /users sem password",
+   "method": "POST",
+   "path": "/users",
+   "input": {
+    "name": "A",
+    "email": "a@b.com"
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Senha é obrigatória"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:53.707459",
+   "at_local": "2026-10-31 20:28:53.707462",
+   "cls": null,
+   "pre_state": "34cbd6acb2f380a7dc21",
+   "post_state": "34cbd6acb2f380a7dc21",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "exp": {
+    "status": 400,
+    "error": "Senha é obrigatória"
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /users name numero",
+   "method": "POST",
+   "path": "/users",
+   "input": {
+    "name": 5,
+    "email": "novo@email.com",
+    "password": "<presente>"
+   },
+   "auth": null,
+   "resp": {
+    "status": 201,
+    "is_json": true,
+    "json": {
+     "active": true,
+     "created_at": "2026-10-31 23:28:53.753873",
+     "email": "novo@email.com",
+     "id": 4,
+     "name": "5",
+     "password": "<presente>",
+     "role": "user"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:53.752788",
+   "at_local": "2026-10-31 20:28:53.752793",
+   "cls": "R-06",
+   "pre_state": "dae0811c5a64d42d3b89",
+   "post_state": "ba89b0b73a1e6c5f6074",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 4,
+     "categories": 4
+    },
+    "hash_novo": "md5",
+    "login_cadastro": 200
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "exp": {
+    "status": 201
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /users name lista",
+   "method": "POST",
+   "path": "/users",
+   "input": {
+    "name": [
+     "a"
+    ],
+    "email": "novo@email.com",
+    "password": "<presente>"
+   },
+   "auth": null,
+   "resp": {
+    "status": 500,
+    "is_json": true,
+    "json": {
+     "error": "Erro ao criar usuário"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:53.800520",
+   "at_local": "2026-10-31 20:28:53.800525",
+   "cls": "C-10",
+   "pre_state": "690a1be1173b98baea1e",
+   "post_state": "690a1be1173b98baea1e",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "exp": {
+    "status": 500,
+    "error": "Erro ao criar usuário"
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /users email numero",
+   "method": "POST",
+   "path": "/users",
+   "input": {
+    "name": "Novo",
+    "email": 5,
+    "password": "<presente>"
+   },
+   "auth": null,
+   "resp": {
+    "status": 500,
+    "is_json": false,
+    "text": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Er"
+   },
+   "at_utc": "2026-10-31 23:28:53.840677",
+   "at_local": "2026-10-31 20:28:53.840681",
+   "cls": "C-06",
+   "pre_state": "269d4ea910c4d70c7c87",
+   "post_state": "269d4ea910c4d70c7c87",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "exp": {
+    "status": 500,
+    "is_json": false
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /users email invalido",
+   "method": "POST",
+   "path": "/users",
+   "input": {
+    "name": "Novo",
+    "email": "bad",
+    "password": "<presente>"
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Email inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:53.880582",
+   "at_local": "2026-10-31 20:28:53.880586",
+   "cls": null,
+   "pre_state": "68cbaf92282938173966",
+   "post_state": "68cbaf92282938173966",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "exp": {
+    "status": 400,
+    "error": "Email inválido"
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /users password numero",
+   "method": "POST",
+   "path": "/users",
+   "input": {
+    "name": "Novo",
+    "email": "novo@email.com",
+    "password": "<presente>"
+   },
+   "auth": null,
+   "resp": {
+    "status": 500,
+    "is_json": false,
+    "text": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Er"
+   },
+   "at_utc": "2026-10-31 23:28:53.920852",
+   "at_local": "2026-10-31 20:28:53.920857",
+   "cls": "C-06",
+   "pre_state": "77d952082273ad10e10d",
+   "post_state": "77d952082273ad10e10d",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "exp": {
+    "status": 500,
+    "is_json": false
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /users password curta",
+   "method": "POST",
+   "path": "/users",
+   "input": {
+    "name": "Novo",
+    "email": "novo@email.com",
+    "password": "<presente>"
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Senha deve ter no mínimo 4 caracteres"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:53.959790",
+   "at_local": "2026-10-31 20:28:53.959793",
+   "cls": null,
+   "pre_state": "f097ce1ca17145969ca7",
+   "post_state": "f097ce1ca17145969ca7",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "exp": {
+    "status": 400,
+    "error": "Senha deve ter no mínimo 4 caracteres"
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /users password lista",
+   "method": "POST",
+   "path": "/users",
+   "input": {
+    "name": "Novo",
+    "email": "novo@email.com",
+    "password": "<presente>"
+   },
+   "auth": null,
+   "resp": {
+    "status": 500,
+    "is_json": false,
+    "text": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Er"
+   },
+   "at_utc": "2026-10-31 23:28:54.002362",
+   "at_local": "2026-10-31 20:28:54.002372",
+   "cls": "C-06",
+   "pre_state": "5fd5f6e63a3f080e8b33",
+   "post_state": "5fd5f6e63a3f080e8b33",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "exp": {
+    "status": 500,
+    "is_json": false
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /users role invalido",
+   "method": "POST",
+   "path": "/users",
+   "input": {
+    "name": "Novo",
+    "email": "novo@email.com",
+    "password": "<presente>",
+    "role": "xyz"
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Role inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:54.041389",
+   "at_local": "2026-10-31 20:28:54.041392",
+   "cls": null,
+   "pre_state": "978c2253eacedaba7b23",
+   "post_state": "978c2253eacedaba7b23",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "exp": {
+    "status": 400,
+    "error": "Role inválido"
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /users role null",
+   "method": "POST",
+   "path": "/users",
+   "input": {
+    "name": "Novo",
+    "email": "novo@email.com",
+    "password": "<presente>",
+    "role": null
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Role inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:54.079695",
+   "at_local": "2026-10-31 20:28:54.079700",
+   "cls": null,
+   "pre_state": "b47932ff32629edd5eb1",
+   "post_state": "b47932ff32629edd5eb1",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "exp": {
+    "status": 400,
+    "error": "Role inválido"
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /users role admin anonimo",
+   "method": "POST",
+   "path": "/users",
+   "input": {
+    "name": "Novo",
+    "email": "novo@email.com",
+    "password": "<presente>",
+    "role": "admin"
+   },
+   "auth": null,
+   "resp": {
+    "status": 201,
+    "is_json": true,
+    "json": {
+     "active": true,
+     "created_at": "2026-10-31 23:28:54.124778",
+     "email": "novo@email.com",
+     "id": 4,
+     "name": "Novo",
+     "password": "<presente>",
+     "role": "admin"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:54.123759",
+   "at_local": "2026-10-31 20:28:54.123763",
+   "cls": "D-1a",
+   "pre_state": "b52283f790bcdbaf660a",
+   "post_state": "7eea97adb7f24e16779f",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 4,
+     "categories": 4
+    },
+    "hash_novo": "md5",
+    "login_cadastro": 200
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "exp": {
+    "status": 201
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /users role manager com user",
+   "method": "POST",
+   "path": "/users",
+   "input": {
+    "name": "Novo",
+    "email": "novo@email.com",
+    "password": "<presente>",
+    "role": "manager"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 201,
+    "is_json": true,
+    "json": {
+     "active": true,
+     "created_at": "2026-10-31 23:28:54.181506",
+     "email": "novo@email.com",
+     "id": 4,
+     "name": "Novo",
+     "password": "<presente>",
+     "role": "manager"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:54.180109",
+   "at_local": "2026-10-31 20:28:54.180114",
+   "cls": "D-1a",
+   "pre_state": "2c079b99c77adbaa4811",
+   "post_state": "28d14d9ab59e87ffc077",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 4,
+     "categories": 4
+    },
+    "hash_novo": "md5",
+    "login_cadastro": 200
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "exp": {
+    "status": 201
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /users bearer invalido em cadastro anonimo",
+   "method": "POST",
+   "path": "/users",
+   "input": {
+    "name": "Novo",
+    "email": "novo@email.com",
+    "password": "<presente>"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 201,
+    "is_json": true,
+    "json": {
+     "active": true,
+     "created_at": "2026-10-31 23:28:54.245709",
+     "email": "novo@email.com",
+     "id": 4,
+     "name": "Novo",
+     "password": "<presente>",
+     "role": "user"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:54.244616",
+   "at_local": "2026-10-31 20:28:54.244621",
+   "cls": "D-1a",
+   "pre_state": "5fda4913749044e1f773",
+   "post_state": "c621b7156ff52fcbfd47",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 4,
+     "categories": 4
+    },
+    "hash_novo": "md5",
+    "login_cadastro": 200
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "exp": {
+    "status": 201
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /users corpo null",
+   "method": "POST",
+   "path": "/users",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:54.292775",
+   "at_local": "2026-10-31 20:28:54.292780",
+   "cls": null,
+   "pre_state": "873ae4e9969d9aa95c71",
+   "post_state": "873ae4e9969d9aa95c71",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos"
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /users corpo [1]",
+   "method": "POST",
+   "path": "/users",
+   "input": [
+    1
+   ],
+   "auth": null,
+   "resp": {
+    "status": 500,
+    "is_json": false,
+    "text": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Er"
+   },
+   "at_utc": "2026-10-31 23:28:54.330251",
+   "at_local": "2026-10-31 20:28:54.330254",
+   "cls": "C-01",
+   "pre_state": "0bf5f1494f79c1750e27",
+   "post_state": "0bf5f1494f79c1750e27",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "exp": {
+    "status": 500,
+    "is_json": false
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /users corpo 5",
+   "method": "POST",
+   "path": "/users",
+   "input": 5,
+   "auth": null,
+   "resp": {
+    "status": 500,
+    "is_json": false,
+    "text": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Er"
+   },
+   "at_utc": "2026-10-31 23:28:54.369771",
+   "at_local": "2026-10-31 20:28:54.369774",
+   "cls": "C-01",
+   "pre_state": "07a1edb3cef17f6ebffe",
+   "post_state": "07a1edb3cef17f6ebffe",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "hash_novo": null,
+    "login_cadastro": null
+   },
+   "exp": {
+    "status": 500,
+    "is_json": false
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /users/2 name (admin)",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": {
+    "name": "Maria Nova"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "active": true,
+     "created_at": "2026-10-31 23:28:54.380732",
+     "email": "maria@email.com",
+     "id": 2,
+     "name": "Maria Nova",
+     "password": "<presente>",
+     "role": "user"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:54.411468",
+   "at_local": "2026-10-31 20:28:54.411472",
+   "cls": null,
+   "pre_state": "af499ba83e36385beb68",
+   "post_state": "8ee1dec4d7e2e0373d16",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:54.380732",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Nova",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:54.396153",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:54.394858",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:54.396154",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.396163",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:54.396164",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.396168",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:54.396169",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:54.380732",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:54.396153",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:54.394858",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:54.396154",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.396163",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:54.396164",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.396168",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:54.396169",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "exp": {
+    "status": 200,
+    "error": null,
+    "has": {
+     "resp.json.name": "Maria Nova",
+     "post.get.json.name": "Maria Nova",
+     "resp.json.id": 2
+    },
+    "changed": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /users/2 email (admin)",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": {
+    "email": "maria2@email.com"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "active": true,
+     "created_at": "2026-10-31 23:28:54.432548",
+     "email": "maria2@email.com",
+     "id": 2,
+     "name": "Maria Santos",
+     "password": "<presente>",
+     "role": "user"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:54.464919",
+   "at_local": "2026-10-31 20:28:54.464923",
+   "cls": null,
+   "pre_state": "f466b0d080c969558fae",
+   "post_state": "d606538bd8dc02e1c321",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:54.432548",
+      "email": "maria2@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:54.451377",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:54.449740",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:54.451378",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.451388",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:54.451389",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.451393",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:54.451394",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:54.432548",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:54.451377",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:54.449740",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:54.451378",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.451388",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:54.451389",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.451393",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:54.451394",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "exp": {
+    "status": 200,
+    "error": null,
+    "has": {
+     "resp.json.email": "maria2@email.com",
+     "post.get.json.email": "maria2@email.com",
+     "resp.json.id": 2
+    },
+    "changed": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /users/2 role manager (admin)",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": {
+    "role": "manager"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "active": true,
+     "created_at": "2026-10-31 23:28:54.484958",
+     "email": "maria@email.com",
+     "id": 2,
+     "name": "Maria Santos",
+     "password": "<presente>",
+     "role": "manager"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:54.513949",
+   "at_local": "2026-10-31 20:28:54.513952",
+   "cls": null,
+   "pre_state": "0edf1353947033fef086",
+   "post_state": "f5a2ca360f5dd98c2f85",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:54.484958",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "manager",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:54.501453",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:54.500048",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:54.501454",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.501463",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:54.501465",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.501469",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:54.501470",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:54.484958",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:54.501453",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:54.500048",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:54.501454",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.501463",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:54.501465",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.501469",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:54.501470",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "exp": {
+    "status": 200,
+    "error": null,
+    "has": {
+     "resp.json.role": "manager",
+     "post.get.json.role": "manager",
+     "resp.json.id": 2
+    },
+    "changed": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /users/2 active false (admin)",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": {
+    "active": false
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "active": false,
+     "created_at": "2026-10-31 23:28:54.533494",
+     "email": "maria@email.com",
+     "id": 2,
+     "name": "Maria Santos",
+     "password": "<presente>",
+     "role": "user"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:54.564225",
+   "at_local": "2026-10-31 20:28:54.564230",
+   "cls": null,
+   "pre_state": "352987c8b6ef027bfff0",
+   "post_state": "7c9134800724ac1c5c43",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": false,
+      "created_at": "2026-10-31 23:28:54.533494",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:54.548740",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:54.547060",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:54.548741",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.548750",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:54.548751",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.548755",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:54.548757",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:54.533494",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:54.548740",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:54.547060",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:54.548741",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.548750",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:54.548751",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.548755",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:54.548757",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "exp": {
+    "status": 200,
+    "error": null,
+    "has": {
+     "resp.json.active": false,
+     "post.get.json.active": false,
+     "resp.json.id": 2
+    },
+    "changed": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /users/2 password (admin)",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": {
+    "password": "<presente>"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "active": true,
+     "created_at": "2026-10-31 23:28:54.583771",
+     "email": "maria@email.com",
+     "id": 2,
+     "name": "Maria Santos",
+     "password": "<presente>",
+     "role": "user"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:54.614329",
+   "at_local": "2026-10-31 20:28:54.614332",
+   "cls": null,
+   "pre_state": "56a63c5308019f4f73be",
+   "post_state": "fe16d5bb1c1ddcaca46e",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "login_nova": 200,
+    "login_antiga": 401
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "login_nova": 401,
+    "login_antiga": 200
+   },
+   "exp": {
+    "status": 200,
+    "has": {
+     "post.login_nova": 200,
+     "post.login_antiga": 401
+    },
+    "changed": true
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /users/2 email duplicado (admin)",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": {
+    "email": "joao@email.com"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 409,
+    "is_json": true,
+    "json": {
+     "error": "Email já cadastrado"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:54.667730",
+   "at_local": "2026-10-31 20:28:54.667734",
+   "cls": null,
+   "pre_state": "3dbf1e0185fc9a52c4af",
+   "post_state": "3dbf1e0185fc9a52c4af",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:54.635049",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:54.652212",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:54.650869",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:54.652214",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.652223",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:54.652224",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.652228",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:54.652229",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:54.635049",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:54.652212",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:54.650869",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:54.652214",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.652223",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:54.652224",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.652228",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:54.652229",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "exp": {
+    "status": 409,
+    "error": "Email já cadastrado"
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /users/2 email invalido (admin)",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": {
+    "email": "bad"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Email inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:54.710328",
+   "at_local": "2026-10-31 20:28:54.710332",
+   "cls": null,
+   "pre_state": "7b3acea59d13e12acf60",
+   "post_state": "7b3acea59d13e12acf60",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:54.680985",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:54.696007",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:54.694646",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:54.696008",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.696017",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:54.696018",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.696022",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:54.696023",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:54.680985",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:54.696007",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:54.694646",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:54.696008",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.696017",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:54.696018",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.696022",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:54.696023",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Email inválido"
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /users/2 email numero (admin)",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": {
+    "email": 5
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 500,
+    "is_json": false,
+    "text": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Er"
+   },
+   "at_utc": "2026-10-31 23:28:54.751061",
+   "at_local": "2026-10-31 20:28:54.751064",
+   "cls": "C-06",
+   "pre_state": "d4d09348e6c16b03e2ef",
+   "post_state": "d4d09348e6c16b03e2ef",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:54.721618",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:54.738077",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:54.736702",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:54.738078",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.738087",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:54.738088",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.738092",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:54.738093",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:54.721618",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:54.738077",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:54.736702",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:54.738078",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.738087",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:54.738088",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.738092",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:54.738093",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "exp": {
+    "status": 500,
+    "is_json": false
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /users/2 email null (admin)",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": {
+    "email": null
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 500,
+    "is_json": false,
+    "text": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Er"
+   },
+   "at_utc": "2026-10-31 23:28:54.794463",
+   "at_local": "2026-10-31 20:28:54.794468",
+   "cls": "C-06",
+   "pre_state": "337dc5cfb977d70d6d8c",
+   "post_state": "337dc5cfb977d70d6d8c",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:54.763790",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:54.779717",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:54.778357",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:54.779719",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.779728",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:54.779729",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.779733",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:54.779734",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:54.763790",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:54.779717",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:54.778357",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:54.779719",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.779728",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:54.779729",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.779733",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:54.779734",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "exp": {
+    "status": 500,
+    "is_json": false
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /users/2 password curta (admin)",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": {
+    "password": "<presente>"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Senha muito curta"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:54.840016",
+   "at_local": "2026-10-31 20:28:54.840020",
+   "cls": null,
+   "pre_state": "4bc6bd56f640d5da04f4",
+   "post_state": "4bc6bd56f640d5da04f4",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:54.808461",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:54.824734",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:54.823382",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:54.824735",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.824744",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:54.824745",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.824749",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:54.824750",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:54.808461",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:54.824734",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:54.823382",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:54.824735",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.824744",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:54.824745",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.824749",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:54.824750",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Senha muito curta"
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /users/2 password null (admin)",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": {
+    "password": "<presente>"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 500,
+    "is_json": false,
+    "text": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Er"
+   },
+   "at_utc": "2026-10-31 23:28:54.882843",
+   "at_local": "2026-10-31 20:28:54.882850",
+   "cls": "C-06",
+   "pre_state": "762dffbbe5c2fe3e7f6c",
+   "post_state": "762dffbbe5c2fe3e7f6c",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:54.851788",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:54.868224",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:54.866854",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:54.868226",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.868235",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:54.868236",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.868240",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:54.868242",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:54.851788",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:54.868224",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:54.866854",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:54.868226",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.868235",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:54.868236",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.868240",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:54.868242",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "exp": {
+    "status": 500,
+    "is_json": false
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /users/2 password numero (admin)",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": {
+    "password": "<presente>"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 500,
+    "is_json": false,
+    "text": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Er"
+   },
+   "at_utc": "2026-10-31 23:28:54.927286",
+   "at_local": "2026-10-31 20:28:54.927290",
+   "cls": "C-06",
+   "pre_state": "bdac7b33207db470e141",
+   "post_state": "bdac7b33207db470e141",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:54.896763",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:54.914076",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:54.912577",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:54.914078",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.914087",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:54.914088",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.914092",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:54.914093",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:54.896763",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:54.914076",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:54.912577",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:54.914078",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.914087",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:54.914088",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.914092",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:54.914093",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "exp": {
+    "status": 500,
+    "is_json": false
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /users/2 role invalido (admin)",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": {
+    "role": "xyz"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Role inválido"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:54.969662",
+   "at_local": "2026-10-31 20:28:54.969665",
+   "cls": null,
+   "pre_state": "eb4a9b9c4840e0bee45d",
+   "post_state": "eb4a9b9c4840e0bee45d",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:54.940579",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:54.956561",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:54.955210",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:54.956562",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.956571",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:54.956573",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.956577",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:54.956578",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:54.940579",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:54.956561",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:54.955210",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:54.956562",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.956571",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:54.956573",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.956577",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:54.956578",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Role inválido"
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /users/2 active 0 (admin)",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": {
+    "active": 0
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "active": false,
+     "created_at": "2026-10-31 23:28:54.982233",
+     "email": "maria@email.com",
+     "id": 2,
+     "name": "Maria Santos",
+     "password": "<presente>",
+     "role": "user"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:55.011673",
+   "at_local": "2026-10-31 20:28:55.011678",
+   "cls": "R-07",
+   "pre_state": "da330946737b1caf369b",
+   "post_state": "d82faf18ee8a820f44f9",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": false,
+      "created_at": "2026-10-31 23:28:54.982233",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:54.997698",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:54.996217",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:54.997700",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.997709",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:54.997710",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.997714",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:54.997715",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:54.982233",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:54.997698",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:54.996217",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:54.997700",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.997709",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:54.997710",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:54.997714",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:54.997715",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "exp": {
+    "status": 200
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /users/2 active \"x\" (admin)",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": {
+    "active": "x"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 500,
+    "is_json": true,
+    "json": {
+     "error": "Erro ao atualizar"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:55.061154",
+   "at_local": "2026-10-31 20:28:55.061158",
+   "cls": "C-06",
+   "pre_state": "6e767c881b51c50b7aa4",
+   "post_state": "6e767c881b51c50b7aa4",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:55.031593",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:55.048467",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:55.047100",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:55.048469",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.048478",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:55.048479",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.048483",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:55.048484",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:55.031593",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:55.048467",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:55.047100",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:55.048469",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.048478",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:55.048479",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.048483",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:55.048484",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "exp": {
+    "status": 500,
+    "error": "Erro ao atualizar"
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /users/2 active null (admin)",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": {
+    "active": null
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "active": null,
+     "created_at": "2026-10-31 23:28:55.073361",
+     "email": "maria@email.com",
+     "id": 2,
+     "name": "Maria Santos",
+     "password": "<presente>",
+     "role": "user"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:55.106928",
+   "at_local": "2026-10-31 20:28:55.106931",
+   "cls": "R-07",
+   "pre_state": "a4474e90c6b97d019a2f",
+   "post_state": "45b66f748054c66874d5",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": null,
+      "created_at": "2026-10-31 23:28:55.073361",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:55.091355",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:55.089775",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:55.091356",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.091366",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:55.091367",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.091371",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:55.091372",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:55.073361",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:55.091355",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:55.089775",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:55.091356",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.091366",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:55.091367",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.091371",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:55.091372",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "exp": {
+    "status": 200
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /users/2 name null (admin)",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": {
+    "name": null
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 500,
+    "is_json": true,
+    "json": {
+     "error": "Erro ao atualizar"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:55.156268",
+   "at_local": "2026-10-31 20:28:55.156273",
+   "cls": "C-06",
+   "pre_state": "2ed3341a0d23bff232eb",
+   "post_state": "2ed3341a0d23bff232eb",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:55.126156",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:55.142041",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:55.140640",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:55.142043",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.142052",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:55.142053",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.142057",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:55.142058",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:55.126156",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:55.142041",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:55.140640",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:55.142043",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.142052",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:55.142053",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.142057",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:55.142058",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "exp": {
+    "status": 500,
+    "error": "Erro ao atualizar"
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /users/2 name \"\" (admin)",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": {
+    "name": ""
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "active": true,
+     "created_at": "2026-10-31 23:28:55.170699",
+     "email": "maria@email.com",
+     "id": 2,
+     "name": "",
+     "password": "<presente>",
+     "role": "user"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:55.200446",
+   "at_local": "2026-10-31 20:28:55.200449",
+   "cls": "R-06",
+   "pre_state": "682cecff8ea7d433a1ae",
+   "post_state": "f615a6ee356313d4b91b",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:55.170699",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:55.187966",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:55.186490",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:55.187968",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.187977",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:55.187978",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.187982",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:55.187983",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:55.170699",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:55.187966",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:55.186490",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:55.187968",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.187977",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:55.187978",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.187982",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:55.187983",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "exp": {
+    "status": 200
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /users/2 name numero (admin)",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": {
+    "name": 5
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "active": true,
+     "created_at": "2026-10-31 23:28:55.219202",
+     "email": "maria@email.com",
+     "id": 2,
+     "name": "5",
+     "password": "<presente>",
+     "role": "user"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:55.247461",
+   "at_local": "2026-10-31 20:28:55.247465",
+   "cls": "R-06",
+   "pre_state": "f0c3400a5e3af40a5905",
+   "post_state": "c3ba9be6e7bc93a55147",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:55.219202",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "5",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:55.234469",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:55.233001",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:55.234470",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.234480",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:55.234481",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.234485",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:55.234486",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:55.219202",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:55.234469",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:55.233001",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:55.234470",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.234480",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:55.234481",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.234485",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:55.234486",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "exp": {
+    "status": 200
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /users/2 corpo {} (admin)",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": {},
+   "auth": "<bearer>",
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:55.300944",
+   "at_local": "2026-10-31 20:28:55.300948",
+   "cls": null,
+   "pre_state": "64321d83c17f6f2bbbf1",
+   "post_state": "64321d83c17f6f2bbbf1",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:55.269715",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:55.286753",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:55.285326",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:55.286754",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.286763",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:55.286764",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.286768",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:55.286769",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:55.269715",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:55.286753",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:55.285326",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:55.286754",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.286763",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:55.286764",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.286768",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:55.286769",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos"
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /users/2 corpo [1] (admin)",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": [
+    1
+   ],
+   "auth": "<bearer>",
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "active": true,
+     "created_at": "2026-10-31 23:28:55.311858",
+     "email": "maria@email.com",
+     "id": 2,
+     "name": "Maria Santos",
+     "password": "<presente>",
+     "role": "user"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:55.341813",
+   "at_local": "2026-10-31 20:28:55.341817",
+   "cls": "R-01",
+   "pre_state": "711360686082047d0ea2",
+   "post_state": "711360686082047d0ea2",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:55.311858",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:55.328813",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:55.327434",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:55.328814",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.328823",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:55.328825",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.328829",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:55.328830",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:55.311858",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:55.328813",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:55.327434",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:55.328814",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.328823",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:55.328825",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.328829",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:55.328830",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "exp": {
+    "status": 200
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /users/2 corpo 5 (admin)",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": 5,
+   "auth": "<bearer>",
+   "resp": {
+    "status": 500,
+    "is_json": false,
+    "text": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Er"
+   },
+   "at_utc": "2026-10-31 23:28:55.382130",
+   "at_local": "2026-10-31 20:28:55.382132",
+   "cls": "C-01",
+   "pre_state": "6c03c56b6f785a068aa7",
+   "post_state": "6c03c56b6f785a068aa7",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:55.353050",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:55.369304",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:55.367936",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:55.369306",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.369315",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:55.369316",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.369320",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:55.369321",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:55.353050",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:55.369304",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:55.367936",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:55.369306",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.369315",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:55.369316",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.369320",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:55.369321",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "exp": {
+    "status": 500,
+    "is_json": false
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /users/2 corpo \"name\" (admin)",
+   "method": "PUT",
+   "path": "/users/2",
+   "input": "name",
+   "auth": "<bearer>",
+   "resp": {
+    "status": 500,
+    "is_json": false,
+    "text": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Er"
+   },
+   "at_utc": "2026-10-31 23:28:55.424101",
+   "at_local": "2026-10-31 20:28:55.424104",
+   "cls": "C-01",
+   "pre_state": "6b6702e1a48222a02b8a",
+   "post_state": "6b6702e1a48222a02b8a",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:55.394629",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:55.410701",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:55.409190",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:55.410702",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.410711",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:55.410713",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.410717",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:55.410718",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "get": {
+     "status": 200,
+     "json": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:55.394629",
+      "email": "maria@email.com",
+      "id": 2,
+      "name": "Maria Santos",
+      "password": "<presente>",
+      "role": "user",
+      "tasks": [
+       {
+        "category_id": 2,
+        "created_at": "2026-10-31 23:28:55.410701",
+        "description": "Tela de login responsiva",
+        "due_date": "2026-11-05 23:28:55.409190",
+        "id": 2,
+        "priority": 2,
+        "status": "in_progress",
+        "tags": [],
+        "title": "Criar tela de login",
+        "updated_at": "2026-10-31 23:28:55.410702",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.410711",
+        "description": "Cobertura mínima de 80%",
+        "due_date": null,
+        "id": 6,
+        "priority": 2,
+        "status": "pending",
+        "tags": [],
+        "title": "Escrever testes unitários",
+        "updated_at": "2026-10-31 23:28:55.410713",
+        "user_id": 2
+       },
+       {
+        "category_id": 1,
+        "created_at": "2026-10-31 23:28:55.410717",
+        "description": "Melhorar organização dos models",
+        "due_date": null,
+        "id": 8,
+        "priority": 3,
+        "status": "in_progress",
+        "tags": [
+         "refactor",
+         "tech-debt"
+        ],
+        "title": "Refatorar models",
+        "updated_at": "2026-10-31 23:28:55.410718",
+        "user_id": 2
+       }
+      ]
+     }
+    }
+   },
+   "exp": {
+    "status": 500,
+    "is_json": false
+   },
+   "errs": []
+  },
+  {
+   "name": "PUT /users/999 (admin)",
+   "method": "PUT",
+   "path": "/users/999",
+   "input": {
+    "name": "x"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 404,
+    "is_json": true,
+    "json": {
+     "error": "Usuário não encontrado"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:55.466365",
+   "at_local": "2026-10-31 20:28:55.466368",
+   "cls": null,
+   "pre_state": "5d51ac7ff3d25bd8d4f1",
+   "post_state": "5d51ac7ff3d25bd8d4f1",
+   "exp": {
+    "status": 404,
+    "error": "Usuário não encontrado",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "DELETE /users/3 com 3 tasks (admin)",
+   "method": "DELETE",
+   "path": "/users/3",
+   "input": null,
+   "auth": "<bearer>",
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "message": "Usuário deletado com sucesso"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:55.506801",
+   "at_local": "2026-10-31 20:28:55.506805",
+   "cls": null,
+   "pre_state": "d9809eecdcc6855eb091",
+   "post_state": "ac1e2252d1e8b48fa4e8",
+   "post": {
+    "counts": {
+     "tasks": 7,
+     "users": 2,
+     "categories": 4
+    },
+    "tasks_user3": 0,
+    "tasks_outros": 7
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    },
+    "tasks_user3": 3,
+    "tasks_outros": 7
+   },
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json": {
+      "message": "Usuário deletado com sucesso"
+     },
+     "post.counts.users": 2,
+     "post.counts.tasks": 7,
+     "post.tasks_user3": 0,
+     "post.tasks_outros": 7
+    },
+    "changed": true
+   },
+   "errs": []
+  },
+  {
+   "name": "DELETE /users/4 sem tasks (admin)",
+   "method": "DELETE",
+   "path": "/users/4",
+   "input": null,
+   "auth": "<bearer>",
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "message": "Usuário deletado com sucesso"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:55.566982",
+   "at_local": "2026-10-31 20:28:55.566991",
+   "cls": null,
+   "pre_state": "58dee1c9b822f4c1782c",
+   "post_state": "7ebcc14a2749a9e07efd",
+   "post": {
+    "counts": {
+     "tasks": 10,
+     "users": 3,
+     "categories": 4
+    }
+   },
+   "pre_view": {
+    "counts": {
+     "tasks": 10,
+     "users": 4,
+     "categories": 4
+    }
+   },
+   "exp": {
+    "status": 200,
+    "has": {
+     "post.counts.users": 3,
+     "post.counts.tasks": 10
+    },
+    "changed": true
+   },
+   "errs": []
+  },
+  {
+   "name": "DELETE /users/999 (admin)",
+   "method": "DELETE",
+   "path": "/users/999",
+   "input": null,
+   "auth": "<bearer>",
+   "resp": {
+    "status": 404,
+    "is_json": true,
+    "json": {
+     "error": "Usuário não encontrado"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:55.611884",
+   "at_local": "2026-10-31 20:28:55.611888",
+   "cls": null,
+   "pre_state": "5ead2f73a19760b1e9ce",
+   "post_state": "5ead2f73a19760b1e9ce",
+   "exp": {
+    "status": 404,
+    "error": "Usuário não encontrado",
+    "unchanged": true
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /login correto",
+   "method": "POST",
+   "path": "/login",
+   "input": {
+    "email": "joao@email.com",
+    "password": "<presente>"
+   },
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "message": "Login realizado com sucesso",
+     "token": "<fake-token>",
+     "user": {
+      "active": true,
+      "created_at": "2026-10-31 23:28:55.620716",
+      "email": "joao@email.com",
+      "id": 1,
+      "name": "João Silva",
+      "password": "<presente>",
+      "role": "admin"
+     }
+    }
+   },
+   "at_utc": "2026-10-31 23:28:55.647364",
+   "at_local": "2026-10-31 20:28:55.647368",
+   "cls": "D-1a",
+   "pre_state": "f4504dad9c0122fec1d6",
+   "post_state": "f4504dad9c0122fec1d6",
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json.message": "Login realizado com sucesso",
+     "resp.json.user.id": 1,
+     "resp.json.user.email": "joao@email.com",
+     "resp.json.token": "<fake-token>"
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /login senha errada",
+   "method": "POST",
+   "path": "/login",
+   "input": {
+    "email": "joao@email.com",
+    "password": "<presente>"
+   },
+   "auth": null,
+   "resp": {
+    "status": 401,
+    "is_json": true,
+    "json": {
+     "error": "Credenciais inválidas"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:55.684810",
+   "at_local": "2026-10-31 20:28:55.684813",
+   "cls": null,
+   "pre_state": "5e4ccd8e350caf1f9760",
+   "post_state": "5e4ccd8e350caf1f9760",
+   "exp": {
+    "status": 401,
+    "error": "Credenciais inválidas"
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /login email inexistente",
+   "method": "POST",
+   "path": "/login",
+   "input": {
+    "email": "x@email.com",
+    "password": "<presente>"
+   },
+   "auth": null,
+   "resp": {
+    "status": 401,
+    "is_json": true,
+    "json": {
+     "error": "Credenciais inválidas"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:55.723808",
+   "at_local": "2026-10-31 20:28:55.723812",
+   "cls": null,
+   "queries": 1,
+   "pre_state": "25f09f5e626c3101a7da",
+   "post_state": "25f09f5e626c3101a7da",
+   "exp": {
+    "status": 401,
+    "error": "Credenciais inválidas"
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /login campos ausentes",
+   "method": "POST",
+   "path": "/login",
+   "input": {},
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:55.759537",
+   "at_local": "2026-10-31 20:28:55.759542",
+   "cls": null,
+   "pre_state": "4954986d147ee5d4a04c",
+   "post_state": "4954986d147ee5d4a04c",
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos"
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /login sem senha",
+   "method": "POST",
+   "path": "/login",
+   "input": {
+    "email": "joao@email.com"
+   },
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Email e senha são obrigatórios"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:55.797667",
+   "at_local": "2026-10-31 20:28:55.797673",
+   "cls": null,
+   "pre_state": "74f3728961d46c95d214",
+   "post_state": "74f3728961d46c95d214",
+   "exp": {
+    "status": 400,
+    "error": "Email e senha são obrigatórios"
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /login email numero",
+   "method": "POST",
+   "path": "/login",
+   "input": {
+    "email": 5,
+    "password": "<presente>"
+   },
+   "auth": null,
+   "resp": {
+    "status": 401,
+    "is_json": true,
+    "json": {
+     "error": "Credenciais inválidas"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:55.835521",
+   "at_local": "2026-10-31 20:28:55.835524",
+   "cls": "M-05",
+   "queries": 1,
+   "pre_state": "eb327d8e640a34981c3f",
+   "post_state": "eb327d8e640a34981c3f",
+   "exp": {
+    "status": 401,
+    "error": "Credenciais inválidas"
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /login email true",
+   "method": "POST",
+   "path": "/login",
+   "input": {
+    "email": true,
+    "password": "<presente>"
+   },
+   "auth": null,
+   "resp": {
+    "status": 401,
+    "is_json": true,
+    "json": {
+     "error": "Credenciais inválidas"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:55.875638",
+   "at_local": "2026-10-31 20:28:55.875643",
+   "cls": "M-05",
+   "queries": 1,
+   "pre_state": "6db56496b6e05b33f925",
+   "post_state": "6db56496b6e05b33f925",
+   "exp": {
+    "status": 401,
+    "error": "Credenciais inválidas"
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /login email lista",
+   "method": "POST",
+   "path": "/login",
+   "input": {
+    "email": [
+     "joao@email.com"
+    ],
+    "password": "<presente>"
+   },
+   "auth": null,
+   "resp": {
+    "status": 500,
+    "is_json": false,
+    "text": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Er"
+   },
+   "at_utc": "2026-10-31 23:28:55.915410",
+   "at_local": "2026-10-31 20:28:55.915414",
+   "cls": "C-08",
+   "queries": 1,
+   "pre_state": "a194e8924ee042e47df4",
+   "post_state": "a194e8924ee042e47df4",
+   "exp": {
+    "status": 500,
+    "is_json": false
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /login email objeto",
+   "method": "POST",
+   "path": "/login",
+   "input": {
+    "email": {
+     "a": 1
+    },
+    "password": "<presente>"
+   },
+   "auth": null,
+   "resp": {
+    "status": 500,
+    "is_json": false,
+    "text": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Er"
+   },
+   "at_utc": "2026-10-31 23:28:55.963862",
+   "at_local": "2026-10-31 20:28:55.963866",
+   "cls": "C-08",
+   "queries": 1,
+   "pre_state": "3d907d6524976e4025e6",
+   "post_state": "3d907d6524976e4025e6",
+   "exp": {
+    "status": 500,
+    "is_json": false
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /login senha numero email existente",
+   "method": "POST",
+   "path": "/login",
+   "input": {
+    "email": "joao@email.com",
+    "password": "<presente>"
+   },
+   "auth": null,
+   "resp": {
+    "status": 500,
+    "is_json": false,
+    "text": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Er"
+   },
+   "at_utc": "2026-10-31 23:28:56.008692",
+   "at_local": "2026-10-31 20:28:56.008696",
+   "cls": "C-08",
+   "pre_state": "ee7c07b9469211eb37d6",
+   "post_state": "ee7c07b9469211eb37d6",
+   "exp": {
+    "status": 500,
+    "is_json": false
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /login senha numero email inexistente",
+   "method": "POST",
+   "path": "/login",
+   "input": {
+    "email": "x@email.com",
+    "password": "<presente>"
+   },
+   "auth": null,
+   "resp": {
+    "status": 401,
+    "is_json": true,
+    "json": {
+     "error": "Credenciais inválidas"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:56.048027",
+   "at_local": "2026-10-31 20:28:56.048034",
+   "cls": null,
+   "pre_state": "b0e974bad23180fcb34b",
+   "post_state": "b0e974bad23180fcb34b",
+   "exp": {
+    "status": 401,
+    "error": "Credenciais inválidas"
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /login corpo null",
+   "method": "POST",
+   "path": "/login",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 400,
+    "is_json": true,
+    "json": {
+     "error": "Dados inválidos"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:56.087945",
+   "at_local": "2026-10-31 20:28:56.087949",
+   "cls": null,
+   "pre_state": "fbc2432cb99057b183ff",
+   "post_state": "fbc2432cb99057b183ff",
+   "exp": {
+    "status": 400,
+    "error": "Dados inválidos"
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /login corpo [1]",
+   "method": "POST",
+   "path": "/login",
+   "input": [
+    1
+   ],
+   "auth": null,
+   "resp": {
+    "status": 500,
+    "is_json": false,
+    "text": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Er"
+   },
+   "at_utc": "2026-10-31 23:28:56.125929",
+   "at_local": "2026-10-31 20:28:56.125950",
+   "cls": "C-01",
+   "pre_state": "0280c931d4006d394eb6",
+   "post_state": "0280c931d4006d394eb6",
+   "exp": {
+    "status": 500,
+    "is_json": false
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /login corpo 5",
+   "method": "POST",
+   "path": "/login",
+   "input": 5,
+   "auth": null,
+   "resp": {
+    "status": 500,
+    "is_json": false,
+    "text": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Er"
+   },
+   "at_utc": "2026-10-31 23:28:56.168127",
+   "at_local": "2026-10-31 20:28:56.168131",
+   "cls": "C-01",
+   "pre_state": "4fd2bf43ee95d09da979",
+   "post_state": "4fd2bf43ee95d09da979",
+   "exp": {
+    "status": 500,
+    "is_json": false
+   },
+   "errs": []
+  },
+  {
+   "name": "POST /login inativo",
+   "method": "POST",
+   "path": "/login",
+   "input": {
+    "email": "pedro@email.com",
+    "password": "<presente>"
+   },
+   "auth": null,
+   "resp": {
+    "status": 403,
+    "is_json": true,
+    "json": {
+     "error": "Usuário inativo"
+    }
+   },
+   "at_utc": "2026-10-31 23:28:56.210542",
+   "at_local": "2026-10-31 20:28:56.210546",
+   "cls": null,
+   "pre_state": "d3feeb7578aee244477e",
+   "post_state": "d3feeb7578aee244477e",
+   "exp": {
+    "status": 403,
+    "error": "Usuário inativo"
+   },
+   "errs": []
+  }
+ ]
+}

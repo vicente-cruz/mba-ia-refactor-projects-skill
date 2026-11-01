@@ -1,0 +1,32 @@
+== original (22 arquivos)
+  senha de teste: 0
+  hash werkzeug: 0
+  hash md5 (32 hex): 2
+  parameters:: 10
+  nonce/sid (43 urlsafe): 0
+  token emitido: 0
+  SECRET_KEY: 0
+== refatorado (22 arquivos)
+  senha de teste: 0
+  hash werkzeug: 0
+  hash md5 (32 hex): 0
+  parameters:: 0
+  nonce/sid (43 urlsafe): 0
+  token emitido: 0
+  SECRET_KEY: 0
+== migracao (6 arquivos)
+  senha de teste: 0
+  hash werkzeug: 0
+  hash md5 (32 hex): 0
+  parameters:: 0
+  nonce/sid (43 urlsafe): 0
+  token emitido: 0
+  SECRET_KEY: 0
+== cli (9 arquivos)
+  senha de teste: 0
+  hash werkzeug: 0
+  hash md5 (32 hex): 0
+  parameters:: 0
+  nonce/sid (43 urlsafe): 0
+  token emitido: 0
+  SECRET_KEY: 0

@@ -1,0 +1,26 @@
+{
+ "mode": "original",
+ "group": "marcador",
+ "records": [
+  {
+   "name": "marcador criado",
+   "fact": {
+    "tasks": 10,
+    "users": 3,
+    "categories": 5
+   },
+   "cls": null,
+   "at_utc": "2026-10-31 22:58:00.664226",
+   "exp": {
+    "has": {
+     "fact": {
+      "tasks": 10,
+      "users": 3,
+      "categories": 5
+     }
+    }
+   },
+   "errs": []
+  }
+ ]
+}

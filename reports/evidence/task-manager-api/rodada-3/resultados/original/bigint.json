@@ -1,0 +1,309 @@
+{
+ "mode": "original",
+ "group": "bigint",
+ "records": [
+  {
+   "name": "2^63 GET /tasks/<2^63>",
+   "method": "GET",
+   "path": "/tasks/<2^63>",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 500,
+    "is_json": false,
+    "text": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Er"
+   },
+   "at_utc": "2026-10-31 23:29:04.200141",
+   "at_local": "2026-10-31 20:29:04.200145",
+   "cls": "C-12",
+   "exp": null,
+   "errs": []
+  },
+  {
+   "name": "2^63 GET /users/<2^63>",
+   "method": "GET",
+   "path": "/users/<2^63>",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 500,
+    "is_json": false,
+    "text": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Er"
+   },
+   "at_utc": "2026-10-31 23:29:04.213643",
+   "at_local": "2026-10-31 20:29:04.213646",
+   "cls": "C-12",
+   "exp": null,
+   "errs": []
+  },
+  {
+   "name": "2^63 GET /users/<2^63>/tasks",
+   "method": "GET",
+   "path": "/users/<2^63>/tasks",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 500,
+    "is_json": false,
+    "text": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Er"
+   },
+   "at_utc": "2026-10-31 23:29:04.219691",
+   "at_local": "2026-10-31 20:29:04.219694",
+   "cls": "C-12",
+   "exp": null,
+   "errs": []
+  },
+  {
+   "name": "2^63 GET /reports/user/<2^63>",
+   "method": "GET",
+   "path": "/reports/user/<2^63>",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 500,
+    "is_json": false,
+    "text": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Er"
+   },
+   "at_utc": "2026-10-31 23:29:04.224801",
+   "at_local": "2026-10-31 20:29:04.224803",
+   "cls": "C-12",
+   "exp": null,
+   "errs": []
+  },
+  {
+   "name": "2^63 PUT /tasks/<2^63>",
+   "method": "PUT",
+   "path": "/tasks/<2^63>",
+   "input": {
+    "title": "abc",
+    "name": "x"
+   },
+   "auth": null,
+   "resp": {
+    "status": 500,
+    "is_json": false,
+    "text": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Er"
+   },
+   "at_utc": "2026-10-31 23:29:04.230465",
+   "at_local": "2026-10-31 20:29:04.230467",
+   "cls": "C-12",
+   "pre_state": "87d82babc15e4b013e20",
+   "post_state": "87d82babc15e4b013e20",
+   "exp": null,
+   "errs": []
+  },
+  {
+   "name": "2^63 DELETE /tasks/<2^63>",
+   "method": "DELETE",
+   "path": "/tasks/<2^63>",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 500,
+    "is_json": false,
+    "text": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Er"
+   },
+   "at_utc": "2026-10-31 23:29:04.236826",
+   "at_local": "2026-10-31 20:29:04.236829",
+   "cls": "C-12",
+   "pre_state": "87d82babc15e4b013e20",
+   "post_state": "87d82babc15e4b013e20",
+   "exp": null,
+   "errs": []
+  },
+  {
+   "name": "2^63 PUT /categories/<2^63>",
+   "method": "PUT",
+   "path": "/categories/<2^63>",
+   "input": {
+    "title": "abc",
+    "name": "x"
+   },
+   "auth": null,
+   "resp": {
+    "status": 500,
+    "is_json": false,
+    "text": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Er"
+   },
+   "at_utc": "2026-10-31 23:29:04.242808",
+   "at_local": "2026-10-31 20:29:04.242810",
+   "cls": "C-12",
+   "pre_state": "87d82babc15e4b013e20",
+   "post_state": "87d82babc15e4b013e20",
+   "exp": null,
+   "errs": []
+  },
+  {
+   "name": "2^63 DELETE /categories/<2^63>",
+   "method": "DELETE",
+   "path": "/categories/<2^63>",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 500,
+    "is_json": false,
+    "text": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Er"
+   },
+   "at_utc": "2026-10-31 23:29:04.249242",
+   "at_local": "2026-10-31 20:29:04.249244",
+   "cls": "C-12",
+   "pre_state": "87d82babc15e4b013e20",
+   "post_state": "87d82babc15e4b013e20",
+   "exp": null,
+   "errs": []
+  },
+  {
+   "name": "2^63 PUT /users/<2^63>",
+   "method": "PUT",
+   "path": "/users/<2^63>",
+   "input": {
+    "title": "abc",
+    "name": "x"
+   },
+   "auth": "<bearer>",
+   "resp": {
+    "status": 500,
+    "is_json": false,
+    "text": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Er"
+   },
+   "at_utc": "2026-10-31 23:29:04.255174",
+   "at_local": "2026-10-31 20:29:04.255177",
+   "cls": "C-12",
+   "pre_state": "87d82babc15e4b013e20",
+   "post_state": "87d82babc15e4b013e20",
+   "exp": null,
+   "errs": []
+  },
+  {
+   "name": "2^63 DELETE /users/<2^63>",
+   "method": "DELETE",
+   "path": "/users/<2^63>",
+   "input": null,
+   "auth": "<bearer>",
+   "resp": {
+    "status": 500,
+    "is_json": false,
+    "text": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Er"
+   },
+   "at_utc": "2026-10-31 23:29:04.261411",
+   "at_local": "2026-10-31 20:29:04.261414",
+   "cls": "C-12",
+   "pre_state": "87d82babc15e4b013e20",
+   "post_state": "87d82babc15e4b013e20",
+   "exp": null,
+   "errs": []
+  },
+  {
+   "name": "2^63 GET /tasks/search?priority=<2^63>",
+   "method": "GET",
+   "path": "/tasks/search?priority=<2^63>",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 500,
+    "is_json": false,
+    "text": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Er"
+   },
+   "at_utc": "2026-10-31 23:29:04.266861",
+   "at_local": "2026-10-31 20:29:04.266863",
+   "cls": "C-12",
+   "exp": null,
+   "errs": []
+  },
+  {
+   "name": "2^63 GET /tasks/search?user_id=<2^63>",
+   "method": "GET",
+   "path": "/tasks/search?user_id=<2^63>",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 500,
+    "is_json": false,
+    "text": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Er"
+   },
+   "at_utc": "2026-10-31 23:29:04.271611",
+   "at_local": "2026-10-31 20:29:04.271613",
+   "cls": "C-12",
+   "exp": null,
+   "errs": []
+  },
+  {
+   "name": "2^63 GET /tasks/search?priority=-<2^63+1>",
+   "method": "GET",
+   "path": "/tasks/search?priority=-9223372036854775809",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 500,
+    "is_json": false,
+    "text": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Er"
+   },
+   "at_utc": "2026-10-31 23:29:04.276293",
+   "at_local": "2026-10-31 20:29:04.276295",
+   "cls": "C-12",
+   "exp": null,
+   "errs": []
+  },
+  {
+   "name": "2^63 GET /tasks/search?user_id=<2^63>&priority=2",
+   "method": "GET",
+   "path": "/tasks/search?user_id=<2^63>&priority=2",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 500,
+    "is_json": false,
+    "text": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Er"
+   },
+   "at_utc": "2026-10-31 23:29:04.280472",
+   "at_local": "2026-10-31 20:29:04.280474",
+   "cls": "C-12",
+   "exp": null,
+   "errs": []
+  },
+  {
+   "name": "2^63-1 GET /tasks/<max> (dentro da faixa)",
+   "method": "GET",
+   "path": "/tasks/9223372036854775807",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 404,
+    "is_json": true,
+    "json": {
+     "error": "Task não encontrada"
+    }
+   },
+   "at_utc": "2026-10-31 23:29:04.285418",
+   "at_local": "2026-10-31 20:29:04.285421",
+   "cls": null,
+   "exp": {
+    "status": 404,
+    "error": "Task não encontrada"
+   },
+   "errs": []
+  },
+  {
+   "name": "2^63-1 GET /tasks/search?user_id=<max>",
+   "method": "GET",
+   "path": "/tasks/search?user_id=9223372036854775807",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": []
+   },
+   "at_utc": "2026-10-31 23:29:04.286585",
+   "at_local": "2026-10-31 20:29:04.286587",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json": []
+    }
+   },
+   "errs": []
+  }
+ ]
+}

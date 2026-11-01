@@ -1,0 +1,10 @@
+{
+ "step": "falha",
+ "antes_tem_coluna": false,
+ "erro": "RuntimeError",
+ "chamadas_ao_gerador": 2,
+ "depois_tem_coluna": false,
+ "snapshot_identico": true,
+ "schema_identico": true,
+ "falhas": []
+}

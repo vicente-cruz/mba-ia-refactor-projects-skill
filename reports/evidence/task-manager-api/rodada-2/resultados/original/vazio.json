@@ -1,0 +1,203 @@
+{
+ "mode": "original",
+ "group": "vazio",
+ "records": [
+  {
+   "name": "vazio GET /tasks",
+   "method": "GET",
+   "path": "/tasks",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": []
+   },
+   "at_utc": "2026-10-31 22:53:55.812166",
+   "at_local": "2026-10-31 19:53:55.812179",
+   "cls": null,
+   "queries": 1,
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json": []
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "vazio GET /tasks/stats",
+   "method": "GET",
+   "path": "/tasks/stats",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "cancelled": 0,
+     "completion_rate": 0,
+     "done": 0,
+     "in_progress": 0,
+     "overdue": 0,
+     "pending": 0,
+     "total": 0
+    }
+   },
+   "at_utc": "2026-10-31 22:53:55.827982",
+   "at_local": "2026-10-31 19:53:55.827986",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json": {
+      "total": 0,
+      "pending": 0,
+      "in_progress": 0,
+      "done": 0,
+      "cancelled": 0,
+      "overdue": 0,
+      "completion_rate": 0
+     }
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "vazio GET /users",
+   "method": "GET",
+   "path": "/users",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": []
+   },
+   "at_utc": "2026-10-31 22:53:55.837169",
+   "at_local": "2026-10-31 19:53:55.837172",
+   "cls": null,
+   "queries": 1,
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json": []
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "vazio GET /reports/summary",
+   "method": "GET",
+   "path": "/reports/summary",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": {
+     "generated_at": "2026-10-31 22:53:55.853115",
+     "overdue": {
+      "count": 0,
+      "tasks": []
+     },
+     "overview": {
+      "total_categories": 0,
+      "total_tasks": 0,
+      "total_users": 0
+     },
+     "recent_activity": {
+      "tasks_completed_last_7_days": 0,
+      "tasks_created_last_7_days": 0
+     },
+     "tasks_by_priority": {
+      "critical": 0,
+      "high": 0,
+      "low": 0,
+      "medium": 0,
+      "minimal": 0
+     },
+     "tasks_by_status": {
+      "cancelled": 0,
+      "done": 0,
+      "in_progress": 0,
+      "pending": 0
+     },
+     "user_productivity": []
+    }
+   },
+   "at_utc": "2026-10-31 22:53:55.839089",
+   "at_local": "2026-10-31 19:53:55.839091",
+   "cls": null,
+   "queries": 16,
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json.overview": {
+      "total_tasks": 0,
+      "total_users": 0,
+      "total_categories": 0
+     },
+     "resp.json.overdue": {
+      "count": 0,
+      "tasks": []
+     },
+     "resp.json.user_productivity": [],
+     "resp.json.tasks_by_priority": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "minimal": 0
+     }
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "vazio GET /categories",
+   "method": "GET",
+   "path": "/categories",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": []
+   },
+   "at_utc": "2026-10-31 22:53:55.853766",
+   "at_local": "2026-10-31 19:53:55.853768",
+   "cls": null,
+   "queries": 1,
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json": []
+    }
+   },
+   "errs": []
+  },
+  {
+   "name": "vazio GET /tasks/search",
+   "method": "GET",
+   "path": "/tasks/search",
+   "input": null,
+   "auth": null,
+   "resp": {
+    "status": 200,
+    "is_json": true,
+    "json": []
+   },
+   "at_utc": "2026-10-31 22:53:55.855061",
+   "at_local": "2026-10-31 19:53:55.855063",
+   "cls": null,
+   "exp": {
+    "status": 200,
+    "has": {
+     "resp.json": []
+    }
+   },
+   "errs": []
+  }
+ ]
+}

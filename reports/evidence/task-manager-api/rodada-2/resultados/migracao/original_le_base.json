@@ -1,0 +1,27 @@
+{
+ "step": "leitura_original",
+ "antes_tem_coluna": false,
+ "leituras": {
+  "/users": {
+   "status": 200,
+   "digest": "b8e542a8c8be4e7c"
+  },
+  "/tasks": {
+   "status": 200,
+   "digest": "7afc506fa82a34b8"
+  },
+  "/users/1": {
+   "status": 200,
+   "digest": "b2f988b90cd80966"
+  },
+  "/categories": {
+   "status": 200,
+   "digest": "f930048ac27bfc92"
+  },
+  "/reports/summary": {
+   "status": 200,
+   "digest": "f70779c802990d89"
+  }
+ },
+ "falhas": []
+}
