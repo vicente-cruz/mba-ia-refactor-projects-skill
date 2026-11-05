@@ -1278,6 +1278,8 @@ if __name__ == "__main__":
 
 **Python — depois (`app.py`)**
 
+Os exemplos de T-14 separam a criação de tabelas da carga de demonstração. O módulo de configuração fornece um booleano (`SEED_ON_STARTUP` em Python, `seedOnStartup` em JavaScript), convertido e validado antes de abrir o banco. Documente os valores aceitos, o padrão e o efeito na reinicialização. Por exemplo, nas variáveis de ambiente, aceite explicitamente os textos `0` e `1`. Ambos são textos não vazios e, portanto, uma simples conversão por valor de verdade ativaria a carga nos dois casos. O padrão depende do contrato aprovado.
+
 ```python
 from flask import Flask
 
@@ -1295,6 +1297,8 @@ def create_app(overrides=None):
     database.init_app(app)
     with app.app_context():
         database.init_schema()
+        if app.config["SEED_ON_STARTUP"]:
+            database.seed_demo_if_empty()
     register_error_handlers(app)
     app.register_blueprint(book_bp)
     return app
@@ -1305,7 +1309,7 @@ if __name__ == "__main__":
     app.run(host=app.config["HOST"], port=app.config["PORT"], debug=app.config["DEBUG"])
 ```
 
-(`database.init_schema()` é a função que antes rodava na importação, agora chamada explicitamente.)
+No exemplo, `init_schema()` prepara apenas as tabelas. Implemente `seed_demo_if_empty()` no módulo de dados conforme as regras do domínio. A função insere os dados de demonstração em uma transação, preservando registros existentes e evitando duplicações em novas inicializações.
 
 **Integração externa injetável — Python**
 
@@ -1343,7 +1347,7 @@ O composition root escolhe `SmtpNotifier` apenas se a configuração de e-mail e
 ```js
 const express = require('express');
 const { config } = require('./config');
-const { openDatabase, initSchema } = require('./database');
+const { openDatabase, initSchema, seedDemoIfEmpty } = require('./database');
 const { createLoanController } = require('./controllers/loanController');
 const { loanRoutes } = require('./routes/loanRoutes');
 const { errorHandler } = require('./middlewares/errorHandler');
@@ -1359,6 +1363,9 @@ function createApp(db) {
 async function start() {
   const db = openDatabase(config.databasePath);
   await initSchema(db);
+  if (config.seedOnStartup) {
+    await seedDemoIfEmpty(db);
+  }
   const app = createApp(db);
   app.listen(config.port, () => console.log(`Servidor na porta ${config.port}`));
 }
@@ -1373,9 +1380,15 @@ if (require.main === module) {
 module.exports = { createApp };
 ```
 
-**Cuidados:** mantenha o comando de inicialização documentado; se o schema/seed era criado na inicialização, continue criando (agora de forma explícita). Não introduza containers de DI ou bibliotecas novas sem necessidade.
+**Aplicação ao projeto.** Preserve o comando documentado de start e torne explícita a decisão de carregar dados. Para um comando de seed separado, use a mesma fronteira entre schema e dados. Quando o acoplamento de uma dependência também fizer parte do achado, forneça um ponto de injeção utilizável no fluxo real e teste sua substituição.
 
-**Validação:** o comando original inicia a aplicação sem erros; importar o módulo (em ambiente isolado) não cria banco nem abre conexões externas; todos os endpoints respondem como na linha de base.
+**Validação de T-14**
+
+1. Importe o módulo em ambiente isolado e confira que nenhum banco, seed, porta ou conexão externa foi criado.
+2. Inicie com seed desligado e banco novo. Confira as tabelas, as contagens esperadas (zero dados de demonstração) e ao menos uma requisição que use o banco. Repita após um reset e reinício.
+3. Em outro banco, habilite o seed, use credenciais sintéticas por ambiente quando necessário, confira o conteúdo esperado e reinicie. Verifique as chaves e contagens para detectar duplicações. Compare os registros de um banco já populado antes e depois do boot.
+4. Quando usar flag, exercite a configuração pelo ponto de entrada normal, incluindo o padrão sem variável, os modos explícitos e o tratamento de valor inválido. Quando previsto, teste os overrides da factory e o isolamento de duas instâncias no mesmo processo.
+5. Compare os endpoints originais com fixtures equivalentes. Registre separadamente o resultado do modo sem dados e classifique qualquer mudança de padrão aprovada. Relacione as provas aos impactos do achado na matriz de conclusão.
 
 ---
 
@@ -1511,6 +1524,8 @@ Grave as evidências no destino acordado na Fase 2 (padrão: `reports/evidence/<
 Antes de gravar, **remova dados sensíveis** de comandos, corpos, cabeçalhos e logs: senhas (inclusive as de teste), hashes de senha, tokens, chaves (`SECRET_KEY`, chaves de gateway), cabeçalhos `Authorization`/`X-Admin-Token`, números de cartão e valores de variáveis de ambiente secretas. Substitua por `<removido>` mantendo a estrutura (ex.: `"password": "<removido>"`), para que a evidência continue legível. Releia os arquivos gravados procurando esses padrões antes de seguir.
 
 ### 7. Encerramento (somente após o passo 6)
+
+Confronte por ID a lista completa de CRITICAL/HIGH com os resultados da nova inspeção. Registre quantos foram integralmente corrigidos com evidência e quais continuam abertos, parciais ou sem prova. Achados graves de rodadas anteriores incluídas na reexecução e novos graves confirmados também entram na conferência. Declare a Fase 3 concluída somente com zero pendências graves e validação funcional aprovada. Em caso de bloqueio, preserve o diagnóstico e execute a limpeza operacional abaixo.
 
 - Encerre os processos iniciados (`kill <PID>`) e confirme que a porta foi liberada.
 - Remova o diretório temporário, a menos que o usuário peça para mantê-lo.

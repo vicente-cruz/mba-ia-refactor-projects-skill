@@ -78,7 +78,9 @@ Se o projeto já tem `src/` ou já tem `models/` e `routes/`, mantenha-os e corr
 - Um ponto de entrada claro cria o app, carrega configuração, inicializa o banco, registra rotas e handlers e inicia o servidor. Em Flask, prefira `create_app(config)`; em Express, separe a criação do app (`createApp`) de `listen`, se isso facilitar testes.
 - Nenhum módulo deve criar banco, tabelas, seeds ou conexões externas **na importação**. Faça isso em funções chamadas explicitamente pelo ponto de entrada.
 - Preserve o comando de inicialização documentado do projeto (ex.: `python app.py`, `npm start`). Se for preciso mudá-lo, atualize o manifesto correspondente e registre a mudança.
-- Preserve o comportamento de inicialização relevante (ex.: criação de schema e seed automáticos), a menos que seja um problema apontado na auditoria e a mudança tenha sido aprovada.
+- Separe a preparação do schema (estrutura das tabelas) da inserção de dados de demonstração (seed). Um banco vazio deve poder iniciar com as tabelas necessárias e atender requisições. A primeira consulta e a importação de módulos devem ser livres de efeitos de seed.
+- Quando a auditoria apontar carga obrigatória ou acoplamento na inicialização, ofereça um comando explícito ou uma configuração de inicialização independente do schema. Defina e justifique o padrão no plano aprovado. Com o seed desligado, reiniciar após esvaziar as tabelas deve manter os dados vazios. Com ele ligado, uma nova inicialização deve respeitar os dados existentes e evitar duplicações.
+- Para dependências concretas apontadas na auditoria, exponha um ponto de substituição na composição do app. Valide duas instâncias independentes e exercite o caso de uso com uma dependência de teste. A validação de cada impacto compõe a evidência exigida pelo critério CRITICAL/HIGH da Skill.
 
 ## 6. Dependências entre camadas
 
