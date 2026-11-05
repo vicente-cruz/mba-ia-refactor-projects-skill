@@ -1,0 +1,90 @@
+== AP-01: execute com concatenação ou f-string de valor externo
+./models/admin.py:11:            db.execute(f"DELETE FROM {tabela}")
+./models/admin.py:19:    return {tabela: db.execute(f"SELECT COUNT(*) FROM {tabela}").fetchone()[0] for tabela in TABELAS}
+./models/produto.py:72:    return [to_dict(row) for row in db.execute(f"SELECT {COLUNAS} FROM produtos")]
+./models/produto.py:76:    row = db.execute(f"SELECT {COLUNAS} FROM produtos WHERE id = ?", (produto_id,)).fetchone()
+./models/usuario.py:32:    return [to_public_dict(row) for row in db.execute(f"SELECT {COLUNAS_PUBLICAS} FROM usuarios")]
+./models/usuario.py:36:    row = db.execute(f"SELECT {COLUNAS_PUBLICAS} FROM usuarios WHERE id = ?", (usuario_id,)).fetchone()
+== AP-01: f-strings em SQL (conferir que só interpolam constantes)
+models/admin.py:11:            db.execute(f"DELETE FROM {tabela}")
+models/admin.py:19:    return {tabela: db.execute(f"SELECT COUNT(*) FROM {tabela}").fetchone()[0] for tabela in TABELAS}
+models/produto.py:72:    return [to_dict(row) for row in db.execute(f"SELECT {COLUNAS} FROM produtos")]
+models/produto.py:76:    row = db.execute(f"SELECT {COLUNAS} FROM produtos WHERE id = ?", (produto_id,)).fetchone()
+models/produto.py:104:    query = f"SELECT {COLUNAS} FROM produtos WHERE 1=1"
+models/usuario.py:32:    return [to_public_dict(row) for row in db.execute(f"SELECT {COLUNAS_PUBLICAS} FROM usuarios")]
+models/usuario.py:36:    row = db.execute(f"SELECT {COLUNAS_PUBLICAS} FROM usuarios WHERE id = ?", (usuario_id,)).fetchone()
+== AP-02: SECRET_KEY literal ou prefixo da chave antiga
+   (nenhuma ocorrência)
+== AP-02/AP-04: senha literal em hash ou em tupla de seed (4 strings)
+   (nenhuma ocorrência)
+== AP-03: chave senha em código
+./controllers/usuario_controller.py:29:    senha = dados.get("senha", "")
+./controllers/usuario_controller.py:41:    senha = dados.get("senha", "")
+./models/usuario.py:74:        if _senha_confere(row["senha"], senha):
+== AP-11: debug fixo / bind aberto
+   (nenhuma ocorrência)
+== AP-08: estado global de conexão
+   (nenhuma ocorrência)
+== AP-16: str(e) / except Exception
+   (nenhuma ocorrência)
+== AP-16: except amplos (conferir tipo capturado)
+./app.py:44:    except ConfigError as erro:
+./controllers/sistema_controller.py:33:    except sqlite3.Error:
+./controllers/produto_controller.py:48:    except ValueError:
+./models/usuario.py:61:    except (ValueError, OverflowError):
+== AP-20: print( (exceto Blueprint)
+./app.py:48:    print("=" * 50)
+./app.py:49:    print("SERVIDOR INICIADO")
+./app.py:50:    print(f"Rodando em http://{host}:{port}")
+./app.py:51:    print("=" * 50)
+== AP-07: SQL fora de models/database
+   (nenhuma ocorrência)
+== AP-07: request/jsonify fora de routes/errors/auth
+   (nenhuma ocorrência)
+== AP-15: APIs obsoletas
+   (nenhuma ocorrência)
+== F-13/R-10: dependências dos controllers (flask, get_db, database)
+   (nenhuma ocorrência)
+== F-13/R-10: obtenção da conexão (somente rotas e database.py)
+   database.py:75:def connect(path):
+   database.py:76:    connection = sqlite3.connect(path)
+   database.py:89:            return connect(app.config["DATABASE_PATH"])
+   database.py:94:def get_db():
+   database.py:144:        db = get_db()
+   routes/pedidos.py:11:    resultado = pedido_controller.criar_pedido(get_db(), request.get_json(silent=True))
+   routes/pedidos.py:17:    return jsonify({"dados": pedido_controller.listar_todos_pedidos(get_db()), "sucesso": True}), 200
+   routes/pedidos.py:22:    return jsonify({"dados": pedido_controller.listar_pedidos_usuario(get_db(), usuario_id), "sucesso": True}), 200
+   routes/pedidos.py:27:    pedido_controller.atualizar_status_pedido(get_db(), pedido_id, request.get_json(silent=True))
+   routes/produtos.py:11:    return jsonify({"dados": produto_controller.listar_produtos(get_db()), "sucesso": True}), 200
+   routes/produtos.py:17:        get_db(),
+   routes/produtos.py:28:    return jsonify({"dados": produto_controller.buscar_produto(get_db(), produto_id), "sucesso": True}), 200
+   routes/produtos.py:33:    produto_id = produto_controller.criar_produto(get_db(), request.get_json(silent=True))
+   routes/produtos.py:39:    produto_controller.atualizar_produto(get_db(), produto_id, request.get_json(silent=True))
+   routes/produtos.py:45:    produto_controller.deletar_produto(get_db(), produto_id)
+   routes/sistema.py:24:    sistema_controller.resetar_banco(get_db())
+   routes/sistema.py:31:    resultado = sistema_controller.executar_consulta(get_db(), request.get_json(silent=True))
+   routes/relatorios.py:13:    return jsonify({"dados": relatorio_controller.relatorio_vendas(get_db()), "sucesso": True}), 200
+   routes/usuarios.py:13:    return jsonify({"dados": usuario_controller.listar_usuarios(get_db()), "sucesso": True}), 200
+   routes/usuarios.py:19:    return jsonify({"dados": usuario_controller.buscar_usuario(get_db(), usuario_id), "sucesso": True}), 200
+   routes/usuarios.py:24:    usuario_id = usuario_controller.criar_usuario(get_db(), request.get_json(silent=True))
+   routes/usuarios.py:30:    usuario = usuario_controller.login(get_db(), request.get_json(silent=True))
+== F-13: seed separado do schema e controlado pela flag
+config.py:16:# SEED_ON_STARTUP: ausente = ligado (comportamento histórico); "1" = ligado; "0" = desligado.
+config.py:19:SEED_ON_STARTUP_VALORES = {"1": True, "0": False}
+config.py:35:    valor = os.environ.get("SEED_ON_STARTUP")
+config.py:38:    if valor not in SEED_ON_STARTUP_VALORES:
+config.py:40:            f"SEED_ON_STARTUP inválido ({valor!r}): use '1' (ligado) ou '0' (desligado); ausente = ligado"
+config.py:42:    return SEED_ON_STARTUP_VALORES[valor]
+config.py:53:        "SEED_ON_STARTUP": _seed_on_startup(),
+config.py:60:    if not isinstance(config.get("SEED_ON_STARTUP"), bool):
+config.py:61:        raise ConfigError("SEED_ON_STARTUP deve ser bool nos overrides de create_app (True ou False)")
+database.py:106:def init_schema(db):
+database.py:113:def seed_demo_if_empty(db, senhas):
+database.py:141:def prepare(app):
+database.py:142:    """Inicialização explícita: sempre prepara as tabelas; o seed depende de SEED_ON_STARTUP."""
+database.py:145:        init_schema(db)
+database.py:146:        if app.config["SEED_ON_STARTUP"]:
+database.py:147:            seed_demo_if_empty(db, app.config.get("SEED_SENHAS", {}))
+database.py:149:            logger.info("SEED_ON_STARTUP=0: carga de demonstração desligada.")
+== F-13: AST — imports sem uso
+   (fim)

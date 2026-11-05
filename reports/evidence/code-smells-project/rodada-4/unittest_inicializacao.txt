@@ -1,0 +1,89 @@
+test_override_da_factory_aceita_somente_bool (tests.test_inicializacao.ConfiguracaoSeedTest.test_override_da_factory_aceita_somente_bool) ... SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+ok
+test_valor_invalido_impede_boot_antes_de_abrir_o_banco (tests.test_inicializacao.ConfiguracaoSeedTest.test_valor_invalido_impede_boot_antes_de_abrir_o_banco) ... SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+ok
+test_variavel_ausente_1_e_0 (tests.test_inicializacao.ConfiguracaoSeedTest.test_variavel_ausente_1_e_0) ... SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+ok
+test_variavel_de_ambiente_pela_factory (tests.test_inicializacao.ConfiguracaoSeedTest.test_variavel_de_ambiente_pela_factory) ... SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+ok
+test_duas_instancias_no_mesmo_processo_com_bancos_isolados (tests.test_inicializacao.DuasInstanciasTest.test_duas_instancias_no_mesmo_processo_com_bancos_isolados) ... SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+127.0.0.1 - - [05/Nov/2026 19:40:36] "[35m[1mPOST /produtos HTTP/1.1[0m" 201 -
+127.0.0.1 - - [05/Nov/2026 19:40:36] "GET /produtos HTTP/1.1" 200 -
+127.0.0.1 - - [05/Nov/2026 19:40:36] "[35m[1mPOST /produtos HTTP/1.1[0m" 201 -
+127.0.0.1 - - [05/Nov/2026 19:40:36] "GET /produtos HTTP/1.1" 200 -
+127.0.0.1 - - [05/Nov/2026 19:40:36] "[31m[1mGET /usuarios HTTP/1.1[0m" 401 -
+/home/vicentesc/.pyenv/versions/3.14.0/lib/python3.14/tempfile.py:484: ResourceWarning: Implicitly cleaning up <HTTPError 401: 'UNAUTHORIZED'>
+  _warnings.warn(self.warn_message, ResourceWarning)
+127.0.0.1 - - [05/Nov/2026 19:40:36] "GET /usuarios HTTP/1.1" 200 -
+127.0.0.1 - - [05/Nov/2026 19:40:36] "[31m[1mGET /usuarios HTTP/1.1[0m" 401 -
+127.0.0.1 - - [05/Nov/2026 19:40:36] "[35m[1mPOST /produtos HTTP/1.1[0m" 201 -
+127.0.0.1 - - [05/Nov/2026 19:40:36] "[35m[1mPOST /produtos HTTP/1.1[0m" 201 -
+127.0.0.1 - - [05/Nov/2026 19:40:36] "[35m[1mPOST /produtos HTTP/1.1[0m" 201 -
+127.0.0.1 - - [05/Nov/2026 19:40:36] "[35m[1mPOST /produtos HTTP/1.1[0m" 201 -
+127.0.0.1 - - [05/Nov/2026 19:40:36] "[35m[1mPOST /produtos HTTP/1.1[0m" 201 -
+127.0.0.1 - - [05/Nov/2026 19:40:36] "[35m[1mPOST /produtos HTTP/1.1[0m" 201 -
+127.0.0.1 - - [05/Nov/2026 19:40:36] "[35m[1mPOST /produtos HTTP/1.1[0m" 201 -
+127.0.0.1 - - [05/Nov/2026 19:40:36] "[35m[1mPOST /produtos HTTP/1.1[0m" 201 -
+127.0.0.1 - - [05/Nov/2026 19:40:36] "[35m[1mPOST /produtos HTTP/1.1[0m" 201 -
+127.0.0.1 - - [05/Nov/2026 19:40:36] "[35m[1mPOST /produtos HTTP/1.1[0m" 201 -
+127.0.0.1 - - [05/Nov/2026 19:40:36] "[35m[1mPOST /produtos HTTP/1.1[0m" 201 -
+127.0.0.1 - - [05/Nov/2026 19:40:36] "[35m[1mPOST /produtos HTTP/1.1[0m" 201 -
+127.0.0.1 - - [05/Nov/2026 19:40:36] "[35m[1mPOST /produtos HTTP/1.1[0m" 201 -
+127.0.0.1 - - [05/Nov/2026 19:40:36] "[35m[1mPOST /produtos HTTP/1.1[0m" 201 -
+127.0.0.1 - - [05/Nov/2026 19:40:36] "[35m[1mPOST /produtos HTTP/1.1[0m" 201 -
+127.0.0.1 - - [05/Nov/2026 19:40:36] "[35m[1mPOST /produtos HTTP/1.1[0m" 201 -
+ok
+test_s1_banco_novo_tabelas_vazias_e_api_grava_e_le (tests.test_inicializacao.SeedDesligadoTest.test_s1_banco_novo_tabelas_vazias_e_api_grava_e_le) ... SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+ok
+test_s2_reset_e_reinicio_com_seed_desligado_mantem_vazio (tests.test_inicializacao.SeedDesligadoTest.test_s2_reset_e_reinicio_com_seed_desligado_mantem_vazio) ... SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+Banco de dados resetado via /admin/reset-db
+SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+ok
+test_s3_banco_populado_nao_e_alterado_com_seed_desligado (tests.test_inicializacao.SeedDesligadoTest.test_s3_banco_populado_nao_e_alterado_com_seed_desligado) ... SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+ok
+test_s4_banco_novo_carga_esperada (tests.test_inicializacao.SeedLigadoTest.test_s4_banco_novo_carga_esperada) ... SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+ok
+test_s5_reinicio_nao_duplica (tests.test_inicializacao.SeedLigadoTest.test_s5_reinicio_nao_duplica) ... SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+ok
+test_s6_reset_e_reinicio_repoe_a_demonstracao (tests.test_inicializacao.SeedLigadoTest.test_s6_reset_e_reinicio_repoe_a_demonstracao) ... SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+Banco de dados resetado via /admin/reset-db
+SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+ok
+test_s7_produtos_vazios_com_usuarios_existentes_nao_duplica_nem_altera_usuarios (tests.test_inicializacao.SeedLigadoTest.test_s7_produtos_vazios_com_usuarios_existentes_nao_duplica_nem_altera_usuarios) ... SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+ok
+test_caso_de_uso_sem_contexto_flask (tests.test_inicializacao.SubstituicaoConexaoTest.test_caso_de_uso_sem_contexto_flask) ... SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+ok
+test_controllers_nao_dependem_de_flask_nem_de_get_db (tests.test_inicializacao.SubstituicaoConexaoTest.test_controllers_nao_dependem_de_flask_nem_de_get_db) ... ok
+test_fabrica_injetada_e_usada_pelo_fluxo_http_real (tests.test_inicializacao.SubstituicaoConexaoTest.test_fabrica_injetada_e_usada_pelo_fluxo_http_real) ... SECRET_KEY não definida; usando chave efêmera de desenvolvimento.
+127.0.0.1 - - [05/Nov/2026 19:40:41] "GET /produtos HTTP/1.1" 200 -
+127.0.0.1 - - [05/Nov/2026 19:40:41] "[35m[1mPOST /pedidos HTTP/1.1[0m" 201 -
+127.0.0.1 - - [05/Nov/2026 19:40:41] "PUT /pedidos/1/status HTTP/1.1" 200 -
+127.0.0.1 - - [05/Nov/2026 19:40:41] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [05/Nov/2026 19:40:41] "GET /usuarios HTTP/1.1" 200 -
+ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 5.821s
+
+OK

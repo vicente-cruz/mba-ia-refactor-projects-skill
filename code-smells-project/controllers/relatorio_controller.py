@@ -1,6 +1,5 @@
-from database import get_db
 from models import relatorio
 
 
-def relatorio_vendas():
-    return relatorio.vendas(get_db())
+def relatorio_vendas(db):
+    return relatorio.vendas(db)

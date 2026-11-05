@@ -1,0 +1,102 @@
+Senhas sintéticas de demonstração (SEED_SENHA_*) e ADMIN_TOKEN configuradas em TODAS as execuções.
+
+## S1 — banco novo, SEED_ON_STARTUP=0
+OK    boot por python app.py
+OK    4 tabelas criadas — ['itens_pedido', 'pedidos', 'produtos', 'usuarios']
+FALHA 4 tabelas vazias — {'produtos': 10, 'usuarios': 3, 'pedidos': 0, 'itens_pedido': 0}
+FALHA GET /produtos → 200 {'dados': [], 'sucesso': True}
+FALHA GET /health → 200, contagens zeradas, corpo com as mesmas chaves e valores fixos — {"ambiente": "producao", "counts": {"pedidos": 0, "produtos": 10, "usuarios": 3}, "database": "connected", "debug": false, "status": "ok", "versao": "1.0.0"}
+FALHA GET /usuarios (token) → nenhum usuário de demonstração
+FALHA login admin@loja.com com a senha sintética configurada → 401 (a flag impediu a carga) — 200
+FALHA login joao@email.com com a senha sintética configurada → 401 (a flag impediu a carga) — 200
+FALHA login maria@email.com com a senha sintética configurada → 401 (a flag impediu a carga) — 200
+FALHA POST /produtos → 201 id 1 — {'dados': {'id': 11}, 'mensagem': 'Produto criado', 'sucesso': True}
+FALHA GET /produtos/1 → 200 com o produto gravado
+OK    POST /usuarios → 201
+OK    login do usuário gravado → 200
+OK    POST /pedidos → 201 — {'dados': {'pedido_id': 1, 'total': 11999.98}, 'mensagem': 'Pedido criado com sucesso', 'sucesso': True}
+OK    GET /pedidos → 1 pedido com o item gravado
+FALHA efeito no banco (consulta direta) — {'produtos': 11, 'usuarios': 4, 'pedidos': 1, 'itens_pedido': 1}
+FALHA estoque baixado 5 → 3
+FALHA log: 'carga de demonstração desligada' e nenhum aviso de senha de seed
+
+## S2 — banco populado → reset → reinício com SEED_ON_STARTUP=0
+OK    preparo: banco populado (seed padrão + 1 pedido) — {'produtos': 10, 'usuarios': 3, 'pedidos': 1, 'itens_pedido': 1}
+OK    POST /admin/reset-db (token) → 200
+OK    após reset: 4 tabelas vazias — {'produtos': 0, 'usuarios': 0, 'pedidos': 0, 'itens_pedido': 0}
+FALHA reinício 1 com SEED_ON_STARTUP=0: tabelas continuam vazias — {'produtos': 10, 'usuarios': 3, 'pedidos': 0, 'itens_pedido': 0}
+FALHA reinício 1: GET /produtos → []
+FALHA reinício 2 com SEED_ON_STARTUP=0: tabelas continuam vazias — {'produtos': 10, 'usuarios': 3, 'pedidos': 0, 'itens_pedido': 0}
+FALHA reinício 2: GET /produtos → []
+
+## S3 — banco já populado, boot com SEED_ON_STARTUP=0
+OK    dump completo idêntico antes e depois do boot
+
+## S4/S5 — banco novo, variável ausente
+OK    carga: 10 produtos, 3 usuários, 0 pedidos — {'produtos': 10, 'usuarios': 3, 'pedidos': 0, 'itens_pedido': 0}
+OK    senhas gravadas com prefixo de hash
+OK    login admin@loja.com → 200
+OK    login joao@email.com → 200
+OK    login maria@email.com → 200
+OK    S5 reinício 1 (SEED_ON_STARTUP=None): dump idêntico (ids, chaves, criado_em) — sem duplicação — {'produtos': 10, 'usuarios': 3, 'pedidos': 0, 'itens_pedido': 0}
+OK    S5 reinício 2 (SEED_ON_STARTUP='1'): dump idêntico (ids, chaves, criado_em) — sem duplicação — {'produtos': 10, 'usuarios': 3, 'pedidos': 0, 'itens_pedido': 0}
+OK    S5 reinício 3 (SEED_ON_STARTUP=None): dump idêntico (ids, chaves, criado_em) — sem duplicação — {'produtos': 10, 'usuarios': 3, 'pedidos': 0, 'itens_pedido': 0}
+
+## S4/S5 — banco novo, SEED_ON_STARTUP=1
+OK    carga: 10 produtos, 3 usuários, 0 pedidos — {'produtos': 10, 'usuarios': 3, 'pedidos': 0, 'itens_pedido': 0}
+OK    senhas gravadas com prefixo de hash
+OK    login admin@loja.com → 200
+OK    login joao@email.com → 200
+OK    login maria@email.com → 200
+OK    S5 reinício 1 (SEED_ON_STARTUP=None): dump idêntico (ids, chaves, criado_em) — sem duplicação — {'produtos': 10, 'usuarios': 3, 'pedidos': 0, 'itens_pedido': 0}
+OK    S5 reinício 2 (SEED_ON_STARTUP='1'): dump idêntico (ids, chaves, criado_em) — sem duplicação — {'produtos': 10, 'usuarios': 3, 'pedidos': 0, 'itens_pedido': 0}
+OK    S5 reinício 3 (SEED_ON_STARTUP='1'): dump idêntico (ids, chaves, criado_em) — sem duplicação — {'produtos': 10, 'usuarios': 3, 'pedidos': 0, 'itens_pedido': 0}
+
+## S6 — seed ligado: reset + reinício
+OK    após reset: vazio
+OK    reinício com seed ligado repõe a demonstração (10/3) — {'produtos': 10, 'usuarios': 3, 'pedidos': 0, 'itens_pedido': 0}
+
+## S7 — seed ligado: produtos apagados via API, usuários existentes, reinício com OUTRAS senhas sintéticas
+OK    10 produtos apagados via API
+OK    produtos recarregados (10)
+FALHA usuários: 3 linhas idênticas (sem duplicar; senha e perfil preservados)
+OK    senha original do joao continua valendo → 200
+FALHA senha nova do ambiente não substituiu a existente → 401
+
+## S8 — valor inválido impede o boot antes de abrir o banco
+FALHA SEED_ON_STARTUP='true': processo encerra com código 1, mensagem de recusa, banco NÃO criado, porta não aberta — código None
+FALHA SEED_ON_STARTUP='': processo encerra com código 1, mensagem de recusa, banco NÃO criado, porta não aberta — código None
+FALHA SEED_ON_STARTUP='2': processo encerra com código 1, mensagem de recusa, banco NÃO criado, porta não aberta — código None
+FALHA SEED_ON_STARTUP=' 1': processo encerra com código 1, mensagem de recusa, banco NÃO criado, porta não aberta — código None
+FALHA SEED_ON_STARTUP='0 ': processo encerra com código 1, mensagem de recusa, banco NÃO criado, porta não aberta — código None
+FALHA SEED_ON_STARTUP='false': processo encerra com código 1, mensagem de recusa, banco NÃO criado, porta não aberta — código None
+trecho do log (primeiro valor inválido): (nenhuma linha de recusa no log)
+
+## S9 — importar app.py não cria banco nem arquivos
+OK    importação: exit 0, app.__file__ correto, cwd vazio, projeto inalterado — exit 0
+
+RESULTADO: 32 OK, 24 FALHA(S)
+  falhou: 4 tabelas vazias
+  falhou: GET /produtos → 200 {'dados': [], 'sucesso': True}
+  falhou: GET /health → 200, contagens zeradas, corpo com as mesmas chaves e valores fixos
+  falhou: GET /usuarios (token) → nenhum usuário de demonstração
+  falhou: login admin@loja.com com a senha sintética configurada → 401 (a flag impediu a carga)
+  falhou: login joao@email.com com a senha sintética configurada → 401 (a flag impediu a carga)
+  falhou: login maria@email.com com a senha sintética configurada → 401 (a flag impediu a carga)
+  falhou: POST /produtos → 201 id 1
+  falhou: GET /produtos/1 → 200 com o produto gravado
+  falhou: efeito no banco (consulta direta)
+  falhou: estoque baixado 5 → 3
+  falhou: log: 'carga de demonstração desligada' e nenhum aviso de senha de seed
+  falhou: reinício 1 com SEED_ON_STARTUP=0: tabelas continuam vazias
+  falhou: reinício 1: GET /produtos → []
+  falhou: reinício 2 com SEED_ON_STARTUP=0: tabelas continuam vazias
+  falhou: reinício 2: GET /produtos → []
+  falhou: usuários: 3 linhas idênticas (sem duplicar; senha e perfil preservados)
+  falhou: senha nova do ambiente não substituiu a existente → 401
+  falhou: SEED_ON_STARTUP='true': processo encerra com código 1, mensagem de recusa, banco NÃO criado, porta não aberta
+  falhou: SEED_ON_STARTUP='': processo encerra com código 1, mensagem de recusa, banco NÃO criado, porta não aberta
+  falhou: SEED_ON_STARTUP='2': processo encerra com código 1, mensagem de recusa, banco NÃO criado, porta não aberta
+  falhou: SEED_ON_STARTUP=' 1': processo encerra com código 1, mensagem de recusa, banco NÃO criado, porta não aberta
+  falhou: SEED_ON_STARTUP='0 ': processo encerra com código 1, mensagem de recusa, banco NÃO criado, porta não aberta
+  falhou: SEED_ON_STARTUP='false': processo encerra com código 1, mensagem de recusa, banco NÃO criado, porta não aberta

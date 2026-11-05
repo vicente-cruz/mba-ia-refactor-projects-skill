@@ -6,6 +6,8 @@ from werkzeug.security import generate_password_hash
 
 logger = logging.getLogger(__name__)
 
+FACTORY_KEY = "loja.db_factory"
+
 SCHEMA = [
     """
     CREATE TABLE IF NOT EXISTS produtos (
@@ -76,9 +78,22 @@ def connect(path):
     return connection
 
 
+def init_app(app, connection_factory=None):
+    """Registra a fábrica de conexões da instância. Sem fábrica injetada, abre DATABASE_PATH.
+
+    A fábrica deve devolver uma conexão sqlite3 com row_factory = sqlite3.Row; ela é aberta uma vez
+    por contexto da aplicação (get_db) e fechada no teardown.
+    """
+    if connection_factory is None:
+        def connection_factory():
+            return connect(app.config["DATABASE_PATH"])
+    app.extensions[FACTORY_KEY] = connection_factory
+    app.teardown_appcontext(close_db)
+
+
 def get_db():
     if "db" not in g:
-        g.db = connect(current_app.config["DATABASE_PATH"])
+        g.db = current_app.extensions[FACTORY_KEY]()
     return g.db
 
 
@@ -88,32 +103,47 @@ def close_db(exception=None):
         db.close()
 
 
-def _seed(db, senhas):
-    db.executemany(
-        "INSERT INTO produtos (nome, descricao, preco, estoque, categoria) VALUES (?, ?, ?, ?, ?)",
-        PRODUTOS_SEED,
-    )
-    for nome, email, tipo in USUARIOS_SEED:
-        senha = senhas.get(email)
-        if not senha:
-            logger.warning("Senha de seed não configurada para %s; usuário de demonstração não criado.", email)
-            continue
-        db.execute(
-            "INSERT INTO usuarios (nome, email, senha, tipo) VALUES (?, ?, ?, ?)",
-            (nome, email, generate_password_hash(senha), tipo),
+def init_schema(db):
+    """Prepara apenas a estrutura das tabelas; não insere dados."""
+    with db:
+        for statement in SCHEMA:
+            db.execute(statement)
+
+
+def seed_demo_if_empty(db, senhas):
+    """Carga de demonstração numa transação única.
+
+    Mantém a condição histórica (só quando `produtos` está vazia). Usuários de demonstração cujo
+    e-mail já existe são pulados, preservando senha e perfil existentes (D-7 b).
+    """
+    if db.execute("SELECT COUNT(*) FROM produtos").fetchone()[0] != 0:
+        return False
+    with db:
+        db.executemany(
+            "INSERT INTO produtos (nome, descricao, preco, estoque, categoria) VALUES (?, ?, ?, ?, ?)",
+            PRODUTOS_SEED,
         )
+        for nome, email, tipo in USUARIOS_SEED:
+            if db.execute("SELECT 1 FROM usuarios WHERE email = ?", (email,)).fetchone():
+                logger.info("Usuário de demonstração %s já existe; mantido sem alteração.", email)
+                continue
+            senha = senhas.get(email)
+            if not senha:
+                logger.warning("Senha de seed não configurada para %s; usuário de demonstração não criado.", email)
+                continue
+            db.execute(
+                "INSERT INTO usuarios (nome, email, senha, tipo) VALUES (?, ?, ?, ?)",
+                (nome, email, generate_password_hash(senha), tipo),
+            )
+    return True
 
 
-def init_db(app):
+def prepare(app):
+    """Inicialização explícita: sempre prepara as tabelas; o seed depende de SEED_ON_STARTUP."""
     with app.app_context():
         db = get_db()
-        with db:
-            for statement in SCHEMA:
-                db.execute(statement)
-        if db.execute("SELECT COUNT(*) FROM produtos").fetchone()[0] == 0:
-            with db:
-                _seed(db, app.config.get("SEED_SENHAS", {}))
-
-
-def init_app(app):
-    app.teardown_appcontext(close_db)
+        init_schema(db)
+        if app.config["SEED_ON_STARTUP"]:
+            seed_demo_if_empty(db, app.config.get("SEED_SENHAS", {}))
+        else:
+            logger.info("SEED_ON_STARTUP=0: carga de demonstração desligada.")

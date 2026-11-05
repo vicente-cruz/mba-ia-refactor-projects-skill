@@ -1,10 +1,7 @@
 import logging
 import sqlite3
 
-from flask import current_app
-
 from config import AMBIENTE, API_VERSION
-from database import get_db
 from errors import ValidationError
 from models import admin
 
@@ -26,10 +23,11 @@ def indice():
     }
 
 
-def health_check():
-    """Retorna (dados, saudavel)."""
+def health_check(obter_db, debug):
+    """Retorna (dados, saudavel). `obter_db` é chamado aqui para que falhas ao abrir o banco
+    também resultem em status de erro, como antes."""
     try:
-        db = get_db()
+        db = obter_db()
         admin.verificar_conexao(db)
         contagens = admin.contagens(db)
     except sqlite3.Error:
@@ -45,16 +43,16 @@ def health_check():
         },
         "versao": API_VERSION,
         "ambiente": AMBIENTE,
-        "debug": current_app.config["DEBUG"],
+        "debug": debug,
     }, True
 
 
-def resetar_banco():
-    admin.resetar(get_db())
+def resetar_banco(db):
+    admin.resetar(db)
     logger.warning("Banco de dados resetado via /admin/reset-db")
 
 
-def executar_consulta(dados):
+def executar_consulta(db, dados):
     if not isinstance(dados, dict):
         raise ValidationError("Dados inválidos")
     if "sql" in dados:
@@ -62,4 +60,4 @@ def executar_consulta(dados):
     nome = dados.get("consulta")
     if not nome:
         raise ValidationError("Consulta não informada")
-    return admin.executar_consulta(get_db(), nome, dados.get("parametros", {}))
+    return admin.executar_consulta(db, nome, dados.get("parametros", {}))

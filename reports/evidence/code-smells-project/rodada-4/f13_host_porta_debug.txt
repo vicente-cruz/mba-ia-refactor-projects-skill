@@ -1,0 +1,29 @@
+## padrao (FOO=1)
+  log: Rodando em http://127.0.0.1:5000
+  log:  * Debug mode: off
+  log:  * Running on http://127.0.0.1:5000
+  portas em escuta: 127.0.0.1:5000
+  GET /health: {"ambiente":"producao","counts":{"pedidos":0,"produtos":0,"usuarios":0},"database":"connected","debug":false,"status":"ok","versao":"1.0.0"}
+## porta_5057 (PORT=5057)
+  log: Rodando em http://127.0.0.1:5057
+  log:  * Debug mode: off
+  log:  * Running on http://127.0.0.1:5057
+  portas em escuta: 127.0.0.1:5057
+  GET /health: {"ambiente":"producao","counts":{"pedidos":0,"produtos":0,"usuarios":0},"database":"connected","debug":false,"status":"ok","versao":"1.0.0"}
+## debug_on (PORT=5057 FLASK_DEBUG=1 HOST=127.0.0.1)
+  log: Rodando em http://127.0.0.1:5057
+  log:  * Debug mode: on
+  log:  * Running on http://127.0.0.1:5057
+  portas em escuta: 127.0.0.1:5057
+  GET /health: {
+  "ambiente": "producao",
+  "counts": {
+    "pedidos": 0,
+    "produtos": 0,
+    "usuarios": 0
+  },
+  "database": "connected",
+  "debug": true,
+  "status": "ok",
+  "versao": "1.0.0"
+}
