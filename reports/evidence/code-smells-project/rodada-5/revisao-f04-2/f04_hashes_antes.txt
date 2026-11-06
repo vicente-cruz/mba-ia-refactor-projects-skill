@@ -1,0 +1,33 @@
+# F-04 — preservação de hashes válidos — projeto: antes
+Python 3.14.0, SQLite 3.37.2
+
+## 0. Classificação direta (models.usuario)
+FALHA <hash-removido> : aceito por _senha_confere e preservado pela migração — _senha_confere=True hash_preservavel=False
+FALHA <hash-removido> : aceito por _senha_confere e preservado pela migração — _senha_confere=True hash_preservavel=False
+FALHA scrypt {'salt_length': 129}: aceito por _senha_confere e preservado pela migração — _senha_confere=True hash_preservavel=False
+OK    scrypt : aceito por _senha_confere e preservado pela migração — _senha_confere=True hash_preservavel=True
+OK    pbkdf2 : aceito por _senha_confere e preservado pela migração — _senha_confere=True hash_preservavel=True
+
+## 1. Banco só com hashes válidos (+ 1 conta sem credencial)
+FALHA boot aceito — o banco tem 3 credencial(is) legada(s) em usuarios.senha; nada foi alterado. Pare a aplicação e execute 'python migrar_senhas.py <banco>' (simulação) e depois 'python migrar_senhas.py <banco> --aplica
+FALHA login de cada conta com hash → 200 — None
+OK    boot não alterou os dados
+simulação: código 0 | Simulação: usuarios=6 hashes_validos=2 sem_credencial=1 legadas=3 paginas_livres=0 journal_mode=rollback limpeza_pendente=não | Simulação: 3 credencial(is) seriam invalidadas. Nenhuma alteração foi gravada; use --aplicar para gravar.
+FALHA simulação: código 0, legadas=0, hashes_validos=5
+OK    simulação: arquivos e conteúdo (sha256) intactos
+
+## 2. Banco misto: hashes válidos + texto puro + texto gigante + conta sem credencial
+FALHA boot recusado (2 credenciais legadas) — o banco tem 5 credencial(is) legada(s) em usuarios.senha; nada foi alterado. Pare a aplicação e execute 'python migrar_senhas.py <banco>' (simulação) e depois '
+simulação: código 0 | Simulação: usuarios=8 hashes_validos=2 sem_credencial=1 legadas=5 paginas_livres=0 journal_mode=rollback limpeza_pendente=não | Simulação: 5 credencial(is) seriam invalidadas. Nenhuma alteração foi gravada; use --aplicar para gravar.
+FALHA simulação: legadas=2 e hashes_validos=5; arquivos intactos
+aplicar: código 0 | Antes: usuarios=8 hashes_validos=2 sem_credencial=1 legadas=5 paginas_livres=0 journal_mode=delete limpeza_pendente=não | Etapa 1 confirmada: 5 credencial(is) invalidada(s). | Etapa 2 concluída e comprovada: arquivo reescrito (VACUUM), sem páginas livres nem WAL/journal remanescente. | Depois: usuarios=8 hashes_validos=2 sem_credencial=6 legadas=0 paginas_livres=0 journal_mode=delete limpeza_pende
+FALHA --aplicar: código 0 e exatamente 2 credenciais invalidadas
+FALHA --aplicar: os 5 hashes válidos idênticos byte a byte — ['sha512_256@x', 'sha512_224@x', 'scrypt_salt129@x']
+OK    --aplicar: só as credenciais legadas viraram NULL
+FALHA --aplicar: IDs, nomes, e-mails, perfis e datas preservados
+OK    --aplicar: produtos, pedidos e itens idênticos
+OK    --aplicar: texto puro e trecho do texto gigante ausentes dos arquivos
+FALHA após --aplicar: boot aceito; contas com hash → 200; conta legada → 401 — {'boot': 'aceito', 'logins': {'sha512_256@x': 401, 'sha512_224@x': 401, 'scrypt_salt129@x': 401, 'scrypt_padrao@x': 200, 'pbkdf2_padrao@x': 200, 'legado0@x': 401}}
+FALHA segunda simulação: legadas=0, hashes_validos=5
+
+Resultado: REPROVADO — 13 falha(s)

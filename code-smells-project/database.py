@@ -4,9 +4,16 @@ import sqlite3
 from flask import current_app, g
 from werkzeug.security import generate_password_hash
 
+from models import usuario
+
 logger = logging.getLogger(__name__)
 
 FACTORY_KEY = "loja.db_factory"
+
+
+class MigracaoPendenteError(Exception):
+    """O banco tem credenciais legadas; a inicialização é recusada antes de qualquer escrita."""
+
 
 SCHEMA = [
     """
@@ -138,10 +145,29 @@ def seed_demo_if_empty(db, senhas):
     return True
 
 
+def verificar_credenciais_legadas(db):
+    """Somente leitura. Recusa bancos com senha em texto puro ou formato inválido, ou com a limpeza
+    física de uma migração ainda pendente (F-04, D-4R ii)."""
+    if usuario.limpeza_pendente(db):
+        raise MigracaoPendenteError(
+            "a limpeza física de uma migração de senhas não terminou; nada foi alterado. Pare a aplicação "
+            "e execute novamente 'python migrar_senhas.py <banco> --aplicar' (ver README)"
+        )
+    legadas = len(usuario.ids_com_credencial_legada(db))
+    if legadas:
+        raise MigracaoPendenteError(
+            f"o banco tem {legadas} credencial(is) legada(s) em usuarios.senha; nada foi alterado. "
+            "Pare a aplicação e execute 'python migrar_senhas.py <banco>' (simulação) e depois "
+            "'python migrar_senhas.py <banco> --aplicar' (ver README)"
+        )
+
+
 def prepare(app):
-    """Inicialização explícita: sempre prepara as tabelas; o seed depende de SEED_ON_STARTUP."""
+    """Inicialização explícita: verifica credenciais legadas (antes de qualquer escrita), prepara as
+    tabelas e executa o seed conforme SEED_ON_STARTUP."""
     with app.app_context():
         db = get_db()
+        verificar_credenciais_legadas(db)
         init_schema(db)
         if app.config["SEED_ON_STARTUP"]:
             seed_demo_if_empty(db, app.config.get("SEED_SENHAS", {}))

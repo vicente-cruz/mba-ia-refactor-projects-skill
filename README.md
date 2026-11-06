@@ -4,11 +4,11 @@ MBA em Engenharia de Software com IA — módulo Desenvolvimento de Software e A
 
 Ferramenta escolhida: **Claude Code**, utilizado no VS Code em ambiente WSL.
 
-**Estado técnico.** A Skill foi aplicada aos três projetos. Na rodada 4 do projeto 1, o F-13 foi corrigido e a validação funcional passou. A Fase 3 do projeto 1 está **bloqueada** pela regra de encerramento enquanto houver achados CRITICAL ou HIGH pendentes. Os projetos 2 e 3 têm os resultados das respectivas rodadas. [Validação da rodada 4](reports/evidence/code-smells-project/rodada-4/validation.md)
+**Estado técnico.** A Skill foi aplicada aos três projetos. Na rodada 5 do projeto 1, a Fase 3 foi concluída com os 14 achados graves do inventário corrigidos e com evidências (7 CRITICAL e 7 HIGH, zero pendentes). O F-13 permanece corrigido, com seed opcional e inicialização validada. Os projetos 2 e 3 mantêm os resultados das respectivas rodadas. [Validação da rodada 5](reports/evidence/code-smells-project/rodada-5/validation.md)
 
 | Projeto | Skill | Auditoria da Fase 2 | Validação final |
 |---|---|---|---|
-| E-commerce Flask | [refactor-arch](code-smells-project/.claude/skills/refactor-arch/SKILL.md) | [Auditoria original](reports/audit-project-1.md) · [Reexecução](reports/evidence/code-smells-project/rodada-4/auditoria.md) | [Rodada 4 — F-13 e situação da Fase 3](reports/evidence/code-smells-project/rodada-4/validation.md) |
+| E-commerce Flask | [refactor-arch](code-smells-project/.claude/skills/refactor-arch/SKILL.md) | [Auditoria original](reports/audit-project-1.md) · [Reexecução](reports/evidence/code-smells-project/rodada-4/auditoria.md) | [Rodada 5 — Fase 3 concluída](reports/evidence/code-smells-project/rodada-5/validation.md) |
 | LMS Express | [refactor-arch](ecommerce-api-legacy/.claude/skills/refactor-arch/SKILL.md) | [Projeto 2](reports/audit-project-2.md) | [Validação e revisões do comparador](reports/evidence/ecommerce-api-legacy/validation.md) |
 | Task Manager Flask | [refactor-arch](task-manager-api/.claude/skills/refactor-arch/SKILL.md) | [Projeto 3](reports/audit-project-3.md) | [Rodada 3](reports/evidence/task-manager-api/rodada-3/validation.md) |
 
@@ -384,13 +384,13 @@ Correspondência temática entre análise manual e auditoria (os IDs F-xx perten
 
 | Projeto | Resultado final registrado | Evidências |
 |---|---|---|
-| 1 | 54/54 casos com os mesmos resultados da rodada 3. Passaram os 18 testes de regressão e os 15 de inicialização. O roteiro S1–S9 registrou 56 verificações aprovadas. | [Validação](reports/evidence/code-smells-project/rodada-4/validation.md), [matriz](reports/evidence/code-smells-project/rodada-4/matriz.md), [prova pelo ponto de entrada](reports/evidence/code-smells-project/rodada-4/f13_entrypoint.txt) e [controle antes da correção](reports/evidence/code-smells-project/rodada-4/f13_entrypoint_controle_c6a53b7.txt). |
+| 1 | 59 testes aprovados (18 de regressão, 15 de inicialização e 26 de segurança). Matriz de 54 casos com 51 resultados idênticos a 218ea6c e 3 mudanças aprovadas em /health, sem diferenças injustificadas. Testes específicos com 168 verificações aprovadas. F-04 validado quanto à migração, WAL e preservação de hashes. F-09 com concorrência comprovada e F-13 com 56 verificações S1–S9 aprovadas. | [Validação](reports/evidence/code-smells-project/rodada-5/validation.md), [59 testes](reports/evidence/code-smells-project/rodada-5/revisao-f04-2/unittest_todos.txt), [matriz](reports/evidence/code-smells-project/rodada-5/matriz.md), [preservação de hashes](reports/evidence/code-smells-project/rodada-5/revisao-f04-2/f04_hashes_depois.txt), [WAL](reports/evidence/code-smells-project/rodada-5/revisao-f04-2/f04_wal.txt) e [concorrência](reports/evidence/code-smells-project/rodada-5/revisao-f04/f09_concorrencia.txt). |
 | 2 | 25 casos na matriz, sem reprovações ou avisos; 21 testes controlados aprovados; 18 testes do comparador aprovados; casos de inicialização e falhas de processo documentados. | [Validação](reports/evidence/ecommerce-api-legacy/validation.md), [matriz](reports/evidence/ecommerce-api-legacy/matriz.md), [testes controlados](reports/evidence/ecommerce-api-legacy/logs/testes-controlados.log), [comparador](reports/evidence/ecommerce-api-legacy/logs/testes-comparador.log), [log de processo](reports/evidence/ecommerce-api-legacy/logs/refatorado-process.log). |
 | 3 | 377 registros originais e 400 refatorados; 377 comparações: 166 preservadas e 211 diferenças intencionais; 23 registros exclusivos declarados. Zero falhas; 43 verificações do comparador (37 mutações + 6 controles) e 10 meta-testes com resultados esperados. | [Validação final](reports/evidence/task-manager-api/rodada-3/validation.md), [matriz](reports/evidence/task-manager-api/rodada-3/resultados/matriz.md), [resumo estruturado](reports/evidence/task-manager-api/rodada-3/resultados/resumo.json), [meta-testes](reports/evidence/task-manager-api/rodada-3/resultados/meta-testes.txt), [inicialização e CLI](reports/evidence/task-manager-api/rodada-3/resultados/cli.txt). |
 
 As unidades de contagem diferem: registros, testes e verificações não devem ser somados como uma única cobertura. No projeto 3, os 377 registros originais incluem 367 HTTP + 10 fatos; os 400 refatorados incluem 383 HTTP + 17 fatos. As diferenças intencionais são mudanças de contrato ou correções documentadas, não equivalência literal de todas as respostas.
 
-As pastas preservam o histórico. A validação mais recente do projeto 1 está em `rodada-4/`. A do projeto 2 inclui as revisões do comparador, e a do projeto 3 está em `rodada-3/`.
+As pastas preservam o histórico. Para o estado atual do projeto 1, consulte a [validação da rodada 5](reports/evidence/code-smells-project/rodada-5/validation.md), especialmente as seções 9 (situação por achado) e 10 (conclusão). As pendências registradas nas auditorias e rodadas anteriores descrevem aquelas versões. A rodada 5 inclui duas revisões do F-04, com controles antes/depois e evidências finais em `revisao-f04-2/`. A validação do projeto 2 inclui as revisões do comparador, e a do projeto 3 está em `rodada-3/`.
 
 ### Checklist por projeto
 
@@ -417,11 +417,11 @@ As pastas preservam o histórico. A validação mais recente do projeto 1 está 
 | F3 — Ponto de entrada claro | Concluído | Concluído | Concluído |
 | F3 — Aplicação inicia com configuração válida | Concluído | Concluído | Concluído |
 | F3 — Endpoints originais exercitados conforme contratos aprovados | Concluído | Concluído | Concluído |
-| Rodada 4 — conclusão da Fase 3 pela regra de zero CRITICAL/HIGH pendentes | Bloqueada (5 pendências) | Não reavaliado nesta rodada | Não reavaliado nesta rodada |
+| Rodada 5 — conclusão da Fase 3 pela regra de zero CRITICAL/HIGH pendentes | Concluída (14/14 corrigidos com evidência) | Não reavaliado nesta rodada | Não reavaliado nesta rodada |
 
 ### Diferenças entre stacks e mudanças aprovadas
 
-- **Projeto 1:** SQL parametrizado, conexão por requisição, transações de pedido, hash de senha e token administrativo. `/admin/query` foi mantido como catálogo fechado de consultas, sem aceitar SQL arbitrário. As contas legadas com senha em texto puro não migram automaticamente, conforme decisão aprovada.
+- **Projeto 1:** SQL parametrizado, conexão por requisição, transações de pedido, hash de senha e token administrativo. `/admin/query` aceita apenas consultas de um catálogo fechado. A rodada 5 removeu `ambiente` de `/health` e estendeu o token às leituras de pedidos, escritas de produtos e alteração de status de pedidos. Bancos com credenciais legadas ou limpeza pendente têm o boot recusado. A migração explícita invalida somente as credenciais legadas, preserva hashes válidos e comprova a limpeza antes de liberar a inicialização. O seed continua configurável por `SEED_ON_STARTUP`.
 - **Projeto 2:** a fila exclusiva abrange leituras e escritas do banco em memória; checkout, pagamento e auditoria são atômicos. Exclusão de usuário com matrículas retorna 409. Relatório financeiro e exclusão exigem token administrativo; o cadastro implícito de usuário novo no checkout exige senha.
 - **Projeto 3:** autenticação por token assinado vinculado à instância da conta, sem JWT; migração de MD5 no login bem-sucedido; restrições nas operações de conta; seed atômico; agrupamento de consultas. A presença prévia de Models e Routes não impediu a identificação e correção da mistura de responsabilidades.
 
@@ -429,7 +429,7 @@ As pastas preservam o histórico. A validação mais recente do projeto 1 está 
 
 | Projeto | Principais limites documentados |
 |---|---|
-| 1 | F-13 corrigido. A rodada 4 registra **cinco pendências graves**. F-04 e F-07 (CRITICAL) e F-11 e F-22 (HIGH) permanecem abertos ou parciais. Para F-09 (HIGH), o rollback foi validado e falta comprovar o comportamento com pedidos concorrentes. F-14 e F-16 seguem como MEDIUM parciais. |
+| 1 | Zero CRITICAL/HIGH pendentes no inventário de 14 achados. F-14 (validação de formato/unicidade de e-mail) e F-16 (consulta por item do pedido) permanecem como MEDIUM parciais. Contas legadas migradas ficam sem credencial, conforme a decisão aprovada. Cópias e backups antigos precisam ser tratados pelo operador. Os demais limites de escopo estão nas seções 9 e 11 da [validação da rodada 5](reports/evidence/code-smells-project/rodada-5/validation.md). |
 | 2 | A fila serializa as operações, sem medição de vazão/latência sob carga. O schema preservado não impõe unicidade de email. O checkout com email existente não verifica senha. A revisão de vulnerabilidades das dependências não integrou o escopo. |
 | 3 | Leituras e CRUD de tarefas/categorias continuam públicos; CORS aberto e ausência de limitação de tentativas de login permanecem. `Model.query` ainda é usado em consultas, embora `Query.get()` tenha sido removido. Email com quebra de linha final mantém o comportamento original; `ResourceWarning` não foi investigado; migração fora do SQLite não foi validada; o original não autentica hashes já migrados. |
 
@@ -476,7 +476,7 @@ Os comandos abaixo partem da raiz do repositório, em terminais separados. Os am
 
 | Projeto | Configuração e comportamento |
 |---|---|
-| [1 — README](code-smells-project/README.md) / [.env.example](code-smells-project/.env.example) | `ADMIN_TOKEN` protege operações administrativas. `SEED_SENHA_ADMIN`, `SEED_SENHA_JOAO` e `SEED_SENHA_MARIA` definem as senhas dos usuários de demonstração. Configure `SECRET_KEY` para evitar a chave efêmera de desenvolvimento. Com `SEED_ON_STARTUP=0`, a aplicação prepara as tabelas e inicia sem dados de demonstração. Com `1` ou variável ausente, aplica o seed quando a tabela de produtos está vazia. Banco padrão `loja.db`; porta 5000. |
+| [1 — README](code-smells-project/README.md) / [.env.example](code-smells-project/.env.example) | `ADMIN_TOKEN` protege operações administrativas, leituras de pedidos, escritas de produtos e alteração de status de pedidos. `SEED_SENHA_ADMIN`, `SEED_SENHA_JOAO` e `SEED_SENHA_MARIA` definem as senhas dos usuários de demonstração. Configure `SECRET_KEY` para evitar a chave efêmera de desenvolvimento. Com `SEED_ON_STARTUP=0`, inicia sem dados de demonstração. Com `1` ou variável ausente, aplica o seed quando a tabela de produtos está vazia. Bancos legados exigem o procedimento explícito de migração descrito no README do projeto. Banco padrão `loja.db`; porta 5000. |
 | [2 — README](ecommerce-api-legacy/README.md) / [.env.example](ecommerce-api-legacy/.env.example) | `SEED_USER_PASSWORD` é obrigatória; `ADMIN_TOKEN` habilita operações administrativas. Banco em memória, reinicializado em cada execução; porta 3000. |
 | [3 — README](task-manager-api/README.md) / [.env.example](task-manager-api/.env.example) | `SECRET_KEY` obrigatória com pelo menos 32 caracteres. O seed exige `SEED_ADMIN_PASSWORD`, `SEED_USER_PASSWORD` e `SEED_MANAGER_PASSWORD`. Banco padrão `instance/tasks.db`; porta 5000. |
 
@@ -514,7 +514,7 @@ Projeto 1 — regressões automatizadas:
 (cd code-smells-project && SEED_ON_STARTUP=1 ../.venv/projeto-1/bin/python -B -m unittest discover -s tests -v)
 ```
 
-Resultado registrado na rodada 4: 33 testes aprovados (18 de regressão e 15 de inicialização). A prova por HTTP com os modos de seed ligado e desligado está em [S1–S9](reports/evidence/code-smells-project/rodada-4/f13_entrypoint.txt).
+Resultado final registrado na rodada 5: [59 testes aprovados](reports/evidence/code-smells-project/rodada-5/revisao-f04-2/unittest_todos.txt) (18 de regressão, 15 de inicialização e 26 de segurança). A prova por HTTP dos modos de seed ligado e desligado está em [S1–S9](reports/evidence/code-smells-project/rodada-5/revisao-f04/f13_entrypoint.txt). As provas de migração, WAL e preservação de hashes estão descritas nas seções 7, 7.1 e 7.2 da [validação](reports/evidence/code-smells-project/rodada-5/validation.md).
 
 Projeto 2 — testes controlados e testes do comparador:
 

@@ -1,0 +1,27 @@
+# F-09 — concorrência e rollback — projeto: base/code-smells-project
+Python 3.14.0, SQLite 3.37.2; atraso da fábrica lenta: 0.05s
+
+## Concorrência: N pedidos de 1 unidade, estoque K
+OK    N=20, K=5, conexão padrão: 20/20 repetições com exatamente 5 sucessos, 15 recusas 400, estoque 0, pedidos/itens só dos sucessos, sem 500
+OK    N=20, K=5, conexão padrão: sobreposição no servidor (máximo de requisições simultâneas = 20)
+OK    N=20, K=5, fábrica lenta (mesmo arquivo): 20/20 repetições com exatamente 5 sucessos, 15 recusas 400, estoque 0, pedidos/itens só dos sucessos, sem 500
+OK    N=20, K=5, fábrica lenta (mesmo arquivo): sobreposição no servidor (máximo de requisições simultâneas = 20)
+OK    N=20, K=5, fábrica lenta (mesmo arquivo): corrida exercitada (leituras de estoque com unidade disponível por repetição: mín 20, máx 20; K = 5)
+OK    N=2, K=1, conexão padrão: 50/50 repetições com exatamente 1 sucessos, 1 recusas 400, estoque 0, pedidos/itens só dos sucessos, sem 500
+OK    N=2, K=1, conexão padrão: sobreposição no servidor (máximo de requisições simultâneas = 2)
+OK    N=2, K=1, fábrica lenta (mesmo arquivo): 50/50 repetições com exatamente 1 sucessos, 1 recusas 400, estoque 0, pedidos/itens só dos sucessos, sem 500
+OK    N=2, K=1, fábrica lenta (mesmo arquivo): sobreposição no servidor (máximo de requisições simultâneas = 2)
+OK    N=2, K=1, fábrica lenta (mesmo arquivo): corrida exercitada (leituras de estoque com unidade disponível por repetição: mín 2, máx 2; K = 1)
+OK    N=50, K=10, fábrica lenta (mesmo arquivo): 5/5 repetições com exatamente 10 sucessos, 40 recusas 400, estoque 0, pedidos/itens só dos sucessos, sem 500
+OK    N=50, K=10, fábrica lenta (mesmo arquivo): sobreposição no servidor (máximo de requisições simultâneas = 50)
+OK    N=50, K=10, fábrica lenta (mesmo arquivo): corrida exercitada (leituras de estoque com unidade disponível por repetição: mín 50, máx 50; K = 10)
+
+## Rollback por falha induzida (trigger em itens_pedido)
+OK    rollback sequencial: falha induzida → 500 genérico (esperado pela falha injetada) — [(500, {'erro': 'Erro interno do servidor'})]
+OK    rollback sequencial: 0 pedidos, 0 itens, estoque 5 intacto — {'estoque': 5, 'pedidos': [], 'itens': []}
+OK    rollback concorrente (natural, simultâneas=20): 10 válidos → 201 e 10 com falha induzida → 500 — ['201', '201', '201', '201', '201', '201', '201', '201', '201', '201', '500', '500', '500', '500', '500', '500', '500', '500', '500', '500']
+OK    rollback concorrente (natural): estoque 20, pedidos e itens só dos 10 válidos — estoque=20 pedidos=10 itens=10
+OK    rollback concorrente (lenta, simultâneas=20): 10 válidos → 201 e 10 com falha induzida → 500 — ['201', '201', '201', '201', '201', '201', '201', '201', '201', '201', '500', '500', '500', '500', '500', '500', '500', '500', '500', '500']
+OK    rollback concorrente (lenta): estoque 20, pedidos e itens só dos 10 válidos — estoque=20 pedidos=10 itens=10
+
+Resultado: APROVADO — 0 falha(s)

@@ -89,6 +89,7 @@ class Base(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
         self.token = secrets.token_urlsafe(16)
+        self.auth = {"X-Admin-Token": self.token}  # rodada 5: rotas protegidas por D-10/D-11
         # Senhas sintéticas de demonstração SEMPRE configuradas: no modo desligado, é a flag que impede a carga.
         self.senhas = {email: secrets.token_urlsafe(12) for email in EMAILS_DEMO}
 
@@ -155,7 +156,7 @@ class SeedDesligadoTest(Base):
         # A flag impede a carga mesmo com as senhas de demonstração configuradas.
         self.assertEqual(client.post("/login", json={"email": "admin@loja.com",
                                                      "senha": self.senhas["admin@loja.com"]}).status_code, 401)
-        resp = client.post("/produtos", json=PRODUTO)
+        resp = client.post("/produtos", json=PRODUTO, headers=self.auth)
         self.assertEqual((resp.status_code, resp.get_json()["dados"]), (201, {"id": 1}))
         self.assertEqual(client.get("/produtos/1").get_json()["dados"]["nome"], "Produto Teste")
         resp = client.post("/usuarios", json={"nome": "Ana", "email": "ana@loja.com", "senha": "senha-da-ana"})
@@ -163,7 +164,7 @@ class SeedDesligadoTest(Base):
         self.assertEqual(client.post("/login", json={"email": "ana@loja.com", "senha": "senha-da-ana"}).status_code, 200)
         resp = client.post("/pedidos", json={"usuario_id": 1, "itens": [{"produto_id": 1, "quantidade": 2}]})
         self.assertEqual(resp.status_code, 201)
-        self.assertEqual(len(client.get("/pedidos").get_json()["dados"]), 1)
+        self.assertEqual(len(client.get("/pedidos", headers=self.auth).get_json()["dados"]), 1)
         self.assertEqual(contagens(db), {"produtos": 1, "usuarios": 1, "pedidos": 1, "itens_pedido": 1})
 
     def test_s2_reset_e_reinicio_com_seed_desligado_mantem_vazio(self):
@@ -217,7 +218,7 @@ class SeedLigadoTest(Base):
         db = self.caminho()
         client = self.criar(db, True).test_client()
         for produto_id in range(1, 11):
-            self.assertEqual(client.delete(f"/produtos/{produto_id}").status_code, 200)
+            self.assertEqual(client.delete(f"/produtos/{produto_id}", headers=self.auth).status_code, 200)
         con = sqlite3.connect(db)
         con.execute("UPDATE usuarios SET tipo = 'cliente', nome = 'Admin Alterado' WHERE email = 'admin@loja.com'")
         con.commit()
@@ -262,7 +263,7 @@ class SubstituicaoConexaoTest(Base):
                                  {"usuario_id": 2, "itens": [{"produto_id": 2, "quantidade": 3}]})
             self.assertEqual(status, 201)
             pedido_id = corpo["dados"]["pedido_id"]
-            status, _ = http(base, "PUT", f"/pedidos/{pedido_id}/status", {"status": "aprovado"})
+            status, _ = http(base, "PUT", f"/pedidos/{pedido_id}/status", {"status": "aprovado"}, token=self.token)
             self.assertEqual(status, 200)
             status, corpo = http(base, "GET", "/health")
             self.assertEqual((status, corpo["counts"]["pedidos"]), (200, 1))
@@ -321,9 +322,9 @@ class DuasInstanciasTest(Base):
 
         with servir(app_a) as base_a, servir(app_b) as base_b:
             # Intercaladas.
-            self.assertEqual(http(base_a, "POST", "/produtos", dict(PRODUTO, nome="Somente A"))[0], 201)
+            self.assertEqual(http(base_a, "POST", "/produtos", dict(PRODUTO, nome="Somente A"), token=token_a)[0], 201)
             self.assertEqual(http(base_b, "GET", "/produtos")[1], {"dados": [], "sucesso": True})
-            self.assertEqual(http(base_b, "POST", "/produtos", dict(PRODUTO, nome="Somente B"))[0], 201)
+            self.assertEqual(http(base_b, "POST", "/produtos", dict(PRODUTO, nome="Somente B"), token=token_b)[0], 201)
             self.assertEqual(len(http(base_a, "GET", "/produtos")[1]["dados"]), 11)
             self.assertEqual(http(base_b, "GET", "/usuarios", token=token_a)[0], 401)
             self.assertEqual(http(base_b, "GET", "/usuarios", token=token_b), (200, {"dados": [], "sucesso": True}))
@@ -333,14 +334,15 @@ class DuasInstanciasTest(Base):
             barreira = threading.Barrier(16)
             erros = []
 
-            def gravar(base, nome):
+            def gravar(base, nome, token):
                 barreira.wait()
-                status, _ = http(base, "POST", "/produtos", dict(PRODUTO, nome=nome))
+                status, _ = http(base, "POST", "/produtos", dict(PRODUTO, nome=nome), token=token)
                 if status != 201:
                     erros.append((nome, status))
 
             threads = [threading.Thread(target=gravar, args=(base_a if i % 2 == 0 else base_b,
-                                                             f"{'A' if i % 2 == 0 else 'B'}-{i:02d}"))
+                                                             f"{'A' if i % 2 == 0 else 'B'}-{i:02d}",
+                                                             token_a if i % 2 == 0 else token_b))
                        for i in range(16)]
             for t in threads:
                 t.start()

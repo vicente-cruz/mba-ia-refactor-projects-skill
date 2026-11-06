@@ -1,0 +1,14 @@
+--- s1.log (trechos)
+2026-11-05 22:04:22,858 INFO database: SEED_ON_STARTUP=0: carga de demonstração desligada.
+Rodando em http://127.0.0.1:5000
+2026-11-05 22:04:22,870 INFO werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+--- s2_reinicio1.log (trechos)
+2026-11-05 22:04:23,806 INFO database: SEED_ON_STARTUP=0: carga de demonstração desligada.
+Rodando em http://127.0.0.1:5000
+2026-11-05 22:04:23,817 INFO werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+--- s7b.log (trechos)
+2026-11-05 22:04:29,795 INFO database: Usuário de demonstração admin@loja.com já existe; mantido sem alteração.
+2026-11-05 22:04:29,795 INFO database: Usuário de demonstração joao@email.com já existe; mantido sem alteração.
+2026-11-05 22:04:29,795 INFO database: Usuário de demonstração maria@email.com já existe; mantido sem alteração.
+Rodando em http://127.0.0.1:5000
+2026-11-05 22:04:29,813 INFO werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m

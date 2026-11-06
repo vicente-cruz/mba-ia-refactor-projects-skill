@@ -5,7 +5,6 @@ import secrets
 logger = logging.getLogger(__name__)
 
 API_VERSION = "1.0.0"
-AMBIENTE = "producao"
 
 SEED_SENHA_VARS = {
     "admin@loja.com": "SEED_SENHA_ADMIN",

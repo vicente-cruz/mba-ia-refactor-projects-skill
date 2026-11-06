@@ -1,0 +1,109 @@
+<frozen site>:101: RuntimeWarning: Unexpected value in sys.prefix, expected <tmp>/venv, got <tmp>/refat/../venv
+<frozen site>:101: RuntimeWarning: Unexpected value in sys.exec_prefix, expected <tmp>/venv, got <tmp>/refat/../venv
+test_formato_invalido_nao_chega_ao_check_password_hash (tests.test_regressao.FormatoHashTest.test_formato_invalido_nao_chega_ao_check_password_hash) ... Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+ok
+test_hashes_gerados_pelo_werkzeug_tem_formato_aceito (tests.test_regressao.FormatoHashTest.test_hashes_gerados_pelo_werkzeug_tem_formato_aceito) ... ok
+test_typeerror_fora_da_validacao_de_formato_nao_e_mascarado (tests.test_regressao.FormatoHashTest.test_typeerror_fora_da_validacao_de_formato_nao_e_mascarado) ... ok
+test_importar_app_nao_cria_banco (tests.test_regressao.ImportacaoTest.test_importar_app_nao_cria_banco) ... ok
+test_atualizacao_rejeita_nao_finitos_sem_alterar (tests.test_regressao.NumerosNaoFinitosTest.test_atualizacao_rejeita_nao_finitos_sem_alterar) ... Senha de seed não configurada para joao@email.com; usuário de demonstração não criado.
+Senha de seed não configurada para maria@email.com; usuário de demonstração não criado.
+ok
+test_criacao_rejeita_estoque_nao_finito_sem_gravar (tests.test_regressao.NumerosNaoFinitosTest.test_criacao_rejeita_estoque_nao_finito_sem_gravar) ... Senha de seed não configurada para joao@email.com; usuário de demonstração não criado.
+Senha de seed não configurada para maria@email.com; usuário de demonstração não criado.
+ok
+test_criacao_rejeita_preco_nao_finito_sem_gravar (tests.test_regressao.NumerosNaoFinitosTest.test_criacao_rejeita_preco_nao_finito_sem_gravar) ... Senha de seed não configurada para joao@email.com; usuário de demonstração não criado.
+Senha de seed não configurada para maria@email.com; usuário de demonstração não criado.
+ok
+test_filtros_de_busca_rejeitam_nao_finitos (tests.test_regressao.NumerosNaoFinitosTest.test_filtros_de_busca_rejeitam_nao_finitos) ... Senha de seed não configurada para joao@email.com; usuário de demonstração não criado.
+Senha de seed não configurada para maria@email.com; usuário de demonstração não criado.
+ok
+test_filtros_finitos_continuam_funcionando (tests.test_regressao.NumerosNaoFinitosTest.test_filtros_finitos_continuam_funcionando) ... Senha de seed não configurada para joao@email.com; usuário de demonstração não criado.
+Senha de seed não configurada para maria@email.com; usuário de demonstração não criado.
+ok
+test_valores_finitos_continuam_aceitos (tests.test_regressao.NumerosNaoFinitosTest.test_valores_finitos_continuam_aceitos) ... Senha de seed não configurada para joao@email.com; usuário de demonstração não criado.
+Senha de seed não configurada para maria@email.com; usuário de demonstração não criado.
+ok
+test_cadastro_duplicado_com_hash_valido_apos_legado_autentica (tests.test_regressao.SenhasLegadasTest.test_cadastro_duplicado_com_hash_valido_apos_legado_autentica) ... Senha de seed não configurada para joao@email.com; usuário de demonstração não criado.
+Senha de seed não configurada para maria@email.com; usuário de demonstração não criado.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+ok
+test_erro_de_infraestrutura_nao_e_mascarado_como_401 (tests.test_regressao.SenhasLegadasTest.test_erro_de_infraestrutura_nao_e_mascarado_como_401) ... Senha de seed não configurada para joao@email.com; usuário de demonstração não criado.
+Senha de seed não configurada para maria@email.com; usuário de demonstração não criado.
+Erro não tratado
+Traceback (most recent call last):
+  File "<tmp>/venv/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "<tmp>/venv/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "<tmp>/refat/routes/usuarios.py", line 30, in login
+    usuario = usuario_controller.login(get_db(), request.get_json(silent=True))
+  File "<tmp>/refat/controllers/usuario_controller.py", line 44, in login
+    autenticado = usuario.autenticar(db, email, senha)
+  File "<tmp>/refat/models/usuario.py", line 173, in autenticar
+    rows = db.execute(
+           ~~~~~~~~~~^
+        "SELECT id, nome, email, tipo, senha FROM usuarios WHERE email = ? ORDER BY id", (email,)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ).fetchall()
+    ^
+sqlite3.OperationalError: no such table: usuarios
+ok
+test_hashes_validos_continuam_autenticando (tests.test_regressao.SenhasLegadasTest.test_hashes_validos_continuam_autenticando) ... Senha de seed não configurada para joao@email.com; usuário de demonstração não criado.
+Senha de seed não configurada para maria@email.com; usuário de demonstração não criado.
+ok
+test_legados_e_malformados_retornam_401_sem_modificar_banco (tests.test_regressao.SenhasLegadasTest.test_legados_e_malformados_retornam_401_sem_modificar_banco) ... Senha de seed não configurada para joao@email.com; usuário de demonstração não criado.
+Senha de seed não configurada para maria@email.com; usuário de demonstração não criado.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+Senha armazenada em formato inválido ou não suportado; autenticação recusada.
+ok
+test_autorizacao_continua_antes_da_validacao (tests.test_regressao.TipoConsultaAdministrativaTest.test_autorizacao_continua_antes_da_validacao) ... Senha de seed não configurada para joao@email.com; usuário de demonstração não criado.
+Senha de seed não configurada para maria@email.com; usuário de demonstração não criado.
+ok
+test_consulta_valida_continua_funcionando (tests.test_regressao.TipoConsultaAdministrativaTest.test_consulta_valida_continua_funcionando) ... Senha de seed não configurada para joao@email.com; usuário de demonstração não criado.
+Senha de seed não configurada para maria@email.com; usuário de demonstração não criado.
+ok
+test_tipos_invalidos_retornam_400 (tests.test_regressao.TipoConsultaAdministrativaTest.test_tipos_invalidos_retornam_400) ... Senha de seed não configurada para joao@email.com; usuário de demonstração não criado.
+Senha de seed não configurada para maria@email.com; usuário de demonstração não criado.
+ok
+test_vazios_continuam_como_consulta_nao_informada (tests.test_regressao.TipoConsultaAdministrativaTest.test_vazios_continuam_como_consulta_nao_informada) ... Senha de seed não configurada para joao@email.com; usuário de demonstração não criado.
+Senha de seed não configurada para maria@email.com; usuário de demonstração não criado.
+ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 5.623s
+
+OK

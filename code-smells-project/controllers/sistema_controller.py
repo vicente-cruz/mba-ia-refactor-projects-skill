@@ -1,7 +1,7 @@
 import logging
 import sqlite3
 
-from config import AMBIENTE, API_VERSION
+from config import API_VERSION
 from errors import ValidationError
 from models import admin
 
@@ -42,7 +42,6 @@ def health_check(obter_db, debug):
             "pedidos": contagens["pedidos"],
         },
         "versao": API_VERSION,
-        "ambiente": AMBIENTE,
         "debug": debug,
     }, True
 

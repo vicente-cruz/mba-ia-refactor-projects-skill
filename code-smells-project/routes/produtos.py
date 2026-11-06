@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request
 
+from auth import require_admin_token
 from controllers import produto_controller
 from database import get_db
 
@@ -29,18 +30,21 @@ def buscar_produto(produto_id):
 
 
 @produtos_bp.route("/produtos", methods=["POST"])
+@require_admin_token
 def criar_produto():
     produto_id = produto_controller.criar_produto(get_db(), request.get_json(silent=True))
     return jsonify({"dados": {"id": produto_id}, "sucesso": True, "mensagem": "Produto criado"}), 201
 
 
 @produtos_bp.route("/produtos/<int:produto_id>", methods=["PUT"])
+@require_admin_token
 def atualizar_produto(produto_id):
     produto_controller.atualizar_produto(get_db(), produto_id, request.get_json(silent=True))
     return jsonify({"sucesso": True, "mensagem": "Produto atualizado"}), 200
 
 
 @produtos_bp.route("/produtos/<int:produto_id>", methods=["DELETE"])
+@require_admin_token
 def deletar_produto(produto_id):
     produto_controller.deletar_produto(get_db(), produto_id)
     return jsonify({"sucesso": True, "mensagem": "Produto deletado"}), 200

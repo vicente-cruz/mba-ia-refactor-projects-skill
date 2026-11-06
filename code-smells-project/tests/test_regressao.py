@@ -35,6 +35,8 @@ class BaseApiTest(unittest.TestCase):
             "TESTING": True,
         })
         self.client = self.app.test_client()
+        # Rodada 5 (D-11 a): escritas de produto exigem o token; as asserções originais não mudam.
+        self.auth = {"X-Admin-Token": self.token}
 
     def tearDown(self):
         self.tmp.cleanup()
@@ -58,7 +60,7 @@ class NumerosNaoFinitosTest(BaseApiTest):
         antes = self.produtos()
         for valor in NAO_FINITOS:
             with self.subTest(preco=valor):
-                resp = self.post_json("/produtos", PRODUTO_VALIDO.format(preco=valor, estoque=1))
+                resp = self.post_json("/produtos", PRODUTO_VALIDO.format(preco=valor, estoque=1), headers=self.auth)
                 self.assertEqual(resp.status_code, 400)
                 self.assertEqual(resp.get_json(), {"erro": "Preço inválido"})
         self.assertEqual(self.produtos(), antes)
@@ -67,7 +69,7 @@ class NumerosNaoFinitosTest(BaseApiTest):
         antes = self.produtos()
         for valor in NAO_FINITOS:
             with self.subTest(estoque=valor):
-                resp = self.post_json("/produtos", PRODUTO_VALIDO.format(preco=1, estoque=valor))
+                resp = self.post_json("/produtos", PRODUTO_VALIDO.format(preco=1, estoque=valor), headers=self.auth)
                 self.assertEqual(resp.status_code, 400)
                 self.assertEqual(resp.get_json(), {"erro": "Estoque inválido"})
         self.assertEqual(self.produtos(), antes)
@@ -79,20 +81,20 @@ class NumerosNaoFinitosTest(BaseApiTest):
             for valor in NAO_FINITOS:
                 with self.subTest(campo=campo, valor=valor):
                     resp = self.client.put("/produtos/1", data=corpo.replace("{v}", valor),
-                                           content_type="application/json")
+                                           content_type="application/json", headers=self.auth)
                     self.assertEqual(resp.status_code, 400)
         self.assertEqual(self.produtos(), antes)
 
     def test_valores_finitos_continuam_aceitos(self):
         for preco, estoque in [("0", "0"), ("12.5", "3"), ("1e6", "2.0"), ("5999.99", "10")]:
             with self.subTest(preco=preco, estoque=estoque):
-                resp = self.post_json("/produtos", PRODUTO_VALIDO.format(preco=preco, estoque=estoque))
+                resp = self.post_json("/produtos", PRODUTO_VALIDO.format(preco=preco, estoque=estoque), headers=self.auth)
                 self.assertEqual(resp.status_code, 201)
                 produto_id = resp.get_json()["dados"]["id"]
                 gravado = self.query("SELECT preco, estoque FROM produtos WHERE id = ?", (produto_id,))[0]
                 self.assertEqual(gravado, (float(preco), float(estoque)))
         resp = self.client.put("/produtos/1", data=PRODUTO_VALIDO.format(preco="7.25", estoque="4"),
-                               content_type="application/json")
+                               content_type="application/json", headers=self.auth)
         self.assertEqual(resp.status_code, 200)
         self.assertEqual(self.query("SELECT preco, estoque FROM produtos WHERE id = 1")[0], (7.25, 4))
 

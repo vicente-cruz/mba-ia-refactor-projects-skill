@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request
 
+from auth import require_admin_token
 from controllers import pedido_controller
 from database import get_db
 
@@ -13,16 +14,19 @@ def criar_pedido():
 
 
 @pedidos_bp.route("/pedidos", methods=["GET"])
+@require_admin_token
 def listar_todos_pedidos():
     return jsonify({"dados": pedido_controller.listar_todos_pedidos(get_db()), "sucesso": True}), 200
 
 
 @pedidos_bp.route("/pedidos/usuario/<int:usuario_id>", methods=["GET"])
+@require_admin_token
 def listar_pedidos_usuario(usuario_id):
     return jsonify({"dados": pedido_controller.listar_pedidos_usuario(get_db(), usuario_id), "sucesso": True}), 200
 
 
 @pedidos_bp.route("/pedidos/<int:pedido_id>/status", methods=["PUT"])
+@require_admin_token
 def atualizar_status_pedido(pedido_id):
     pedido_controller.atualizar_status_pedido(get_db(), pedido_id, request.get_json(silent=True))
     return jsonify({"sucesso": True, "mensagem": "Status atualizado"}), 200

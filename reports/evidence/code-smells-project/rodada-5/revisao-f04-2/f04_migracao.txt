@@ -1,0 +1,79 @@
+# F-04 — bancos do código original, recusa do boot e migrar_senhas.py
+Python 3.14.0, SQLite 3.37.2; senhas legadas sintéticas mascaradas como <marca-…>
+
+## Cenário legado
+OK    banco gerado pelo código original — {'pedido_id': 2, 'total': 89.9}
+páginas livres após as exclusões: 5
+contagens: {'produtos': 10, 'usuarios': 5, 'pedidos': 2, 'itens_pedido': 3}; credenciais legadas (ids): [1, 2, 3, 4, 5]; arquivos: ['loja.db']
+OK    antes: cada senha legada sintética e do seed original aparece nos bytes do arquivo (a busca é sensível) — <marca-A-antiga>=2, <marca-B>=2, <marca-C-excluida>=70, <marca-A-nova>=1, admin123=2, senha123=2
+OK    antes: a senha antiga de A está só como sobra (não está em nenhuma linha)
+OK    boot (seed padrão): `python app.py` recusa com código 1 e indica migrar_senhas.py — 2026-11-05 22:25:52,625 ERROR __main__: Inicialização recusada: o banco tem 5 credencial(is) legada(s) em usuarios.senha; nada foi alterado. Pare a aplicação e execute 'python migrar_senhas.py <banco>
+OK    boot (seed padrão): banco intacto (sha256 e dump idênticos, sem arquivos auxiliares)
+OK    boot (seed padrão): nenhuma senha impressa
+OK    boot (SEED_ON_STARTUP=0): `python app.py` recusa com código 1 e indica migrar_senhas.py — 2026-11-05 22:25:52,818 ERROR __main__: Inicialização recusada: o banco tem 5 credencial(is) legada(s) em usuarios.senha; nada foi alterado. Pare a aplicação e execute 'python migrar_senhas.py <banco>
+OK    boot (SEED_ON_STARTUP=0): banco intacto (sha256 e dump idênticos, sem arquivos auxiliares)
+OK    boot (SEED_ON_STARTUP=0): nenhuma senha impressa
+simulação: Simulação: usuarios=5 hashes_validos=0 sem_credencial=0 legadas=5 paginas_livres=5 journal_mode=rollback limpeza_pendente=não | Simulação: 5 credencial(is) seriam invalidadas. Nenhuma alteração foi gravada; use --aplicar para gravar.
+OK    simulação: código 0, contagem de legadas correta, nada gravado (sha256, mtime e arquivos iguais)
+OK    falha antes do commit: código 1, transação desfeita, banco idêntico (sha256 e dump), sem auxiliares — Falha antes do commit (IntegrityError: falha induzida). Transação desfeita; nada foi alterado.
+OK    falha antes do commit: o boot continua recusado
+OK    falha na limpeza: código 1, mensagem de retomada, credenciais já NULL
+falha na limpeza (após a etapa 1, sem VACUUM): sobra da senha antiga de A = 1; senhas das contas excluídas na freelist = 70
+OK    falha na limpeza: as senhas da freelist continuam no arquivo (a etapa 2 é necessária)
+OK    falha na limpeza: boot recusado por limpeza pendente, sem alterar o banco — 2026-11-05 22:25:53,546 ERROR __main__: Inicialização recusada: a limpeza física de uma migração de senhas não terminou; nada foi alterado. Pare a aplicação e e
+OK    falha na limpeza: a simulação informa limpeza_pendente=sim
+OK    retomada: código 0 e 0 ocorrências de qualquer senha legada em todos os arquivos
+aplicar: Antes: usuarios=5 hashes_validos=0 sem_credencial=0 legadas=5 paginas_livres=5 journal_mode=delete limpeza_pendente=não | Etapa 1 confirmada: 5 credencial(is) invalidada(s). | Etapa 2 concluída e comprovada: arquivo reescrito (VACUUM), sem páginas livres nem WAL/journal remanescente. | Depois: usuarios=5 hashes_validos=0 sem_credencial=5 legadas=0 paginas_livres=0 journal_mode=delete limpeza_pendente=não
+OK    aplicar: código 0
+OK    aplicar: 0 ocorrências de cada senha legada (inclusive a sobra e as do seed original) em todos os arquivos — arquivos=['loja.db']
+OK    aplicar: produtos, pedidos, itens_pedido e sqlite_sequence idênticos
+OK    aplicar: usuarios com mesmos IDs, nomes, e-mails, perfis e datas; 5 senha(s) NULL; hashes válidos idênticos
+OK    aplicar: PRAGMA integrity_check = ok
+OK    aplicar: marca de limpeza removida (PRAGMA user_version = 0)
+OK    boot após migração: aceito, /health 200 sem seed adicional
+OK    login com cada credencial legada → 401 (6 contas/senhas) — [401, 401, 401, 401, 401, 401]
+OK    dados de negócio preservados e legíveis (GET /pedidos com token → 2 pedidos)
+OK    log do servidor sem traceback e sem senha
+OK    boot e uso não alteraram os dados (dump idêntico ao pós-migração)
+OK    segunda simulação: legadas=0 — Simulação: usuarios=5 hashes_validos=0 sem_credencial=5 legadas=0 paginas_livres=0 journal_mode=rollback limpeza_pendente=não
+OK    segunda aplicação: código 0, 0 invalidadas, dados idênticos
+
+## Cenário misto
+OK    banco gerado pelo código original — {'pedido_id': 2, 'total': 89.9}
+páginas livres após as exclusões: 5
+contagens: {'produtos': 10, 'usuarios': 9, 'pedidos': 2, 'itens_pedido': 3}; credenciais legadas (ids): [1, 2, 3, 4, 5, 69]; arquivos: ['loja.db']
+OK    antes: cada senha legada sintética e do seed original aparece nos bytes do arquivo (a busca é sensível) — <marca-A-antiga>=2, <marca-B>=2, <marca-C-excluida>=68, <marca-A-nova>=1, admin123=2, senha123=2, abc$def$ghi=1
+OK    antes: a senha antiga de A está só como sobra (não está em nenhuma linha)
+OK    boot (seed padrão): `python app.py` recusa com código 1 e indica migrar_senhas.py — 2026-11-05 22:25:55,201 ERROR __main__: Inicialização recusada: o banco tem 6 credencial(is) legada(s) em usuarios.senha; nada foi alterado. Pare a aplicação e execute 'python migrar_senhas.py <banco>
+OK    boot (seed padrão): banco intacto (sha256 e dump idênticos, sem arquivos auxiliares)
+OK    boot (seed padrão): nenhuma senha impressa
+OK    boot (SEED_ON_STARTUP=0): `python app.py` recusa com código 1 e indica migrar_senhas.py — 2026-11-05 22:25:55,392 ERROR __main__: Inicialização recusada: o banco tem 6 credencial(is) legada(s) em usuarios.senha; nada foi alterado. Pare a aplicação e execute 'python migrar_senhas.py <banco>
+OK    boot (SEED_ON_STARTUP=0): banco intacto (sha256 e dump idênticos, sem arquivos auxiliares)
+OK    boot (SEED_ON_STARTUP=0): nenhuma senha impressa
+simulação: Simulação: usuarios=9 hashes_validos=2 sem_credencial=1 legadas=6 paginas_livres=5 journal_mode=rollback limpeza_pendente=não | Simulação: 6 credencial(is) seriam invalidadas. Nenhuma alteração foi gravada; use --aplicar para gravar.
+OK    simulação: código 0, contagem de legadas correta, nada gravado (sha256, mtime e arquivos iguais)
+OK    falha antes do commit: código 1, transação desfeita, banco idêntico (sha256 e dump), sem auxiliares — Falha antes do commit (IntegrityError: falha induzida). Transação desfeita; nada foi alterado.
+OK    falha antes do commit: o boot continua recusado
+OK    falha na limpeza: código 1, mensagem de retomada, credenciais já NULL
+falha na limpeza (após a etapa 1, sem VACUUM): sobra da senha antiga de A = 1; senhas das contas excluídas na freelist = 68
+OK    falha na limpeza: as senhas da freelist continuam no arquivo (a etapa 2 é necessária)
+OK    falha na limpeza: boot recusado por limpeza pendente, sem alterar o banco — 2026-11-05 22:25:56,138 ERROR __main__: Inicialização recusada: a limpeza física de uma migração de senhas não terminou; nada foi alterado. Pare a aplicação e e
+OK    falha na limpeza: a simulação informa limpeza_pendente=sim
+OK    retomada: código 0 e 0 ocorrências de qualquer senha legada em todos os arquivos
+aplicar: Antes: usuarios=9 hashes_validos=2 sem_credencial=1 legadas=6 paginas_livres=5 journal_mode=delete limpeza_pendente=não | Etapa 1 confirmada: 6 credencial(is) invalidada(s). | Etapa 2 concluída e comprovada: arquivo reescrito (VACUUM), sem páginas livres nem WAL/journal remanescente. | Depois: usuarios=9 hashes_validos=2 sem_credencial=7 legadas=0 paginas_livres=0 journal_mode=delete limpeza_pendente=não
+OK    aplicar: código 0
+OK    aplicar: 0 ocorrências de cada senha legada (inclusive a sobra e as do seed original) em todos os arquivos — arquivos=['loja.db']
+OK    aplicar: produtos, pedidos, itens_pedido e sqlite_sequence idênticos
+OK    aplicar: usuarios com mesmos IDs, nomes, e-mails, perfis e datas; 6 senha(s) NULL; hashes válidos idênticos
+OK    aplicar: PRAGMA integrity_check = ok
+OK    aplicar: marca de limpeza removida (PRAGMA user_version = 0)
+OK    boot após migração: aceito, /health 200 sem seed adicional
+OK    login com cada credencial legada → 401 (7 contas/senhas) — [401, 401, 401, 401, 401, 401, 401]
+OK    login das contas com hash válido → 200, com o perfil preservado — [200, 200]
+OK    dados de negócio preservados e legíveis (GET /pedidos com token → 2 pedidos)
+OK    log do servidor sem traceback e sem senha
+OK    boot e uso não alteraram os dados (dump idêntico ao pós-migração)
+OK    segunda simulação: legadas=0 — Simulação: usuarios=9 hashes_validos=2 sem_credencial=7 legadas=0 paginas_livres=0 journal_mode=rollback limpeza_pendente=não
+OK    segunda aplicação: código 0, 0 invalidadas, dados idênticos
+
+Resultado: APROVADO — 0 falha(s)

@@ -1,0 +1,536 @@
+[
+ {
+  "caso": "indice",
+  "metodo": "GET",
+  "caminho": "/",
+  "entrada": null,
+  "auth": "-",
+  "status": 200,
+  "corpo": "{\"endpoints\": {\"health\": \"/health\", \"login\": \"/login\", \"pedidos\": \"/pedidos\", \"produtos\": \"/produtos\", \"relatorios\": \"/relatorios/vendas\", \"usuarios\": \"/usuarios\"}, \"mensagem\": \"Bem-vindo à API da Loja\", \"versao\": \"1.0.0\"}"
+ },
+ {
+  "caso": "health",
+  "metodo": "GET",
+  "caminho": "/health",
+  "entrada": null,
+  "auth": "-",
+  "status": 200,
+  "corpo": "{\"ambiente\": \"producao\", \"counts\": {\"pedidos\": 0, \"produtos\": 10, \"usuarios\": 3}, \"database\": \"connected\", \"debug\": false, \"status\": \"ok\", \"versao\": \"1.0.0\"}"
+ },
+ {
+  "caso": "listar produtos",
+  "metodo": "GET",
+  "caminho": "/produtos",
+  "entrada": null,
+  "auth": "-",
+  "status": 200,
+  "corpo": "{\"dados\": [{\"ativo\": 1, \"categoria\": \"informatica\", \"criado_em\": \"<ts>\", \"descricao\": \"Notebook potente para jogos\", \"estoque\": 10, \"id\": 1, \"nome\": \"Notebook Gamer\", \"preco\": 5999.99}, {\"ativo\": 1, \"categoria\": \"informatica\", \"criado_em\": \"<ts>\", \"descricao\": \"Mouse sem fio ergonômico\", \"estoque\": 50, \"id\": 2, \"nome\": \"Mouse Wireless\", \"preco\": 89.9}, {\"ativo\": 1, \"categoria\": \"informatica\", \"criado_em\": \"<ts>\", \"descricao\": \"Teclado mecânico RGB\", \"estoque\": 30, \"id\": 3, \"nome\": \"Teclado Mecânico\", \"preco\": 299.9}, {\"ativo\": 1, \"categoria\": \"informatica\", \"criado_em\": \"<ts>\", \"descricao\": \"Monitor 27 polegadas 144hz\", \"estoque\": 15, \"id\": 4, \"nome\": \"Monitor 27''\", \"preco\": 1899.9}, {\"ativo\": 1, \"categoria\": \"informatica\", \"criado_em\": \"<ts>\", \"descricao\": \"Headset com microfone\", \"estoque\": 25, \"id\": 5, \"nome\": \"Headset Gamer\", \"preco\": 199.9}, {\"ativo\": 1, \"categoria\": \"moveis\", \"criado_em\": \"<ts>\", \"descricao\": \"Cadeira ergonômica\", \"estoque\": 8, \"id\": 6, \"nome\": \"Cadeira Gamer\", \"preco\": 1299.9}, {\"ativo\": 1, \"categoria\": \"informatica\", \"criado_em\": \"<ts>\", \"descricao\": \"Webcam 1080p\", \"estoque\": 20, \"id\": 7, \"nome\": \"Webcam HD\", \"preco\": 249.9}, {\"ativo\": 1, \"categoria\": \"informatica\", \"criado_em\": \"<ts>\", \"descricao\": \"Hub USB 3.0 7 portas\", \"estoque\": 40, \"id\": 8, \"nome\": \"Hub USB\", \"preco\": 79.9}, {\"ativo\": 1, \"categoria\": \"informatica\", \"criado_em\": \"<ts>\", \"descricao\": \"SSD NVMe 1TB\", \"estoque\": 35, \"id\": 9, \"nome\": \"SSD 1TB\", \"preco\": 449.9}, {\"ativo\": 1, \"categoria\": \"vestuario\", \"criado_em\": \"<ts>\", \"descricao\": \"Camiseta estampa código\", \"estoque\": 100, \"id\": 10, \"nome\": \"Camiseta Dev\", \"preco\": 59.9}], \"sucesso\": true}"
+ },
+ {
+  "caso": "produto existente",
+  "metodo": "GET",
+  "caminho": "/produtos/1",
+  "entrada": null,
+  "auth": "-",
+  "status": 200,
+  "corpo": "{\"dados\": {\"ativo\": 1, \"categoria\": \"informatica\", \"criado_em\": \"<ts>\", \"descricao\": \"Notebook potente para jogos\", \"estoque\": 10, \"id\": 1, \"nome\": \"Notebook Gamer\", \"preco\": 5999.99}, \"sucesso\": true}"
+ },
+ {
+  "caso": "produto inexistente",
+  "metodo": "GET",
+  "caminho": "/produtos/999",
+  "entrada": null,
+  "auth": "-",
+  "status": 404,
+  "corpo": "{\"erro\": \"Produto não encontrado\", \"sucesso\": false}"
+ },
+ {
+  "caso": "busca por termo",
+  "metodo": "GET",
+  "caminho": "/produtos/busca?q=Mouse",
+  "entrada": null,
+  "auth": "-",
+  "status": 200,
+  "corpo": "{\"dados\": [{\"ativo\": 1, \"categoria\": \"informatica\", \"criado_em\": \"<ts>\", \"descricao\": \"Mouse sem fio ergonômico\", \"estoque\": 50, \"id\": 2, \"nome\": \"Mouse Wireless\", \"preco\": 89.9}], \"sucesso\": true, \"total\": 1}"
+ },
+ {
+  "caso": "busca categoria+faixa",
+  "metodo": "GET",
+  "caminho": "/produtos/busca?categoria=moveis&preco_min=100&preco_max=2000",
+  "entrada": null,
+  "auth": "-",
+  "status": 200,
+  "corpo": "{\"dados\": [{\"ativo\": 1, \"categoria\": \"moveis\", \"criado_em\": \"<ts>\", \"descricao\": \"Cadeira ergonômica\", \"estoque\": 8, \"id\": 6, \"nome\": \"Cadeira Gamer\", \"preco\": 1299.9}], \"sucesso\": true, \"total\": 1}"
+ },
+ {
+  "caso": "busca com aspas (injecao)",
+  "metodo": "GET",
+  "caminho": "/produtos/busca?q=x%27%20OR%20%271%27%3D%271",
+  "entrada": null,
+  "auth": "-",
+  "status": 200,
+  "corpo": "{\"dados\": [], \"sucesso\": true, \"total\": 0}"
+ },
+ {
+  "caso": "busca preco_min invalido",
+  "metodo": "GET",
+  "caminho": "/produtos/busca?preco_min=abc",
+  "entrada": null,
+  "auth": "-",
+  "status": 400,
+  "corpo": "{\"erro\": \"Parâmetro preco_min inválido\"}"
+ },
+ {
+  "caso": "criar produto valido",
+  "metodo": "POST",
+  "caminho": "/produtos",
+  "entrada": "{\"nome\": \"Livro Python\", \"descricao\": \"Livro\", \"preco\": 99.9, \"estoque\": 5, \"categoria\": \"livros\"}",
+  "auth": "X-Admin-Token: <removido>",
+  "status": 201,
+  "corpo": "{\"dados\": {\"id\": 11}, \"mensagem\": \"Produto criado\", \"sucesso\": true}",
+  "efeito": {
+   "produtos": 11,
+   "usuarios": 3,
+   "pedidos": 0,
+   "itens_pedido": 0
+  }
+ },
+ {
+  "caso": "criar produto sem nome",
+  "metodo": "POST",
+  "caminho": "/produtos",
+  "entrada": "{\"preco\": 1, \"estoque\": 1}",
+  "auth": "X-Admin-Token: <removido>",
+  "status": 400,
+  "corpo": "{\"erro\": \"Nome é obrigatório\"}"
+ },
+ {
+  "caso": "criar produto categoria invalida",
+  "metodo": "POST",
+  "caminho": "/produtos",
+  "entrada": "{\"nome\": \"X Y\", \"preco\": 1, \"estoque\": 1, \"categoria\": \"nada\"}",
+  "auth": "X-Admin-Token: <removido>",
+  "status": 400,
+  "corpo": "{\"erro\": \"Categoria inválida. Válidas: ['informatica', 'moveis', 'vestuario', 'geral', 'eletronicos', 'livros']\"}"
+ },
+ {
+  "caso": "criar produto com aspas",
+  "metodo": "POST",
+  "caminho": "/produtos",
+  "entrada": "{\"nome\": \"Livro D'Avila\", \"descricao\": \"it's\", \"preco\": 10, \"estoque\": 1, \"categoria\": \"livros\"}",
+  "auth": "X-Admin-Token: <removido>",
+  "status": 201,
+  "corpo": "{\"dados\": {\"id\": 12}, \"mensagem\": \"Produto criado\", \"sucesso\": true}",
+  "efeito": {
+   "produtos": 12,
+   "usuarios": 3,
+   "pedidos": 0,
+   "itens_pedido": 0
+  }
+ },
+ {
+  "caso": "criar produto preco string",
+  "metodo": "POST",
+  "caminho": "/produtos",
+  "entrada": "{\"nome\": \"Abc\", \"preco\": \"abc\", \"estoque\": 1}",
+  "auth": "X-Admin-Token: <removido>",
+  "status": 400,
+  "corpo": "{\"erro\": \"Preço inválido\"}"
+ },
+ {
+  "caso": "criar produto sem corpo JSON",
+  "metodo": "POST",
+  "caminho": "/produtos",
+  "entrada": "x",
+  "auth": "X-Admin-Token: <removido>",
+  "status": 400,
+  "corpo": "{\"erro\": \"Dados inválidos\"}"
+ },
+ {
+  "caso": "atualizar produto 11",
+  "metodo": "PUT",
+  "caminho": "/produtos/11",
+  "entrada": "{\"nome\": \"Livro Python 2\", \"descricao\": \"Novo\", \"preco\": 120.0, \"estoque\": 7, \"categoria\": \"livros\"}",
+  "auth": "X-Admin-Token: <removido>",
+  "status": 200,
+  "corpo": "{\"mensagem\": \"Produto atualizado\", \"sucesso\": true}"
+ },
+ {
+  "caso": "ler produto 11 apos update",
+  "metodo": "GET",
+  "caminho": "/produtos/11",
+  "entrada": null,
+  "auth": "-",
+  "status": 200,
+  "corpo": "{\"dados\": {\"ativo\": 1, \"categoria\": \"livros\", \"criado_em\": \"<ts>\", \"descricao\": \"Novo\", \"estoque\": 7, \"id\": 11, \"nome\": \"Livro Python 2\", \"preco\": 120.0}, \"sucesso\": true}"
+ },
+ {
+  "caso": "atualizar produto inexistente",
+  "metodo": "PUT",
+  "caminho": "/produtos/999",
+  "entrada": "{\"nome\": \"Ab\", \"preco\": 1, \"estoque\": 1}",
+  "auth": "X-Admin-Token: <removido>",
+  "status": 404,
+  "corpo": "{\"erro\": \"Produto não encontrado\"}"
+ },
+ {
+  "caso": "atualizar produto categoria invalida",
+  "metodo": "PUT",
+  "caminho": "/produtos/11",
+  "entrada": "{\"nome\": \"Livro Python 2\", \"preco\": 120.0, \"estoque\": 7, \"categoria\": \"nada\"}",
+  "auth": "X-Admin-Token: <removido>",
+  "status": 400,
+  "corpo": "{\"erro\": \"Categoria inválida. Válidas: ['informatica', 'moveis', 'vestuario', 'geral', 'eletronicos', 'livros']\"}"
+ },
+ {
+  "caso": "deletar produto 12",
+  "metodo": "DELETE",
+  "caminho": "/produtos/12",
+  "entrada": null,
+  "auth": "X-Admin-Token: <removido>",
+  "status": 200,
+  "corpo": "{\"mensagem\": \"Produto deletado\", \"sucesso\": true}",
+  "efeito": {
+   "produtos": 11,
+   "usuarios": 3,
+   "pedidos": 0,
+   "itens_pedido": 0
+  }
+ },
+ {
+  "caso": "ler produto 12 apos delete",
+  "metodo": "GET",
+  "caminho": "/produtos/12",
+  "entrada": null,
+  "auth": "-",
+  "status": 404,
+  "corpo": "{\"erro\": \"Produto não encontrado\", \"sucesso\": false}"
+ },
+ {
+  "caso": "deletar produto inexistente",
+  "metodo": "DELETE",
+  "caminho": "/produtos/999",
+  "entrada": null,
+  "auth": "X-Admin-Token: <removido>",
+  "status": 404,
+  "corpo": "{\"erro\": \"Produto não encontrado\"}"
+ },
+ {
+  "caso": "listar usuarios",
+  "metodo": "GET",
+  "caminho": "/usuarios",
+  "entrada": null,
+  "auth": "X-Admin-Token: <removido>",
+  "status": 200,
+  "corpo": "{\"dados\": [{\"criado_em\": \"<ts>\", \"email\": \"admin@loja.com\", \"id\": 1, \"nome\": \"Admin\", \"tipo\": \"admin\"}, {\"criado_em\": \"<ts>\", \"email\": \"joao@email.com\", \"id\": 2, \"nome\": \"João Silva\", \"tipo\": \"cliente\"}, {\"criado_em\": \"<ts>\", \"email\": \"maria@email.com\", \"id\": 3, \"nome\": \"Maria Santos\", \"tipo\": \"cliente\"}], \"sucesso\": true}"
+ },
+ {
+  "caso": "usuario existente",
+  "metodo": "GET",
+  "caminho": "/usuarios/1",
+  "entrada": null,
+  "auth": "X-Admin-Token: <removido>",
+  "status": 200,
+  "corpo": "{\"dados\": {\"criado_em\": \"<ts>\", \"email\": \"admin@loja.com\", \"id\": 1, \"nome\": \"Admin\", \"tipo\": \"admin\"}, \"sucesso\": true}"
+ },
+ {
+  "caso": "usuario inexistente",
+  "metodo": "GET",
+  "caminho": "/usuarios/999",
+  "entrada": null,
+  "auth": "X-Admin-Token: <removido>",
+  "status": 404,
+  "corpo": "{\"erro\": \"Usuário não encontrado\"}"
+ },
+ {
+  "caso": "criar usuario valido",
+  "metodo": "POST",
+  "caminho": "/usuarios",
+  "entrada": "{\"nome\": \"Teste\", \"email\": \"teste@loja.com\", \"senha\": \"<removido>\"}",
+  "auth": "-",
+  "status": 201,
+  "corpo": "{\"dados\": {\"id\": 4}, \"sucesso\": true}",
+  "efeito": {
+   "produtos": 11,
+   "usuarios": 4,
+   "pedidos": 0,
+   "itens_pedido": 0
+  }
+ },
+ {
+  "caso": "criar usuario incompleto",
+  "metodo": "POST",
+  "caminho": "/usuarios",
+  "entrada": "{\"nome\": \"Teste\"}",
+  "auth": "-",
+  "status": 400,
+  "corpo": "{\"erro\": \"Nome, email e senha são obrigatórios\"}"
+ },
+ {
+  "caso": "login admin valido",
+  "metodo": "POST",
+  "caminho": "/login",
+  "entrada": "{\"email\": \"admin@loja.com\", \"senha\": \"<removido>\"}",
+  "auth": "-",
+  "status": 200,
+  "corpo": "{\"dados\": {\"email\": \"admin@loja.com\", \"id\": 1, \"nome\": \"Admin\", \"tipo\": \"admin\"}, \"mensagem\": \"Login OK\", \"sucesso\": true}"
+ },
+ {
+  "caso": "login usuario criado",
+  "metodo": "POST",
+  "caminho": "/login",
+  "entrada": "{\"email\": \"teste@loja.com\", \"senha\": \"<removido>\"}",
+  "auth": "-",
+  "status": 200,
+  "corpo": "{\"dados\": {\"email\": \"teste@loja.com\", \"id\": 4, \"nome\": \"Teste\", \"tipo\": \"cliente\"}, \"mensagem\": \"Login OK\", \"sucesso\": true}"
+ },
+ {
+  "caso": "login senha errada",
+  "metodo": "POST",
+  "caminho": "/login",
+  "entrada": "{\"email\": \"admin@loja.com\", \"senha\": \"<removido>\"}",
+  "auth": "-",
+  "status": 401,
+  "corpo": "{\"erro\": \"Email ou senha inválidos\", \"sucesso\": false}"
+ },
+ {
+  "caso": "login incompleto",
+  "metodo": "POST",
+  "caminho": "/login",
+  "entrada": "{\"email\": \"admin@loja.com\"}",
+  "auth": "-",
+  "status": 400,
+  "corpo": "{\"erro\": \"Email e senha são obrigatórios\"}"
+ },
+ {
+  "caso": "login sem corpo JSON",
+  "metodo": "POST",
+  "caminho": "/login",
+  "entrada": "x",
+  "auth": "-",
+  "status": 400,
+  "corpo": "{\"erro\": \"Dados inválidos\"}"
+ },
+ {
+  "caso": "login injecao",
+  "metodo": "POST",
+  "caminho": "/login",
+  "entrada": "{\"email\": \"admin@loja.com' --\", \"senha\": \"<removido>\"}",
+  "auth": "-",
+  "status": 401,
+  "corpo": "{\"erro\": \"Email ou senha inválidos\", \"sucesso\": false}"
+ },
+ {
+  "caso": "criar pedido valido",
+  "metodo": "POST",
+  "caminho": "/pedidos",
+  "entrada": "{\"usuario_id\": 2, \"itens\": [{\"produto_id\": 2, \"quantidade\": 2}, {\"produto_id\": 3, \"quantidade\": 1}]}",
+  "auth": "-",
+  "status": 201,
+  "corpo": "{\"dados\": {\"pedido_id\": 1, \"total\": 479.7}, \"mensagem\": \"Pedido criado com sucesso\", \"sucesso\": true}",
+  "efeito": {
+   "estoque_produto_2_antes": 50,
+   "estoque_produto_2_depois": 48,
+   "produtos": 11,
+   "usuarios": 4,
+   "pedidos": 1,
+   "itens_pedido": 2
+  }
+ },
+ {
+  "caso": "pedido produto inexistente",
+  "metodo": "POST",
+  "caminho": "/pedidos",
+  "entrada": "{\"usuario_id\": 2, \"itens\": [{\"produto_id\": 999, \"quantidade\": 1}]}",
+  "auth": "-",
+  "status": 400,
+  "corpo": "{\"erro\": \"Produto 999 não encontrado\", \"sucesso\": false}"
+ },
+ {
+  "caso": "pedido estoque insuficiente",
+  "metodo": "POST",
+  "caminho": "/pedidos",
+  "entrada": "{\"usuario_id\": 2, \"itens\": [{\"produto_id\": 6, \"quantidade\": 1000}]}",
+  "auth": "-",
+  "status": 400,
+  "corpo": "{\"erro\": \"Estoque insuficiente para Cadeira Gamer\", \"sucesso\": false}"
+ },
+ {
+  "caso": "pedido sem usuario",
+  "metodo": "POST",
+  "caminho": "/pedidos",
+  "entrada": "{\"itens\": [{\"produto_id\": 1, \"quantidade\": 1}]}",
+  "auth": "-",
+  "status": 400,
+  "corpo": "{\"erro\": \"Usuario ID é obrigatório\"}"
+ },
+ {
+  "caso": "pedido sem itens",
+  "metodo": "POST",
+  "caminho": "/pedidos",
+  "entrada": "{\"usuario_id\": 2, \"itens\": []}",
+  "auth": "-",
+  "status": 400,
+  "corpo": "{\"erro\": \"Pedido deve ter pelo menos 1 item\"}"
+ },
+ {
+  "caso": "pedido quantidade negativa",
+  "metodo": "POST",
+  "caminho": "/pedidos",
+  "entrada": "{\"usuario_id\": 2, \"itens\": [{\"produto_id\": 1, \"quantidade\": -5}]}",
+  "auth": "-",
+  "status": 400,
+  "corpo": "{\"erro\": \"Item inválido: produto_id e quantidade devem ser inteiros e quantidade maior que zero\"}",
+  "efeito": {
+   "estoque_produto_1_antes": 10,
+   "estoque_produto_1_depois": 10
+  }
+ },
+ {
+  "caso": "pedido produto_id com injecao",
+  "metodo": "POST",
+  "caminho": "/pedidos",
+  "entrada": "{\"usuario_id\": 2, \"itens\": [{\"produto_id\": \"1 OR 1=1\", \"quantidade\": 1}]}",
+  "auth": "-",
+  "status": 400,
+  "corpo": "{\"erro\": \"Item inválido: produto_id e quantidade devem ser inteiros e quantidade maior que zero\"}",
+  "efeito": {
+   "produtos": 11,
+   "usuarios": 4,
+   "pedidos": 1,
+   "itens_pedido": 2
+  }
+ },
+ {
+  "caso": "listar pedidos",
+  "metodo": "GET",
+  "caminho": "/pedidos",
+  "entrada": null,
+  "auth": "X-Admin-Token: <removido>",
+  "status": 200,
+  "corpo": "{\"dados\": [{\"criado_em\": \"<ts>\", \"id\": 1, \"itens\": [{\"preco_unitario\": 89.9, \"produto_id\": 2, \"produto_nome\": \"Mouse Wireless\", \"quantidade\": 2}, {\"preco_unitario\": 299.9, \"produto_id\": 3, \"produto_nome\": \"Teclado Mecânico\", \"quantidade\": 1}], \"status\": \"pendente\", \"total\": 479.7, \"usuario_id\": 2}], \"sucesso\": true}"
+ },
+ {
+  "caso": "pedidos do usuario 2",
+  "metodo": "GET",
+  "caminho": "/pedidos/usuario/2",
+  "entrada": null,
+  "auth": "X-Admin-Token: <removido>",
+  "status": 200,
+  "corpo": "{\"dados\": [{\"criado_em\": \"<ts>\", \"id\": 1, \"itens\": [{\"preco_unitario\": 89.9, \"produto_id\": 2, \"produto_nome\": \"Mouse Wireless\", \"quantidade\": 2}, {\"preco_unitario\": 299.9, \"produto_id\": 3, \"produto_nome\": \"Teclado Mecânico\", \"quantidade\": 1}], \"status\": \"pendente\", \"total\": 479.7, \"usuario_id\": 2}], \"sucesso\": true}"
+ },
+ {
+  "caso": "pedidos de usuario sem pedidos",
+  "metodo": "GET",
+  "caminho": "/pedidos/usuario/999",
+  "entrada": null,
+  "auth": "X-Admin-Token: <removido>",
+  "status": 200,
+  "corpo": "{\"dados\": [], \"sucesso\": true}"
+ },
+ {
+  "caso": "status aprovado",
+  "metodo": "PUT",
+  "caminho": "/pedidos/1/status",
+  "entrada": "{\"status\": \"aprovado\"}",
+  "auth": "X-Admin-Token: <removido>",
+  "status": 200,
+  "corpo": "{\"mensagem\": \"Status atualizado\", \"sucesso\": true}"
+ },
+ {
+  "caso": "status invalido",
+  "metodo": "PUT",
+  "caminho": "/pedidos/1/status",
+  "entrada": "{\"status\": \"xyz\"}",
+  "auth": "X-Admin-Token: <removido>",
+  "status": 400,
+  "corpo": "{\"erro\": \"Status inválido\"}"
+ },
+ {
+  "caso": "status pedido inexistente",
+  "metodo": "PUT",
+  "caminho": "/pedidos/999/status",
+  "entrada": "{\"status\": \"enviado\"}",
+  "auth": "X-Admin-Token: <removido>",
+  "status": 404,
+  "corpo": "{\"erro\": \"Pedido não encontrado\"}"
+ },
+ {
+  "caso": "status sem corpo JSON",
+  "metodo": "PUT",
+  "caminho": "/pedidos/1/status",
+  "entrada": "x",
+  "auth": "X-Admin-Token: <removido>",
+  "status": 400,
+  "corpo": "{\"erro\": \"Dados inválidos\"}"
+ },
+ {
+  "caso": "relatorio vendas",
+  "metodo": "GET",
+  "caminho": "/relatorios/vendas",
+  "entrada": null,
+  "auth": "X-Admin-Token: <removido>",
+  "status": 200,
+  "corpo": "{\"dados\": {\"desconto_aplicavel\": 0, \"faturamento_bruto\": 479.7, \"faturamento_liquido\": 479.7, \"pedidos_aprovados\": 1, \"pedidos_cancelados\": 0, \"pedidos_pendentes\": 0, \"ticket_medio\": 479.7, \"total_pedidos\": 1}, \"sucesso\": true}"
+ },
+ {
+  "caso": "health apos escritas",
+  "metodo": "GET",
+  "caminho": "/health",
+  "entrada": null,
+  "auth": "-",
+  "status": 200,
+  "corpo": "{\"ambiente\": \"producao\", \"counts\": {\"pedidos\": 1, \"produtos\": 11, \"usuarios\": 4}, \"database\": \"connected\", \"debug\": false, \"status\": \"ok\", \"versao\": \"1.0.0\"}"
+ },
+ {
+  "caso": "admin query predefinida",
+  "metodo": "POST",
+  "caminho": "/admin/query",
+  "entrada": "{\"consulta\": \"contagem_por_tabela\"}",
+  "auth": "X-Admin-Token: <removido>",
+  "status": 200,
+  "corpo": "{\"dados\": [{\"quantidade\": 11, \"tabela\": \"produtos\"}, {\"quantidade\": 4, \"tabela\": \"usuarios\"}, {\"quantidade\": 1, \"tabela\": \"pedidos\"}, {\"quantidade\": 2, \"tabela\": \"itens_pedido\"}], \"sucesso\": true}"
+ },
+ {
+  "caso": "admin query sem consulta",
+  "metodo": "POST",
+  "caminho": "/admin/query",
+  "entrada": "{}",
+  "auth": "X-Admin-Token: <removido>",
+  "status": 400,
+  "corpo": "{\"erro\": \"Consulta não informada\"}"
+ },
+ {
+  "caso": "admin reset-db",
+  "metodo": "POST",
+  "caminho": "/admin/reset-db",
+  "entrada": null,
+  "auth": "X-Admin-Token: <removido>",
+  "status": 200,
+  "corpo": "{\"mensagem\": \"Banco de dados resetado\", \"sucesso\": true}",
+  "efeito": {
+   "produtos": 0,
+   "usuarios": 0,
+   "pedidos": 0,
+   "itens_pedido": 0
+  }
+ },
+ {
+  "caso": "listar produtos apos reset",
+  "metodo": "GET",
+  "caminho": "/produtos",
+  "entrada": null,
+  "auth": "-",
+  "status": 200,
+  "corpo": "{\"dados\": [], \"sucesso\": true}"
+ },
+ {
+  "caso": "health apos reset",
+  "metodo": "GET",
+  "caminho": "/health",
+  "entrada": null,
+  "auth": "-",
+  "status": 200,
+  "corpo": "{\"ambiente\": \"producao\", \"counts\": {\"pedidos\": 0, \"produtos\": 0, \"usuarios\": 0}, \"database\": \"connected\", \"debug\": false, \"status\": \"ok\", \"versao\": \"1.0.0\"}"
+ }
+]

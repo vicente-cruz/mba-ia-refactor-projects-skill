@@ -1,0 +1,44 @@
+# F-04 — WAL, simulação somente leitura e texto legado arbitrário — projeto: refat
+Python 3.14.0, SQLite 3.37.2
+
+## 1. WAL com leitor aberto (outro processo: BEGIN + SELECT em usuarios) durante --aplicar
+preparo: PRONTO leitor 2 linha(s); arquivos=['loja.db', 'loja.db-shm', 'loja.db-wal']; ocorrências da marca: {'loja.db': 0, 'loja.db-shm': 0, 'loja.db-wal': 1}
+OK    preparo: a marca está nos bytes de loja.db-wal
+aplicar (leitor aberto): código 1 | Antes: usuarios=2 hashes_validos=1 sem_credencial=0 legadas=1 paginas_livres=0 journal_mode=wal limpeza_pendente=não | Etapa 1 confirmada: 1 credencial(is) invalidada(s). | Limpeza física não comprovada (LimpezaNaoComprovada: checkpoint do WAL não concluído (busy=1, quadros=8, copiados=6, -wal com 32992 bytes): outra conexão está usando o banco). As credenciais legadas já estão invalidadas e a inicialização continua recusada (limpeza pendente). Feche todas as conexões com o banco (pare a aplicação e outros leitores) e execute novamente com --aplicar.
+após a 1ª execução: arquivos=['loja.db', 'loja.db-shm', 'loja.db-wal']; ocorrências={'loja.db': 0, 'loja.db-shm': 0, 'loja.db-wal': 1}; user_version=1397050952; boot=recusado (RECUSADO: a limpeza física de uma migração de senhas não terminou; nada foi alterado. Pare a aplicação e execute novamente 'python migrar_senhas.py <banco> --aplicar' (ver README))
+OK    leitor aberto: a CLI devolve falha controlada (código 1, sem traceback) e orienta o operador — código 1
+OK    leitor aberto: estado retomável — credencial legada já NULL e limpeza marcada como pendente — user_version=1397050952
+OK    leitor aberto: boot recusado enquanto a limpeza não for comprovada — RECUSADO: a limpeza física de uma migração de senhas não terminou; nada foi alterado. Pare a aplicação e execute novamente 'python migrar_senhas.py <banco> --aplicar' (ver README)
+leitor fechado: arquivos=['loja.db']
+retomada (leitor fechado): código 0 | Antes: usuarios=2 hashes_validos=1 sem_credencial=1 legadas=0 paginas_livres=0 journal_mode=wal limpeza_pendente=sim | Etapa 1 confirmada: 0 credencial(is) invalidada(s). | Etapa 2 concluída e comprovada: arquivo reescrito (VACUUM), sem páginas livres nem WAL/journal remanescente. | Depois: usuarios=2 hashes_validos=1 sem_credencial=1 legadas=0 paginas_livres=0 journal_mode=wal limpeza_pendente=não
+OK    retomada: código 0 — Depois: usuarios=2 hashes_validos=1 sem_credencial=1 legadas=0 paginas_livres=0 journal_mode=wal limpeza_pendente=não
+OK    retomada: 0 ocorrências da senha no .db e nos auxiliares presentes — {'loja.db': 0}
+OK    retomada: hash válido preservado byte a byte e credencial legada NULL; user_version = 0
+OK    retomada: boot aceito e login da conta com hash → 200 — ACEITO; login hash@x -> 200
+
+## 2. Simulação: banco WAL fechado, sem arquivos auxiliares
+preparo: arquivos=['loja.db']; byte 18 do cabeçalho = 2 (2 = WAL)
+simulação: código 0 | Simulação: usuarios=2 hashes_validos=1 sem_credencial=0 legadas=1 paginas_livres=0 journal_mode=wal limpeza_pendente=não | Simulação: 1 credencial(is) seriam invalidadas. Nenhuma alteração foi gravada; use --aplicar para gravar.
+arquivos depois: ['loja.db']
+OK    WAL fechado: lista de arquivos e conteúdo (sha256) idênticos antes/depois — antes=['loja.db'] depois=['loja.db']
+OK    WAL fechado: simulação com código 0 e contagem correta (legadas=1) — Simulação: 1 credencial(is) seriam invalidadas. Nenhuma alteração foi gravada; use --aplicar para gravar.
+
+## 3. Simulação: dados confirmados ainda no WAL (escritor aberto em outro processo)
+preparo: arquivos=['loja.db', 'loja.db-shm', 'loja.db-wal']; usuarios confirmados=3; marca nova: {'loja.db': 0, 'loja.db-shm': 0, 'loja.db-wal': 1}
+OK    preparo: a marca nova está só no WAL
+simulação: código 0 | Simulação: usuarios=3 hashes_validos=1 sem_credencial=0 legadas=2 paginas_livres=0 journal_mode=wal limpeza_pendente=não | Simulação: 2 credencial(is) seriam invalidadas. Nenhuma alteração foi gravada; use --aplicar para gravar.
+OK    dados no WAL: lista de arquivos e conteúdo (sha256 de .db, -wal e -shm) idênticos antes/depois — mudaram: []
+OK    dados no WAL: a simulação considera o confirmado mais recente (usuarios=3, legadas=2) — Simulação: 2 credencial(is) seriam invalidadas. Nenhuma alteração foi gravada; use --aplicar para gravar.
+
+## 4. Texto legado arbitrário: "scrypt:" + "9"*4400 + ":8:1$s$" + "a"*128
+preparo: arquivos=['loja.db']; trecho de 1000 '9' presente: {'loja.db': 3}
+OK    boot: recusa controlada (MigracaoPendenteError), sem exceção não tratada — RECUSADO: o banco tem 1 credencial(is) legada(s) em usuarios.senha; nada foi alterado. Pare a aplicação e execute 'python migrar_senhas.py <banco>' (simulação) e depois 'python migrar_senhas.py <banco> --aplicar' (ver RE
+OK    python app.py: código 1 com 'Inicialização recusada' e sem traceback — código 1; 2026-11-05 22:26:04,403 ERROR __main__: Inicialização recusada: o banco tem 1 credencial(is) legada(s) em usuarios.senha; nada foi alterado. Pare a aplicação e
+OK    boot recusado sem alterar o banco
+simulação: código 0 | Simulação: 1 credencial(is) seriam invalidadas. Nenhuma alteração foi gravada; use --aplicar para gravar.
+OK    simulação: código 0 e a credencial é contada (legadas=1) — Simulação: 1 credencial(is) seriam invalidadas. Nenhuma alteração foi gravada; use --aplicar para gravar.
+OK    --aplicar: código 0, credencial invalidada (NULL), hash válido preservado — Depois: usuarios=2 hashes_validos=1 sem_credencial=1 legadas=0 paginas_livres=0 journal_mode=delete limpeza_pendente=não
+OK    --aplicar: o texto gigante não aparece mais no arquivo (trecho de 1000 '9')
+OK    após --aplicar: boot aceito e login da conta com hash → 200 — ACEITO; login hash@x -> 200
+
+Resultado: APROVADO — 0 falha(s)

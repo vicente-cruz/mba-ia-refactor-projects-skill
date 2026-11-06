@@ -5,6 +5,7 @@ from flask import Flask
 from flask_cors import CORS
 
 import database
+from database import MigracaoPendenteError
 from config import ConfigError, load_config, validate_config
 from errors import register_error_handlers
 from routes.pedidos import pedidos_bp
@@ -19,7 +20,8 @@ logger = logging.getLogger(__name__)
 def create_app(overrides=None, *, connection_factory=None):
     """Composition root. `connection_factory` substitui a abertura de DATABASE_PATH nesta instância.
 
-    A configuração é lida e validada antes de qualquer acesso ao banco (ConfigError).
+    A configuração é lida e validada antes de qualquer acesso ao banco (ConfigError). Um banco com
+    credenciais legadas é recusado antes de qualquer escrita (MigracaoPendenteError).
     """
     config = load_config()
     if overrides:
@@ -41,7 +43,7 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
     try:
         app = create_app()
-    except ConfigError as erro:
+    except (ConfigError, MigracaoPendenteError) as erro:
         logger.error("Inicialização recusada: %s", erro)
         sys.exit(1)
     host, port = app.config["HOST"], app.config["PORT"]

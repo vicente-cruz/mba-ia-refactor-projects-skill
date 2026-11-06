@@ -1,0 +1,77 @@
+==================================================
+SERVIDOR INICIADO
+Rodando em http://127.0.0.1:5000
+==================================================
+ * Serving Flask app 'app'
+ * Debug mode: off
+2026-11-05 21:25:52,942 INFO werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-11-05 21:25:52,942 INFO werkzeug: [33mPress CTRL+C to quit[0m
+2026-11-05 21:25:53,021 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "GET /health HTTP/1.1" 200 -
+2026-11-05 21:25:53,075 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "GET / HTTP/1.1" 200 -
+2026-11-05 21:25:53,077 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "GET /health HTTP/1.1" 200 -
+2026-11-05 21:25:53,079 INFO controllers.produto_controller: Listando 10 produtos
+2026-11-05 21:25:53,079 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "GET /produtos HTTP/1.1" 200 -
+2026-11-05 21:25:53,080 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "GET /produtos/1 HTTP/1.1" 200 -
+2026-11-05 21:25:53,082 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "[33mGET /produtos/999 HTTP/1.1[0m" 404 -
+2026-11-05 21:25:53,083 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "GET /produtos/busca?q=Mouse HTTP/1.1" 200 -
+2026-11-05 21:25:53,085 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "GET /produtos/busca?categoria=moveis&preco_min=100&preco_max=2000 HTTP/1.1" 200 -
+2026-11-05 21:25:53,086 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "GET /produtos/busca?q=x'%20OR%20'1'%3D'1 HTTP/1.1" 200 -
+2026-11-05 21:25:53,087 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "[31m[1mGET /produtos/busca?preco_min=abc HTTP/1.1[0m" 400 -
+2026-11-05 21:25:53,096 INFO controllers.produto_controller: Produto criado com ID: 11
+2026-11-05 21:25:53,096 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "[35m[1mPOST /produtos HTTP/1.1[0m" 201 -
+2026-11-05 21:25:53,098 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "[31m[1mPOST /produtos HTTP/1.1[0m" 400 -
+2026-11-05 21:25:53,099 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "[31m[1mPOST /produtos HTTP/1.1[0m" 400 -
+2026-11-05 21:25:53,105 INFO controllers.produto_controller: Produto criado com ID: 12
+2026-11-05 21:25:53,105 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "[35m[1mPOST /produtos HTTP/1.1[0m" 201 -
+2026-11-05 21:25:53,107 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "[31m[1mPOST /produtos HTTP/1.1[0m" 400 -
+2026-11-05 21:25:53,108 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "[31m[1mPOST /produtos HTTP/1.1[0m" 400 -
+2026-11-05 21:25:53,115 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "PUT /produtos/11 HTTP/1.1" 200 -
+2026-11-05 21:25:53,116 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "GET /produtos/11 HTTP/1.1" 200 -
+2026-11-05 21:25:53,117 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "[33mPUT /produtos/999 HTTP/1.1[0m" 404 -
+2026-11-05 21:25:53,119 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "[31m[1mPUT /produtos/11 HTTP/1.1[0m" 400 -
+2026-11-05 21:25:53,126 INFO controllers.produto_controller: Produto 12 deletado
+2026-11-05 21:25:53,126 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "DELETE /produtos/12 HTTP/1.1" 200 -
+2026-11-05 21:25:53,128 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "[33mGET /produtos/12 HTTP/1.1[0m" 404 -
+2026-11-05 21:25:53,129 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "[33mDELETE /produtos/999 HTTP/1.1[0m" 404 -
+2026-11-05 21:25:53,130 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "GET /usuarios HTTP/1.1" 200 -
+2026-11-05 21:25:53,132 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "GET /usuarios/1 HTTP/1.1" 200 -
+2026-11-05 21:25:53,133 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "[33mGET /usuarios/999 HTTP/1.1[0m" 404 -
+2026-11-05 21:25:53,222 INFO controllers.usuario_controller: Usuário criado: id=4
+2026-11-05 21:25:53,222 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "[35m[1mPOST /usuarios HTTP/1.1[0m" 201 -
+2026-11-05 21:25:53,224 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "[31m[1mPOST /usuarios HTTP/1.1[0m" 400 -
+2026-11-05 21:25:53,303 INFO controllers.usuario_controller: Login bem-sucedido: usuário id=1
+2026-11-05 21:25:53,303 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "POST /login HTTP/1.1" 200 -
+2026-11-05 21:25:53,380 INFO controllers.usuario_controller: Login bem-sucedido: usuário id=4
+2026-11-05 21:25:53,380 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "POST /login HTTP/1.1" 200 -
+2026-11-05 21:25:53,458 INFO controllers.usuario_controller: Login falhou
+2026-11-05 21:25:53,458 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2026-11-05 21:25:53,460 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "[31m[1mPOST /login HTTP/1.1[0m" 400 -
+2026-11-05 21:25:53,461 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "[31m[1mPOST /login HTTP/1.1[0m" 400 -
+2026-11-05 21:25:53,463 INFO controllers.usuario_controller: Login falhou
+2026-11-05 21:25:53,463 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2026-11-05 21:25:53,472 INFO controllers.pedido_controller: Notificação simulada (e-mail, SMS, push): pedido 1 criado para usuario 2
+2026-11-05 21:25:53,472 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "[35m[1mPOST /pedidos HTTP/1.1[0m" 201 -
+2026-11-05 21:25:53,474 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "[31m[1mPOST /pedidos HTTP/1.1[0m" 400 -
+2026-11-05 21:25:53,476 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "[31m[1mPOST /pedidos HTTP/1.1[0m" 400 -
+2026-11-05 21:25:53,477 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "[31m[1mPOST /pedidos HTTP/1.1[0m" 400 -
+2026-11-05 21:25:53,479 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "[31m[1mPOST /pedidos HTTP/1.1[0m" 400 -
+2026-11-05 21:25:53,480 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "[31m[1mPOST /pedidos HTTP/1.1[0m" 400 -
+2026-11-05 21:25:53,481 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "[31m[1mPOST /pedidos HTTP/1.1[0m" 400 -
+2026-11-05 21:25:53,483 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "GET /pedidos HTTP/1.1" 200 -
+2026-11-05 21:25:53,485 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "GET /pedidos/usuario/2 HTTP/1.1" 200 -
+2026-11-05 21:25:53,486 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "GET /pedidos/usuario/999 HTTP/1.1" 200 -
+2026-11-05 21:25:53,493 INFO controllers.pedido_controller: Notificação: pedido 1 foi aprovado; preparar envio.
+2026-11-05 21:25:53,493 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "PUT /pedidos/1/status HTTP/1.1" 200 -
+2026-11-05 21:25:53,495 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "[31m[1mPUT /pedidos/1/status HTTP/1.1[0m" 400 -
+2026-11-05 21:25:53,496 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "[33mPUT /pedidos/999/status HTTP/1.1[0m" 404 -
+2026-11-05 21:25:53,498 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "[31m[1mPUT /pedidos/1/status HTTP/1.1[0m" 400 -
+2026-11-05 21:25:53,499 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "GET /relatorios/vendas HTTP/1.1" 200 -
+2026-11-05 21:25:53,500 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "GET /health HTTP/1.1" 200 -
+2026-11-05 21:25:53,502 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "POST /admin/query HTTP/1.1" 200 -
+2026-11-05 21:25:53,503 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "[31m[1mPOST /admin/query HTTP/1.1[0m" 400 -
+2026-11-05 21:25:53,511 WARNING controllers.sistema_controller: Banco de dados resetado via /admin/reset-db
+2026-11-05 21:25:53,511 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "POST /admin/reset-db HTTP/1.1" 200 -
+2026-11-05 21:25:53,513 INFO controllers.produto_controller: Listando 0 produtos
+2026-11-05 21:25:53,513 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "GET /produtos HTTP/1.1" 200 -
+2026-11-05 21:25:53,514 INFO werkzeug: 127.0.0.1 - - [05/Nov/2026 21:25:53] "GET /health HTTP/1.1" 200 -

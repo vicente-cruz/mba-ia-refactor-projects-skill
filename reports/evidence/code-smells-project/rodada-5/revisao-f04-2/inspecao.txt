@@ -1,0 +1,66 @@
+== AP-01: execute com concatenação ou f-string de valor externo
+./models/admin.py:11:            db.execute(f"DELETE FROM {tabela}")
+./models/admin.py:19:    return {tabela: db.execute(f"SELECT COUNT(*) FROM {tabela}").fetchone()[0] for tabela in TABELAS}
+./models/produto.py:72:    return [to_dict(row) for row in db.execute(f"SELECT {COLUNAS} FROM produtos")]
+./models/produto.py:76:    row = db.execute(f"SELECT {COLUNAS} FROM produtos WHERE id = ?", (produto_id,)).fetchone()
+./models/usuario.py:33:    return [to_public_dict(row) for row in db.execute(f"SELECT {COLUNAS_PUBLICAS} FROM usuarios")]
+./models/usuario.py:37:    row = db.execute(f"SELECT {COLUNAS_PUBLICAS} FROM usuarios WHERE id = ?", (usuario_id,)).fetchone()
+./models/usuario.py:156:    db.execute(f"PRAGMA user_version = {LIMPEZA_PENDENTE:d}")
+== AP-01: f-strings em SQL (conferir que só interpolam constantes)
+models/admin.py:11:            db.execute(f"DELETE FROM {tabela}")
+models/admin.py:19:    return {tabela: db.execute(f"SELECT COUNT(*) FROM {tabela}").fetchone()[0] for tabela in TABELAS}
+models/produto.py:72:    return [to_dict(row) for row in db.execute(f"SELECT {COLUNAS} FROM produtos")]
+models/produto.py:76:    row = db.execute(f"SELECT {COLUNAS} FROM produtos WHERE id = ?", (produto_id,)).fetchone()
+models/produto.py:104:    query = f"SELECT {COLUNAS} FROM produtos WHERE 1=1"
+models/usuario.py:33:    return [to_public_dict(row) for row in db.execute(f"SELECT {COLUNAS_PUBLICAS} FROM usuarios")]
+models/usuario.py:37:    row = db.execute(f"SELECT {COLUNAS_PUBLICAS} FROM usuarios WHERE id = ?", (usuario_id,)).fetchone()
+== AP-02: SECRET_KEY literal ou prefixo da chave antiga
+   (nenhuma ocorrência)
+== AP-02/AP-04: senha literal em hash ou em tupla de seed (4 strings)
+   (nenhuma ocorrência)
+== AP-03: chave senha em código
+./controllers/usuario_controller.py:29:    senha = dados.get("senha", "")
+./controllers/usuario_controller.py:41:    senha = dados.get("senha", "")
+./models/usuario.py:177:        if _senha_confere(row["senha"], senha):
+== AP-11: debug fixo / bind aberto
+   (nenhuma ocorrência)
+== AP-08: estado global de conexão
+   (nenhuma ocorrência)
+== AP-16: str(e) / except Exception
+   (nenhuma ocorrência)
+== AP-16: except amplos (conferir tipo capturado)
+./app.py:46:    except (ConfigError, MigracaoPendenteError) as erro:
+./migrar_senhas.py:66:            except FileNotFoundError:
+./migrar_senhas.py:185:    except BaseException:
+./migrar_senhas.py:228:        except LimpezaNaoComprovada:
+./migrar_senhas.py:237:    except (SimulacaoIndisponivel, sqlite3.DatabaseError) as erro:
+./migrar_senhas.py:272:        except (sqlite3.Error, RuntimeError) as erro:
+./migrar_senhas.py:279:        except (sqlite3.Error, LimpezaNaoComprovada) as erro:
+./controllers/sistema_controller.py:33:    except sqlite3.Error:
+./controllers/produto_controller.py:48:    except ValueError:
+./models/usuario.py:62:    except (ValueError, OverflowError):
+./models/usuario.py:94:    except (ValueError, TypeError):
+== AP-20: print( (exceto Blueprint)
+./app.py:50:    print("=" * 50)
+./app.py:51:    print("SERVIDOR INICIADO")
+./app.py:52:    print(f"Rodando em http://{host}:{port}")
+./app.py:53:    print("=" * 50)
+./migrar_senhas.py:166:    print(f"{rotulo}: usuarios={resumo['usuarios']} hashes_validos={resumo['hashes_validos']} "
+./migrar_senhas.py:238:        print(f"Simulação recusada: {erro}. Nenhum arquivo foi aberto pelo SQLite nem alterado.", file=sys.stderr)
+./migrar_senhas.py:245:        print("Simulação: o banco não tem a tabela usuarios. Nada a fazer.")
+./migrar_senhas.py:249:        print("Simulação: a limpeza física de uma execução anterior não terminou; use --aplicar para concluí-la.")
+./migrar_senhas.py:251:        print(f"Simulação: {resumo['legadas']} credencial(is) seriam invalidadas. Nenhuma alteração foi gravada; "
+./migrar_senhas.py:254:        print("Simulação: nenhuma credencial legada. Nenhuma alteração foi gravada.")
+./migrar_senhas.py:263:            print("O banco não tem a tabela usuarios. Nada foi alterado.")
+./migrar_senhas.py:267:            print(f"PRAGMA user_version inesperado ({resumo['user_version']}); este não parece um banco da loja. "
+./migrar_senhas.py:273:            print(f"Falha antes do commit ({type(erro).__name__}: {erro}). Transação desfeita; nada foi alterado.",
+./migrar_senhas.py:276:        print(f"Etapa 1 confirmada: {alteradas} credencial(is) invalidada(s).")
+./migrar_senhas.py:280:            print(f"Limpeza física não comprovada ({type(erro).__name__}: {erro}). As credenciais legadas já estão "
+./migrar_senhas.py:285:        print("Etapa 2 concluída e comprovada: arquivo reescrito (VACUUM), sem páginas livres nem WAL/journal "
+./migrar_senhas.py:299:        print(f"Banco não encontrado: {args.banco}. Nada foi criado.", file=sys.stderr)
+== AP-07: SQL fora de models/database
+   (nenhuma ocorrência)
+== AP-07: request/jsonify fora de routes/errors/auth
+   (nenhuma ocorrência)
+== AP-15: APIs obsoletas
+   (nenhuma ocorrência)
